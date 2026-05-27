@@ -413,6 +413,7 @@ export default function Page() {
   const [modes, setModes] = useState({
     autoShowAnswer: false,
     autoShowTranscript: false,
+    autoPlayAudio: false,
     randomizeQuestions: false,
   });
 
@@ -494,14 +495,17 @@ export default function Page() {
     if (audioRef.current) audioRef.current.playbackRate = playbackRate;
   }, [playbackRate, currentIdx]);
 
-  // ── Track visited questions in Auto Answer mode ───────────────────────────
+  // visitedIds is updated from event handlers (jumpToQuestion, autoShowAnswer toggle)
+
+  // ── Auto-play audio when navigating questions ─────────────────────────────
 
   useEffect(() => {
-    if (modes.autoShowAnswer && questions.length > 0) {
-      const q = questions[currentIdx];
-      if (q) setVisitedIds((prev) => ({ ...prev, [q.id]: true }));
-    }
-  }, [currentIdx, modes.autoShowAnswer, questions]);
+    if (!modes.autoPlayAudio) return;
+    const timer = setTimeout(() => {
+      audioRef.current?.play().catch(() => {});
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, [currentIdx, modes.autoPlayAudio]);
 
   // ── Question Bank Loader ──────────────────────────────────────────────────
 
@@ -648,6 +652,12 @@ export default function Page() {
       setCurrentTime(0);
     }
     setCurrentIdx(idx);
+
+    // Mark visited when auto answer is on
+    if (modes.autoShowAnswer) {
+      const q = questions[idx];
+      if (q) setVisitedIds((prev) => ({ ...prev, [q.id]: true }));
+    }
 
     // Auto-update pagination if question is outside current page
     const targetPage = Math.floor(idx / 25);
@@ -1115,12 +1125,16 @@ export default function Page() {
                         type="checkbox"
                         style={{ display: "none" }}
                         checked={modes.autoShowAnswer}
-                        onChange={(e) =>
+                        onChange={(e) => {
                           setModes((m) => ({
                             ...m,
                             autoShowAnswer: e.target.checked,
-                          }))
-                        }
+                          }));
+                          if (e.target.checked) {
+                            const q = questions[currentIdx];
+                            if (q) setVisitedIds((prev) => ({ ...prev, [q.id]: true }));
+                          }
+                        }}
                       />
                       Auto Answer
                     </label>
@@ -1174,6 +1188,57 @@ export default function Page() {
                         }
                       />
                       Auto Transcript
+                    </label>
+
+                    <label
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "8px",
+                        cursor: "pointer",
+                        fontSize: "14px",
+                        fontWeight: 600,
+                        color: "#3e4850",
+                      }}
+                    >
+                      <div
+                        style={{
+                          width: "36px",
+                          height: "20px",
+                          background: modes.autoPlayAudio
+                            ? "#1E8E49"
+                            : "#d1d5db",
+                          borderRadius: "10px",
+                          position: "relative",
+                          transition: "background 0.2s",
+                        }}
+                      >
+                        <div
+                          style={{
+                            width: "16px",
+                            height: "16px",
+                            background: "white",
+                            borderRadius: "50%",
+                            position: "absolute",
+                            top: "2px",
+                            left: modes.autoPlayAudio ? "18px" : "2px",
+                            transition: "left 0.2s",
+                            boxShadow: "0 1px 2px rgba(0,0,0,0.2)",
+                          }}
+                        />
+                      </div>
+                      <input
+                        type="checkbox"
+                        style={{ display: "none" }}
+                        checked={modes.autoPlayAudio}
+                        onChange={(e) =>
+                          setModes((m) => ({
+                            ...m,
+                            autoPlayAudio: e.target.checked,
+                          }))
+                        }
+                      />
+                      Auto Play
                     </label>
 
                     <button
