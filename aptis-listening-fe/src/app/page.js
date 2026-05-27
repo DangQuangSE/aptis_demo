@@ -410,6 +410,12 @@ export default function Page() {
   const [view, setView] = useState("select-part");
   const [loading, setLoading] = useState(false);
 
+  const [modes, setModes] = useState({
+    autoShowAnswer: false,
+    autoShowTranscript: false,
+    randomizeQuestions: false,
+  });
+
   const [selectedPart, setSelectedPart] = useState(null);
   const [questions, setQuestions] = useState([]);
   const [currentIdx, setCurrentIdx] = useState(0);
@@ -486,6 +492,18 @@ export default function Page() {
   useEffect(() => {
     if (audioRef.current) audioRef.current.playbackRate = playbackRate;
   }, [playbackRate, currentIdx]);
+
+  // ── Auto Answer Logic ─────────────────────────────────────────────────────
+
+  useEffect(() => {
+    if (modes.autoShowAnswer && questions.length > 0) {
+      const q = questions[currentIdx];
+      if (q && !checkedResults[q.id]) {
+        setSelectedAnswers((prev) => ({ ...prev, [q.id]: q.correctKey }));
+        setCheckedResults((prev) => ({ ...prev, [q.id]: true }));
+      }
+    }
+  }, [currentIdx, modes.autoShowAnswer, questions, checkedResults]);
 
   // ── Question Bank Loader ──────────────────────────────────────────────────
 
@@ -1025,6 +1043,167 @@ export default function Page() {
                     </span>
                   </button>
 
+                  {/* Center: Mode Toggles & Randomize Action */}
+                  <div
+                    style={{
+                      display: "flex",
+                      gap: "20px",
+                      alignItems: "center",
+                    }}
+                  >
+                    <label
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "8px",
+                        cursor: "pointer",
+                        fontSize: "14px",
+                        fontWeight: 600,
+                        color: "#3e4850",
+                      }}
+                    >
+                      <div
+                        style={{
+                          width: "36px",
+                          height: "20px",
+                          background: modes.autoShowAnswer
+                            ? "#006590"
+                            : "#d1d5db",
+                          borderRadius: "10px",
+                          position: "relative",
+                          transition: "background 0.2s",
+                        }}
+                      >
+                        <div
+                          style={{
+                            width: "16px",
+                            height: "16px",
+                            background: "white",
+                            borderRadius: "50%",
+                            position: "absolute",
+                            top: "2px",
+                            left: modes.autoShowAnswer ? "18px" : "2px",
+                            transition: "left 0.2s",
+                            boxShadow: "0 1px 2px rgba(0,0,0,0.2)",
+                          }}
+                        />
+                      </div>
+                      <input
+                        type="checkbox"
+                        style={{ display: "none" }}
+                        checked={modes.autoShowAnswer}
+                        onChange={(e) =>
+                          setModes((m) => ({
+                            ...m,
+                            autoShowAnswer: e.target.checked,
+                          }))
+                        }
+                      />
+                      Auto Answer
+                    </label>
+
+                    <label
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "8px",
+                        cursor: "pointer",
+                        fontSize: "14px",
+                        fontWeight: 600,
+                        color: "#3e4850",
+                      }}
+                    >
+                      <div
+                        style={{
+                          width: "36px",
+                          height: "20px",
+                          background: modes.autoShowTranscript
+                            ? "#006590"
+                            : "#d1d5db",
+                          borderRadius: "10px",
+                          position: "relative",
+                          transition: "background 0.2s",
+                        }}
+                      >
+                        <div
+                          style={{
+                            width: "16px",
+                            height: "16px",
+                            background: "white",
+                            borderRadius: "50%",
+                            position: "absolute",
+                            top: "2px",
+                            left: modes.autoShowTranscript ? "18px" : "2px",
+                            transition: "left 0.2s",
+                            boxShadow: "0 1px 2px rgba(0,0,0,0.2)",
+                          }}
+                        />
+                      </div>
+                      <input
+                        type="checkbox"
+                        style={{ display: "none" }}
+                        checked={modes.autoShowTranscript}
+                        onChange={(e) =>
+                          setModes((m) => ({
+                            ...m,
+                            autoShowTranscript: e.target.checked,
+                          }))
+                        }
+                      />
+                      Auto Transcript
+                    </label>
+
+                    <button
+                      onClick={() => {
+                        const shuffled = shuffleArray(questions);
+                        setQuestions(shuffled);
+                        setCurrentIdx(0);
+                        setSidebarPage(0);
+                        if (audioRef.current) {
+                          audioRef.current.pause();
+                          audioRef.current.currentTime = 0;
+                        }
+                        setIsPlaying(false);
+                        setCurrentTime(0);
+                        showToast(
+                          "Đã trộn ngẫu nhiên danh sách câu hỏi!",
+                          "info",
+                        );
+                      }}
+                      style={{
+                        padding: "6px 12px",
+                        background: "#f0f4f8",
+                        color: "#006590",
+                        border: "1.5px solid #006590",
+                        borderRadius: "8px",
+                        fontSize: "13px",
+                        fontWeight: 700,
+                        cursor: "pointer",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "6px",
+                      }}
+                    >
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <polyline points="16 3 21 3 21 8"></polyline>
+                        <line x1="4" y1="20" x2="21" y2="3"></line>
+                        <polyline points="21 16 21 21 16 21"></polyline>
+                        <line x1="15" y1="15" x2="21" y2="21"></line>
+                        <line x1="4" y1="4" x2="9" y2="9"></line>
+                      </svg>
+                      Randomize
+                    </button>
+                  </div>
+
                   {/* Timer */}
                   <div
                     style={{
@@ -1316,160 +1495,131 @@ export default function Page() {
                     <div
                       style={{
                         background: "#006590",
-                        padding: "18px 24px",
+                        padding: "10px 24px",
                         color: "white",
                         display: "flex",
-                        flexDirection: "column",
-                        gap: "12px",
+                        alignItems: "center",
+                        gap: "18px",
                       }}
                     >
-                      {/* Play row */}
+                      {/* Play Button */}
+                      <button
+                        onClick={togglePlay}
+                        style={{
+                          width: "36px",
+                          height: "36px",
+                          borderRadius: "50%",
+                          background: "white",
+                          color: "#006590",
+                          border: "none",
+                          cursor: "pointer",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          boxShadow: "0 3px 10px rgba(0,0,0,0.22)",
+                          flexShrink: 0,
+                          transition: "transform 0.1s ease",
+                        }}
+                        onMouseDown={(e) =>
+                          (e.currentTarget.style.transform = "scale(0.92)")
+                        }
+                        onMouseUp={(e) =>
+                          (e.currentTarget.style.transform = "scale(1)")
+                        }
+                        onMouseLeave={(e) =>
+                          (e.currentTarget.style.transform = "scale(1)")
+                        }
+                      >
+                        {isPlaying ? <IconPause /> : <IconPlay />}
+                      </button>
+
+                      {/* Timeline Scrubber */}
+                      <div
+                        style={{
+                          flex: 1,
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "10px",
+                        }}
+                      >
+                        <span style={{ fontSize: "10px", fontWeight: 700, opacity: 0.85, whiteSpace: "nowrap" }}>{formatTime(currentTime)}</span>
+                        <input
+                          type="range"
+                          min={0}
+                          max={duration || 100}
+                          value={currentTime}
+                          onChange={handleSeek}
+                          className="audio-scrubber"
+                          style={{ width: "100%", accentColor: "white", height: "4px" }}
+                        />
+                        <span style={{ fontSize: "10px", fontWeight: 700, opacity: 0.85, whiteSpace: "nowrap" }}>{formatTime(duration)}</span>
+                      </div>
+
+                      {/* Speed Controls */}
+                      <div
+                        style={{
+                          display: "flex",
+                          background: "rgba(0,0,0,0.2)",
+                          borderRadius: "10px",
+                          padding: "2px",
+                          gap: "1px",
+                          flexShrink: 0,
+                        }}
+                      >
+                        {[1.0, 1.25, 1.5].map((rate) => (
+                          <button
+                            key={rate}
+                            onClick={() => setPlaybackRate(rate)}
+                            style={{
+                              padding: "2px 8px",
+                              borderRadius: "8px",
+                              border: "none",
+                              cursor: "pointer",
+                              fontSize: "11px",
+                              fontWeight: 700,
+                              background: playbackRate === rate ? "white" : "transparent",
+                              color: playbackRate === rate ? "#006590" : "rgba(255,255,255,0.8)",
+                              boxShadow: playbackRate === rate ? "0 1px 4px rgba(0,0,0,0.18)" : "none",
+                              transition: "all 0.15s ease",
+                            }}
+                          >
+                            {rate}x
+                          </button>
+                        ))}
+                      </div>
+
+                      {/* Volume Controls */}
                       <div
                         style={{
                           display: "flex",
                           alignItems: "center",
-                          gap: "14px",
+                          gap: "6px",
+                          flexShrink: 0,
                         }}
                       >
                         <button
-                          onClick={togglePlay}
+                          onClick={toggleMute}
                           style={{
-                            width: "48px",
-                            height: "48px",
-                            borderRadius: "50%",
-                            background: "white",
-                            color: "#006590",
+                            background: "transparent",
                             border: "none",
+                            color: "white",
                             cursor: "pointer",
                             display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            boxShadow: "0 3px 10px rgba(0,0,0,0.22)",
-                            flexShrink: 0,
-                            transition: "transform 0.1s ease",
+                            alignItems: "center"
                           }}
-                          onMouseDown={(e) =>
-                            (e.currentTarget.style.transform = "scale(0.92)")
-                          }
-                          onMouseUp={(e) =>
-                            (e.currentTarget.style.transform = "scale(1)")
-                          }
-                          onMouseLeave={(e) =>
-                            (e.currentTarget.style.transform = "scale(1)")
-                          }
                         >
-                          {isPlaying ? <IconPause /> : <IconPlay />}
+                          {isMuted ? <IconMute /> : <IconVolume />}
                         </button>
-
-                        <div
-                          style={{
-                            flex: 1,
-                            display: "flex",
-                            flexDirection: "column",
-                            gap: "5px",
-                          }}
-                        >
-                          <div
-                            style={{
-                              display: "flex",
-                              justifyContent: "space-between",
-                              fontSize: "10px",
-                              fontWeight: 700,
-                              opacity: 0.85,
-                            }}
-                          >
-                            <span>{formatTime(currentTime)}</span>
-                            <span>{formatTime(duration)}</span>
-                          </div>
-                          <input
-                            type="range"
-                            min={0}
-                            max={duration || 100}
-                            value={currentTime}
-                            onChange={handleSeek}
-                            className="audio-scrubber"
-                            style={{ width: "100%", accentColor: "white" }}
-                          />
-                        </div>
-                      </div>
-
-                      {/* Speed + Volume row */}
-                      <div
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "space-between",
-                        }}
-                      >
-                        <div
-                          style={{
-                            display: "flex",
-                            background: "rgba(0,0,0,0.2)",
-                            borderRadius: "10px",
-                            padding: "2px",
-                            gap: "1px",
-                          }}
-                        >
-                          {[1.0, 1.25, 1.5].map((rate) => (
-                            <button
-                              key={rate}
-                              onClick={() => setPlaybackRate(rate)}
-                              style={{
-                                padding: "3px 10px",
-                                borderRadius: "8px",
-                                border: "none",
-                                cursor: "pointer",
-                                fontSize: "11px",
-                                fontWeight: 700,
-                                background:
-                                  playbackRate === rate
-                                    ? "white"
-                                    : "transparent",
-                                color:
-                                  playbackRate === rate
-                                    ? "#006590"
-                                    : "rgba(255,255,255,0.8)",
-                                boxShadow:
-                                  playbackRate === rate
-                                    ? "0 1px 4px rgba(0,0,0,0.18)"
-                                    : "none",
-                                transition: "all 0.15s ease",
-                              }}
-                            >
-                              {rate}x
-                            </button>
-                          ))}
-                        </div>
-                        <div
-                          style={{
-                            display: "flex",
-                            alignItems: "center",
-                            gap: "7px",
-                          }}
-                        >
-                          <button
-                            onClick={toggleMute}
-                            style={{
-                              background: "transparent",
-                              border: "none",
-                              color: "white",
-                              cursor: "pointer",
-                              display: "flex",
-                            }}
-                          >
-                            {isMuted ? <IconMute /> : <IconVolume />}
-                          </button>
-                          <input
-                            type="range"
-                            min={0}
-                            max={1}
-                            step={0.05}
-                            value={isMuted ? 0 : volume}
-                            onChange={handleVolume}
-                            className="volume-slider"
-                            style={{ accentColor: "white" }}
-                          />
-                        </div>
+                        <input
+                          type="range"
+                          min={0}
+                          max={1}
+                          step={0.05}
+                          value={isMuted ? 0 : volume}
+                          onChange={handleVolume}
+                          className="volume-slider"
+                          style={{ accentColor: "white", width: "50px", height: "4px" }}
+                        />
                       </div>
                     </div>
 
@@ -1527,15 +1677,20 @@ export default function Page() {
                         {q.options.map((opt) => {
                           const isSel = userAns === opt.key;
                           const isCorr = q.correctKey === opt.key;
+                          const displayChecked =
+                            isChecked || modes.autoShowAnswer;
+
                           let bg = "#fbf9f8",
                             bdr = "#bdc8d2";
                           let ind = { bg: "transparent", border: "#bdc8d2" };
-                          if (isSel && !isChecked) {
+
+                          if (isSel && !displayChecked) {
                             bg = "rgba(28,176,246,0.10)";
                             bdr = "#006590";
                             ind = { bg: "#006590", border: "#006590" };
                           }
-                          if (isChecked) {
+
+                          if (displayChecked) {
                             if (isCorr) {
                               bg = "rgba(88,204,2,0.10)";
                               bdr = "#58CC02";
@@ -1550,9 +1705,11 @@ export default function Page() {
                               ind = { bg: "transparent", border: "#e4e2e2" };
                             }
                           }
+
                           const showCheck =
-                            (isSel && !isChecked) || (isChecked && isCorr);
-                          const showX = isChecked && isSel && !isCorr;
+                            (isSel && !displayChecked) ||
+                            (displayChecked && isCorr);
+                          const showX = displayChecked && isSel && !isCorr;
 
                           return (
                             <div
@@ -1635,8 +1792,10 @@ export default function Page() {
                         })}
                       </div>
 
-                      {/* Transcript revealed after check */}
-                      {isChecked && (
+                      {/* Transcript revealed after check or via mode */}
+                      {(modes.autoShowAnswer
+                        ? modes.autoShowTranscript
+                        : isChecked || modes.autoShowTranscript) && (
                         <div
                           className="transcript-reveal"
                           style={{
@@ -1656,25 +1815,16 @@ export default function Page() {
                               fontSize: "10px",
                               textTransform: "uppercase",
                               letterSpacing: "0.09em",
-                              marginBottom: "8px",
+                              marginBottom: "12px",
                             }}
                           >
                             <IconTranscript /> Transcript & Explanation
                           </div>
-                          <p
-                            style={{
-                              fontSize: "13px",
-                              color: "#3e4850",
-                              lineHeight: 1.7,
-                              whiteSpace: "pre-line",
-                              margin: 0,
-                            }}
-                          >
-                            {q.transcript}
-                          </p>
+
+                          {/* Answer Box moved top */}
                           <div
                             style={{
-                              marginTop: "10px",
+                              marginBottom: "14px",
                               display: "flex",
                               alignItems: "center",
                               gap: "6px",
@@ -1698,6 +1848,18 @@ export default function Page() {
                             }
                             )
                           </div>
+
+                          <p
+                            style={{
+                              fontSize: "13px",
+                              color: "#3e4850",
+                              lineHeight: 1.7,
+                              whiteSpace: "pre-line",
+                              margin: 0,
+                            }}
+                          >
+                            {q.transcript}
+                          </p>
                         </div>
                       )}
                     </div>
