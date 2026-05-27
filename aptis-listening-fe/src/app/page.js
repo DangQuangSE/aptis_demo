@@ -1486,13 +1486,16 @@ export default function Page() {
                     flex: 1,
                     minWidth: 0,
                     display: "flex",
-                    flexDirection: "column",
-                    gap: "18px",
+                    flexDirection: "row",
+                    gap: "16px",
+                    alignItems: "flex-start",
                   }}
                 >
                   {/* Question Card */}
                   <div
                     style={{
+                      flex: 1,
+                      minWidth: 0,
                       backgroundColor: "white",
                       borderRadius: "20px",
                       border: "2px solid #efeded",
@@ -1906,13 +1909,16 @@ export default function Page() {
                     </div>
                   </div>
 
-                  {/* Action Footer */}
+                  {/* Action Buttons Column (sticky right) */}
                   <div
                     style={{
                       display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                      gap: "12px",
+                      flexDirection: "column",
+                      gap: "10px",
+                      position: "sticky",
+                      top: "88px",
+                      flexShrink: 0,
+                      width: "116px",
                     }}
                   >
                     {/* Back */}
@@ -1923,17 +1929,22 @@ export default function Page() {
                       disabled={currentIdx === 0}
                       className={currentIdx > 0 ? "btn-3d" : ""}
                       style={{
-                        padding: "11px 22px",
+                        width: "100%",
+                        padding: "13px 8px",
                         borderRadius: "14px",
                         border: "none",
                         fontFamily: "'Plus Jakarta Sans', sans-serif",
                         fontWeight: 700,
-                        fontSize: "14px",
+                        fontSize: "13px",
                         cursor: currentIdx === 0 ? "not-allowed" : "pointer",
                         background: currentIdx === 0 ? "#e4e2e2" : "#efeded",
                         color: currentIdx === 0 ? "#a0a0a0" : "#1b1c1c",
                         boxShadow:
                           currentIdx === 0 ? "none" : "0 4px 0 #bdc8d2",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        gap: "5px",
                       }}
                     >
                       ← Back
@@ -1945,15 +1956,18 @@ export default function Page() {
                       disabled={isChecked || !userAns}
                       className={!isChecked && userAns ? "btn-3d" : ""}
                       style={{
-                        padding: "11px 26px",
+                        width: "100%",
+                        padding: "13px 8px",
                         borderRadius: "14px",
                         border: "none",
                         fontFamily: "'Plus Jakarta Sans', sans-serif",
                         fontWeight: 700,
-                        fontSize: "14px",
+                        fontSize: "13px",
                         display: "flex",
+                        flexDirection: "column",
                         alignItems: "center",
-                        gap: "7px",
+                        justifyContent: "center",
+                        gap: "5px",
                         cursor:
                           isChecked || !userAns ? "not-allowed" : "pointer",
                         background:
@@ -1963,7 +1977,8 @@ export default function Page() {
                           isChecked || !userAns ? "none" : "0 4px 0 #B38600",
                       }}
                     >
-                      <IconCheck /> Check Result
+                      <IconCheck />
+                      Check
                     </button>
 
                     {/* Next / Finish */}
@@ -1971,15 +1986,17 @@ export default function Page() {
                       className="btn-3d"
                       onClick={handleNextOrFinish}
                       style={{
-                        padding: "11px 26px",
+                        width: "100%",
+                        padding: "13px 8px",
                         borderRadius: "14px",
                         border: "none",
                         fontFamily: "'Plus Jakarta Sans', sans-serif",
                         fontWeight: 700,
-                        fontSize: "14px",
+                        fontSize: "13px",
                         display: "flex",
                         alignItems: "center",
-                        gap: "7px",
+                        justifyContent: "center",
+                        gap: "5px",
                         cursor: "pointer",
                         background: "#1cb0f6",
                         color: "white",
