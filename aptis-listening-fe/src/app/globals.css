@@ -1,0 +1,337 @@
+/* ==========================================================================
+   Aptis Listening Practice Hub - Vibrant EdTech Design System (Stitch 2026)
+   Warm light-mode palette · Plus Jakarta Sans · Tactile 3D buttons
+   ========================================================================== */
+
+@import "tailwindcss";
+/* Fonts are loaded via <link> in layout.js to avoid PostCSS @import ordering issues */
+
+/* --------------------------------------------------------------------------
+   Design Tokens
+   -------------------------------------------------------------------------- */
+:root {
+  /* Fonts */
+  --font-headline: "Plus Jakarta Sans", sans-serif;
+  --font-body: "Be Vietnam Pro", sans-serif;
+
+  /* Brand Palette - Vibrant EdTech */
+  --surface:              #fbf9f8;
+  --surface-dim:          #dbd9d9;
+  --surface-bright:       #fbf9f8;
+  --surface-container-lowest:  #ffffff;
+  --surface-container-low:     #f5f3f3;
+  --surface-container:         #efeded;
+  --surface-container-high:    #eae8e7;
+  --surface-container-highest: #e4e2e2;
+
+  --on-surface:         #1b1c1c;
+  --on-surface-variant: #3e4850;
+  --outline:            #6e7881;
+  --outline-variant:    #bdc8d2;
+
+  --primary:            #006590;
+  --on-primary:         #ffffff;
+  --primary-container:  #1cb0f6;
+  --on-primary-container: #00405d;
+  --primary-fixed:      #c8e6ff;
+  --primary-fixed-dim:  #88ceff;
+
+  --secondary:          #755b00;
+  --on-secondary:       #ffffff;
+  --secondary-container: #fec700;
+  --on-secondary-container: #6e5400;
+
+  --success:            #58CC02;
+  --success-bg:         rgba(88, 204, 2, 0.1);
+  --success-border:     #58CC02;
+
+  --error:              #ba1a1a;
+  --error-bg:           rgba(186, 26, 26, 0.08);
+  --error-border:       #ba1a1a;
+
+  /* Part Card Colours */
+  --part1-bg:     #1877F2;
+  --part1-shadow: #0D52AB;
+  --part2-bg:     #00C8F8;
+  --part2-shadow: #008EAF;
+  --part3-bg:     #FFC107;
+  --part3-shadow: #B38600;
+  --part3-text:   #5A4300;
+  --part4-bg:     #1E8E49;
+  --part4-shadow: #12592D;
+
+  /* Spacing */
+  --radius-sm:   0.5rem;
+  --radius-md:   0.75rem;
+  --radius-lg:   1rem;
+  --radius-xl:   1.5rem;
+  --radius-full: 9999px;
+}
+
+/* --------------------------------------------------------------------------
+   Global Reset
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--surface);
+  color: var(--on-surface);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Fix heading colors (overrides any dark-mode global conflicts) */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-headline);
+  color: var(--on-surface);
+  font-weight: 700;
+}
+
+/* --------------------------------------------------------------------------
+   Smooth Transition Keyframes
+   -------------------------------------------------------------------------- */
+
+/* Screen enter - fade & slide up */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Content slide up (transcript reveal, feedback panels) */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Soft pulse for loading indicators */
+@keyframes softPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.7; transform: scale(0.92); }
+}
+
+/* Ping dot for loading badges */
+@keyframes ping {
+  75%, 100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeInUp 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.32s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-soft-pulse {
+  animation: softPulse 1.4s ease-in-out infinite;
+}
+
+.animate-ping {
+  animation: ping 1.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* --------------------------------------------------------------------------
+   Tactile 3D Button Utility
+   Mimics physical depth via bottom-border shadow that disappears on press.
+   -------------------------------------------------------------------------- */
+.btn-3d {
+  position: relative;
+  transition:
+    transform  0.09s ease,
+    box-shadow 0.09s ease,
+    filter     0.15s ease;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-3d:hover {
+  filter: brightness(1.06);
+}
+
+.btn-3d:active {
+  transform: translateY(4px) !important;
+  box-shadow: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   Screen Transition Wrapper
+   Used for the root container of each screen.
+   -------------------------------------------------------------------------- */
+.screen-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --------------------------------------------------------------------------
+   Range Input Resets (Audio Scrubber / Volume Slider)
+   -------------------------------------------------------------------------- */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: var(--radius-full);
+  outline: none;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transition: transform 0.12s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.18);
+}
+
+input[type="range"].audio-scrubber {
+  background: rgba(255, 255, 255, 0.28);
+  accent-color: white;
+}
+
+input[type="range"].volume-slider {
+  background: rgba(255, 255, 255, 0.28);
+  accent-color: white;
+  width: 68px;
+}
+
+/* --------------------------------------------------------------------------
+   Scrollbar Styling (subtle, warm-toned)
+   -------------------------------------------------------------------------- */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface-container);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--outline-variant);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--outline);
+}
+
+/* --------------------------------------------------------------------------
+   Progress Bar (top of screen, success-green animated fill)
+   -------------------------------------------------------------------------- */
+.progress-bar-fill {
+  height: 100%;
+  background: var(--success);
+  border-radius: var(--radius-full);
+  transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* --------------------------------------------------------------------------
+   Option Card States
+   -------------------------------------------------------------------------- */
+.option-card {
+  transition:
+    border-color 0.15s ease,
+    background-color 0.15s ease,
+    transform 0.08s ease;
+}
+
+.option-card:hover:not(.checked) {
+  border-color: rgba(0, 101, 144, 0.45) !important;
+}
+
+.option-card:active:not(.checked) {
+  transform: scale(0.985);
+}
+
+/* --------------------------------------------------------------------------
+   Transcript Fade-In (slide up from below)
+   -------------------------------------------------------------------------- */
+.transcript-reveal {
+  animation: slideUp 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* --------------------------------------------------------------------------
+   Question Jumper Tab Transitions
+   -------------------------------------------------------------------------- */
+.q-tab {
+  transition:
+    background-color 0.14s ease,
+    color 0.14s ease,
+    border-color 0.14s ease,
+    transform 0.06s ease;
+}
+
+.q-tab:active {
+  transform: scale(0.93);
+}
+
+/* --------------------------------------------------------------------------
+   Toast Notification
+   -------------------------------------------------------------------------- */
+@keyframes toastSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-18px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+}
+
+.animate-toast-in {
+  animation: toastSlideIn 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* --------------------------------------------------------------------------
+   Confirm / Alert Modal
+   -------------------------------------------------------------------------- */
+@keyframes modalScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.88);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-modal-in {
+  animation: modalScaleIn 0.28s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
