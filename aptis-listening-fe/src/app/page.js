@@ -423,6 +423,7 @@ export default function Page() {
 
   const [selectedAnswers, setSelectedAnswers] = useState({});
   const [checkedResults, setCheckedResults] = useState({});
+  const [visitedIds, setVisitedIds] = useState({});
 
   const [timeLeft, setTimeLeft] = useState(15 * 60);
   const [timerActive, setTimerActive] = useState(false);
@@ -493,7 +494,14 @@ export default function Page() {
     if (audioRef.current) audioRef.current.playbackRate = playbackRate;
   }, [playbackRate, currentIdx]);
 
-  // ── Auto Answer Logic Removed (handled dynamically in render) ─────────────
+  // ── Track visited questions in Auto Answer mode ───────────────────────────
+
+  useEffect(() => {
+    if (modes.autoShowAnswer && questions.length > 0) {
+      const q = questions[currentIdx];
+      if (q) setVisitedIds((prev) => ({ ...prev, [q.id]: true }));
+    }
+  }, [currentIdx, modes.autoShowAnswer, questions]);
 
   // ── Question Bank Loader ──────────────────────────────────────────────────
 
@@ -502,6 +510,7 @@ export default function Page() {
     setSelectedPart(partNum);
     setSelectedAnswers({});
     setCheckedResults({});
+    setVisitedIds({});
     setCurrentIdx(0);
     setSidebarPage(0);
     if (audioRef.current) {
@@ -968,10 +977,10 @@ export default function Page() {
 
           // Sidebar score counters
           const checkedIds = modes.autoShowAnswer
-            ? questions.map((x) => x.id)
+            ? Object.keys(visitedIds)
             : Object.keys(checkedResults);
           const correctCount = modes.autoShowAnswer
-            ? questions.length
+            ? checkedIds.length
             : checkedIds.filter((id) => {
                 const qq = questions.find((x) => x.id === id);
                 return qq && selectedAnswers[id] === qq.correctKey;
@@ -1313,10 +1322,13 @@ export default function Page() {
                         const isActive = idx === currentIdx;
                         const isAnswered = !!selectedAnswers[item.id];
                         const isGraded = !!checkedResults[item.id];
+                        const isAutoVisited =
+                          modes.autoShowAnswer && !!visitedIds[item.id];
                         const isCorr =
-                          isGraded &&
-                          selectedAnswers[item.id] === item.correctKey;
-                        const isWrong = isGraded && !isCorr;
+                          isAutoVisited ||
+                          (isGraded &&
+                            selectedAnswers[item.id] === item.correctKey);
+                        const isWrong = !isAutoVisited && isGraded && !isCorr;
 
                         let badgeBg = "#eae8e7",
                           badgeCol = "#6e7881";
