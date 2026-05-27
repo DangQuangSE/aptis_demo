@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aptis Listening Practice Hub - Elite Exam Simulator</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Background Ambient Glows -->
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+    <div class="ambient-glow glow-3"></div>
+
+    <!-- Header Section -->
+    <header class="app-header">
+        <div class="header-container">
+            <div class="logo" id="btn-logo-home">
+                <i class="fa-solid fa-graduation-cap logo-icon"></i>
+                <span class="logo-text">APTIS<span class="logo-accent">LISTENING</span></span>
+            </div>
+            <div class="header-actions">
+                <button class="theme-toggle" id="theme-toggle-btn" aria-label="Toggle Theme">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <div class="user-badge">
+                    <i class="fa-regular fa-user"></i>
+                    <span id="user-display-name">Guest Candidate</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Workspace Container -->
+    <main class="app-main">
+        
+        <!-- ================= LANDING PAGE ================= -->
+        <section id="view-landing" class="view-section active">
+            <div class="hero-banner">
+                <div class="hero-content">
+                    <span class="badge">Aptis Exam Prep</span>
+                    <h1>Master the Listening Component with Realistic Practice</h1>
+                    <p class="hero-desc">Experience the precise format, structure, and challenge of the official British Council Aptis listening subtest. Refine your ability to gather info, identify opinions, and comprehend monologues.</p>
+                    <div class="hero-stats">
+                        <div class="stat-item"><span class="stat-num">4</span> <span class="stat-lbl">Exam Parts</span></div>
+                        <div class="stat-item"><span class="stat-num">100%</span> <span class="stat-lbl">Realistic</span></div>
+                        <div class="stat-item"><span class="stat-num">Free</span> <span class="stat-lbl">Unlimited Try</span></div>
+                    </div>
+                </div>
+                <div class="hero-interactive">
+                    <div class="glass-card structure-card">
+                        <h3><i class="fa-solid fa-list-check card-header-icon"></i> Aptis Listening Structure</h3>
+                        <ul class="structure-list">
+                            <li><strong>Part 1</strong>: Short dialogues & phone messages (3-option MCQs)</li>
+                            <li><strong>Part 2</strong>: Expressing opinions (Matching speakers to views)</li>
+                            <li><strong>Part 3</strong>: Opinion identification (Man, Woman, Both, Neither)</li>
+                            <li><strong>Part 4</strong>: Academic monologue (Long lecture comprehension)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Candidate Login Modal Trigger / Card -->
+            <div class="landing-setup-grid">
+                <div class="glass-card name-entry-card">
+                    <h3><i class="fa-regular fa-id-card"></i> Ready to Begin?</h3>
+                    <p>Enter your name to unlock the simulator and record your scores in the performance leaderboard.</p>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-user-pen input-icon"></i>
+                        <input type="text" id="input-candidate-name" placeholder="Enter your full name..." value="English Learner">
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-title-wrapper">
+                <h2><i class="fa-solid fa-book-open"></i> Available Practice Tests</h2>
+                <div class="divider"></div>
+            </div>
+
+            <!-- Test Grid -->
+            <div class="test-grid" id="tests-container">
+                <!-- Shimmer Loading State -->
+                <div class="shimmer-card"></div>
+                <div class="shimmer-card"></div>
+            </div>
+        </section>
+
+        <!-- ================= EXAM WORKSPACE ================= -->
+        <section id="view-exam" class="view-section">
+            <div class="exam-workspace-layout">
+                
+                <!-- Left Control Panel (Exam Info & Progress) -->
+                <aside class="exam-sidebar">
+                    <div class="glass-card sidebar-card sticky-sidebar">
+                        <div class="test-header">
+                            <span class="tag-live"><i class="fa-solid fa-circle-play blink"></i> In Progress</span>
+                            <h2 id="exam-test-title">Practice Test</h2>
+                        </div>
+
+                        <!-- Progress Tracker -->
+                        <div class="sidebar-divider"></div>
+                        <div class="progress-section">
+                            <div class="progress-text">
+                                <span>Exam Navigation</span>
+                                <span id="progress-indicator">Part 1 of 4</span>
+                            </div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" id="exam-progress-bar" style="width: 25%;"></div>
+                            </div>
+                        </div>
+
+                        <!-- Section Steps -->
+                        <div class="section-steps-container" id="exam-steps-list">
+                            <!-- Populated Dynamically -->
+                        </div>
+
+                        <!-- Countdown Clock -->
+                        <div class="sidebar-divider"></div>
+                        <div class="timer-deck">
+                            <i class="fa-regular fa-clock clock-icon"></i>
+                            <div class="time-block">
+                                <span id="timer-display">40:00</span>
+                                <small>Remaining Time</small>
+                            </div>
+                        </div>
+
+                        <!-- Finish Action Button -->
+                        <button class="btn btn-danger btn-full btn-submit-exam" id="btn-submit-exam">
+                            <i class="fa-solid fa-paper-plane"></i> Submit Exam
+                        </button>
+                        <button class="btn btn-secondary btn-full btn-quit" id="btn-quit-exam">
+                            <i class="fa-solid fa-arrow-left-long"></i> Leave Exam
+                        </button>
+                    </div>
+                </aside>
+
+                <!-- Right Main Content Area (Active Listening Section) -->
+                <article class="exam-main-panel">
+                    <div class="glass-card active-section-card">
+                        
+                        <!-- Part Identifier and Instructions -->
+                        <div class="part-header" id="section-part-header">
+                            <span class="part-tag" id="section-part-tag">PART 1</span>
+                            <h3 id="section-instruction">Listen and answer the questions.</h3>
+                        </div>
+
+                        <!-- Audio Control Center -->
+                        <div class="audio-deck-wrapper">
+                            <div class="audio-deck-title"><i class="fa-solid fa-volume-high"></i> Listening Materials</div>
+                            <div class="audio-player-container">
+                                <!-- Hidden Native Audio Element -->
+                                <audio id="native-audio" preload="auto"></audio>
+
+                                <div class="player-controls">
+                                    <button class="player-btn" id="btn-audio-play" aria-label="Play/Pause">
+                                        <i class="fa-solid fa-play"></i>
+                                    </button>
+                                    
+                                    <div class="player-timeline-wrapper">
+                                        <div class="timeline-ticks" id="timeline-slider">
+                                            <div class="timeline-fill" id="timeline-fill-bar"></div>
+                                            <div class="timeline-handle" id="timeline-handle"></div>
+                                        </div>
+                                        <div class="player-time">
+                                            <span id="audio-time-current">0:00</span>
+                                            <span id="audio-time-duration">0:00</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="player-volume">
+                                        <button class="player-btn" id="btn-audio-mute" aria-label="Mute">
+                                            <i class="fa-solid fa-volume-low"></i>
+                                        </button>
+                                        <input type="range" class="volume-slider" id="volume-range" min="0" max="1" step="0.05" value="0.8">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Questions Deck -->
+                        <div class="questions-container" id="exam-questions-list">
+                            <!-- Populated Dynamically with stylized radio lists -->
+                        </div>
+
+                        <!-- Section Nav buttons -->
+                        <div class="section-nav-footer">
+                            <button class="btn btn-secondary" id="btn-section-prev"><i class="fa-solid fa-chevron-left"></i> Previous Part</button>
+                            <button class="btn btn-primary" id="btn-section-next">Next Part <i class="fa-solid fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- ================= RESULTS BOARD ================= -->
+        <section id="view-results" class="view-section">
+            <div class="results-dashboard-layout">
+                
+                <!-- Grade Summary Card -->
+                <div class="glass-card result-summary-card">
+                    <div class="success-checkmark-wrapper">
+                        <div class="score-radial-progress" id="results-score-circle">
+                            <div class="score-circle-inner">
+                                <span class="score-display" id="results-score-text">0 / 0</span>
+                                <span class="score-percentage" id="results-percent-text">0%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="result-candidate-info">
+                        <h2 id="result-greeting">Good job, Candidate!</h2>
+                        <p class="candidate-meta">Candidate: <strong id="result-candidate-name">User</strong></p>
+                        <p class="candidate-meta">Test: <strong id="result-test-title">Practice Test 1</strong></p>
+                        <p class="candidate-meta">Submitted at: <span id="result-date">2026-05-27</span></p>
+                    </div>
+
+                    <div class="results-grade-tier" id="results-tier-badge">
+                        Aptis B2/C level
+                    </div>
+
+                    <div class="result-actions-panel">
+                        <button class="btn btn-primary" id="btn-back-to-home">
+                            <i class="fa-solid fa-house"></i> Home Dashboard
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Review Section Detail (Check Answers & Explanations) -->
+                <div class="results-review-area">
+                    <div class="section-title-wrapper no-top-margin">
+                        <h2><i class="fa-solid fa-magnifying-glass-chart"></i> Question-by-Question Diagnostic</h2>
+                        <p>Review the exact audio transcript, correct options, and detailed pedagogical explanations for every single item.</p>
+                        <div class="divider"></div>
+                    </div>
+
+                    <div class="reviews-list" id="results-reviews-list">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Leaderboard / History Section -->
+            <div class="leaderboard-section">
+                <div class="section-title-wrapper">
+                    <h2><i class="fa-solid fa-chart-column"></i> Previous Submissions & Leaderboard</h2>
+                    <p>Track your past attempts and compare scores in this practice set.</p>
+                    <div class="divider"></div>
+                </div>
+
+                <div class="glass-card leaderboard-card">
+                    <table class="leaderboard-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Candidate Name</th>
+                                <th>Score Obtained</th>
+                                <th>Accuracy Percentage</th>
+                                <th>Completion Date</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leaderboard-tbody">
+                            <tr>
+                                <td colspan="5" style="text-align: center;">No submissions recorded yet for this test.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+        <div class="footer-container">
+            <p>&copy; 2026 Aptis Listening Practice Platform. Engineered for excellence.</p>
+            <p class="footer-note">All mock exams are structured to replicate the British Council Aptis exam design.</p>
+        </div>
+    </footer>
+
+    <!-- JS Logic -->
+    <script src="js/app.js"></script>
+</body>
+</html>

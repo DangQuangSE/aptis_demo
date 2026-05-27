@@ -1,0 +1,128 @@
+# ==========================================
+# 1. SYSTEM & IDE (Dùng chung cho cả dự án)
+# ==========================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.lnk
+*.ini
+
+# JetBrains (IntelliJ IDEA, WebStorm, v.v.)
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# VS Code
+.vscode/
+!.vscode/extensions.json
+.history/
+*.code-workspace
+
+# Eclipse
+.metadata/
+bin/
+tmp/
+.tmp/
+.classpath
+.project
+.settings/
+.factorypath
+
+# NetBeans
+**/nbproject/private/
+**/nbproject/Makefile-*.mk
+**/nbproject/Package-*.properties
+**/build/
+nbproject/private/
+
+# Logs
+Logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ==========================================
+# 2. NEXT.JS (Front-end)
+# ==========================================
+# Dependencies
+**/node_modules/
+.pnpm-store/
+
+# Next.js build output
+**/.next/
+**/out/
+
+# Production / Build artifacts
+**/build/
+**/dist/
+
+# Next.js telemetry
+.next/cache/
+
+# Environment variables (BẮT BUỘC bảo mật)
+**/.env
+**/.env.local
+**/.env.production
+**/.env.production.local
+**/.env.development
+**/.env.development.local
+**/.env.test
+**/.env.test.local
+
+# Vercel deployment
+.vercel
+
+# Testing
+**/coverage/
+**/.nyc_output/
+**/.cypress/
+
+# TypeScript
+**/*.tsbuildinfo
+
+# ==========================================
+# 3. SPRING BOOT (Back-end)
+# ==========================================
+# Build outputs
+**/target/
+**/build/
+**/bin/
+
+# Maven template
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.next
+pom.xml.note
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+# Chỉ giữ lại wrapper nếu bạn cần dùng `./mvnw`
+!.mvn/wrapper/maven-wrapper.jar
+!.mvn/wrapper/maven-wrapper.properties
+
+# Gradle template
+.gradle/
+/build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# Crash logs
+HR_ERR_*.log
+
+# Lưu trữ cấu hình nhạy cảm của Spring (Database, JWT Secret, v.v.)
+**/src/main/resources/application-local.properties
+**/src/main/resources/application-local.yml
+**/src/main/resources/*.env
+**/src/main/resources/config/
