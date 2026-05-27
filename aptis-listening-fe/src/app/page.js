@@ -179,10 +179,30 @@ const formatTime = (secs) => {
 // ─── Toast & Confirm Modal ────────────────────────────────────────────────────
 
 const TOAST_CONFIG = {
-  info:    { bg: "#006590", border: "#004f72", icon: "ℹ️", shadow: "rgba(0,101,144,0.28)" },
-  error:   { bg: "#ba1a1a", border: "#8B0000", icon: "❌", shadow: "rgba(186,26,26,0.28)" },
-  success: { bg: "#1E8E49", border: "#12592D", icon: "✅", shadow: "rgba(30,142,73,0.28)" },
-  warning: { bg: "#755b00", border: "#5A4300", icon: "⏰", shadow: "rgba(117,91,0,0.28)" },
+  info: {
+    bg: "#006590",
+    border: "#004f72",
+    icon: "ℹ️",
+    shadow: "rgba(0,101,144,0.28)",
+  },
+  error: {
+    bg: "#ba1a1a",
+    border: "#8B0000",
+    icon: "❌",
+    shadow: "rgba(186,26,26,0.28)",
+  },
+  success: {
+    bg: "#1E8E49",
+    border: "#12592D",
+    icon: "✅",
+    shadow: "rgba(30,142,73,0.28)",
+  },
+  warning: {
+    bg: "#755b00",
+    border: "#5A4300",
+    icon: "⏰",
+    shadow: "rgba(117,91,0,0.28)",
+  },
 };
 
 function Toast({ toast, onClose }) {
@@ -194,30 +214,52 @@ function Toast({ toast, onClose }) {
       className="animate-toast-in"
       role="alert"
       style={{
-        position: "fixed", top: "24px", left: "50%",
-        transform: "translateX(-50%)", zIndex: 9999,
-        background: c.bg, border: `1.5px solid ${c.border}`,
-        color: "#fff", borderRadius: "14px",
+        position: "fixed",
+        top: "24px",
+        left: "50%",
+        transform: "translateX(-50%)",
+        zIndex: 9999,
+        background: c.bg,
+        border: `1.5px solid ${c.border}`,
+        color: "#fff",
+        borderRadius: "14px",
         padding: "13px 16px 13px 16px",
-        display: "flex", alignItems: "center", gap: "10px",
+        display: "flex",
+        alignItems: "center",
+        gap: "10px",
         fontFamily: "'Be Vietnam Pro', sans-serif",
-        fontWeight: 600, fontSize: "15px",
+        fontWeight: 600,
+        fontSize: "15px",
         boxShadow: `0 8px 32px ${c.shadow}, 0 2px 8px rgba(0,0,0,0.1)`,
-        maxWidth: "440px", minWidth: "260px",
+        maxWidth: "440px",
+        minWidth: "260px",
       }}
     >
-      <span style={{ fontSize: "18px", lineHeight: 1, flexShrink: 0 }}>{c.icon}</span>
+      <span style={{ fontSize: "18px", lineHeight: 1, flexShrink: 0 }}>
+        {c.icon}
+      </span>
       <span style={{ flex: 1, lineHeight: 1.45 }}>{toast.message}</span>
       <button
         onClick={onClose}
         aria-label="Đóng"
         style={{
-          background: "rgba(255,255,255,0.2)", border: "none", color: "#fff",
-          width: "26px", height: "26px", borderRadius: "7px", cursor: "pointer",
-          display: "flex", alignItems: "center", justifyContent: "center",
-          flexShrink: 0, fontSize: "13px", fontWeight: 700,
+          background: "rgba(255,255,255,0.2)",
+          border: "none",
+          color: "#fff",
+          width: "26px",
+          height: "26px",
+          borderRadius: "7px",
+          cursor: "pointer",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          flexShrink: 0,
+          fontSize: "13px",
+          fontWeight: 700,
         }}
-      >✕</button>
+      >
+        ✕
+      </button>
     </div>
   );
 }
@@ -230,9 +272,14 @@ function ConfirmModal({ modal }) {
   return (
     <div
       style={{
-        position: "fixed", inset: 0, zIndex: 9998,
-        display: "flex", alignItems: "center", justifyContent: "center",
-        background: "rgba(27,28,28,0.50)", backdropFilter: "blur(5px)",
+        position: "fixed",
+        inset: 0,
+        zIndex: 9998,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        background: "rgba(27,28,28,0.50)",
+        backdropFilter: "blur(5px)",
         padding: "24px",
       }}
     >
@@ -241,8 +288,11 @@ function ConfirmModal({ modal }) {
         role="dialog"
         aria-modal="true"
         style={{
-          background: "#fbf9f8", borderRadius: "24px",
-          padding: "36px 32px 28px", maxWidth: "380px", width: "100%",
+          background: "#fbf9f8",
+          borderRadius: "24px",
+          padding: "36px 32px 28px",
+          maxWidth: "380px",
+          width: "100%",
           boxShadow: "0 24px 64px rgba(0,0,0,0.2), 0 4px 16px rgba(0,0,0,0.08)",
           textAlign: "center",
         }}
@@ -250,16 +300,27 @@ function ConfirmModal({ modal }) {
         <div style={{ fontSize: "44px", marginBottom: "14px", lineHeight: 1 }}>
           {isSuccess ? "🎉" : "⚠️"}
         </div>
-        <h3 style={{
-          fontFamily: "'Plus Jakarta Sans', sans-serif",
-          fontWeight: 700, fontSize: "17px", color: "#1b1c1c",
-          marginBottom: modal.subMessage ? "8px" : "26px",
-          lineHeight: 1.45,
-        }}>
+        <h3
+          style={{
+            fontFamily: "'Plus Jakarta Sans', sans-serif",
+            fontWeight: 700,
+            fontSize: "17px",
+            color: "#1b1c1c",
+            marginBottom: modal.subMessage ? "8px" : "26px",
+            lineHeight: 1.45,
+          }}
+        >
           {modal.message}
         </h3>
         {modal.subMessage && (
-          <p style={{ fontSize: "14px", color: "#3e4850", marginBottom: "26px", lineHeight: 1.55 }}>
+          <p
+            style={{
+              fontSize: "14px",
+              color: "#3e4850",
+              marginBottom: "26px",
+              lineHeight: 1.55,
+            }}
+          >
             {modal.subMessage}
           </p>
         )}
@@ -268,10 +329,15 @@ function ConfirmModal({ modal }) {
             onClick={modal.onCancel}
             className="btn-3d"
             style={{
-              padding: "11px 22px", borderRadius: "12px",
-              border: "2px solid #bdc8d2", background: "white",
-              color: "#3e4850", fontFamily: "'Plus Jakarta Sans', sans-serif",
-              fontWeight: 700, fontSize: "14px", cursor: "pointer",
+              padding: "11px 22px",
+              borderRadius: "12px",
+              border: "2px solid #bdc8d2",
+              background: "white",
+              color: "#3e4850",
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
+              fontWeight: 700,
+              fontSize: "14px",
+              cursor: "pointer",
               boxShadow: "0 4px 0 #bdc8d2",
             }}
           >
@@ -281,10 +347,15 @@ function ConfirmModal({ modal }) {
             onClick={modal.onConfirm}
             className="btn-3d"
             style={{
-              padding: "11px 22px", borderRadius: "12px", border: "none",
-              background: confirmBg, color: "white",
+              padding: "11px 22px",
+              borderRadius: "12px",
+              border: "none",
+              background: confirmBg,
+              color: "white",
               fontFamily: "'Plus Jakarta Sans', sans-serif",
-              fontWeight: 700, fontSize: "14px", cursor: "pointer",
+              fontWeight: 700,
+              fontSize: "14px",
+              cursor: "pointer",
               boxShadow: `0 4px 0 ${confirmShadow}`,
             }}
           >
@@ -342,6 +413,8 @@ export default function Page() {
   const [selectedPart, setSelectedPart] = useState(null);
   const [questions, setQuestions] = useState([]);
   const [currentIdx, setCurrentIdx] = useState(0);
+  const [sidebarPage, setSidebarPage] = useState(0);
+
   const [selectedAnswers, setSelectedAnswers] = useState({});
   const [checkedResults, setCheckedResults] = useState({});
 
@@ -422,6 +495,7 @@ export default function Page() {
     setSelectedAnswers({});
     setCheckedResults({});
     setCurrentIdx(0);
+    setSidebarPage(0);
     if (audioRef.current) {
       audioRef.current.pause();
       audioRef.current.currentTime = 0;
@@ -557,11 +631,18 @@ export default function Page() {
       setCurrentTime(0);
     }
     setCurrentIdx(idx);
+
+    // Auto-update pagination if question is outside current page
+    const targetPage = Math.floor(idx / 25);
+    if (targetPage !== sidebarPage) {
+      setSidebarPage(targetPage);
+    }
   };
 
   const exitToPartSelection = () => {
     setConfirmModal({
-      message: "Thoát giữa chừng sẽ làm mất tiến trình. Bạn có chắc muốn rời đi?",
+      message:
+        "Thoát giữa chừng sẽ làm mất tiến trình. Bạn có chắc muốn rời đi?",
       confirmLabel: "Rời đi",
       cancelLabel: "Ở lại",
       type: "warning",
@@ -1036,148 +1117,144 @@ export default function Page() {
                     </h2>
                   </div>
 
-                  {/* Question list */}
+                  {/* Question list matrix */}
                   <div
                     style={{
-                      padding: "6px",
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: "1px",
-                      maxHeight: "calc(100vh - 200px)",
+                      padding: "16px",
+                      display: "grid",
+                      gridTemplateColumns: "repeat(5, 1fr)",
+                      gap: "10px",
+                      maxHeight: "calc(100vh - 240px)",
                       overflowY: "auto",
                     }}
                   >
-                    {questions.map((item, idx) => {
-                      const isActive = idx === currentIdx;
-                      const isAnswered = !!selectedAnswers[item.id];
-                      const isGraded = !!checkedResults[item.id];
-                      const isCorr =
-                        isGraded &&
-                        selectedAnswers[item.id] === item.correctKey;
-                      const isWrong = isGraded && !isCorr;
+                    {questions
+                      .slice(sidebarPage * 25, (sidebarPage + 1) * 25)
+                      .map((item, displayIdx) => {
+                        const idx = sidebarPage * 25 + displayIdx;
+                        const isActive = idx === currentIdx;
+                        const isAnswered = !!selectedAnswers[item.id];
+                        const isGraded = !!checkedResults[item.id];
+                        const isCorr =
+                          isGraded &&
+                          selectedAnswers[item.id] === item.correctKey;
+                        const isWrong = isGraded && !isCorr;
 
-                      let badgeBg = "#eae8e7",
-                        badgeCol = "#6e7881";
-                      let badge = String(idx + 1);
-                      if (isActive) {
-                        badgeBg = "#006590";
-                        badgeCol = "white";
-                      } else if (isCorr) {
-                        badgeBg = "#d4f0b8";
-                        badgeCol = "#2a6000";
-                        badge = "✓";
-                      } else if (isWrong) {
-                        badgeBg = "#ffdad6";
-                        badgeCol = "#93000a";
-                        badge = "✗";
-                      } else if (isAnswered) {
-                        badgeBg = "#e0f4ff";
-                        badgeCol = "#004c6e";
-                      }
+                        let badgeBg = "#eae8e7",
+                          badgeCol = "#6e7881";
+                        let badge = String(idx + 1);
+                        if (isActive) {
+                          badgeBg = "#006590";
+                          badgeCol = "white";
+                        } else if (isCorr) {
+                          badgeBg = "#d4f0b8";
+                          badgeCol = "#2a6000";
+                        } else if (isWrong) {
+                          badgeBg = "#ffdad6";
+                          badgeCol = "#93000a";
+                        } else if (isAnswered) {
+                          badgeBg = "#e0f4ff";
+                          badgeCol = "#004c6e";
+                        }
 
-                      let rowBg = "transparent";
-                      let rowBL = "3px solid transparent";
-                      let lblCol = "#3e4850";
-                      if (isActive) {
-                        rowBg = "rgba(0,101,144,0.07)";
-                        rowBL = "3px solid #006590";
-                        lblCol = "#006590";
-                      } else if (isCorr) {
-                        rowBg = "rgba(88,204,2,0.05)";
-                      } else if (isWrong) {
-                        rowBg = "rgba(186,26,26,0.04)";
-                      }
+                        let borderStyle = isActive
+                          ? "2px solid #006590"
+                          : "2px solid transparent";
 
-                      return (
-                        <button
-                          key={item.id}
-                          onClick={() => jumpToQuestion(idx)}
-                          className="q-tab"
-                          style={{
-                            width: "100%",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "space-between",
-                            padding: "9px 11px",
-                            borderRadius: "10px",
-                            border: "none",
-                            borderLeft: rowBL,
-                            background: rowBg,
-                            cursor: "pointer",
-                            textAlign: "left",
-                          }}
-                        >
-                          <div
+                        return (
+                          <button
+                            key={item.id}
+                            onClick={() => jumpToQuestion(idx)}
+                            className="q-matrix-btn"
+                            title={`Câu hỏi ${idx + 1}`}
                             style={{
+                              width: "100%",
+                              aspectRatio: "1/1",
+                              borderRadius: "8px",
+                              background: badgeBg,
+                              color: badgeCol,
+                              border: borderStyle,
                               display: "flex",
                               alignItems: "center",
-                              gap: "9px",
+                              justifyContent: "center",
+                              fontWeight: 700,
+                              fontSize: "13px",
+                              cursor: "pointer",
+                              transition: "all 0.2s",
                             }}
                           >
-                            <span
-                              style={{
-                                width: "27px",
-                                height: "27px",
-                                borderRadius: "50%",
-                                background: badgeBg,
-                                color: badgeCol,
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "center",
-                                fontWeight: 700,
-                                fontSize: "11px",
-                                flexShrink: 0,
-                              }}
-                            >
-                              {badge}
-                            </span>
-                            <span
-                              style={{
-                                fontSize: "13px",
-                                fontWeight: isActive ? 700 : 500,
-                                color: lblCol,
-                              }}
-                            >
-                              Câu hỏi {idx + 1}
-                            </span>
-                          </div>
-                          {isCorr && (
-                            <span
-                              style={{
-                                fontSize: "10px",
-                                fontWeight: 700,
-                                color: "#2a6000",
-                              }}
-                            >
-                              Đúng
-                            </span>
-                          )}
-                          {isWrong && (
-                            <span
-                              style={{
-                                fontSize: "10px",
-                                fontWeight: 700,
-                                color: "#93000a",
-                              }}
-                            >
-                              Sai
-                            </span>
-                          )}
-                          {isAnswered && !isGraded && (
-                            <span
-                              style={{
-                                fontSize: "10px",
-                                fontWeight: 700,
-                                color: "#004c6e",
-                              }}
-                            >
-                              Đã chọn
-                            </span>
-                          )}
-                        </button>
-                      );
-                    })}
+                            {badge}
+                          </button>
+                        );
+                      })}
                   </div>
+
+                  {/* Pagination Controls */}
+                  {questions.length > 25 && (
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        padding: "10px 16px",
+                        borderTop: "1.5px solid #efeded",
+                        backgroundColor: "#fbf9f8",
+                      }}
+                    >
+                      <button
+                        disabled={sidebarPage === 0}
+                        onClick={() =>
+                          setSidebarPage((p) => Math.max(0, p - 1))
+                        }
+                        style={{
+                          border: "none",
+                          background: "none",
+                          cursor: sidebarPage === 0 ? "not-allowed" : "pointer",
+                          color: sidebarPage === 0 ? "#ccc" : "#006590",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        Prev
+                      </button>
+                      <span
+                        style={{
+                          fontSize: "12px",
+                          color: "#6e7881",
+                          fontWeight: 600,
+                        }}
+                      >
+                        {sidebarPage + 1} / {Math.ceil(questions.length / 25)}
+                      </span>
+                      <button
+                        disabled={
+                          sidebarPage >= Math.ceil(questions.length / 25) - 1
+                        }
+                        onClick={() =>
+                          setSidebarPage((p) =>
+                            Math.min(
+                              Math.ceil(questions.length / 25) - 1,
+                              p + 1,
+                            ),
+                          )
+                        }
+                        style={{
+                          border: "none",
+                          background: "none",
+                          cursor:
+                            sidebarPage >= Math.ceil(questions.length / 25) - 1
+                              ? "not-allowed"
+                              : "pointer",
+                          color:
+                            sidebarPage >= Math.ceil(questions.length / 25) - 1
+                              ? "#ccc"
+                              : "#006590",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        Next
+                      </button>
+                    </div>
+                  )}
 
                   {/* Sidebar footer: score summary */}
                   <div
