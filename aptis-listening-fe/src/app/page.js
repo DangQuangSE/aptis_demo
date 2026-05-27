@@ -843,6 +843,9 @@ export default function Page() {
         </main>
       )}
 
+      <Toast toast={toast} onClose={() => setToast(null)} />
+      <ConfirmModal modal={confirmModal} />
+
       {/* ====================================================================
           SCREEN 2 – LUYỆN TẬP (Sidebar Layout, matching Stitch design)
           ==================================================================== */}
