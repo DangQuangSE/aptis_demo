@@ -493,17 +493,7 @@ export default function Page() {
     if (audioRef.current) audioRef.current.playbackRate = playbackRate;
   }, [playbackRate, currentIdx]);
 
-  // ── Auto Answer Logic ─────────────────────────────────────────────────────
-
-  useEffect(() => {
-    if (modes.autoShowAnswer && questions.length > 0) {
-      const q = questions[currentIdx];
-      if (q && !checkedResults[q.id]) {
-        setSelectedAnswers((prev) => ({ ...prev, [q.id]: q.correctKey }));
-        setCheckedResults((prev) => ({ ...prev, [q.id]: true }));
-      }
-    }
-  }, [currentIdx, modes.autoShowAnswer, questions, checkedResults]);
+  // ── Auto Answer Logic Removed (handled dynamically in render) ─────────────
 
   // ── Question Bank Loader ──────────────────────────────────────────────────
 
@@ -750,6 +740,20 @@ export default function Page() {
     setCheckedResults((prev) => ({ ...prev, [q.id]: true }));
   };
 
+  const handleShuffle = () => {
+    const shuffled = shuffleArray(questions);
+    setQuestions(shuffled);
+    setCurrentIdx(0);
+    setSidebarPage(0);
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+    }
+    setIsPlaying(false);
+    setCurrentTime(0);
+    showToast("Đã trộn ngẫu nhiên danh sách câu hỏi!", "info");
+  };
+
   // ─────────────────────────────────────────────────────────────────────────
   //  RENDER
   // ─────────────────────────────────────────────────────────────────────────
@@ -952,16 +956,26 @@ export default function Page() {
         questions.length > 0 &&
         (() => {
           const q = questions[currentIdx];
-          const isChecked = checkedResults[q.id];
-          const userAns = selectedAnswers[q.id];
+
+          // Determine if we should visually show as answered/checked based on Auto Answer
+          const isManuallyChecked = !!checkedResults[q.id];
+          const isChecked = isManuallyChecked || modes.autoShowAnswer;
+          const userAns = modes.autoShowAnswer
+            ? q.correctKey
+            : selectedAnswers[q.id];
+
           const progress = ((currentIdx + 1) / questions.length) * 100;
 
           // Sidebar score counters
-          const checkedIds = Object.keys(checkedResults);
-          const correctCount = checkedIds.filter((id) => {
-            const qq = questions.find((x) => x.id === id);
-            return qq && selectedAnswers[id] === qq.correctKey;
-          }).length;
+          const checkedIds = modes.autoShowAnswer
+            ? questions.map((x) => x.id)
+            : Object.keys(checkedResults);
+          const correctCount = modes.autoShowAnswer
+            ? questions.length
+            : checkedIds.filter((id) => {
+                const qq = questions.find((x) => x.id === id);
+                return qq && selectedAnswers[id] === qq.correctKey;
+              }).length;
 
           return (
             <div
@@ -1154,22 +1168,7 @@ export default function Page() {
                     </label>
 
                     <button
-                      onClick={() => {
-                        const shuffled = shuffleArray(questions);
-                        setQuestions(shuffled);
-                        setCurrentIdx(0);
-                        setSidebarPage(0);
-                        if (audioRef.current) {
-                          audioRef.current.pause();
-                          audioRef.current.currentTime = 0;
-                        }
-                        setIsPlaying(false);
-                        setCurrentTime(0);
-                        showToast(
-                          "Đã trộn ngẫu nhiên danh sách câu hỏi!",
-                          "info",
-                        );
-                      }}
+                      onClick={handleShuffle}
                       style={{
                         padding: "6px 12px",
                         background: "#f0f4f8",
@@ -1542,7 +1541,16 @@ export default function Page() {
                           gap: "10px",
                         }}
                       >
-                        <span style={{ fontSize: "10px", fontWeight: 700, opacity: 0.85, whiteSpace: "nowrap" }}>{formatTime(currentTime)}</span>
+                        <span
+                          style={{
+                            fontSize: "10px",
+                            fontWeight: 700,
+                            opacity: 0.85,
+                            whiteSpace: "nowrap",
+                          }}
+                        >
+                          {formatTime(currentTime)}
+                        </span>
                         <input
                           type="range"
                           min={0}
@@ -1550,9 +1558,22 @@ export default function Page() {
                           value={currentTime}
                           onChange={handleSeek}
                           className="audio-scrubber"
-                          style={{ width: "100%", accentColor: "white", height: "4px" }}
+                          style={{
+                            width: "100%",
+                            accentColor: "white",
+                            height: "4px",
+                          }}
                         />
-                        <span style={{ fontSize: "10px", fontWeight: 700, opacity: 0.85, whiteSpace: "nowrap" }}>{formatTime(duration)}</span>
+                        <span
+                          style={{
+                            fontSize: "10px",
+                            fontWeight: 700,
+                            opacity: 0.85,
+                            whiteSpace: "nowrap",
+                          }}
+                        >
+                          {formatTime(duration)}
+                        </span>
                       </div>
 
                       {/* Speed Controls */}
@@ -1577,9 +1598,16 @@ export default function Page() {
                               cursor: "pointer",
                               fontSize: "11px",
                               fontWeight: 700,
-                              background: playbackRate === rate ? "white" : "transparent",
-                              color: playbackRate === rate ? "#006590" : "rgba(255,255,255,0.8)",
-                              boxShadow: playbackRate === rate ? "0 1px 4px rgba(0,0,0,0.18)" : "none",
+                              background:
+                                playbackRate === rate ? "white" : "transparent",
+                              color:
+                                playbackRate === rate
+                                  ? "#006590"
+                                  : "rgba(255,255,255,0.8)",
+                              boxShadow:
+                                playbackRate === rate
+                                  ? "0 1px 4px rgba(0,0,0,0.18)"
+                                  : "none",
                               transition: "all 0.15s ease",
                             }}
                           >
@@ -1605,7 +1633,7 @@ export default function Page() {
                             color: "white",
                             cursor: "pointer",
                             display: "flex",
-                            alignItems: "center"
+                            alignItems: "center",
                           }}
                         >
                           {isMuted ? <IconMute /> : <IconVolume />}
@@ -1618,7 +1646,11 @@ export default function Page() {
                           value={isMuted ? 0 : volume}
                           onChange={handleVolume}
                           className="volume-slider"
-                          style={{ accentColor: "white", width: "50px", height: "4px" }}
+                          style={{
+                            accentColor: "white",
+                            width: "50px",
+                            height: "4px",
+                          }}
                         />
                       </div>
                     </div>
@@ -1677,8 +1709,7 @@ export default function Page() {
                         {q.options.map((opt) => {
                           const isSel = userAns === opt.key;
                           const isCorr = q.correctKey === opt.key;
-                          const displayChecked =
-                            isChecked || modes.autoShowAnswer;
+                          const displayChecked = isChecked; // isChecked already encompasses modes.autoShowAnswer now
 
                           let bg = "#fbf9f8",
                             bdr = "#bdc8d2";
@@ -1793,9 +1824,7 @@ export default function Page() {
                       </div>
 
                       {/* Transcript revealed after check or via mode */}
-                      {(modes.autoShowAnswer
-                        ? modes.autoShowTranscript
-                        : isChecked || modes.autoShowTranscript) && (
+                      {(modes.autoShowTranscript || isManuallyChecked) && (
                         <div
                           className="transcript-reveal"
                           style={{
