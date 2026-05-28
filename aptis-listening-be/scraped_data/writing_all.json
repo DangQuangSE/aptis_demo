@@ -1,0 +1,2522 @@
+[
+  {
+    "id": 1,
+    "title": "Test 1 - Art club",
+    "part1": {
+      "instructions": "You are joining a Art club. Fill out the form. Write short answers (1-5 words) for each message (Bài này nên trả lời dài nhất là 5 từ, viết hoa từ đầu và dấu chấm kêt thúc câu).",
+      "questions": [
+        {
+          "id": "p1_q1",
+          "label": "How are you?"
+        },
+        {
+          "id": "p1_q2",
+          "label": "Which is your favorite season?"
+        },
+        {
+          "id": "p1_q3",
+          "label": "Which sports is the most popular in your country?"
+        },
+        {
+          "id": "p1_q4",
+          "label": "What are you wearing today?"
+        },
+        {
+          "id": "p1_q5",
+          "label": "What is your favorite kind of music?"
+        }
+      ]
+    },
+    "part2": {
+      "instructions": "Now you've become a new member of the Art club. Fill in the form. Write in sentences. Use 20-30 words (Viết 20 đến 30 từ thôi nhé!).",
+      "prompt": "Tell me a painting or a photo that you like"
+    },
+    "part3": {
+      "instructions": "You are speaking to fellow members of the Art club in a group chat. Respond to them in full sentences (30-40 words per answer).",
+      "chat": [
+        {
+          "id": "p3_q1",
+          "member": "Sam",
+          "message": "I kept a painting for a long time. Tell me a thing that you have had for a long time."
+        },
+        {
+          "id": "p3_q2",
+          "member": "Alex",
+          "message": "I would like to learn painting, but I have not found an effective way. Should I take a course at my local college? Please, give me some advice."
+        },
+        {
+          "id": "p3_q3",
+          "member": "Jordan",
+          "message": "Street art – where people paint on the building – is becoming popular. However, some people criticize that it is bad. What is your opinion?"
+        }
+      ]
+    },
+    "part4": {
+      "instructions": "Write a short email (about 50 words) to your friend, and a longer email (120-150 words) to the president of the club.",
+      "scenario": "Dear all members, The Art Club is organizing a talk to the public to attract more attention. We are going to invite an artist to give a talk to members. As a member of our club, could you give us an artist to join our talk and what topic should they share to gain more attention. We would like to have more both young and elderly members.",
+      "informal": {
+        "prompt": "Write a short email to your friend (about 50 words). Tell your friend your feelings about this and what you plan to do."
+      },
+      "formal": {
+        "prompt": "Write an email to the president of the club (about 120-150 words). Tell them your thoughts about this and what you would like to do."
+      }
+    }
+  },
+  {
+    "id": 2,
+    "title": "Test 2 - Beautiful homes club",
+    "part1": {
+      "instructions": "You are joining a Beautiful homes club. Fill out the form. Write short answers (1-5 words) for each message (Bài này nên trả lời dài nhất là 5 từ, viết hoa từ đầu và dấu chấm kêt thúc câu).",
+      "questions": [
+        {
+          "id": "p1_q1",
+          "label": "What is your favorite time of the year?"
+        },
+        {
+          "id": "p1_q2",
+          "label": "What is your favorite sport?"
+        },
+        {
+          "id": "p1_q3",
+          "label": "Where do you wanna go on holiday?"
+        },
+        {
+          "id": "p1_q4",
+          "label": "What is the weather today?"
+        },
+        {
+          "id": "p1_q5",
+          "label": "What do you like to do in the evening?"
+        }
+      ]
+    },
+    "part2": {
+      "instructions": "Now you've become a new member of the Beautiful homes club. Fill in the form. Write in sentences. Use 20-30 words (Viết 20 đến 30 từ thôi nhé!).",
+      "prompt": "Why do you want to join beautiful homes club?"
+    },
+    "part3": {
+      "instructions": "You are speaking to fellow members of the Beautiful homes club in a group chat. Respond to them in full sentences (30-40 words per answer).",
+      "chat": [
+        {
+          "id": "p3_q1",
+          "member": "Sam",
+          "message": "I have a bad relationship with my neighbors because they often make noise. Tell me how is your relationship with your neighbors?"
+        },
+        {
+          "id": "p3_q2",
+          "member": "Alex",
+          "message": "Do you prefer living in old buildings or modern buildings? Why?"
+        },
+        {
+          "id": "p3_q3",
+          "member": "Jordan",
+          "message": "The house should be designed in a way that is good for the environment. Do you agree?"
+        }
+      ]
+    },
+    "part4": {
+      "instructions": "Write a short email (about 50 words) to your friend, and a longer email (120-150 words) to the president of the club.",
+      "scenario": "Dear member, The cost of maintaining old building is very high and these building take up a lot of space. The government has a proposal that we knock down old buildings and build more modern blocks.",
+      "informal": {
+        "prompt": "Write a short email to your friend (about 50 words)."
+      },
+      "formal": {
+        "prompt": "Write an email to the president of the club (about 120-150 words)."
+      }
+    }
+  },
+  {
+    "id": 3,
+    "title": "Test 3 - Book club",
+    "part1": {
+      "instructions": "You are joining a Book club. Fill out the form. Write short answers (1-5 words) for each message (Bài này nên trả lời dài nhất là 5 từ, viết hoa từ đầu và dấu chấm kêt thúc câu).",
+      "questions": [
+        {
+          "id": "p1_q1",
+          "label": "What’s your favorite hobby?"
+        },
+        {
+          "id": "p1_q2",
+          "label": "How do you get to work?"
+        },
+        {
+          "id": "p1_q3",
+          "label": "What do you like to do in the evening?"
+        },
+        {
+          "id": "p1_q4",
+          "label": "What kinds of movies do you like?"
+        },
+        {
+          "id": "p1_q5",
+          "label": "What’s your favorite food?"
+        }
+      ]
+    },
+    "part2": {
+      "instructions": "Now you've become a new member of the Book club. Fill in the form. Write in sentences. Use 20-30 words (Viết 20 đến 30 từ thôi nhé!).",
+      "prompt": "I am a final year student so I need to find a research a lot of materials such as books and scientific journals."
+    },
+    "part3": {
+      "instructions": "You are speaking to fellow members of the Book club in a group chat. Respond to them in full sentences (30-40 words per answer).",
+      "chat": [
+        {
+          "id": "p3_q1",
+          "member": "Sam",
+          "message": "Hi! Welcome to the club. When and where do you like reading books?"
+        },
+        {
+          "id": "p3_q2",
+          "member": "Alex",
+          "message": "Hi! I would like to give my friend a book. What would you suggest for me to buy?"
+        },
+        {
+          "id": "p3_q3",
+          "member": "Jordan",
+          "message": "Online books replace traditional books? What do you think about that?"
+        }
+      ]
+    },
+    "part4": {
+      "instructions": "Write a short email (about 50 words) to your friend, and a longer email (120-150 words) to the president of the club.",
+      "scenario": "Dear member, From next month we will no longer be able to continue our offer of one free book every month. Also, because of problems with our delivery service, please expect a wait 4-6 weeks before your order arrives.",
+      "informal": {
+        "prompt": "Write a short email to your friend (about 50 words)."
+      },
+      "formal": {
+        "prompt": "Write an email to the president of the club (about 120-150 words)."
+      }
+    }
+  },
+  {
+    "id": 4,
+    "title": "Test 4 - Business club",
+    "part1": {
+      "instructions": "You are joining a Business club. Fill out the form. Write short answers (1-5 words) for each message (Bài này nên trả lời dài nhất là 5 từ, viết hoa từ đầu và dấu chấm kêt thúc câu).",
+      "questions": [
+        {
+          "id": "p1_q1",
+          "label": "What is your hobby?"
+        },
+        {
+          "id": "p1_q2",
+          "label": "What is your favourite food?"
+        },
+        {
+          "id": "p1_q3",
+          "label": "What is your favourite time of a day?"
+        },
+        {
+          "id": "p1_q4",
+          "label": "How do you get to work?"
+        },
+        {
+          "id": "p1_q5",
+          "label": "Where are you from?"
+        }
+      ]
+    },
+    "part2": {
+      "instructions": "Now you've become a new member of the Business club. Fill in the form. Write in sentences. Use 20-30 words (Viết 20 đến 30 từ thôi nhé!).",
+      "prompt": "Where do you usually go shopping?"
+    },
+    "part3": {
+      "instructions": "You are speaking to fellow members of the Business club in a group chat. Respond to them in full sentences (30-40 words per answer).",
+      "chat": [
+        {
+          "id": "p3_q1",
+          "member": "Sam",
+          "message": "I know there are a lot of successful small businesses these days. Tell me about a successful small business in your area."
+        },
+        {
+          "id": "p3_q2",
+          "member": "Alex",
+          "message": "I have a friend who wants to open a second coffee shop. She opened her first one a year ago and it was quite successful. What advice do you have to help her be more successful in her second shop?"
+        },
+        {
+          "id": "p3_q3",
+          "member": "Jordan",
+          "message": "Can you tell me what qualities and skills are needed to create a successful small business?"
+        }
+      ]
+    },
+    "part4": {
+      "instructions": "Write a short email (about 50 words) to your friend, and a longer email (120-150 words) to the president of the club.",
+      "scenario": "Currently our club is planning to support local individuals who want to start up a small business. The club has 2 proposals: First, create a call center where customers can call to ask questions and request help. Second, create free courses to support local universities nearby. Let us know which option you would use and why.",
+      "informal": {
+        "prompt": "Write a short email to your friend (about 50 words). Write a letter to a friend about your choice and the idea."
+      },
+      "formal": {
+        "prompt": "Write an email to the president of the club (about 120-150 words). Write a letter to the club manager about your choice and why."
+      }
+    }
+  },
+  {
+    "id": 5,
+    "title": "Test 5 - Car club",
+    "part1": {
+      "instructions": "You are joining a Car club. Fill out the form. Write short answers (1-5 words) for each message (Bài này nên trả lời dài nhất là 5 từ, viết hoa từ đầu và dấu chấm kêt thúc câu).",
+      "questions": [
+        {
+          "id": "p1_q1",
+          "label": "What is your favourite colour?"
+        },
+        {
+          "id": "p1_q2",
+          "label": "What is the weather like today?"
+        },
+        {
+          "id": "p1_q3",
+          "label": "How are you?"
+        },
+        {
+          "id": "p1_q4",
+          "label": "Which is your favorite season?"
+        },
+        {
+          "id": "p1_q5",
+          "label": "What do you do on the weekend?"
+        }
+      ]
+    },
+    "part2": {
+      "instructions": "Now you've become a new member of the Car club. Fill in the form. Write in sentences. Use 20-30 words (Viết 20 đến 30 từ thôi nhé!).",
+      "prompt": "Do you usually travel by car?"
+    },
+    "part3": {
+      "instructions": "You are speaking to fellow members of the Car club in a group chat. Respond to them in full sentences (30-40 words per answer).",
+      "chat": [
+        {
+          "id": "p3_q1",
+          "member": "Sam",
+          "message": "Tell me about a time you traveled by car."
+        },
+        {
+          "id": "p3_q2",
+          "member": "Alex",
+          "message": "Tell me about memories when traveling by car."
+        },
+        {
+          "id": "p3_q3",
+          "member": "Jordan",
+          "message": "Should we take public transportation or buy a car?"
+        }
+      ]
+    },
+    "part4": {
+      "instructions": "Write a short email (about 50 words) to your friend, and a longer email (120-150 words) to the president of the club.",
+      "scenario": "There will be a car program running across Europe. The program invites the Car Club to send 2 representatives (1 main driver and 1 passenger) and both must have good driving skills.",
+      "informal": {
+        "prompt": "Write a short email to your friend (about 50 words). Do you have any suggestions for the above positions."
+      },
+      "formal": {
+        "prompt": "Write an email to the president of the club (about 120-150 words). Do you have any suggestions for the above positions."
+      }
+    }
+  },
+  {
+    "id": 6,
+    "title": "Test 6 - Cinema club",
+    "part1": {
+      "instructions": "You are joining a Cinema club. Fill out the form. Write short answers (1-5 words) for each message (Bài này nên trả lời dài nhất là 5 từ, viết hoa từ đầu và dấu chấm kêt thúc câu).",
+      "questions": [
+        {
+          "id": "p1_q1",
+          "label": "What is your job?"
+        },
+        {
+          "id": "p1_q2",
+          "label": "What is your favorite food?"
+        },
+        {
+          "id": "p1_q3",
+          "label": "What do you usually do in the morning?"
+        },
+        {
+          "id": "p1_q4",
+          "label": "Where did you go last night?"
+        },
+        {
+          "id": "p1_q5",
+          "label": "What do you like doing with your friend?"
+        }
+      ]
+    },
+    "part2": {
+      "instructions": "Now you've become a new member of the Cinema club. Fill in the form. Write in sentences. Use 20-30 words (Viết 20 đến 30 từ thôi nhé!).",
+      "prompt": "When and how often do you watch films?"
+    },
+    "part3": {
+      "instructions": "You are speaking to fellow members of the Cinema club in a group chat. Respond to them in full sentences (30-40 words per answer).",
+      "chat": [
+        {
+          "id": "p3_q1",
+          "member": "Sam",
+          "message": "I like to sit near the screen when I go to the cinema? I never drink or eat anything during the film. What about you?"
+        },
+        {
+          "id": "p3_q2",
+          "member": "Alex",
+          "message": "I don’t like watching old back-and-white. They are boring. I prefer modern films, which do you prefer, and why?"
+        },
+        {
+          "id": "p3_q3",
+          "member": "Jordan",
+          "message": "Some people say we don’t need cinemas anymore. We can watch everything on TV or online at home? What do you think about this?"
+        }
+      ]
+    },
+    "part4": {
+      "instructions": "Write a short email (about 50 words) to your friend, and a longer email (120-150 words) to the president of the club.",
+      "scenario": "As you know our weekly film shows are very popular. However, we have had a number of complaints about people using their mobile phones during the film. We have started asking people to turn off their phones before the film starts but this hasn’t solved the problem. We are thinking of banning mobile phones from our cinema in the future and would be interested to hear your view on this. Do you have any other suggestions?",
+      "informal": {
+        "prompt": "Write a short email to your friend (about 50 words). Tell your friend what suggestions you will make and why?"
+      },
+      "formal": {
+        "prompt": "Write an email to the president of the club (about 120-150 words). Write about your ideas and what you think about the situation."
+      }
+    }
+  },
+  {
+    "id": 7,
+    "title": "Test 7 - College club",
+    "part1": {
+      "instructions": "You are joining a College club. Fill out the form. Write short answers (1-5 words) for each message (Bài này nên trả lời dài nhất là 5 từ, viết hoa từ đầu và dấu chấm kêt thúc câu).",
+      "questions": [
+        {
+          "id": "p1_q1",
+          "label": "Which sport do you like to play the most?"
+        },
+        {
+          "id": "p1_q2",
+          "label": "What did you do last night?"
+        },
+        {
+          "id": "p1_q3",
+          "label": "Do you like shopping?"
+        },
+        {
+          "id": "p1_q4",
+          "label": "What are you wearing today?"
+        },
+        {
+          "id": "p1_q5",
+          "label": "What is your favorite kind of music?"
+        }
+      ]
+    },
+    "part2": {
+      "instructions": "Now you've become a new member of the College club. Fill in the form. Write in sentences. Use 20-30 words (Viết 20 đến 30 từ thôi nhé!).",
+      "prompt": "Please tell us about the days and times you can attend courses and what you would like to study?"
+    },
+    "part3": {
+      "instructions": "You are speaking to fellow members of the College club in a group chat. Respond to them in full sentences (30-40 words per answer).",
+      "chat": [
+        {
+          "id": "p3_q1",
+          "member": "Sam",
+          "message": "Hi! Welcome to the college. What course are you doing and why did you choose it?"
+        },
+        {
+          "id": "p3_q2",
+          "member": "Alex",
+          "message": "Welcome! How do you feel about the college so far?"
+        },
+        {
+          "id": "p3_q3",
+          "member": "Jordan",
+          "message": "Did you hear that the college sports club has closed? What do you think about this?"
+        }
+      ]
+    },
+    "part4": {
+      "instructions": "Write a short email (about 50 words) to your friend, and a longer email (120-150 words) to the president of the club.",
+      "scenario": "We are writing to inform you that the end of course exams will now take place two weeks earlier than originally planned. You exam, which was scheduled for the 21st of next month, will now take place on the 7th of next month. We apologize for any difficulty this may cause.",
+      "informal": {
+        "prompt": "Write a short email to your friend (about 50 words). Tell them what you think the college should do about the situation."
+      },
+      "formal": {
+        "prompt": "Write an email to the president of the club (about 120-150 words). Tell them what you think the college should do about the situation."
+      }
+    }
+  },
+  {
+    "id": 8,
+    "title": "Test 8 - Community club",
+    "part1": {
+      "instructions": "You are joining a Community club. Fill out the form. Write short answers (1-5 words) for each message (Bài này nên trả lời dài nhất là 5 từ, viết hoa từ đầu và dấu chấm kêt thúc câu).",
+      "questions": [
+        {
+          "id": "p1_q1",
+          "label": "Which sport is the most popular in your country?"
+        },
+        {
+          "id": "p1_q2",
+          "label": "What is your favorite animal?"
+        },
+        {
+          "id": "p1_q3",
+          "label": "What is the weather like today?"
+        },
+        {
+          "id": "p1_q4",
+          "label": "Where did you go last night?"
+        },
+        {
+          "id": "p1_q5",
+          "label": "What is your favorite time of year?"
+        }
+      ]
+    },
+    "part2": {
+      "instructions": "Now you've become a new member of the Community club. Fill in the form. Write in sentences. Use 20-30 words (Viết 20 đến 30 từ thôi nhé!).",
+      "prompt": "Why did you join this Community club?"
+    },
+    "part3": {
+      "instructions": "You are speaking to fellow members of the Community club in a group chat. Respond to them in full sentences (30-40 words per answer).",
+      "chat": [
+        {
+          "id": "p3_q1",
+          "member": "Sam",
+          "message": "My friend wants to go to the hair salon, but her car isn't working. Can you suggest some ways for her to get there?"
+        },
+        {
+          "id": "p3_q2",
+          "member": "Alex",
+          "message": "Volunteering provides great learning opportunities and helps others a lot. Do you agree with this?"
+        },
+        {
+          "id": "p3_q3",
+          "member": "Jordan",
+          "message": "Do you agree with the view that volunteering is a form of learning, especially for young people? Why?"
+        }
+      ]
+    },
+    "part4": {
+      "instructions": "Write a short email (about 50 words) to your friend, and a longer email (120-150 words) to the president of the club.",
+      "scenario": "Dear Member, Our club needs support with several tasks this year. First, we need more members who can actively participate in our ongoing projects. Second, we are looking for creative ideas to develop new activities. Could you share some suggestions with us to help support our projects this year?",
+      "informal": {
+        "prompt": "Write a short email to your friend (about 50 words). Write about your feelings and what you would like to do."
+      },
+      "formal": {
+        "prompt": "Write an email to the president of the club (about 120-150 words). Write about your feelings and what you would like to do."
+      }
+    }
+  },
+  {
+    "id": 9,
+    "title": "Test 9 - Computer club",
+    "part1": {
+      "instructions": "You are joining a Computer club. Fill out the form. Write short answers (1-5 words) for each message (Bài này nên trả lời dài nhất là 5 từ, viết hoa từ đầu và dấu chấm kêt thúc câu).",
+      "questions": [
+        {
+          "id": "p1_q1",
+          "label": "What is your job?"
+        },
+        {
+          "id": "p1_q2",
+          "label": "What is your favorite subject in high school?"
+        },
+        {
+          "id": "p1_q3",
+          "label": "What is your favorite color?"
+        },
+        {
+          "id": "p1_q4",
+          "label": "What do you like to do in the evening?"
+        },
+        {
+          "id": "p1_q5",
+          "label": "What is your favorite food?"
+        }
+      ]
+    },
+    "part2": {
+      "instructions": "Now you've become a new member of the Computer club. Fill in the form. Write in sentences. Use 20-30 words (Viết 20 đến 30 từ thôi nhé!).",
+      "prompt": "When and where do you use a computer?"
+    },
+    "part3": {
+      "instructions": "You are speaking to fellow members of the Computer club in a group chat. Respond to them in full sentences (30-40 words per answer).",
+      "chat": [
+        {
+          "id": "p3_q1",
+          "member": "Sam",
+          "message": "My grandmother doesn’t know how to use the computer. Your solutions."
+        },
+        {
+          "id": "p3_q2",
+          "member": "Alex",
+          "message": "The last time you used your computer. Your purpose."
+        },
+        {
+          "id": "p3_q3",
+          "member": "Jordan",
+          "message": "Nowadays people use computers a lot. This is not good. Your opinion."
+        }
+      ]
+    },
+    "part4": {
+      "instructions": "Write a short email (about 50 words) to your friend, and a longer email (120-150 words) to the president of the club.",
+      "scenario": "The club has a plan to adjust our website in order to attract more members. Your feelings and suggestions",
+      "informal": {
+        "prompt": "Write a short email to your friend (about 50 words)."
+      },
+      "formal": {
+        "prompt": "Write an email to the president of the club (about 120-150 words)."
+      }
+    }
+  },
+  {
+    "id": 10,
+    "title": "Test 10 - Cooking club",
+    "part1": {
+      "instructions": "You are joining a Cooking club. Fill out the form. Write short answers (1-5 words) for each message (Bài này nên trả lời dài nhất là 5 từ, viết hoa từ đầu và dấu chấm kêt thúc câu).",
+      "questions": [
+        {
+          "id": "p1_q1",
+          "label": "What do you do on the weekend?"
+        },
+        {
+          "id": "p1_q2",
+          "label": "Which sport do you like to play the most?"
+        },
+        {
+          "id": "p1_q3",
+          "label": "What did you do last night?"
+        },
+        {
+          "id": "p1_q4",
+          "label": "Do you like shopping?"
+        },
+        {
+          "id": "p1_q5",
+          "label": "What do you usually do in the morning?"
+        }
+      ]
+    },
+    "part2": {
+      "instructions": "Now you've become a new member of the Cooking club. Fill in the form. Write in sentences. Use 20-30 words (Viết 20 đến 30 từ thôi nhé!).",
+      "prompt": "Tell me about the day and time you can join the club and which food/dish you want to cook."
+    },
+    "part3": {
+      "instructions": "You are speaking to fellow members of the Cooking club in a group chat. Respond to them in full sentences (30-40 words per answer).",
+      "chat": [
+        {
+          "id": "p3_q1",
+          "member": "Sam",
+          "message": "Hi! Welcome to the club. Why did you decide to join the club?"
+        },
+        {
+          "id": "p3_q2",
+          "member": "Alex",
+          "message": "Hi! What do you think about the club’s price/ membership fee?"
+        },
+        {
+          "id": "p3_q3",
+          "member": "Jordan",
+          "message": "How often do you go to the club?"
+        }
+      ]
+    },
+    "part4": {
+      "instructions": "Write a short email (about 50 words) to your friend, and a longer email (120-150 words) to the president of the club.",
+      "scenario": "Dear member, All classes will be canceled next week. Because the instructor will go on holiday. Classes will be announced later. Fees won’t be refunded to the participants.",
+      "informal": {
+        "prompt": "Write a short email to your friend (about 50 words). Tell your friend your feelings about this and what you plan to do."
+      },
+      "formal": {
+        "prompt": "Write an email to the president of the club (about 120-150 words). Tell them your thoughts about this and what you would like to do."
+      }
+    }
+  },
+  {
+    "id": 11,
+    "title": "Test 11 - Debate club",
+    "part1": {
+      "instructions": "You are joining a Debate club. Fill out the form. Write short answers (1-5 words) for each message (Bài này nên trả lời dài nhất là 5 từ, viết hoa từ đầu và dấu chấm kêt thúc câu).",
+      "questions": [
+        {
+          "id": "p1_q1",
+          "label": "Where are you from?"
+        },
+        {
+          "id": "p1_q2",
+          "label": "What’s the weather like today?"
+        },
+        {
+          "id": "p1_q3",
+          "label": "What do you do in your free time?"
+        },
+        {
+          "id": "p1_q4",
+          "label": "First language?"
+        },
+        {
+          "id": "p1_q5",
+          "label": "Who do you usually go to the movies with?"
+        }
+      ]
+    },
+    "part2": {
+      "instructions": "Now you've become a new member of the Debate club. Fill in the form. Write in sentences. Use 20-30 words (Viết 20 đến 30 từ thôi nhé!).",
+      "prompt": "What do you usually talk about with your friend?"
+    },
+    "part3": {
+      "instructions": "You are speaking to fellow members of the Debate club in a group chat. Respond to them in full sentences (30-40 words per answer).",
+      "chat": [
+        {
+          "id": "p3_q1",
+          "member": "Sam",
+          "message": "There are many ways to follow the news nowadays. How do you learn about world issues?"
+        },
+        {
+          "id": "p3_q2",
+          "member": "Alex",
+          "message": "I will take part in a debate in front of 50 people next week. How can I make a good impression?"
+        },
+        {
+          "id": "p3_q3",
+          "member": "Jordan",
+          "message": "Before making a decision about an issue, you should consider both sides of it. What do you think about this?"
+        }
+      ]
+    },
+    "part4": {
+      "instructions": "Write a short email (about 50 words) to your friend, and a longer email (120-150 words) to the president of the club.",
+      "scenario": "Dear member, please give two important benefits of learning debate and speaking in public to attract new members.",
+      "informal": {
+        "prompt": "Write a short email to your friend (about 50 words)."
+      },
+      "formal": {
+        "prompt": "Write an email to the president of the club (about 120-150 words)."
+      }
+    }
+  },
+  {
+    "id": 12,
+    "title": "Test 12 - English club",
+    "part1": {
+      "instructions": "You are joining a English club. Fill out the form. Write short answers (1-5 words) for each message (Bài này nên trả lời dài nhất là 5 từ, viết hoa từ đầu và dấu chấm kêt thúc câu).",
+      "questions": [
+        {
+          "id": "p1_q1",
+          "label": "What do you like doing with your friend?"
+        },
+        {
+          "id": "p1_q2",
+          "label": "How are you?"
+        },
+        {
+          "id": "p1_q3",
+          "label": "Where do you wanna go on holiday?"
+        },
+        {
+          "id": "p1_q4",
+          "label": "What is your favorite sport?"
+        },
+        {
+          "id": "p1_q5",
+          "label": "What is your favorite time of the year?"
+        }
+      ]
+    },
+    "part2": {
+      "instructions": "Now you've become a new member of the English club. Fill in the form. Write in sentences. Use 20-30 words (Viết 20 đến 30 từ thôi nhé!).",
+      "prompt": "•\tWhat do you usually use the internet for?"
+    },
+    "part3": {
+      "instructions": "You are speaking to fellow members of the English club in a group chat. Respond to them in full sentences (30-40 words per answer).",
+      "chat": [
+        {
+          "id": "p3_q1",
+          "member": "Sam",
+          "message": "I usually spend 6 hours a day studying English. How do you learn English?"
+        },
+        {
+          "id": "p3_q2",
+          "member": "Alex",
+          "message": "English is a popular language in the world. What are your thoughts on this idea?"
+        },
+        {
+          "id": "p3_q3",
+          "member": "Jordan",
+          "message": "When do you usually use English?"
+        }
+      ]
+    },
+    "part4": {
+      "instructions": "Write a short email (about 50 words) to your friend, and a longer email (120-150 words) to the president of the club.",
+      "scenario": "Nowadays more and more new words and phrases are added to the language, so many people have strong reactions on this issue. Some people gladly accept others argue that there should be rules for language. Write a letter to your friend and the club manager to express your views and explain why so many people react like this.",
+      "informal": {
+        "prompt": "Write a short email to your friend (about 50 words)."
+      },
+      "formal": {
+        "prompt": "Write an email to the president of the club (about 120-150 words)."
+      }
+    }
+  },
+  {
+    "id": 13,
+    "title": "Test 13 - Film club",
+    "part1": {
+      "instructions": "You are joining a Film club. Fill out the form. Write short answers (1-5 words) for each message (Bài này nên trả lời dài nhất là 5 từ, viết hoa từ đầu và dấu chấm kêt thúc câu).",
+      "questions": [
+        {
+          "id": "p1_q1",
+          "label": "What’s your favorite sport?"
+        },
+        {
+          "id": "p1_q2",
+          "label": "How many people in your family?"
+        },
+        {
+          "id": "p1_q3",
+          "label": "What did you do yesterday?"
+        },
+        {
+          "id": "p1_q4",
+          "label": "How do you go to school?"
+        },
+        {
+          "id": "p1_q5",
+          "label": "What’s your hobby?"
+        }
+      ]
+    },
+    "part2": {
+      "instructions": "Now you've become a new member of the Film club. Fill in the form. Write in sentences. Use 20-30 words (Viết 20 đến 30 từ thôi nhé!).",
+      "prompt": "Please write some of your favorite films and why do you like watching them?"
+    },
+    "part3": {
+      "instructions": "You are speaking to fellow members of the Film club in a group chat. Respond to them in full sentences (30-40 words per answer).",
+      "chat": [
+        {
+          "id": "p3_q1",
+          "member": "Sam",
+          "message": "Hi. Welcome to the club. How often do you watch films?"
+        },
+        {
+          "id": "p3_q2",
+          "member": "Alex",
+          "message": "Hi. Can you remember the first film you what? What was it like?"
+        },
+        {
+          "id": "p3_q3",
+          "member": "Jordan",
+          "message": "What would you like to learn from the film club?"
+        }
+      ]
+    },
+    "part4": {
+      "instructions": "Write a short email (about 50 words) to your friend, and a longer email (120-150 words) to the president of the club.",
+      "scenario": "We are writing to tell you that the guest actor, James Mc Avoy, will unfortunately not be able to give a talk at our next club meeting due to personal reasons. He has requested we reschedule the talk for the next year in either January or March. Please contact the club secretary if you have a preference for one of the two months. Our meeting will take place as usual with a discussion on the advantages and disadvantages of learning on the Internet.",
+      "informal": {
+        "prompt": "Write an email to your friend. Write about your feelings and what you would like to do (50 words)."
+      },
+      "formal": {
+        "prompt": "Write an email the the manager of the club. Write about your feelings and possible alternatives (120 – 150 words)"
+      }
+    }
+  },
+  {
+    "id": 14,
+    "title": "Test 14 - Fitness club",
+    "part1": {
+      "instructions": "You are joining a Fitness club. Fill out the form. Write short answers (1-5 words) for each message (Bài này nên trả lời dài nhất là 5 từ, viết hoa từ đầu và dấu chấm kêt thúc câu).",
+      "questions": [
+        {
+          "id": "p1_q1",
+          "label": "What is your hobby?"
+        },
+        {
+          "id": "p1_q2",
+          "label": "What's the weather like today?"
+        },
+        {
+          "id": "p1_q3",
+          "label": "How do you relax?"
+        },
+        {
+          "id": "p1_q4",
+          "label": "What do you usually do in your free time?"
+        },
+        {
+          "id": "p1_q5",
+          "label": "Why do you learn English?"
+        }
+      ]
+    },
+    "part2": {
+      "instructions": "Now you've become a new member of the Fitness club. Fill in the form. Write in sentences. Use 20-30 words (Viết 20 đến 30 từ thôi nhé!).",
+      "prompt": "Please talk about the last time you went for a run?"
+    },
+    "part3": {
+      "instructions": "You are speaking to fellow members of the Fitness club in a group chat. Respond to them in full sentences (30-40 words per answer).",
+      "chat": [
+        {
+          "id": "p3_q1",
+          "member": "Sam",
+          "message": "I live in a tall building, I usually walk downstairs to exercise, how do you usually exercise?"
+        },
+        {
+          "id": "p3_q2",
+          "member": "Alex",
+          "message": "I usually get up early to run in the morning because I usually get tired in the evening. What about you?"
+        },
+        {
+          "id": "p3_q3",
+          "member": "Jordan",
+          "message": "Nowadays, technology makes people's lives easier, but it also makes them lazy and dislike exercise. Do you agree with this opinion?"
+        }
+      ]
+    },
+    "part4": {
+      "instructions": "Write a short email (about 50 words) to your friend, and a longer email (120-150 words) to the president of the club.",
+      "scenario": "Dear members, some equipment in the club is old and needs to be replaced. Our club is planning to hold a sponsorship event to raise money for the upgrade of sports equipment. On the other hand, there are also some opinions that the club should increase the membership fee to 50%.",
+      "informal": {
+        "prompt": "Write a short email to your friend (about 50 words)."
+      },
+      "formal": {
+        "prompt": "Write an email to the president of the club (about 120-150 words)."
+      }
+    }
+  },
+  {
+    "id": 15,
+    "title": "Test 15 - Food club",
+    "part1": {
+      "instructions": "You are joining a Food club. Fill out the form. Write short answers (1-5 words) for each message (Bài này nên trả lời dài nhất là 5 từ, viết hoa từ đầu và dấu chấm kêt thúc câu).",
+      "questions": [
+        {
+          "id": "p1_q1",
+          "label": "What is your full name?"
+        },
+        {
+          "id": "p1_q2",
+          "label": "What is your surname?"
+        },
+        {
+          "id": "p1_q3",
+          "label": "What did you do yesterday / last night / last week?"
+        },
+        {
+          "id": "p1_q4",
+          "label": "What do you like to do every morning / in the afternoon / in the evening?"
+        },
+        {
+          "id": "p1_q5",
+          "label": "What do you do in the free time?"
+        }
+      ]
+    },
+    "part2": {
+      "instructions": "Now you've become a new member of the Food club. Fill in the form. Write in sentences. Use 20-30 words (Viết 20 đến 30 từ thôi nhé!).",
+      "prompt": "When and where do you usually have meals?"
+    },
+    "part3": {
+      "instructions": "You are speaking to fellow members of the Food club in a group chat. Respond to them in full sentences (30-40 words per answer).",
+      "chat": [
+        {
+          "id": "p3_q1",
+          "member": "Sam",
+          "message": "Tell me the last time you had a good meal?"
+        },
+        {
+          "id": "p3_q2",
+          "member": "Alex",
+          "message": "I want to visit your country? Do you have any suggestions for me on what delicious food to eat?"
+        },
+        {
+          "id": "p3_q3",
+          "member": "Jordan",
+          "message": "3.\tToday, many people eat pizza. But it is not healthy and they should limit eating it. What is your opinion?"
+        }
+      ]
+    },
+    "part4": {
+      "instructions": "Write a short email (about 50 words) to your friend, and a longer email (120-150 words) to the president of the club.",
+      "scenario": "Dear members, the club needs volunteers to be guest speakers for the talk show with a famous chef. Please suggest your desire to be a speaker and what topic will you talk about?",
+      "informal": {
+        "prompt": "Write a short email to your friend (about 50 words). Tell your friend what suggestions you will make and why?"
+      },
+      "formal": {
+        "prompt": "Write an email to the president of the club (about 120-150 words). Tell the manager what suggestions you will make and why?"
+      }
+    }
+  },
+  {
+    "id": 16,
+    "title": "Test 16 - Garden club",
+    "part1": {
+      "instructions": "You are joining a Garden club. Fill out the form. Write short answers (1-5 words) for each message (Bài này nên trả lời dài nhất là 5 từ, viết hoa từ đầu và dấu chấm kêt thúc câu).",
+      "questions": [
+        {
+          "id": "p1_q1",
+          "label": "Where are you from?"
+        },
+        {
+          "id": "p1_q2",
+          "label": "What’s the weather like today?"
+        },
+        {
+          "id": "p1_q3",
+          "label": "What did you do last night?"
+        },
+        {
+          "id": "p1_q4",
+          "label": "First language?"
+        },
+        {
+          "id": "p1_q5",
+          "label": "What is your favorite color?"
+        }
+      ]
+    },
+    "part2": {
+      "instructions": "Now you've become a new member of the Garden club. Fill in the form. Write in sentences. Use 20-30 words (Viết 20 đến 30 từ thôi nhé!).",
+      "prompt": "Why did you join the club?"
+    },
+    "part3": {
+      "instructions": "You are speaking to fellow members of the Garden club in a group chat. Respond to them in full sentences (30-40 words per answer).",
+      "chat": [
+        {
+          "id": "p3_q1",
+          "member": "Sam",
+          "message": "Describe your garden?"
+        },
+        {
+          "id": "p3_q2",
+          "member": "Alex",
+          "message": "Do people in your country like gardening?"
+        },
+        {
+          "id": "p3_q3",
+          "member": "Jordan",
+          "message": "What is your favorite season? Why?"
+        }
+      ]
+    },
+    "part4": {
+      "instructions": "Write a short email (about 50 words) to your friend, and a longer email (120-150 words) to the president of the club.",
+      "scenario": "Dear members, we are writing to tell you that the talk and slide show on The Gardens of Japan by Mr.Seiko has been canceled because the speaker has been taken ill. Mr.Jones has kindly agreed to give his talk on The Gardens of England again. I know that many of you have already heard Mr. Jones before but I hope you will be happy to hear him once again. Please give your suggestions.",
+      "informal": {
+        "prompt": "Write a short email to your friend (about 50 words)."
+      },
+      "formal": {
+        "prompt": "Write an email to the president of the club (about 120-150 words)."
+      }
+    }
+  },
+  {
+    "id": 17,
+    "title": "Test 17 - Healthy club",
+    "part1": {
+      "instructions": "You are joining a Healthy club. Fill out the form. Write short answers (1-5 words) for each message (Bài này nên trả lời dài nhất là 5 từ, viết hoa từ đầu và dấu chấm kêt thúc câu).",
+      "questions": [
+        {
+          "id": "p1_q1",
+          "label": "What do you usually do on weekends?"
+        },
+        {
+          "id": "p1_q2",
+          "label": "What do you do to keep fit?"
+        },
+        {
+          "id": "p1_q3",
+          "label": "What are you wearing today?"
+        },
+        {
+          "id": "p1_q4",
+          "label": "What language do you speak?"
+        },
+        {
+          "id": "p1_q5",
+          "label": "What is your first language?"
+        }
+      ]
+    },
+    "part2": {
+      "instructions": "Now you've become a new member of the Healthy club. Fill in the form. Write in sentences. Use 20-30 words (Viết 20 đến 30 từ thôi nhé!).",
+      "prompt": "Tell me the classes you want to take and what times and days are suitable for you?"
+    },
+    "part3": {
+      "instructions": "You are speaking to fellow members of the Healthy club in a group chat. Respond to them in full sentences (30-40 words per answer).",
+      "chat": [
+        {
+          "id": "p3_q1",
+          "member": "Sam",
+          "message": "Hi! Welcome to the club. How did you hear about the club?"
+        },
+        {
+          "id": "p3_q2",
+          "member": "Alex",
+          "message": "Hi! What do you hope to achieve by joining the club?"
+        },
+        {
+          "id": "p3_q3",
+          "member": "Jordan",
+          "message": "A manager of Fitness club has an announcement for club’s members"
+        }
+      ]
+    },
+    "part4": {
+      "instructions": "Write a short email (about 50 words) to your friend, and a longer email (120-150 words) to the president of the club.",
+      "scenario": "Dear all, Because of personal reasons, the instructor will be away for the next two weeks. We will use our facilities by ourselves without the assistance of an instructor. I am so sorry about this situation and hope you doing well in next two weeks",
+      "informal": {
+        "prompt": "Write a short email to your friend (about 50 words)."
+      },
+      "formal": {
+        "prompt": "Write an email to the president of the club (about 120-150 words)."
+      }
+    }
+  },
+  {
+    "id": 18,
+    "title": "Test 18 - Home living club",
+    "part1": {
+      "instructions": "You are joining a Home living club. Fill out the form. Write short answers (1-5 words) for each message (Bài này nên trả lời dài nhất là 5 từ, viết hoa từ đầu và dấu chấm kêt thúc câu).",
+      "questions": [
+        {
+          "id": "p1_q1",
+          "label": "What is your first school?"
+        },
+        {
+          "id": "p1_q2",
+          "label": "What’s the weather like today?"
+        },
+        {
+          "id": "p1_q3",
+          "label": "What is your favorite type of music?"
+        },
+        {
+          "id": "p1_q4",
+          "label": "What kinds of movies do you like?"
+        },
+        {
+          "id": "p1_q5",
+          "label": "What is your favorite film?"
+        }
+      ]
+    },
+    "part2": {
+      "instructions": "Now you've become a new member of the Home living club. Fill in the form. Write in sentences. Use 20-30 words (Viết 20 đến 30 từ thôi nhé!).",
+      "prompt": "Describe where you live?"
+    },
+    "part3": {
+      "instructions": "You are speaking to fellow members of the Home living club in a group chat. Respond to them in full sentences (30-40 words per answer).",
+      "chat": [
+        {
+          "id": "p3_q1",
+          "member": "Sam",
+          "message": "You have to stay in the bedroom but have to share with your brother. How do you feel?"
+        },
+        {
+          "id": "p3_q2",
+          "member": "Alex",
+          "message": "It is better to live in the city than in the countryside. Do you agree? Why?"
+        },
+        {
+          "id": "p3_q3",
+          "member": "Jordan",
+          "message": "It is better to live in the city than in the countryside. Do you agree? Why?"
+        }
+      ]
+    },
+    "part4": {
+      "instructions": "Write a short email (about 50 words) to your friend, and a longer email (120-150 words) to the president of the club.",
+      "scenario": "Currently, there are many young families who want to buy a house or an apartment. The club wants the members to make suggestions to help them find homes.",
+      "informal": {
+        "prompt": "Write a short email to your friend (about 50 words)."
+      },
+      "formal": {
+        "prompt": "Write an email to the president of the club (about 120-150 words)."
+      }
+    }
+  },
+  {
+    "id": 19,
+    "title": "Test 19 - Language club",
+    "part1": {
+      "instructions": "You are joining a Language club. Fill out the form. Write short answers (1-5 words) for each message (Bài này nên trả lời dài nhất là 5 từ, viết hoa từ đầu và dấu chấm kêt thúc câu).",
+      "questions": [
+        {
+          "id": "p1_q1",
+          "label": "What is your favorite animal?"
+        },
+        {
+          "id": "p1_q2",
+          "label": "What is your favorite hobby?"
+        },
+        {
+          "id": "p1_q3",
+          "label": "What is your favorite food?"
+        },
+        {
+          "id": "p1_q4",
+          "label": "What is your favorite time of the day?"
+        },
+        {
+          "id": "p1_q5",
+          "label": "What is your favorite season?"
+        }
+      ]
+    },
+    "part2": {
+      "instructions": "Now you've become a new member of the Language club. Fill in the form. Write in sentences. Use 20-30 words (Viết 20 đến 30 từ thôi nhé!).",
+      "prompt": "Tell me your free time and interests?"
+    },
+    "part3": {
+      "instructions": "You are speaking to fellow members of the Language club in a group chat. Respond to them in full sentences (30-40 words per answer).",
+      "chat": [
+        {
+          "id": "p3_q1",
+          "member": "Sam",
+          "message": "Why did you choose this course?"
+        },
+        {
+          "id": "p3_q2",
+          "member": "Alex",
+          "message": "How have you found the course so far? What’s been difficult?"
+        },
+        {
+          "id": "p3_q3",
+          "member": "Jordan",
+          "message": "What are you hoping to do when you finish the course?"
+        }
+      ]
+    },
+    "part4": {
+      "instructions": "Write a short email (about 50 words) to your friend, and a longer email (120-150 words) to the president of the club.",
+      "scenario": "You are taking an English Course at the American Dream Center. After studying for 2 months, you find the course effective and useful.",
+      "informal": {
+        "prompt": "Write a short email to your friend (about 50 words). Write about your feelings and recommend the course to her/him ."
+      },
+      "formal": {
+        "prompt": "Write an email to the president of the club (about 120-150 words). You have registered for an English course at A Level Speaking Center but in the end you can’t arrange the time to attend the course. Write about your feelings, the reason why you can’t attend and what you would like to do."
+      }
+    }
+  },
+  {
+    "id": 20,
+    "title": "Test 20 - Language club 2",
+    "part1": {
+      "instructions": "You are joining a Language club 2. Fill out the form. Write short answers (1-5 words) for each message (Bài này nên trả lời dài nhất là 5 từ, viết hoa từ đầu và dấu chấm kêt thúc câu).",
+      "questions": [
+        {
+          "id": "p1_q1",
+          "label": "Where are you from?"
+        },
+        {
+          "id": "p1_q2",
+          "label": "What’s the weather like today?"
+        },
+        {
+          "id": "p1_q3",
+          "label": "What do you do in your free time?"
+        },
+        {
+          "id": "p1_q4",
+          "label": "First language?"
+        },
+        {
+          "id": "p1_q5",
+          "label": "Who do you usually go to the movies with?"
+        }
+      ]
+    },
+    "part2": {
+      "instructions": "Now you've become a new member of the Language club 2. Fill in the form. Write in sentences. Use 20-30 words (Viết 20 đến 30 từ thôi nhé!).",
+      "prompt": "In which cases do you often use foreign languages?"
+    },
+    "part3": {
+      "instructions": "You are speaking to fellow members of the Language club 2 in a group chat. Respond to them in full sentences (30-40 words per answer).",
+      "chat": [
+        {
+          "id": "p3_q1",
+          "member": "Sam",
+          "message": "I used to learn French and found it very interesting. Tell me about a memory you have with a foreign language?"
+        },
+        {
+          "id": "p3_q2",
+          "member": "Alex",
+          "message": "I am very forgetful. Can you give me some tips on how to remember new words?"
+        },
+        {
+          "id": "p3_q3",
+          "member": "Jordan",
+          "message": "Some people learn English through videos and reading books. However, there are also many private classes and teachers. What do you think is the most effective way to learn?"
+        }
+      ]
+    },
+    "part4": {
+      "instructions": "Write a short email (about 50 words) to your friend, and a longer email (120-150 words) to the president of the club.",
+      "scenario": "Dear members, The club will have a lecture soon. The club needs a guest speaker and a theme of learning language.",
+      "informal": {
+        "prompt": "Write a short email to your friend (about 50 words)."
+      },
+      "formal": {
+        "prompt": "Write an email to the president of the club (about 120-150 words)."
+      }
+    }
+  },
+  {
+    "id": 21,
+    "title": "Test 21 - Movie club",
+    "part1": {
+      "instructions": "You are joining a Movie club. Fill out the form. Write short answers (1-5 words) for each message (Bài này nên trả lời dài nhất là 5 từ, viết hoa từ đầu và dấu chấm kêt thúc câu).",
+      "questions": [
+        {
+          "id": "p1_q1",
+          "label": "What is your favorite sport?"
+        },
+        {
+          "id": "p1_q2",
+          "label": "What is your favorite color?"
+        },
+        {
+          "id": "p1_q3",
+          "label": "What is your favorite device?"
+        },
+        {
+          "id": "p1_q4",
+          "label": "What do you do?"
+        },
+        {
+          "id": "p1_q5",
+          "label": "Which job would you like to do in the future?"
+        }
+      ]
+    },
+    "part2": {
+      "instructions": "Now you've become a new member of the Movie club. Fill in the form. Write in sentences. Use 20-30 words (Viết 20 đến 30 từ thôi nhé!).",
+      "prompt": "Why did you join the club?"
+    },
+    "part3": {
+      "instructions": "You are speaking to fellow members of the Movie club in a group chat. Respond to them in full sentences (30-40 words per answer).",
+      "chat": [
+        {
+          "id": "p3_q1",
+          "member": "Sam",
+          "message": "Hi! When and where do you usually watch movies?"
+        },
+        {
+          "id": "p3_q2",
+          "member": "Alex",
+          "message": "I want to make movies for young children. Give me some suggestions?"
+        },
+        {
+          "id": "p3_q3",
+          "member": "Jordan",
+          "message": "How do you think technology affects the way we watch movies in the future?"
+        }
+      ]
+    },
+    "part4": {
+      "instructions": "Write a short email (about 50 words) to your friend, and a longer email (120-150 words) to the president of the club.",
+      "scenario": "Dear member, The club will be repaired. Please suggest an alternative meeting or activity.",
+      "informal": {
+        "prompt": "Write a short email to your friend (about 50 words)."
+      },
+      "formal": {
+        "prompt": "Write an email to the president of the club (about 120-150 words)."
+      }
+    }
+  },
+  {
+    "id": 22,
+    "title": "Test 22 - Museum club",
+    "part1": {
+      "instructions": "You are joining a Museum club. Fill out the form. Write short answers (1-5 words) for each message (Bài này nên trả lời dài nhất là 5 từ, viết hoa từ đầu và dấu chấm kêt thúc câu).",
+      "questions": [
+        {
+          "id": "p1_q1",
+          "label": "How do you go to school?"
+        },
+        {
+          "id": "p1_q2",
+          "label": "How do you get to work?"
+        },
+        {
+          "id": "p1_q3",
+          "label": "How do you relax?"
+        },
+        {
+          "id": "p1_q4",
+          "label": "How are you?"
+        },
+        {
+          "id": "p1_q5",
+          "label": "How many people are there in your family?"
+        }
+      ]
+    },
+    "part2": {
+      "instructions": "Now you've become a new member of the Museum club. Fill in the form. Write in sentences. Use 20-30 words (Viết 20 đến 30 từ thôi nhé!).",
+      "prompt": "Tell me the last time you went to a museum?"
+    },
+    "part3": {
+      "instructions": "You are speaking to fellow members of the Museum club in a group chat. Respond to them in full sentences (30-40 words per answer).",
+      "chat": [
+        {
+          "id": "p3_q1",
+          "member": "Sam",
+          "message": "Please talk about the first museum you visited when you were a child?"
+        },
+        {
+          "id": "p3_q2",
+          "member": "Alex",
+          "message": "What kind of museum do you like?"
+        },
+        {
+          "id": "p3_q3",
+          "member": "Jordan",
+          "message": "Nowadays, many museums use technology to create online exhibitions. Do you think that will be successful?"
+        }
+      ]
+    },
+    "part4": {
+      "instructions": "Write a short email (about 50 words) to your friend, and a longer email (120-150 words) to the president of the club.",
+      "scenario": "Dear members, Currently, the museum club is considering that members must pay a fee to visit the museum.",
+      "informal": {
+        "prompt": "Write a short email to your friend (about 50 words). Please give your opinions."
+      },
+      "formal": {
+        "prompt": "Write an email to the president of the club (about 120-150 words). Please give your opinions."
+      }
+    }
+  },
+  {
+    "id": 23,
+    "title": "Test 23 - Music club",
+    "part1": {
+      "instructions": "You are joining a Music club. Fill out the form. Write short answers (1-5 words) for each message (Bài này nên trả lời dài nhất là 5 từ, viết hoa từ đầu và dấu chấm kêt thúc câu).",
+      "questions": [
+        {
+          "id": "p1_q1",
+          "label": "How many phones do you have?"
+        },
+        {
+          "id": "p1_q2",
+          "label": "How often do you go shopping?"
+        },
+        {
+          "id": "p1_q3",
+          "label": "Where are you from?"
+        },
+        {
+          "id": "p1_q4",
+          "label": "Where do you live?"
+        },
+        {
+          "id": "p1_q5",
+          "label": "Where would you like to live?"
+        }
+      ]
+    },
+    "part2": {
+      "instructions": "Now you've become a new member of the Music club. Fill in the form. Write in sentences. Use 20-30 words (Viết 20 đến 30 từ thôi nhé!).",
+      "prompt": "What do you usually do when you listen to music?"
+    },
+    "part3": {
+      "instructions": "You are speaking to fellow members of the Music club in a group chat. Respond to them in full sentences (30-40 words per answer).",
+      "chat": [
+        {
+          "id": "p3_q1",
+          "member": "Sam",
+          "message": "There are songs that make me relax and there are songs that make me sad. What about you?"
+        },
+        {
+          "id": "p3_q2",
+          "member": "Alex",
+          "message": "Playing loud music annoys people around you, what do you think?"
+        },
+        {
+          "id": "p3_q3",
+          "member": "Jordan",
+          "message": "I want to learn how to play music and I want to find a good teacher. Can you give me some advice?"
+        }
+      ]
+    },
+    "part4": {
+      "instructions": "Write a short email (about 50 words) to your friend, and a longer email (120-150 words) to the president of the club.",
+      "scenario": "Dear members, The club wants to find volunteers to organize the event. The club does not require experience but you need to be free in the evenings.",
+      "informal": {
+        "prompt": "Write a short email to your friend (about 50 words). Write an email about why you want to be a volunteer and contribute your ideas to the event."
+      },
+      "formal": {
+        "prompt": "Write an email to the president of the club (about 120-150 words). Write an email about why you want to be a volunteer and contribute your ideas to the event."
+      }
+    }
+  },
+  {
+    "id": 24,
+    "title": "Test 24 - Nature club",
+    "part1": {
+      "instructions": "You are joining a Nature club. Fill out the form. Write short answers (1-5 words) for each message (Bài này nên trả lời dài nhất là 5 từ, viết hoa từ đầu và dấu chấm kêt thúc câu).",
+      "questions": [
+        {
+          "id": "p1_q1",
+          "label": "Where do you like to go in the summer?"
+        },
+        {
+          "id": "p1_q2",
+          "label": "A place you would like to visit in your country?"
+        },
+        {
+          "id": "p1_q3",
+          "label": "When and where do you usually listen to music?"
+        },
+        {
+          "id": "p1_q4",
+          "label": "When do you usually watch TV?"
+        },
+        {
+          "id": "p1_q5",
+          "label": "When was the last time you went out?"
+        }
+      ]
+    },
+    "part2": {
+      "instructions": "Now you've become a new member of the Nature club. Fill in the form. Write in sentences. Use 20-30 words (Viết 20 đến 30 từ thôi nhé!).",
+      "prompt": "Please tell me about your free time and hobbies?"
+    },
+    "part3": {
+      "instructions": "You are speaking to fellow members of the Nature club in a group chat. Respond to them in full sentences (30-40 words per answer).",
+      "chat": [
+        {
+          "id": "p3_q1",
+          "member": "Sam",
+          "message": "Hi! Welcome to the club. Where do you like to visit?"
+        },
+        {
+          "id": "p3_q2",
+          "member": "Alex",
+          "message": "Hi! Why did you decide to join the club?"
+        },
+        {
+          "id": "p3_q3",
+          "member": "Jordan",
+          "message": "The bigger the club, the more environmentally conscious people are, right?"
+        }
+      ]
+    },
+    "part4": {
+      "instructions": "Write a short email (about 50 words) to your friend, and a longer email (120-150 words) to the president of the club.",
+      "scenario": "Dear member, the club wants to make a plan for the young people because they just love to stay home and play games.",
+      "informal": {
+        "prompt": "Write a short email to your friend (about 50 words)."
+      },
+      "formal": {
+        "prompt": "Write an email to the president of the club (about 120-150 words)."
+      }
+    }
+  },
+  {
+    "id": 25,
+    "title": "Test 25 - Outdoor club",
+    "part1": {
+      "instructions": "You are joining a Outdoor club. Fill out the form. Write short answers (1-5 words) for each message (Bài này nên trả lời dài nhất là 5 từ, viết hoa từ đầu và dấu chấm kêt thúc câu).",
+      "questions": [
+        {
+          "id": "p1_q1",
+          "label": "Who do you usually go to the movies with?"
+        },
+        {
+          "id": "p1_q2",
+          "label": "Do you like to take photos?"
+        },
+        {
+          "id": "p1_q3",
+          "label": "Where do you like to go on holiday?"
+        },
+        {
+          "id": "p1_q4",
+          "label": "What’s your favorite color?"
+        },
+        {
+          "id": "p1_q5",
+          "label": "What did you do last night?"
+        }
+      ]
+    },
+    "part2": {
+      "instructions": "Now you've become a new member of the Outdoor club. Fill in the form. Write in sentences. Use 20-30 words (Viết 20 đến 30 từ thôi nhé!).",
+      "prompt": "Which outdoor activities do you like? Why?"
+    },
+    "part3": {
+      "instructions": "You are speaking to fellow members of the Outdoor club in a group chat. Respond to them in full sentences (30-40 words per answer).",
+      "chat": [
+        {
+          "id": "p3_q1",
+          "member": "Sam",
+          "message": "Hi! Welcome to the club. Tell me about the outdoor activities in the bad weather"
+        },
+        {
+          "id": "p3_q2",
+          "member": "Alex",
+          "message": "Hi! Please give your ideas and advice for hiking?"
+        },
+        {
+          "id": "p3_q3",
+          "member": "Jordan",
+          "message": "What are the most popular outdoor activities in your country?"
+        }
+      ]
+    },
+    "part4": {
+      "instructions": "Write a short email (about 50 words) to your friend, and a longer email (120-150 words) to the president of the club.",
+      "scenario": "Dear member, The club organizes travel in the summer. Do you want to go to the mountains or the coast?  Please give a suggestion for both young and old people.",
+      "informal": {
+        "prompt": "Write a short email to your friend (about 50 words)."
+      },
+      "formal": {
+        "prompt": "Write an email to the president of the club (about 120-150 words)."
+      }
+    }
+  },
+  {
+    "id": 26,
+    "title": "Test 26 - Photography club",
+    "part1": {
+      "instructions": "You are joining a Photography club. Fill out the form. Write short answers (1-5 words) for each message (Bài này nên trả lời dài nhất là 5 từ, viết hoa từ đầu và dấu chấm kêt thúc câu).",
+      "questions": [
+        {
+          "id": "p1_q1",
+          "label": "Who do you usually go to the movies with?"
+        },
+        {
+          "id": "p1_q2",
+          "label": "Who do you like spending time with?"
+        },
+        {
+          "id": "p1_q3",
+          "label": "Do you like taking photos?"
+        },
+        {
+          "id": "p1_q4",
+          "label": "Do you often use Facebook?"
+        },
+        {
+          "id": "p1_q5",
+          "label": "Tell me the last time you watched TV."
+        }
+      ]
+    },
+    "part2": {
+      "instructions": "Now you've become a new member of the Photography club. Fill in the form. Write in sentences. Use 20-30 words (Viết 20 đến 30 từ thôi nhé!).",
+      "prompt": "Please tell me the last time you took a picture?"
+    },
+    "part3": {
+      "instructions": "You are speaking to fellow members of the Photography club in a group chat. Respond to them in full sentences (30-40 words per answer).",
+      "chat": [
+        {
+          "id": "p3_q1",
+          "member": "Sam",
+          "message": "Hi! Welcome to the club. How to have a beautiful picture?"
+        },
+        {
+          "id": "p3_q2",
+          "member": "Alex",
+          "message": "I often save my photos as files on my computer or print them out. How do you save your photos?"
+        },
+        {
+          "id": "p3_q3",
+          "member": "Jordan",
+          "message": "What skills do you need to take good photos?"
+        }
+      ]
+    },
+    "part4": {
+      "instructions": "Write a short email (about 50 words) to your friend, and a longer email (120-150 words) to the president of the club.",
+      "scenario": "Dear member, the club organizes exhibitions to display the best photographs of club members. This exhibition must be suitable for both the young and the old. Please give suggestions.",
+      "informal": {
+        "prompt": "Write a short email to your friend (about 50 words)."
+      },
+      "formal": {
+        "prompt": "Write an email to the president of the club (about 120-150 words)."
+      }
+    }
+  },
+  {
+    "id": 27,
+    "title": "Test 27 - Reading club",
+    "part1": {
+      "instructions": "You are joining a Reading club. Fill out the form. Write short answers (1-5 words) for each message (Bài này nên trả lời dài nhất là 5 từ, viết hoa từ đầu và dấu chấm kêt thúc câu).",
+      "questions": [
+        {
+          "id": "p1_q1",
+          "label": "How is the weather today?"
+        },
+        {
+          "id": "p1_q2",
+          "label": "What is your favorite season of the year?"
+        },
+        {
+          "id": "p1_q3",
+          "label": "What do you like to do every morning?"
+        },
+        {
+          "id": "p1_q4",
+          "label": "What do you like to do in your free time?"
+        },
+        {
+          "id": "p1_q5",
+          "label": "What is your job?"
+        }
+      ]
+    },
+    "part2": {
+      "instructions": "Now you've become a new member of the Reading club. Fill in the form. Write in sentences. Use 20-30 words (Viết 20 đến 30 từ thôi nhé!).",
+      "prompt": "When was the last time you read a book and how was the book?"
+    },
+    "part3": {
+      "instructions": "You are speaking to fellow members of the Reading club in a group chat. Respond to them in full sentences (30-40 words per answer).",
+      "chat": [
+        {
+          "id": "p3_q1",
+          "member": "Sam",
+          "message": "I like reading sports magazines. What genre of books do you like to read? Why?"
+        },
+        {
+          "id": "p3_q2",
+          "member": "Alex",
+          "message": "I have a lot of books for my studies, but I can't remember everything I read. Do you have any suggestions for me?"
+        },
+        {
+          "id": "p3_q3",
+          "member": "Jordan",
+          "message": "Children nowadays prefer playing games to reading books. Do you think this is worrying, why?"
+        }
+      ]
+    },
+    "part4": {
+      "instructions": "Write a short email (about 50 words) to your friend, and a longer email (120-150 words) to the president of the club.",
+      "scenario": "The club was invited to contribute to the design of the national library. Most people say that the library is a boring place and don't use it often. We need to make the library a modern and exciting place that attracts both young and old. Please contribute your suggestions.",
+      "informal": {
+        "prompt": "Write a short email to your friend (about 50 words)."
+      },
+      "formal": {
+        "prompt": "Write an email to the president of the club (about 120-150 words)."
+      }
+    }
+  },
+  {
+    "id": 28,
+    "title": "Test 28 - Science club",
+    "part1": {
+      "instructions": "You are joining a Science club. Fill out the form. Write short answers (1-5 words) for each message (Bài này nên trả lời dài nhất là 5 từ, viết hoa từ đầu và dấu chấm kêt thúc câu).",
+      "questions": [
+        {
+          "id": "p1_q1",
+          "label": "What is your favorite color?"
+        },
+        {
+          "id": "p1_q2",
+          "label": "What is your first school?"
+        },
+        {
+          "id": "p1_q3",
+          "label": "What do you do in your free time?"
+        },
+        {
+          "id": "p1_q4",
+          "label": "What is your favorite sport?"
+        },
+        {
+          "id": "p1_q5",
+          "label": "What did you do last night?"
+        }
+      ]
+    },
+    "part2": {
+      "instructions": "Now you've become a new member of the Science club. Fill in the form. Write in sentences. Use 20-30 words (Viết 20 đến 30 từ thôi nhé!).",
+      "prompt": "Why do you like science?"
+    },
+    "part3": {
+      "instructions": "You are speaking to fellow members of the Science club in a group chat. Respond to them in full sentences (30-40 words per answer).",
+      "chat": [
+        {
+          "id": "p3_q1",
+          "member": "Sam",
+          "message": "Why did you decide to join our Science Club? How often can you go to the club?"
+        },
+        {
+          "id": "p3_q2",
+          "member": "Alex",
+          "message": "In the past, you learnt about Science in school. Do you remember something about Science?"
+        },
+        {
+          "id": "p3_q3",
+          "member": "Jordan",
+          "message": "Who is your favorite inventor or scientist? Why?"
+        }
+      ]
+    },
+    "part4": {
+      "instructions": "Write a short email (about 50 words) to your friend, and a longer email (120-150 words) to the president of the club.",
+      "scenario": "Dear all members in our club, our club is preparing to organize the science exhibition next month. Both young people and elderly people can take part in our activities in the exhibition. Could you contribute some ideas for our event team? Whether our club issues tickets for participants? I would like to hear your contribution.",
+      "informal": {
+        "prompt": "Write a short email to your friend (about 50 words)."
+      },
+      "formal": {
+        "prompt": "Write an email to the president of the club (about 120-150 words)."
+      }
+    }
+  },
+  {
+    "id": 29,
+    "title": "Test 29 - Social club",
+    "part1": {
+      "instructions": "You are joining a Social club. Fill out the form. Write short answers (1-5 words) for each message (Bài này nên trả lời dài nhất là 5 từ, viết hoa từ đầu và dấu chấm kêt thúc câu).",
+      "questions": [
+        {
+          "id": "p1_q1",
+          "label": "What’s the weather like today?"
+        },
+        {
+          "id": "p1_q2",
+          "label": "How are you?"
+        },
+        {
+          "id": "p1_q3",
+          "label": "What’s your favorite hobby?"
+        },
+        {
+          "id": "p1_q4",
+          "label": "How do you get to work?"
+        },
+        {
+          "id": "p1_q5",
+          "label": "What do you like to do in the evening?"
+        }
+      ]
+    },
+    "part2": {
+      "instructions": "Now you've become a new member of the Social club. Fill in the form. Write in sentences. Use 20-30 words (Viết 20 đến 30 từ thôi nhé!).",
+      "prompt": "Tell me about your best friend?"
+    },
+    "part3": {
+      "instructions": "You are speaking to fellow members of the Social club in a group chat. Respond to them in full sentences (30-40 words per answer).",
+      "chat": [
+        {
+          "id": "p3_q1",
+          "member": "Sam",
+          "message": "What do you do when you go out with your friends?"
+        },
+        {
+          "id": "p3_q2",
+          "member": "Alex",
+          "message": "Is it easier for young people to have friends?"
+        },
+        {
+          "id": "p3_q3",
+          "member": "Jordan",
+          "message": "It is much easier to make new friends these days because of computers and mobile phones. Do you agree? Why or why not?"
+        }
+      ]
+    },
+    "part4": {
+      "instructions": "Write a short email (about 50 words) to your friend, and a longer email (120-150 words) to the president of the club.",
+      "scenario": "Dear members, we would like to organize some monthly face to face meetings. We would like your suggestions about when and where we could meet. It suits both young and older people. Please send us your suggestions and your reasons.",
+      "informal": {
+        "prompt": "Write a short email to your friend (about 50 words)."
+      },
+      "formal": {
+        "prompt": "Write an email to the president of the club (about 120-150 words)."
+      }
+    }
+  },
+  {
+    "id": 30,
+    "title": "Test 30 - Sports club",
+    "part1": {
+      "instructions": "You are joining a Sports club. Fill out the form. Write short answers (1-5 words) for each message (Bài này nên trả lời dài nhất là 5 từ, viết hoa từ đầu và dấu chấm kêt thúc câu).",
+      "questions": [
+        {
+          "id": "p1_q1",
+          "label": "Tell me the last time you watched TV?"
+        },
+        {
+          "id": "p1_q2",
+          "label": "Why do you learn English?"
+        },
+        {
+          "id": "p1_q3",
+          "label": "What is your favorite subject in high school?"
+        },
+        {
+          "id": "p1_q4",
+          "label": "What do you like doing with your friend?"
+        },
+        {
+          "id": "p1_q5",
+          "label": "Where do you wanna go on holiday?"
+        }
+      ]
+    },
+    "part2": {
+      "instructions": "Now you've become a new member of the Sports club. Fill in the form. Write in sentences. Use 20-30 words (Viết 20 đến 30 từ thôi nhé!).",
+      "prompt": "Why did you decide to join the club?"
+    },
+    "part3": {
+      "instructions": "You are speaking to fellow members of the Sports club in a group chat. Respond to them in full sentences (30-40 words per answer).",
+      "chat": [
+        {
+          "id": "p3_q1",
+          "member": "Sam",
+          "message": "When was the last time you played sports?"
+        },
+        {
+          "id": "p3_q2",
+          "member": "Alex",
+          "message": "I usually play sports with my friends and watch sports programs. What about you?"
+        },
+        {
+          "id": "p3_q3",
+          "member": "Jordan",
+          "message": "I like playing sports with my friend but my brother likes playing sports alone. What do you think about this issue?"
+        }
+      ]
+    },
+    "part4": {
+      "instructions": "Write a short email (about 50 words) to your friend, and a longer email (120-150 words) to the president of the club.",
+      "scenario": "Dear members, the club needs suggestions about the organization of a sports competition for young members.",
+      "informal": {
+        "prompt": "Write a short email to your friend (about 50 words)."
+      },
+      "formal": {
+        "prompt": "Write an email to the president of the club (about 120-150 words)."
+      }
+    }
+  },
+  {
+    "id": 31,
+    "title": "Test 31 - Technology club",
+    "part1": {
+      "instructions": "You are joining a Technology club. Fill out the form. Write short answers (1-5 words) for each message (Bài này nên trả lời dài nhất là 5 từ, viết hoa từ đầu và dấu chấm kêt thúc câu).",
+      "questions": [
+        {
+          "id": "p1_q1",
+          "label": "How are you?"
+        },
+        {
+          "id": "p1_q2",
+          "label": "Which is your favorite season?"
+        },
+        {
+          "id": "p1_q3",
+          "label": "Which sports is the most popular in your country?"
+        },
+        {
+          "id": "p1_q4",
+          "label": "What are you wearing today?"
+        },
+        {
+          "id": "p1_q5",
+          "label": "What is your favorite kind of music?"
+        }
+      ]
+    },
+    "part2": {
+      "instructions": "Now you've become a new member of the Technology club. Fill in the form. Write in sentences. Use 20-30 words (Viết 20 đến 30 từ thôi nhé!).",
+      "prompt": "What do you usually use your laptop for?"
+    },
+    "part3": {
+      "instructions": "You are speaking to fellow members of the Technology club in a group chat. Respond to them in full sentences (30-40 words per answer).",
+      "chat": [
+        {
+          "id": "p3_q1",
+          "member": "Sam",
+          "message": "Do you often watch movies on your laptop or go to the theater?"
+        },
+        {
+          "id": "p3_q2",
+          "member": "Alex",
+          "message": "I used to work on a laptop and it stopped and I lost all my notes. Tell me about a bad time with your computer?"
+        },
+        {
+          "id": "p3_q3",
+          "member": "Jordan",
+          "message": "Technological improvements have made our lives easier. what do you think?"
+        }
+      ]
+    },
+    "part4": {
+      "instructions": "Write a short email (about 50 words) to your friend, and a longer email (120-150 words) to the president of the club.",
+      "scenario": "Dear member, members often post on the website's club. But lately there’s been a few negatives on the other member's post. We are thinking of changing the website to identify anyone who makes a comment. Please give your opinion to fix the situation.",
+      "informal": {
+        "prompt": "Write a short email to your friend (about 50 words)."
+      },
+      "formal": {
+        "prompt": "Write an email to the president of the club (about 120-150 words)."
+      }
+    }
+  },
+  {
+    "id": 32,
+    "title": "Test 32 - Television club",
+    "part1": {
+      "instructions": "You are joining a Television club. Fill out the form. Write short answers (1-5 words) for each message (Bài này nên trả lời dài nhất là 5 từ, viết hoa từ đầu và dấu chấm kêt thúc câu).",
+      "questions": [
+        {
+          "id": "p1_q1",
+          "label": "Who do you usually go to the movies with?"
+        },
+        {
+          "id": "p1_q2",
+          "label": "Do you like to take photos?"
+        },
+        {
+          "id": "p1_q3",
+          "label": "Where do you like to go on holiday?"
+        },
+        {
+          "id": "p1_q4",
+          "label": "What’s your favorite color?"
+        },
+        {
+          "id": "p1_q5",
+          "label": "What did you do last night?"
+        }
+      ]
+    },
+    "part2": {
+      "instructions": "Now you've become a new member of the Television club. Fill in the form. Write in sentences. Use 20-30 words (Viết 20 đến 30 từ thôi nhé!).",
+      "prompt": "Do you usually watch TV?"
+    },
+    "part3": {
+      "instructions": "You are speaking to fellow members of the Television club in a group chat. Respond to them in full sentences (30-40 words per answer).",
+      "chat": [
+        {
+          "id": "p3_q1",
+          "member": "Sam",
+          "message": "What do you like to do when you watch TV?"
+        },
+        {
+          "id": "p3_q2",
+          "member": "Alex",
+          "message": "Do you like watching TV alone or with others?"
+        },
+        {
+          "id": "p3_q3",
+          "member": "Jordan",
+          "message": "Is it good for children to watch TV programs too much?"
+        }
+      ]
+    },
+    "part4": {
+      "instructions": "Write a short email (about 50 words) to your friend, and a longer email (120-150 words) to the president of the club.",
+      "scenario": "Dear members, we need to set up an event and choose a place so that foreigners can attend. Please give your suggestions.",
+      "informal": {
+        "prompt": "Write a short email to your friend (about 50 words)."
+      },
+      "formal": {
+        "prompt": "Write an email to the president of the club (about 120-150 words)."
+      }
+    }
+  },
+  {
+    "id": 33,
+    "title": "Test 33 - Travel club",
+    "part1": {
+      "instructions": "You are joining a Travel club. Fill out the form. Write short answers (1-5 words) for each message (Bài này nên trả lời dài nhất là 5 từ, viết hoa từ đầu và dấu chấm kêt thúc câu).",
+      "questions": [
+        {
+          "id": "p1_q1",
+          "label": "What is your favorite subject in high school?"
+        },
+        {
+          "id": "p1_q2",
+          "label": "What do you like doing with your friend?"
+        },
+        {
+          "id": "p1_q3",
+          "label": "Where do you wanna go on holiday?"
+        },
+        {
+          "id": "p1_q4",
+          "label": "Why are you interested in travel?"
+        },
+        {
+          "id": "p1_q5",
+          "label": "Tell me a place you often visit?"
+        }
+      ]
+    },
+    "part2": {
+      "instructions": "Now you've become a new member of the Travel club. Fill in the form. Write in sentences. Use 20-30 words (Viết 20 đến 30 từ thôi nhé!).",
+      "prompt": "Why are you interested in travel?"
+    },
+    "part3": {
+      "instructions": "You are speaking to fellow members of the Travel club in a group chat. Respond to them in full sentences (30-40 words per answer).",
+      "chat": [
+        {
+          "id": "p3_q1",
+          "member": "Sam",
+          "message": "Tell me a time you had a trip in bad weather."
+        },
+        {
+          "id": "p3_q2",
+          "member": "Alex",
+          "message": "Traveling a long distance by some means of transportation is not good for the environment? Do you agree?"
+        },
+        {
+          "id": "p3_q3",
+          "member": "Jordan",
+          "message": "What are the most interesting places to visit in your country?"
+        }
+      ]
+    },
+    "part4": {
+      "instructions": "Write a short email (about 50 words) to your friend, and a longer email (120-150 words) to the president of the club.",
+      "scenario": "Dear members, Travel club is planning to encourage tourists to visit an area. We also want visitors coming to our areas to behave politely. Please raise your voice and give some suggestions for this plan.",
+      "informal": {
+        "prompt": "Write a short email to your friend (about 50 words)."
+      },
+      "formal": {
+        "prompt": "Write an email to the president of the club (about 120-150 words)."
+      }
+    }
+  },
+  {
+    "id": 34,
+    "title": "Test 34 - Travel club 2",
+    "part1": {
+      "instructions": "You are joining a Travel club 2. Fill out the form. Write short answers (1-5 words) for each message (Bài này nên trả lời dài nhất là 5 từ, viết hoa từ đầu và dấu chấm kêt thúc câu).",
+      "questions": [
+        {
+          "id": "p1_q1",
+          "label": "Where are you from?"
+        },
+        {
+          "id": "p1_q2",
+          "label": "Where do you live?"
+        },
+        {
+          "id": "p1_q3",
+          "label": "Where would you like to live?"
+        },
+        {
+          "id": "p1_q4",
+          "label": "Where do you like to go in the summer?"
+        },
+        {
+          "id": "p1_q5",
+          "label": "A place you would like to visit in your country?"
+        }
+      ]
+    },
+    "part2": {
+      "instructions": "Now you've become a new member of the Travel club 2. Fill in the form. Write in sentences. Use 20-30 words (Viết 20 đến 30 từ thôi nhé!).",
+      "prompt": "Tell me a place you often visit?"
+    },
+    "part3": {
+      "instructions": "You are speaking to fellow members of the Travel club 2 in a group chat. Respond to them in full sentences (30-40 words per answer).",
+      "chat": [
+        {
+          "id": "p3_q1",
+          "member": "Sam",
+          "message": "What is the most exciting journey you’ve been on?"
+        },
+        {
+          "id": "p3_q2",
+          "member": "Alex",
+          "message": "Can you remember the first time you went on a journey by yourself? What was it like?"
+        },
+        {
+          "id": "p3_q3",
+          "member": "Jordan",
+          "message": "Some people like taking photos when they have vacation. Your opinion?"
+        }
+      ]
+    },
+    "part4": {
+      "instructions": "Write a short email (about 50 words) to your friend, and a longer email (120-150 words) to the president of the club.",
+      "scenario": "Dear members, the club wants members to give their opinions to make it easier for those traveling abroad for the first time and suggest the best way to communicate easily abroad. Please raise your voice and give some suggestions.",
+      "informal": {
+        "prompt": "Write a short email to your friend (about 50 words)."
+      },
+      "formal": {
+        "prompt": "Write an email to the president of the club (about 120-150 words)."
+      }
+    }
+  },
+  {
+    "id": 35,
+    "title": "Test 35 - Walking club",
+    "part1": {
+      "instructions": "You are joining a Walking club. Fill out the form. Write short answers (1-5 words) for each message (Bài này nên trả lời dài nhất là 5 từ, viết hoa từ đầu và dấu chấm kêt thúc câu).",
+      "questions": [
+        {
+          "id": "p1_q1",
+          "label": "How is the weather today?"
+        },
+        {
+          "id": "p1_q2",
+          "label": "What is your favorite season of the year?"
+        },
+        {
+          "id": "p1_q3",
+          "label": "What do you usually do in your free time?"
+        },
+        {
+          "id": "p1_q4",
+          "label": "What is your favorite sport?"
+        },
+        {
+          "id": "p1_q5",
+          "label": "What is a place you would like to visit in your country?"
+        }
+      ]
+    },
+    "part2": {
+      "instructions": "Now you've become a new member of the Walking club. Fill in the form. Write in sentences. Use 20-30 words (Viết 20 đến 30 từ thôi nhé!).",
+      "prompt": "The last time you went for a walk?"
+    },
+    "part3": {
+      "instructions": "You are speaking to fellow members of the Walking club in a group chat. Respond to them in full sentences (30-40 words per answer).",
+      "chat": [
+        {
+          "id": "p3_q1",
+          "member": "Sam",
+          "message": "I often go for a walk. What about you?"
+        },
+        {
+          "id": "p3_q2",
+          "member": "Alex",
+          "message": "I prefer to go to the countryside for a walk. Walking in the city is stressful and noisy. What do you think?"
+        },
+        {
+          "id": "p3_q3",
+          "member": "Jordan",
+          "message": "In the past, people walked long distances as part of their lives. These days, they don't walk anymore. Why?"
+        }
+      ]
+    },
+    "part4": {
+      "instructions": "Write a short email (about 50 words) to your friend, and a longer email (120-150 words) to the president of the club.",
+      "scenario": "Dear members, The club has planned to organize a walk across European countries. There were a few members of the group who suggested it, but it was said that it was unrealistic. Please send us your suggestions and your reasons.",
+      "informal": {
+        "prompt": "Write a short email to your friend (about 50 words)."
+      },
+      "formal": {
+        "prompt": "Write an email to the president of the club (about 120-150 words)."
+      }
+    }
+  },
+  {
+    "id": 36,
+    "title": "Test 36 - Writing club",
+    "part1": {
+      "instructions": "You are joining a Writing club. Fill out the form. Write short answers (1-5 words) for each message (Bài này nên trả lời dài nhất là 5 từ, viết hoa từ đầu và dấu chấm kêt thúc câu).",
+      "questions": [
+        {
+          "id": "p1_q1",
+          "label": "What’s the weather like today?"
+        },
+        {
+          "id": "p1_q2",
+          "label": "How are you?"
+        },
+        {
+          "id": "p1_q3",
+          "label": "What’s your favorite hobby?"
+        },
+        {
+          "id": "p1_q4",
+          "label": "How do you get to work?"
+        },
+        {
+          "id": "p1_q5",
+          "label": "What do you like to do in the evening?"
+        }
+      ]
+    },
+    "part2": {
+      "instructions": "Now you've become a new member of the Writing club. Fill in the form. Write in sentences. Use 20-30 words (Viết 20 đến 30 từ thôi nhé!).",
+      "prompt": "Tell me about the last time you wrote something."
+    },
+    "part3": {
+      "instructions": "You are speaking to fellow members of the Writing club in a group chat. Respond to them in full sentences (30-40 words per answer).",
+      "chat": [
+        {
+          "id": "p3_q1",
+          "member": "Sam",
+          "message": "I usually write at the coffee shop. What about you?"
+        },
+        {
+          "id": "p3_q2",
+          "member": "Alex",
+          "message": "Do you prefer handwriting or typing?"
+        },
+        {
+          "id": "p3_q3",
+          "member": "Jordan",
+          "message": "There are many people who like to write, but only a few become writers. What makes a successful writer?"
+        }
+      ]
+    },
+    "part4": {
+      "instructions": "Write a short email (about 50 words) to your friend, and a longer email (120-150 words) to the president of the club.",
+      "scenario": "Dear members, many people complain that the website is unprofessional and difficult to use. Please send us your suggestions.",
+      "informal": {
+        "prompt": "Write a short email to your friend (about 50 words)."
+      },
+      "formal": {
+        "prompt": "Write an email to the president of the club (about 120-150 words)."
+      }
+    }
+  },
+  {
+    "id": 37,
+    "title": "Test 37 - Fashion club",
+    "part1": {
+      "instructions": "You are joining a Fashion club. Fill out the form. Write short answers (1-5 words) for each message (Bài này nên trả lời dài nhất là 5 từ, viết hoa từ đầu và dấu chấm kêt thúc câu).",
+      "questions": [
+        {
+          "id": "p1_q1",
+          "label": "What are you wearing today?"
+        },
+        {
+          "id": "p1_q2",
+          "label": "How many people are in your family?"
+        },
+        {
+          "id": "p1_q3",
+          "label": "What did you do yesterday?"
+        },
+        {
+          "id": "p1_q4",
+          "label": "How do you go to school?"
+        },
+        {
+          "id": "p1_q5",
+          "label": "What's your hobby?"
+        }
+      ]
+    },
+    "part2": {
+      "instructions": "Now you've become a new member of the Fashion club. Fill in the form. Write in sentences. Use 20-30 words (Viết 20 đến 30 từ thôi nhé!).",
+      "prompt": "When was the last time you went shopping for clothes?"
+    },
+    "part3": {
+      "instructions": "You are speaking to fellow members of the Fashion club in a group chat. Respond to them in full sentences (30-40 words per answer).",
+      "chat": [
+        {
+          "id": "p3_q1",
+          "member": "Sam",
+          "message": "Some people like to buy clothes to try on themselves. Some prefer to buy online. How do you like it and why?"
+        },
+        {
+          "id": "p3_q2",
+          "member": "Alex",
+          "message": "Hi! Why did you decide to join the club?"
+        },
+        {
+          "id": "p3_q3",
+          "member": "Jordan",
+          "message": "Why do people like fashion?"
+        }
+      ]
+    },
+    "part4": {
+      "instructions": "Write a short email (about 50 words) to your friend, and a longer email (120-150 words) to the president of the club.",
+      "scenario": "We are going to hold an event with a famous designer. It needs to be suitable for both the young and the old. Please give your ideas",
+      "informal": {
+        "prompt": "Write a short email to your friend (about 50 words)."
+      },
+      "formal": {
+        "prompt": "Write an email to the president of the club (about 120-150 words)."
+      }
+    }
+  },
+  {
+    "id": 38,
+    "title": "Test 38 - English club 2",
+    "part1": {
+      "instructions": "You are joining a English club 2. Fill out the form. Write short answers (1-5 words) for each message (Bài này nên trả lời dài nhất là 5 từ, viết hoa từ đầu và dấu chấm kêt thúc câu).",
+      "questions": [
+        {
+          "id": "p1_q1",
+          "label": "Where did you go last night?"
+        },
+        {
+          "id": "p1_q2",
+          "label": "What do you like doing with your friend?"
+        },
+        {
+          "id": "p1_q3",
+          "label": "Which sport do you like to play the most?"
+        },
+        {
+          "id": "p1_q4",
+          "label": "What did you do last night?"
+        },
+        {
+          "id": "p1_q5",
+          "label": "Do you like shopping?"
+        }
+      ]
+    },
+    "part2": {
+      "instructions": "Now you've become a new member of the English club 2. Fill in the form. Write in sentences. Use 20-30 words (Viết 20 đến 30 từ thôi nhé!).",
+      "prompt": "When do you usually have to come into contact with English?"
+    },
+    "part3": {
+      "instructions": "You are speaking to fellow members of the English club 2 in a group chat. Respond to them in full sentences (30-40 words per answer).",
+      "chat": [
+        {
+          "id": "p3_q1",
+          "member": "Sam",
+          "message": "Tell me about your English learning experience?"
+        },
+        {
+          "id": "p3_q2",
+          "member": "Alex",
+          "message": "I can read and write, but I can't speak English. Do you have any advice for me?"
+        },
+        {
+          "id": "p3_q3",
+          "member": "Jordan",
+          "message": "English is a popular language in the world. What are your thoughts on this opinion?"
+        }
+      ]
+    },
+    "part4": {
+      "instructions": "Write a short email (about 50 words) to your friend, and a longer email (120-150 words) to the president of the club.",
+      "scenario": "The english club will organize a talk to attract both old and young people. Please give your opinions.",
+      "informal": {
+        "prompt": "Write a short email to your friend (about 50 words)."
+      },
+      "formal": {
+        "prompt": "Write an email to the president of the club (about 120-150 words)."
+      }
+    }
+  },
+  {
+    "id": 39,
+    "title": "Test 39 - English club 3",
+    "part1": {
+      "instructions": "You are joining a English club 3. Fill out the form. Write short answers (1-5 words) for each message (Bài này nên trả lời dài nhất là 5 từ, viết hoa từ đầu và dấu chấm kêt thúc câu).",
+      "questions": [
+        {
+          "id": "p1_q1",
+          "label": "What are you wearing today?"
+        },
+        {
+          "id": "p1_q2",
+          "label": "What language do you speak?"
+        },
+        {
+          "id": "p1_q3",
+          "label": "What is your first language?"
+        },
+        {
+          "id": "p1_q4",
+          "label": "What is your first school?"
+        },
+        {
+          "id": "p1_q5",
+          "label": "What’s the weather like today?"
+        }
+      ]
+    },
+    "part2": {
+      "instructions": "Now you've become a new member of the English club 3. Fill in the form. Write in sentences. Use 20-30 words (Viết 20 đến 30 từ thôi nhé!).",
+      "prompt": "When do you usually use English?"
+    },
+    "part3": {
+      "instructions": "You are speaking to fellow members of the English club 3 in a group chat. Respond to them in full sentences (30-40 words per answer).",
+      "chat": [
+        {
+          "id": "p3_q1",
+          "member": "Sam",
+          "message": "Hi! I heard that you attended a club meeting this afternoon. How do you feel about the meeting?"
+        },
+        {
+          "id": "p3_q2",
+          "member": "Alex",
+          "message": "We have weekly meetings on Saturday afternoons. What topic are you expecting us to talk about?"
+        },
+        {
+          "id": "p3_q3",
+          "member": "Jordan",
+          "message": "We are thinking of holding some English games next week. Can you suggest some?"
+        }
+      ]
+    },
+    "part4": {
+      "instructions": "Write a short email (about 50 words) to your friend, and a longer email (120-150 words) to the president of the club.",
+      "scenario": "Dear Members, we are sorry to inform you that the Talk show has been canceled as the guests are unexpectedly busy. We do not have any back-up plan, so there will be no meeting this week. We will inform you of the reopening of the Talk show as soon as we can. We are sorry for the inconvenience.",
+      "informal": {
+        "prompt": "Write a short email to your friend (about 50 words). Write about your feelings and what you would like to do."
+      },
+      "formal": {
+        "prompt": "Write an email to the president of the club (about 120-150 words). Write about your feelings suggest possible."
+      }
+    }
+  },
+  {
+    "id": 40,
+    "title": "Test 40 - Nature club 2",
+    "part1": {
+      "instructions": "You are joining a Nature club 2. Fill out the form. Write short answers (1-5 words) for each message (Bài này nên trả lời dài nhất là 5 từ, viết hoa từ đầu và dấu chấm kêt thúc câu).",
+      "questions": [
+        {
+          "id": "p1_q1",
+          "label": "What's your favourite time of the year?"
+        },
+        {
+          "id": "p1_q2",
+          "label": "What's the weather like today?"
+        },
+        {
+          "id": "p1_q3",
+          "label": "What's your favourite sport?"
+        },
+        {
+          "id": "p1_q4",
+          "label": "What's your favourite season?"
+        },
+        {
+          "id": "p1_q5",
+          "label": "What's your favourite colour?"
+        }
+      ]
+    },
+    "part2": {
+      "instructions": "Now you've become a new member of the Nature club 2. Fill in the form. Write in sentences. Use 20-30 words (Viết 20 đến 30 từ thôi nhé!).",
+      "prompt": "What do you like doing when you spend time outdoors?"
+    },
+    "part3": {
+      "instructions": "You are speaking to fellow members of the Nature club 2 in a group chat. Respond to them in full sentences (30-40 words per answer).",
+      "chat": [
+        {
+          "id": "p3_q1",
+          "member": "Sam",
+          "message": "I went for a walk in the forest last month and I got lost. Can you tell me about a time when you got lost?"
+        },
+        {
+          "id": "p3_q2",
+          "member": "Alex",
+          "message": "I like visiting the mountains because they are so peaceful. What kinds of places do you like to visit and why?"
+        },
+        {
+          "id": "p3_q3",
+          "member": "Jordan",
+          "message": "Large group holidays in areas of natural beauty are becoming more and more popular. I'm not sure that's a good thing. Do you agree? Why or why not?"
+        }
+      ]
+    },
+    "part4": {
+      "instructions": "Write a short email (about 50 words) to your friend, and a longer email (120-150 words) to the president of the club.",
+      "scenario": "Dear Member, this year we are planning a campaign to encourage young children to think more about nature and the natural world. Unfortunately, a lot of children prefer staying indoors and playing computer games. How can we get them to spend more time outdoors and explore? Please send us your ideas for encouraging young people to become more engaged with nature. Also, what do you think is the best way for us to communicate our messages to them?",
+      "informal": {
+        "prompt": "Write an email to your friend, who is also a member of the club. Write about your ideas and how to communicate them. Write about 50 words."
+      },
+      "formal": {
+        "prompt": "Write an email to the manager of the club. Tell the manager your suggestions for promoting nature to young people and how best to communicate them. Write 120-150 words."
+      }
+    }
+  }
+]

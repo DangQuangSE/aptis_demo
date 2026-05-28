@@ -11,6 +11,7 @@ import { IconBack, IconTimer, IconCheck, IconNext } from "../components/Icons";
 import { shuffleArray, getAudioUrl, formatTime } from "../utils/helpers";
 import HomeDashboard from "../components_gv/HomeDashboard";
 import GrammarPractice from "../components_gv/GrammarPractice";
+import WritingPractice from "../components_writing/WritingPractice";
 
 export default function Page() {
   const [view, setView] = useState("home");
@@ -451,6 +452,10 @@ export default function Page() {
           onSelectListeningPart={(partNum) => {
             startPartPractice(partNum);
           }}
+          onSelectWritingPart={(testNum) => {
+            setSelectedBoDe(testNum);
+            setView("writing-practice");
+          }}
         />
       )}
 
@@ -458,6 +463,13 @@ export default function Page() {
         <GrammarPractice
           boDe={selectedBoDe}
           mode={selectedMode}
+          onExit={() => setView("home")}
+        />
+      )}
+
+      {view === "writing-practice" && (
+        <WritingPractice
+          testId={selectedBoDe}
           onExit={() => setView("home")}
         />
       )}
