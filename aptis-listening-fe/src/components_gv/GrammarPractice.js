@@ -13,6 +13,7 @@ export default function GrammarPractice({ boDe, mode, onExit }) {
   // Navigation
   const [questions, setQuestions] = useState([]); // Array of question nodes for the sidebar
   const [currentIdx, setCurrentIdx] = useState(0);
+  const [sidebarPage, setSidebarPage] = useState(0);
 
   // Answers & Checking State
   const [selectedAnswers, setSelectedAnswers] = useState({});
@@ -62,17 +63,17 @@ export default function GrammarPractice({ boDe, mode, onExit }) {
           }));
           setTimeLeft(25 * 60);
         } else if (mode === "vocab") {
-          // 5 vocabulary parts
+          // 5 vocabulary parts total (1 screen per part)
           nodes = [1, 2, 3, 4, 5].map((partNum) => ({
             id: `v_part_${partNum}`,
             type: "vocab",
             partNum: partNum,
-            displayLabel: `P${partNum}`,
+            displayLabel: `${partNum}`,
             qData: data.vocabulary[`part${partNum}`],
           }));
           setTimeLeft(25 * 60);
         } else if (mode === "full") {
-          // 25 grammar questions + 5 vocabulary parts
+          // 25 grammar questions + 5 vocabulary parts = 30 Qs in total
           const grammarNodes = data.grammar.map((q) => ({
             id: q.id,
             type: "grammar",
@@ -83,7 +84,7 @@ export default function GrammarPractice({ boDe, mode, onExit }) {
             id: `v_part_${partNum}`,
             type: "vocab",
             partNum: partNum,
-            displayLabel: `V${partNum}`,
+            displayLabel: `${25 + partNum}`,
             qData: data.vocabulary[`part${partNum}`],
           }));
           nodes = [...grammarNodes, ...vocabNodes];
@@ -91,6 +92,7 @@ export default function GrammarPractice({ boDe, mode, onExit }) {
         }
 
         setQuestions(nodes);
+        setSidebarPage(0);
         if (nodes.length > 0) {
           setVisitedIds({ [nodes[0].id]: true });
         }
@@ -187,6 +189,12 @@ export default function GrammarPractice({ boDe, mode, onExit }) {
     const targetNode = questions[idx];
     setVisitedIds((prev) => ({ ...prev, [targetNode.id]: true }));
     
+    // Auto Page Sidebar
+    const targetPage = Math.floor(idx / 25);
+    if (targetPage !== sidebarPage) {
+      setSidebarPage(targetPage);
+    }
+    
     // Auto Answer for Grammar
     if (modes.autoShowAnswer && targetNode.type === "grammar") {
       const q = targetNode.qData;
@@ -214,7 +222,7 @@ export default function GrammarPractice({ boDe, mode, onExit }) {
       const unanswered = subIds.some((id) => !selectedAnswers[id]);
       
       if (unanswered) {
-        showToast("Please fill in all the blanks before checking!", "info");
+        showToast("Please select an answer for all items in this part before checking!", "info");
         return;
       }
 
@@ -268,13 +276,53 @@ export default function GrammarPractice({ boDe, mode, onExit }) {
     if (activeNode.type === "grammar") {
       isCheckDisabled = isChecked || !selectedAnswers[activeNode.id];
     } else {
-      // Vocab check is enabled as long as they answered at least one sub question
+      // Vocab check is enabled as long as all 5 items in the current part have been answered
       const partNum = activeNode.partNum;
       const subIds = [0, 1, 2, 3, 4].map((i) => `v_${partNum}_${i}`);
-      const hasAnyAnswer = subIds.some((id) => selectedAnswers[id]);
-      isCheckDisabled = isChecked || !hasAnyAnswer;
+      const allAnswered = subIds.every((id) => selectedAnswers[id]);
+      isCheckDisabled = isChecked || !allAnswered;
     }
   }
+
+  // Calculate checked items and correct items dynamically
+  let totalQuestionsCount = 0;
+  let checkedCount = 0;
+  let correctCount = 0;
+
+  questions.forEach((node) => {
+    if (node.type === "grammar") {
+      totalQuestionsCount += 1;
+      const qId = node.id;
+      const hasAns = !!selectedAnswers[qId];
+      const isGraded = !!checkedResults[qId] || modes.autoShowAnswer;
+      if (isGraded && hasAns) {
+        checkedCount += 1;
+        if (selectedAnswers[qId] === node.qData.correctKey) {
+          correctCount += 1;
+        }
+      }
+    } else {
+      // vocab part has 5 sub-questions
+      totalQuestionsCount += 5;
+      const partNum = node.partNum;
+      const isPartChecked = !!checkedResults[node.id];
+      
+      node.qData.questions.forEach((q, subIdx) => {
+        const ans = selectedAnswers[`v_${partNum}_${subIdx}`];
+        if (ans && isPartChecked) {
+          checkedCount += 1;
+          let expected = "";
+          if (partNum === 1 || partNum === 4) expected = q.synonym;
+          else if (partNum === 2 || partNum === 3) expected = q.word;
+          else if (partNum === 5) expected = q.collocation;
+          
+          if (ans === expected) {
+            correctCount += 1;
+          }
+        }
+      });
+    }
+  });
 
   return (
     <div
@@ -507,183 +555,224 @@ export default function GrammarPractice({ boDe, mode, onExit }) {
         {/* LEFT SIDEBAR: Question Navigation Matrix */}
         <aside
           style={{
-            width: "260px",
-            backgroundColor: "white",
-            border: "2px solid #efeded",
-            borderRadius: "20px",
-            padding: "16px",
-            boxShadow: "0 4px 15px rgba(0,0,0,0.02)",
+            width: "240px",
             flexShrink: 0,
+            backgroundColor: "white",
+            borderRadius: "16px",
+            border: "2px solid #efeded",
+            overflow: "hidden",
             position: "sticky",
             top: modes.hideHeader ? "16px" : "72px",
-            maxHeight: "calc(100vh - 100px)",
-            overflowY: "auto",
+            boxShadow: "0 4px 16px rgba(0,0,0,0.04)",
             transition: "top 0.2s ease",
           }}
         >
-          <h4
-            style={{
-              fontFamily: "'Plus Jakarta Sans', sans-serif",
-              fontWeight: 800,
-              fontSize: "12px",
-              color: "#718096",
-              textTransform: "uppercase",
-              letterSpacing: "0.06em",
-              marginBottom: "12px",
-            }}
-          >
-            Question Map
-          </h4>
-
+          {/* Sidebar header */}
           <div
             style={{
+              padding: "10px 14px",
+              borderBottom: "1.5px solid #efeded",
+              backgroundColor: "#f5f3f3",
+            }}
+          >
+            <h2
+              style={{
+                fontFamily: "'Plus Jakarta Sans', sans-serif",
+                fontWeight: 700,
+                fontSize: "12px",
+                color: "#006590",
+                margin: 0,
+              }}
+            >
+              Question List
+            </h2>
+          </div>
+
+          {/* Question list matrix */}
+          <div
+            style={{
+              padding: "12px",
               display: "grid",
               gridTemplateColumns: "repeat(5, 1fr)",
               gap: "8px",
+              maxHeight: modes.hideHeader ? "calc(100vh - 120px)" : "calc(100vh - 170px)",
+              overflowY: "auto",
             }}
           >
-            {questions.map((node, idx) => {
-              const isSelected = idx === currentIdx;
-              const isVisited = !!visitedIds[node.id];
-              
-              // Answer verification
-              let hasAnswer = false;
-              let isNodeCorrect = null;
+            {questions
+              .slice(sidebarPage * 25, (sidebarPage + 1) * 25)
+              .map((node, displayIdx) => {
+                const idx = sidebarPage * 25 + displayIdx;
+                const isSelected = idx === currentIdx;
+                
+                // Answer verification
+                let hasAnswer = false;
+                let isNodeCorrect = null;
 
-              if (node.type === "grammar") {
-                hasAnswer = !!selectedAnswers[node.id];
-                if (checkedResults[node.id]) {
-                  isNodeCorrect = selectedAnswers[node.id] === node.qData.correctKey;
-                }
-              } else {
-                const subIds = [0, 1, 2, 3, 4].map((i) => `v_${node.partNum}_${i}`);
-                hasAnswer = subIds.some((id) => selectedAnswers[id]);
-                if (checkedResults[node.id]) {
-                  // If vocabulary checked, check if all subanswers are correct
-                  const isAllCorrect = node.qData.questions.every((q, subIdx) => {
-                    const ans = selectedAnswers[`v_${node.partNum}_${subIdx}`];
-                    let expected = "";
-                    if (node.partNum === 1 || node.partNum === 4) expected = q.synonym;
-                    else if (node.partNum === 2 || node.partNum === 3) expected = q.word;
-                    else if (node.partNum === 5) expected = q.collocation;
-                    return ans === expected;
-                  });
-                  isNodeCorrect = isAllCorrect;
-                }
-              }
-
-              // Color styles
-              let btnBg = "white";
-              let btnBorder = "2px solid #efeded";
-              let btnShadow = "0 2px 0 #efeded";
-              let btnColor = "#4a5568";
-
-              if (hasAnswer) {
-                btnBg = "#edf2f7";
-                btnBorder = "2px solid #cbd5e0";
-                btnShadow = "0 2px 0 #cbd5e0";
-                btnColor = "#2d3748";
-              }
-
-              if (isSelected) {
-                btnBg = "#e3f2fd";
-                btnBorder = "2px solid #1877F2";
-                btnShadow = "0 2px 0 #1877F2";
-                btnColor = "#0d47a1";
-              }
-
-              // Checked color code
-              if (isNodeCorrect !== null) {
-                if (isNodeCorrect) {
-                  btnBg = "#e8f5e9";
-                  btnBorder = "2px solid #2e7d32";
-                  btnShadow = "0 2px 0 #2e7d32";
-                  btnColor = "#1b5e20";
+                if (node.type === "grammar") {
+                  hasAnswer = !!selectedAnswers[node.id];
+                  if (checkedResults[node.id] || (modes.autoShowAnswer && selectedAnswers[node.id])) {
+                    isNodeCorrect = selectedAnswers[node.id] === node.qData.correctKey;
+                  }
                 } else {
-                  btnBg = "#ffebee";
-                  btnBorder = "2px solid #c62828";
-                  btnShadow = "0 2px 0 #c62828";
-                  btnColor = "#b71c1c";
+                  const partNum = node.partNum;
+                  const subIds = [0, 1, 2, 3, 4].map((i) => `v_${partNum}_${i}`);
+                  hasAnswer = subIds.some((id) => selectedAnswers[id]);
+                  if (checkedResults[node.id]) {
+                    const isAllCorrect = node.qData.questions.every((q, subIdx) => {
+                      const ans = selectedAnswers[`v_${node.partNum}_${subIdx}`];
+                      let expected = "";
+                      if (node.partNum === 1 || node.partNum === 4) expected = q.synonym;
+                      else if (node.partNum === 2 || node.partNum === 3) expected = q.word;
+                      else if (node.partNum === 5) expected = q.collocation;
+                      return ans === expected;
+                    });
+                    isNodeCorrect = isAllCorrect;
+                  }
                 }
-              }
 
-              return (
-                <button
-                  key={node.id}
-                  onClick={() => jumpToQuestion(idx)}
-                  className="btn-3d"
-                  style={{
-                    height: "36px",
-                    borderRadius: "10px",
-                    background: btnBg,
-                    border: btnBorder,
-                    boxShadow: btnShadow,
-                    color: btnColor,
-                    fontFamily: "'Plus Jakarta Sans', sans-serif",
-                    fontWeight: 700,
-                    fontSize: "12px",
-                    cursor: "pointer",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    position: "relative",
-                  }}
-                  title={node.type === "vocab" ? `Vocabulary Part ${node.partNum}` : `Grammar Q${node.displayLabel}`}
-                >
-                  {node.displayLabel}
-                  {/* Visited dot marker */}
-                  {isVisited && !hasAnswer && isNodeCorrect === null && (
-                    <span
-                      style={{
-                        position: "absolute",
-                        top: "2px",
-                        right: "2px",
-                        width: "4px",
-                        height: "4px",
-                        borderRadius: "50%",
-                        background: "#a0aec0",
-                      }}
-                    />
-                  )}
-                </button>
-              );
-            })}
+                let badgeBg = "#eae8e7",
+                  badgeCol = "#6e7881";
+
+                if (isSelected) {
+                  badgeBg = "#006590";
+                  badgeCol = "white";
+                } else if (isNodeCorrect !== null) {
+                  if (isNodeCorrect) {
+                    badgeBg = "#d4f0b8";
+                    badgeCol = "#2a6000";
+                  } else {
+                    badgeBg = "#ffdad6";
+                    badgeCol = "#93000a";
+                  }
+                } else if (hasAnswer) {
+                  badgeBg = "#e0f4ff";
+                  badgeCol = "#004c6e";
+                }
+
+                const borderStyle = isSelected
+                  ? "2px solid #006590"
+                  : "2px solid transparent";
+
+                return (
+                  <button
+                    key={node.id}
+                    onClick={() => jumpToQuestion(idx)}
+                    className="q-matrix-btn"
+                    title={node.type === "vocab" ? `Vocabulary Part ${node.partNum}` : `Grammar Q${node.displayLabel}`}
+                    style={{
+                      width: "100%",
+                      aspectRatio: "1/1",
+                      borderRadius: "8px",
+                      background: badgeBg,
+                      color: badgeCol,
+                      border: borderStyle,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      fontWeight: 700,
+                      fontSize: "12px",
+                      cursor: "pointer",
+                      transition: "all 0.2s",
+                    }}
+                  >
+                    {node.displayLabel}
+                  </button>
+                );
+              })}
           </div>
 
-          {/* Guide Legend */}
+          {/* Pagination Controls */}
+          {questions.length > 25 && (
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                padding: "8px 12px",
+                borderTop: "1.5px solid #efeded",
+                backgroundColor: "#fbf9f8",
+              }}
+            >
+              <button
+                disabled={sidebarPage === 0}
+                onClick={() => setSidebarPage((p) => Math.max(0, p - 1))}
+                style={{
+                  border: "none",
+                  background: "none",
+                  cursor: sidebarPage === 0 ? "not-allowed" : "pointer",
+                  color: sidebarPage === 0 ? "#ccc" : "#006590",
+                  fontWeight: "bold",
+                  fontSize: "12px",
+                }}
+              >
+                Prev
+              </button>
+              <span
+                style={{
+                  fontSize: "11px",
+                  color: "#6e7881",
+                  fontWeight: 600,
+                }}
+              >
+                {sidebarPage + 1} / {Math.ceil(questions.length / 25)}
+              </span>
+              <button
+                disabled={sidebarPage >= Math.ceil(questions.length / 25) - 1}
+                onClick={() =>
+                  setSidebarPage((p) =>
+                    Math.min(Math.ceil(questions.length / 25) - 1, p + 1)
+                  )
+                }
+                style={{
+                  border: "none",
+                  background: "none",
+                  cursor:
+                    sidebarPage >= Math.ceil(questions.length / 25) - 1
+                      ? "not-allowed"
+                      : "pointer",
+                  color:
+                    sidebarPage >= Math.ceil(questions.length / 25) - 1
+                      ? "#ccc"
+                      : "#006590",
+                  fontWeight: "bold",
+                  fontSize: "12px",
+                }}
+              >
+                Next
+              </button>
+            </div>
+          )}
+
+          {/* Sidebar footer: score summary in English */}
           <div
             style={{
-              marginTop: "24px",
-              borderTop: "1px solid #efeded",
-              paddingTop: "16px",
+              padding: "8px 12px",
+              borderTop: "1.5px solid #efeded",
+              backgroundColor: "#f5f3f3",
               display: "flex",
-              flexDirection: "column",
-              gap: "8px",
-              fontSize: "11px",
-              color: "#718096",
-              fontWeight: 500,
+              justifyContent: "space-between",
+              alignItems: "center",
             }}
           >
-            <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-              <div style={{ width: "12px", height: "12px", borderRadius: "3px", border: "1.5px solid #efeded" }} />
-              <span>Unanswered</span>
-            </div>
-            <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-              <div style={{ width: "12px", height: "12px", borderRadius: "3px", background: "#edf2f7", border: "1.5px solid #cbd5e0" }} />
-              <span>Selected</span>
-            </div>
-            <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-              <div style={{ width: "12px", height: "12px", borderRadius: "3px", background: "#e3f2fd", border: "1.5px solid #1877F2" }} />
-              <span>Currently viewing</span>
-            </div>
-            <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-              <div style={{ width: "12px", height: "12px", borderRadius: "3px", background: "#e8f5e9", border: "1.5px solid #2e7d32" }} />
-              <span>Fully correct</span>
-            </div>
-            <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-              <div style={{ width: "12px", height: "12px", borderRadius: "3px", background: "#ffebee", border: "1.5px solid #c62828" }} />
-              <span>Contains errors</span>
-            </div>
+            <span
+              style={{
+                fontSize: "10px",
+                fontWeight: 600,
+                color: "#6e7881",
+              }}
+            >
+              {checkedCount}/{totalQuestionsCount} checked
+            </span>
+            <span
+              style={{
+                fontSize: "10px",
+                fontWeight: 700,
+                color: "#2a6000",
+              }}
+            >
+              ✓ {correctCount} correct
+            </span>
           </div>
         </aside>
 
@@ -754,7 +843,7 @@ export default function GrammarPractice({ boDe, mode, onExit }) {
                   borderRadius: "999px",
                 }}
               >
-                {activeNode?.type === "grammar" ? "Grammar" : "Vocabulary"}
+                {activeNode?.type === "grammar" ? "Grammar" : `Vocabulary (Part ${activeNode.partNum})`}
               </span>
             </div>
 

@@ -341,7 +341,7 @@ export default function HomeDashboard({ onSelectMode, onStartListening }) {
                     justifyContent: "space-between",
                   }}
                 >
-                  <span>🧩 Vocabulary Practice Only (25 Qs)</span>
+                  <span>🧩 Vocabulary Practice Only (5 Parts)</span>
                   <span style={{ fontSize: "12px", opacity: 0.85 }}>25 mins</span>
                 </button>
 
@@ -365,7 +365,7 @@ export default function HomeDashboard({ onSelectMode, onStartListening }) {
                     justifyContent: "space-between",
                   }}
                 >
-                  <span>🏆 Comprehensive Mock Test (50 Qs)</span>
+                  <span>🏆 Comprehensive Mock Test (30 Qs)</span>
                   <span style={{ fontSize: "12px", opacity: 0.85 }}>50 mins</span>
                 </button>
 

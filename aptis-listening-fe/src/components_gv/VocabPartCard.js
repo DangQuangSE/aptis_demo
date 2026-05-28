@@ -97,6 +97,23 @@ export default function VocabPartCard({
     );
   };
 
+  const getEnglishTitle = (num, title) => {
+    switch (num) {
+      case 1:
+        return "Part 1: Synonym Matching (5 questions)";
+      case 2:
+        return "Part 2: Definition Matching (5 questions)";
+      case 3:
+        return "Part 3: Sentence Completion (5 questions)";
+      case 4:
+        return "Part 4: Synonym Matching (5 questions)";
+      case 5:
+        return "Part 5: Collocation Matching (5 questions)";
+      default:
+        return title;
+    }
+  };
+
   return (
     <div style={{ padding: "20px 24px" }}>
       {/* Title */}
@@ -109,7 +126,7 @@ export default function VocabPartCard({
           marginBottom: "10px",
         }}
       >
-        {partData.title}
+        {getEnglishTitle(partNum, partData.title)}
       </h3>
 
       {/* Instructions */}
@@ -191,7 +208,6 @@ export default function VocabPartCard({
             );
           } else if (partNum === 3) {
             // Sentence Completion
-            // Display sentence with a gap or select box inline
             const sentenceParts = q.blankSentence.split("_______");
 
             return (
