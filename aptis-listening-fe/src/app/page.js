@@ -161,23 +161,33 @@ export default function Page() {
         const raw = await (
           await fetch("/scraped_data/question_14.json")
         ).json();
-        raw.forEach((topic, topicIdx) => {
-          const opts = topic.options.map((o, i) => ({
+        formatted = raw.map((topic, topicIdx) => {
+          const originalOptions = [...topic.options];
+          const shuffledOptions = shuffleArray(originalOptions);
+          const allOptions = shuffledOptions.map((o, i) => ({
             key: ["A", "B", "C", "D", "E", "F"][i],
             text: o,
           }));
-          ["A", "B", "C", "D"].forEach((p, i) => {
-            formatted.push({
-              id: `p2_${topicIdx}_${i}`,
-              partNumber: 2,
-              audioUrl: getAudioUrl(topic.audioUrl),
-              questionText: `What is Person ${p}'s opinion?`,
-              options: opts,
-              correctKey: ["A", "B", "C", "D"][i],
-              transcript: topic.transcript,
-              displayHeading: `Topic ${topicIdx + 1} - Person ${p} (Part 2)`,
-            });
-          });
+          return {
+            id: `p2_${topicIdx}`,
+            partNumber: 2,
+            audioUrl: getAudioUrl(topic.audioUrl),
+            topic: topic.topic || `Topic: Protect the environment`, // Default fallback if no topic
+            transcript: topic.transcript,
+            displayHeading: `Topic ${topicIdx + 1} (Part 2)`,
+            isMultiQuestion: true,
+            subQuestions: ["A", "B", "C", "D"].map((p, i) => {
+              const correctOpinionText = topic.options[i];
+              const shuffledIndex = shuffledOptions.indexOf(correctOpinionText);
+              const ck = ["A", "B", "C", "D", "E", "F"][shuffledIndex >= 0 ? shuffledIndex : 0];
+              return {
+                id: `p2_${topicIdx}_${i}`,
+                questionText: `Person ${i + 1}`,
+                correctKey: ck,
+                options: allOptions,
+              };
+            }),
+          };
         });
       } else if (partNum === 3) {
         const raw = await (

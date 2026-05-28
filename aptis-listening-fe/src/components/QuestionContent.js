@@ -71,7 +71,134 @@ export default function QuestionContent({
 
       {/* Questions & Options */}
       {q.isMultiQuestion ? (
-        q.isStatementMatching ? (
+        q.partNumber === 2 ? (
+          <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+            <p style={{ fontSize: "12px", color: "#3e4850", margin: "0 0 6px 0", lineHeight: 1.5, fontStyle: "italic" }}>
+              Four people are discussing their views on the topic above. Complete the sentences. Use each answer only once. You will not need two of the answers.
+            </p>
+
+
+            <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+              {q.subQuestions.map((subQ, subIdx) => {
+                const subChecked = !!checkedResults[subQ.id] || modes.autoShowAnswer;
+                const subUserAns = modes.autoShowAnswer ? subQ.correctKey : selectedAnswers[subQ.id];
+                const isCorrect = subUserAns === subQ.correctKey;
+
+                let bg = "white",
+                  bdr = "#bdc8d2",
+                  color = "#1b1c1c";
+                if (subUserAns && !subChecked) {
+                  bg = "rgba(28,176,246,0.05)";
+                  bdr = "#006590";
+                }
+                if (subChecked) {
+                  if (isCorrect) {
+                    bg = "rgba(88,204,2,0.08)";
+                    bdr = "#58CC02";
+                    color = "#2a6000";
+                  } else if (subUserAns) {
+                    bg = "rgba(186,26,26,0.06)";
+                    bdr = "#ba1a1a";
+                    color = "#93000a";
+                  } else {
+                    bg = "#fbf9f8";
+                    bdr = "#e4e2e2";
+                  }
+                }
+
+                return (
+                  <div
+                    key={subQ.id}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      gap: "12px",
+                      padding: "8px 12px",
+                      borderRadius: "10px",
+                      border: "1.5px solid #efeded",
+                      background: "#fbf9f8",
+                    }}
+                  >
+                    <span
+                      style={{
+                        fontSize: "13px",
+                        fontWeight: 600,
+                        color: "#1b1c1c",
+                        flexShrink: 0,
+                      }}
+                    >
+                      {subQ.questionText}
+                    </span>
+
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "8px",
+                        flex: 1,
+                        justifyContent: "flex-end",
+                      }}
+                    >
+                      <select
+                        disabled={subChecked}
+                        value={subUserAns || ""}
+                        onChange={(e) => selectOption(e.target.value, subQ.id)}
+                        style={{
+                          padding: "5px 10px",
+                          borderRadius: "8px",
+                          border: `2px solid ${bdr}`,
+                          background: bg,
+                          color: color,
+                          fontFamily: "'Be Vietnam Pro', sans-serif",
+                          fontWeight: 700,
+                          fontSize: "12px",
+                          cursor: subChecked ? "default" : "pointer",
+                          outline: "none",
+                          boxShadow: "0 1px 3px rgba(0,0,0,0.02)",
+                          maxWidth: "100%",
+                          width: "350px",
+                        }}
+                      >
+                        <option value="">-- Select an answer --</option>
+                        {subQ.options.map((opt) => (
+                          <option key={opt.key} value={opt.key}>
+                            {opt.key}. {opt.text}
+                          </option>
+                        ))}
+                      </select>
+
+                      {subChecked &&
+                        (isCorrect ? (
+                          <span style={{ color: "#58CC02", fontSize: "14px", fontWeight: "bold", display: "flex" }}>
+                            ✓
+                          </span>
+                        ) : (
+                          <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+                            <span style={{ color: "#ba1a1a", fontSize: "14px", fontWeight: "bold" }}>
+                              ✗
+                            </span>
+                            <span
+                              style={{
+                                color: "#2a6000",
+                                background: "rgba(88,204,2,0.12)",
+                                padding: "2px 6px",
+                                borderRadius: "6px",
+                                fontSize: "10px",
+                                fontWeight: 700,
+                              }}
+                            >
+                              Correct: {subQ.correctKey}
+                            </span>
+                          </div>
+                        ))}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        ) : q.isStatementMatching ? (
           <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
             <p style={{ fontSize: "12px", color: "#3e4850", margin: "0 0 8px 0", lineHeight: 1.5, fontStyle: "italic" }}>
               Listen to two people discussing potential modifications to the topic above. Read the statements and decide whose opinion matches best: the man's, the woman's, or both. Who expresses which opinion?
@@ -450,33 +577,38 @@ export default function QuestionContent({
 
           {/* Answer Box */}
           {q.isMultiQuestion ? (
-            <div style={{ display: "flex", flexDirection: "column", gap: "6px", marginBottom: "10px" }}>
-              {q.subQuestions.map((subQ, subIdx) => (
-                <div
-                  key={subQ.id}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "6px",
-                    background: "rgba(88,204,2,0.10)",
-                    border: "1.5px solid #58CC02",
-                    borderRadius: "8px",
-                    padding: "6px 10px",
-                    fontSize: "12px",
-                    fontWeight: 600,
-                    color: "#2a6000",
-                  }}
-                >
-                  <span style={{ color: "#58CC02", display: "flex" }}>
-                    <IconCircleCheck />
-                  </span>
-                  Câu {subIdx + 1}: Đáp án đúng:&nbsp;<strong>{
+            <div
+              style={{
+                marginBottom: "10px",
+                display: "flex",
+                alignItems: "center",
+                gap: "6px",
+                background: "rgba(88,204,2,0.10)",
+                border: "1.5px solid #58CC02",
+                borderRadius: "8px",
+                padding: "6px 10px",
+                fontSize: "12px",
+                fontWeight: 600,
+                color: "#2a6000",
+              }}
+            >
+              <span style={{ color: "#58CC02", display: "flex" }}>
+                <IconCircleCheck />
+              </span>
+              Đáp án đúng:&nbsp;
+              <strong>
+                {q.subQuestions
+                  .map((subQ) =>
                     q.isStatementMatching
-                      ? (subQ.correctKey === "A" ? "Man" : subQ.correctKey === "B" ? "Woman" : "Both")
+                      ? subQ.correctKey === "A"
+                        ? "Man"
+                        : subQ.correctKey === "B"
+                        ? "Woman"
+                        : "Both"
                       : subQ.correctKey
-                  }</strong>
-                </div>
-              ))}
+                  )
+                  .join(" - ")}
+              </strong>
             </div>
           ) : (
             <div
