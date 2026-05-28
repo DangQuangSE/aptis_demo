@@ -1,0 +1,698 @@
+{
+  "testNumber": 5,
+  "testName": "Bộ đề 5",
+  "grammar": [
+    {
+      "id": "g_5_1",
+      "questionNumber": 1,
+      "questionText": "She _______ to the market every Saturday.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Goes"
+        },
+        {
+          "key": "B",
+          "text": "Go"
+        },
+        {
+          "key": "C",
+          "text": "Going"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "Goes"
+    },
+    {
+      "id": "g_5_2",
+      "questionNumber": 2,
+      "questionText": "They _______ watching a movie when I arrived.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Were"
+        },
+        {
+          "key": "B",
+          "text": "Was"
+        },
+        {
+          "key": "C",
+          "text": "Are"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "Were"
+    },
+    {
+      "id": "g_5_3",
+      "questionNumber": 3,
+      "questionText": "When I was a teenager, I _______ have purple hair",
+      "options": [
+        {
+          "key": "A",
+          "text": "used to"
+        },
+        {
+          "key": "B",
+          "text": "would"
+        },
+        {
+          "key": "C",
+          "text": "was used to"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "used to"
+    },
+    {
+      "id": "g_5_4",
+      "questionNumber": 4,
+      "questionText": "Person A: I ate too many sweets.\nPerson B: You _______ have done that! Now, you'll have a stomach ache.",
+      "options": [
+        {
+          "key": "A",
+          "text": "shouldn't"
+        },
+        {
+          "key": "B",
+          "text": "couldn't"
+        },
+        {
+          "key": "C",
+          "text": "wouldn't"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "shouldn't"
+    },
+    {
+      "id": "g_5_5",
+      "questionNumber": 5,
+      "questionText": "My older sister always gives me _______ advice when I need help.",
+      "options": [
+        {
+          "key": "A",
+          "text": "-"
+        },
+        {
+          "key": "B",
+          "text": "an"
+        },
+        {
+          "key": "C",
+          "text": "the"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "-"
+    },
+    {
+      "id": "g_5_6",
+      "questionNumber": 6,
+      "questionText": "We spend a lot of time together, _______ We have only known each other for a year.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Although"
+        },
+        {
+          "key": "B",
+          "text": "However"
+        },
+        {
+          "key": "C",
+          "text": "Whereas"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "Although"
+    },
+    {
+      "id": "g_5_7",
+      "questionNumber": 7,
+      "questionText": "He _______ the message before he found out the truth.",
+      "options": [
+        {
+          "key": "A",
+          "text": "had sent"
+        },
+        {
+          "key": "B",
+          "text": "sent"
+        },
+        {
+          "key": "C",
+          "text": "was sending"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "had sent"
+    },
+    {
+      "id": "g_5_8",
+      "questionNumber": 8,
+      "questionText": "Look at the dark clouds! It _________ rain tomorrow.",
+      "options": [
+        {
+          "key": "A",
+          "text": "is going to"
+        },
+        {
+          "key": "B",
+          "text": "will"
+        },
+        {
+          "key": "C",
+          "text": "will be"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "is going to"
+    },
+    {
+      "id": "g_5_9",
+      "questionNumber": 9,
+      "questionText": "I am so thirsty! I don't have _______ water in my bottle.",
+      "options": [
+        {
+          "key": "A",
+          "text": "any"
+        },
+        {
+          "key": "B",
+          "text": "some"
+        },
+        {
+          "key": "C",
+          "text": "the"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "any"
+    },
+    {
+      "id": "g_5_10",
+      "questionNumber": 10,
+      "questionText": "The stranger _______ me that he liked my jacket.",
+      "options": [
+        {
+          "key": "A",
+          "text": "told"
+        },
+        {
+          "key": "B",
+          "text": "said"
+        },
+        {
+          "key": "C",
+          "text": "asked"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "told"
+    },
+    {
+      "id": "g_5_11",
+      "questionNumber": 11,
+      "questionText": "We had _______ a good time at the concert.",
+      "options": [
+        {
+          "key": "A",
+          "text": "such"
+        },
+        {
+          "key": "B",
+          "text": "so"
+        },
+        {
+          "key": "C",
+          "text": "very"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "such"
+    },
+    {
+      "id": "g_5_12",
+      "questionNumber": 12,
+      "questionText": "My brother is _______ older than his girlfriend",
+      "options": [
+        {
+          "key": "A",
+          "text": "much"
+        },
+        {
+          "key": "B",
+          "text": "more"
+        },
+        {
+          "key": "C",
+          "text": "such"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "much"
+    },
+    {
+      "id": "g_5_13",
+      "questionNumber": 13,
+      "questionText": "We are eating out tonight, ______ we?",
+      "options": [
+        {
+          "key": "A",
+          "text": "aren't"
+        },
+        {
+          "key": "B",
+          "text": "don't"
+        },
+        {
+          "key": "C",
+          "text": "doesn't"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "aren't"
+    },
+    {
+      "id": "g_5_14",
+      "questionNumber": 14,
+      "questionText": "The sun was _______ boiling this afternoon.",
+      "options": [
+        {
+          "key": "A",
+          "text": "absolutely"
+        },
+        {
+          "key": "B",
+          "text": "very"
+        },
+        {
+          "key": "C",
+          "text": "really"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "absolutely"
+    },
+    {
+      "id": "g_5_15",
+      "questionNumber": 15,
+      "questionText": "While my dad was making dinner, my mom _______ TV",
+      "options": [
+        {
+          "key": "A",
+          "text": "was watching"
+        },
+        {
+          "key": "B",
+          "text": "has watched"
+        },
+        {
+          "key": "C",
+          "text": "has watching"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "was watching"
+    },
+    {
+      "id": "g_5_16",
+      "questionNumber": 16,
+      "questionText": "We _______ buy our tickets before they sell out",
+      "options": [
+        {
+          "key": "A",
+          "text": "should"
+        },
+        {
+          "key": "B",
+          "text": "can"
+        },
+        {
+          "key": "C",
+          "text": "could"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "should"
+    },
+    {
+      "id": "g_5_17",
+      "questionNumber": 17,
+      "questionText": "If I were taller, I _______ be better at basketball.",
+      "options": [
+        {
+          "key": "A",
+          "text": "would"
+        },
+        {
+          "key": "B",
+          "text": "had"
+        },
+        {
+          "key": "C",
+          "text": "can"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "would"
+    },
+    {
+      "id": "g_5_18",
+      "questionNumber": 18,
+      "questionText": "Jessica asked _______ you would like to eat for dinner",
+      "options": [
+        {
+          "key": "A",
+          "text": "what"
+        },
+        {
+          "key": "B",
+          "text": "whether"
+        },
+        {
+          "key": "C",
+          "text": "if"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "what"
+    },
+    {
+      "id": "g_5_19",
+      "questionNumber": 19,
+      "questionText": "I can't stand _______ in long queues.",
+      "options": [
+        {
+          "key": "A",
+          "text": "waiting"
+        },
+        {
+          "key": "B",
+          "text": "wait"
+        },
+        {
+          "key": "C",
+          "text": "to wait"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "waiting"
+    },
+    {
+      "id": "g_5_20",
+      "questionNumber": 20,
+      "questionText": "You promised _______ me with my homework.",
+      "options": [
+        {
+          "key": "A",
+          "text": "to help"
+        },
+        {
+          "key": "B",
+          "text": "help"
+        },
+        {
+          "key": "C",
+          "text": "helping"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "to help"
+    },
+    {
+      "id": "g_5_21",
+      "questionNumber": 21,
+      "questionText": "You _______ be Sonia's sister. You look just like her!",
+      "options": [
+        {
+          "key": "A",
+          "text": "must"
+        },
+        {
+          "key": "B",
+          "text": "can"
+        },
+        {
+          "key": "C",
+          "text": "may"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "must"
+    },
+    {
+      "id": "g_5_22",
+      "questionNumber": 22,
+      "questionText": "The event _______ broadcasted today in over 50 countries!",
+      "options": [
+        {
+          "key": "A",
+          "text": "is being"
+        },
+        {
+          "key": "B",
+          "text": "is"
+        },
+        {
+          "key": "C",
+          "text": "has been"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "is being"
+    },
+    {
+      "id": "g_5_23",
+      "questionNumber": 23,
+      "questionText": "My cousin takes _______ my aunt. They are quite similar",
+      "options": [
+        {
+          "key": "A",
+          "text": "after"
+        },
+        {
+          "key": "B",
+          "text": "up"
+        },
+        {
+          "key": "C",
+          "text": "off"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "after"
+    },
+    {
+      "id": "g_5_24",
+      "questionNumber": 24,
+      "questionText": "I have _______ spent my allowance this month.",
+      "options": [
+        {
+          "key": "A",
+          "text": "already"
+        },
+        {
+          "key": "B",
+          "text": "never"
+        },
+        {
+          "key": "C",
+          "text": "just"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "already"
+    },
+    {
+      "id": "g_5_25",
+      "questionNumber": 25,
+      "questionText": "I can always depend _______ my mother.",
+      "options": [
+        {
+          "key": "A",
+          "text": "on"
+        },
+        {
+          "key": "B",
+          "text": "in"
+        },
+        {
+          "key": "C",
+          "text": "for"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "on"
+    }
+  ],
+  "vocabulary": {
+    "part1": {
+      "title": "Phần 1: Synonym Matching (Từ đồng nghĩa - 5 câu)",
+      "type": "synonym-matching",
+      "questions": [
+        {
+          "number": 1,
+          "word": "argue",
+          "synonym": "disagree"
+        },
+        {
+          "number": 2,
+          "word": "swap",
+          "synonym": "exchange"
+        },
+        {
+          "number": 3,
+          "word": "collapse",
+          "synonym": "fall"
+        },
+        {
+          "number": 4,
+          "word": "own",
+          "synonym": "possess"
+        },
+        {
+          "number": 5,
+          "word": "occur",
+          "synonym": "happen"
+        }
+      ]
+    },
+    "part2": {
+      "title": "Phần 2: Definition Matching (Định nghĩa từ - 5 câu)",
+      "type": "definition-matching",
+      "questions": [
+        {
+          "number": 1,
+          "definition": "To get better at something is to",
+          "word": "improve"
+        },
+        {
+          "number": 2,
+          "definition": "To choose something is to",
+          "word": "decide"
+        },
+        {
+          "number": 3,
+          "definition": "To get money from work is to",
+          "word": "earn"
+        },
+        {
+          "number": 4,
+          "definition": "To help someone is to",
+          "word": "assist"
+        },
+        {
+          "number": 5,
+          "definition": "To give someone a job is to",
+          "word": "employ"
+        }
+      ]
+    },
+    "part3": {
+      "title": "Phần 3: Sentence Completion (Hoàn thành câu - 5 câu)",
+      "type": "sentence-completion",
+      "questions": [
+        {
+          "number": 1,
+          "sentence": "After it rained, the path was all **[muddy]** and my trainers got dirty.",
+          "blankSentence": "After it rained, the path was all _______ and my trainers got dirty.",
+          "word": "muddy"
+        },
+        {
+          "number": 2,
+          "sentence": "The movie was so **[boring]** that I fell asleep halfway through.",
+          "blankSentence": "The movie was so _______ that I fell asleep halfway through.",
+          "word": "boring"
+        },
+        {
+          "number": 3,
+          "sentence": "Her room was so **[messy]** that she couldn't find anything.",
+          "blankSentence": "Her room was so _______ that she couldn't find anything.",
+          "word": "messy"
+        },
+        {
+          "number": 4,
+          "sentence": "The concert was absolutely **[rewarding]** and worth every penny.",
+          "blankSentence": "The concert was absolutely _______ and worth every penny.",
+          "word": "rewarding"
+        },
+        {
+          "number": 5,
+          "sentence": "The hotel we stayed at was very **[luxurious]** and had an incredible view.",
+          "blankSentence": "The hotel we stayed at was very _______ and had an incredible view.",
+          "word": "luxurious"
+        }
+      ]
+    },
+    "part4": {
+      "title": "Phần 4: Synonym Matching (Từ đồng nghĩa bổ sung - 5 câu)",
+      "type": "synonym-matching-2",
+      "questions": [
+        {
+          "number": 1,
+          "word": "jog",
+          "synonym": "run"
+        },
+        {
+          "number": 2,
+          "word": "inspire",
+          "synonym": "influence"
+        },
+        {
+          "number": 3,
+          "word": "notice",
+          "synonym": "see"
+        },
+        {
+          "number": 4,
+          "word": "utilize",
+          "synonym": "use"
+        },
+        {
+          "number": 5,
+          "word": "conceal",
+          "synonym": "hide"
+        }
+      ]
+    },
+    "part5": {
+      "title": "Phần 5: Collocation Matching (Từ đi kèm phổ biến - 5 câu)",
+      "type": "collocation-matching",
+      "questions": [
+        {
+          "number": 1,
+          "word": "reduced",
+          "collocation": "price",
+          "phrase": "reduced price"
+        },
+        {
+          "number": 2,
+          "word": "sentimental",
+          "collocation": "value",
+          "phrase": "sentimental value"
+        },
+        {
+          "number": 3,
+          "word": "immediate",
+          "collocation": "family",
+          "phrase": "immediate family"
+        },
+        {
+          "number": 4,
+          "word": "white-water",
+          "collocation": "rafting",
+          "phrase": "white-water rafting"
+        },
+        {
+          "number": 5,
+          "word": "semi-precious",
+          "collocation": "jewels",
+          "phrase": "semi-precious jewels"
+        }
+      ]
+    }
+  }
+}

@@ -1,14 +1,14 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "Aptis Listening Practice Hub – Luyện Nghe Aptis Cùng Aptis Keys",
+  title: "Aptis Listening Practice Hub – Practice Listening with Aptis Keys",
   description:
-    "Luyện tập kỹ năng nghe Aptis theo từng phần với hệ thống câu hỏi ngẫu nhiên, phản hồi tức thì và transcript chi tiết.",
+    "Practice Aptis listening skills by parts with dynamic questions, instant feedback, and detailed transcripts.",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="vi" className="h-full">
+    <html lang="en" className="h-full">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

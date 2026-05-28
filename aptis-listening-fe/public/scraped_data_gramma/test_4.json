@@ -1,0 +1,698 @@
+{
+  "testNumber": 4,
+  "testName": "Bộ đề 4",
+  "grammar": [
+    {
+      "id": "g_4_1",
+      "questionNumber": 1,
+      "questionText": "My mom says I _______ clean my bedroom before I go the party.",
+      "options": [
+        {
+          "key": "A",
+          "text": "have to"
+        },
+        {
+          "key": "B",
+          "text": "could"
+        },
+        {
+          "key": "C",
+          "text": "will"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "have to"
+    },
+    {
+      "id": "g_4_2",
+      "questionNumber": 2,
+      "questionText": "I don’t have _______ homework tonight.",
+      "options": [
+        {
+          "key": "A",
+          "text": "any"
+        },
+        {
+          "key": "B",
+          "text": "a"
+        },
+        {
+          "key": "C",
+          "text": "some"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "any"
+    },
+    {
+      "id": "g_4_3",
+      "questionNumber": 3,
+      "questionText": "Jessica’s dog had puppies. _______ so cute.",
+      "options": [
+        {
+          "key": "A",
+          "text": "They’re"
+        },
+        {
+          "key": "B",
+          "text": "There"
+        },
+        {
+          "key": "C",
+          "text": "Their"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "They’re"
+    },
+    {
+      "id": "g_4_4",
+      "questionNumber": 4,
+      "questionText": "When I was a child, I _______ ride a bike.",
+      "options": [
+        {
+          "key": "A",
+          "text": "couldn’t"
+        },
+        {
+          "key": "B",
+          "text": "mustn’t"
+        },
+        {
+          "key": "C",
+          "text": "can’t"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "couldn’t"
+    },
+    {
+      "id": "g_4_5",
+      "questionNumber": 5,
+      "questionText": "Not only was the weather terrible, _______ I also got sick!",
+      "options": [
+        {
+          "key": "A",
+          "text": "but"
+        },
+        {
+          "key": "B",
+          "text": "and"
+        },
+        {
+          "key": "C",
+          "text": "so"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "but"
+    },
+    {
+      "id": "g_4_6",
+      "questionNumber": 6,
+      "questionText": "My avocados went _______ before I had a chance to make guacamole.",
+      "options": [
+        {
+          "key": "A",
+          "text": "off"
+        },
+        {
+          "key": "B",
+          "text": "on"
+        },
+        {
+          "key": "C",
+          "text": "up"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "off"
+    },
+    {
+      "id": "g_4_7",
+      "questionNumber": 7,
+      "questionText": "My school is trying to cut down _______ the amount of paper we use.",
+      "options": [
+        {
+          "key": "A",
+          "text": "on"
+        },
+        {
+          "key": "B",
+          "text": "to"
+        },
+        {
+          "key": "C",
+          "text": "with"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "on"
+    },
+    {
+      "id": "g_4_8",
+      "questionNumber": 8,
+      "questionText": "Paris, _______ is the capital of France, is a very expensive city.",
+      "options": [
+        {
+          "key": "A",
+          "text": "which"
+        },
+        {
+          "key": "B",
+          "text": "who"
+        },
+        {
+          "key": "C",
+          "text": "that"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "which"
+    },
+    {
+      "id": "g_4_9",
+      "questionNumber": 9,
+      "questionText": "I _______ take the bus every day when I was in elementary school.",
+      "options": [
+        {
+          "key": "A",
+          "text": "used to"
+        },
+        {
+          "key": "B",
+          "text": "was used to"
+        },
+        {
+          "key": "C",
+          "text": "got used to"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "used to"
+    },
+    {
+      "id": "g_4_10",
+      "questionNumber": 10,
+      "questionText": "I bought tickets to the opera. I _______ tomorrow night.",
+      "options": [
+        {
+          "key": "A",
+          "text": "am going"
+        },
+        {
+          "key": "B",
+          "text": "will go"
+        },
+        {
+          "key": "C",
+          "text": "go"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "am going"
+    },
+    {
+      "id": "g_4_11",
+      "questionNumber": 11,
+      "questionText": "Did you know an elephant is _______ than a whale?",
+      "options": [
+        {
+          "key": "A",
+          "text": "smaller"
+        },
+        {
+          "key": "B",
+          "text": "small"
+        },
+        {
+          "key": "C",
+          "text": "smallest"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "smaller"
+    },
+    {
+      "id": "g_4_12",
+      "questionNumber": 12,
+      "questionText": "My parents _______ to Canada in 1985.",
+      "options": [
+        {
+          "key": "A",
+          "text": "moved"
+        },
+        {
+          "key": "B",
+          "text": "have moved"
+        },
+        {
+          "key": "C",
+          "text": "had moved"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "moved"
+    },
+    {
+      "id": "g_4_13",
+      "questionNumber": 13,
+      "questionText": "I _______ three languages fluently.",
+      "options": [
+        {
+          "key": "A",
+          "text": "speak"
+        },
+        {
+          "key": "B",
+          "text": "had spoken"
+        },
+        {
+          "key": "C",
+          "text": "am speaking"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "speak"
+    },
+    {
+      "id": "g_4_14",
+      "questionNumber": 14,
+      "questionText": "_______ the traffic light turns green, you must start driving.",
+      "options": [
+        {
+          "key": "A",
+          "text": "When"
+        },
+        {
+          "key": "B",
+          "text": "While"
+        },
+        {
+          "key": "C",
+          "text": "Whereas"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "When"
+    },
+    {
+      "id": "g_4_15",
+      "questionNumber": 15,
+      "questionText": "I love spicy food. _______, my brother does not.",
+      "options": [
+        {
+          "key": "A",
+          "text": "However"
+        },
+        {
+          "key": "B",
+          "text": "Despite"
+        },
+        {
+          "key": "C",
+          "text": "Although"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "However"
+    },
+    {
+      "id": "g_4_16",
+      "questionNumber": 16,
+      "questionText": "I _______ dinner when the doorbell rang.",
+      "options": [
+        {
+          "key": "A",
+          "text": "was making"
+        },
+        {
+          "key": "B",
+          "text": "made"
+        },
+        {
+          "key": "C",
+          "text": "will make"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "was making"
+    },
+    {
+      "id": "g_4_17",
+      "questionNumber": 17,
+      "questionText": "Your mom is 50 years old. _______ she?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Isn’t"
+        },
+        {
+          "key": "B",
+          "text": "Doesn’t"
+        },
+        {
+          "key": "C",
+          "text": "Hasn’t"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "Isn’t"
+    },
+    {
+      "id": "g_4_18",
+      "questionNumber": 18,
+      "questionText": "If I _______ one wish, I would wish for unlimited wishes.",
+      "options": [
+        {
+          "key": "A",
+          "text": "had"
+        },
+        {
+          "key": "B",
+          "text": "have"
+        },
+        {
+          "key": "C",
+          "text": "had had"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "had"
+    },
+    {
+      "id": "g_4_19",
+      "questionNumber": 19,
+      "questionText": "My boss told me _______ home early.",
+      "options": [
+        {
+          "key": "A",
+          "text": "to go"
+        },
+        {
+          "key": "B",
+          "text": "that I go"
+        },
+        {
+          "key": "C",
+          "text": "going"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "to go"
+    },
+    {
+      "id": "g_4_20",
+      "questionNumber": 20,
+      "questionText": "I don’t mind _______ for you after work.",
+      "options": [
+        {
+          "key": "A",
+          "text": "waiting"
+        },
+        {
+          "key": "B",
+          "text": "to wait"
+        },
+        {
+          "key": "C",
+          "text": "for wait"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "waiting"
+    },
+    {
+      "id": "g_4_21",
+      "questionNumber": 21,
+      "questionText": "I _______ you for months! How is everything these days?",
+      "options": [
+        {
+          "key": "A",
+          "text": "haven’t seen"
+        },
+        {
+          "key": "B",
+          "text": "didn’t see"
+        },
+        {
+          "key": "C",
+          "text": "don’t see"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "haven’t seen"
+    },
+    {
+      "id": "g_4_22",
+      "questionNumber": 22,
+      "questionText": "I can’t find _______ car keys anywhere! Where did you put them?",
+      "options": [
+        {
+          "key": "A",
+          "text": "the"
+        },
+        {
+          "key": "B",
+          "text": "a"
+        },
+        {
+          "key": "C",
+          "text": "-"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "the"
+    },
+    {
+      "id": "g_4_23",
+      "questionNumber": 23,
+      "questionText": "I suggest _______ to the cinema on a week night. It’s always busy on the weekend.",
+      "options": [
+        {
+          "key": "A",
+          "text": "going"
+        },
+        {
+          "key": "B",
+          "text": "to go"
+        },
+        {
+          "key": "C",
+          "text": "go"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "going"
+    },
+    {
+      "id": "g_4_24",
+      "questionNumber": 24,
+      "questionText": "My hair _______ by a very expensive hairdresser.",
+      "options": [
+        {
+          "key": "A",
+          "text": "was cut"
+        },
+        {
+          "key": "B",
+          "text": "cut"
+        },
+        {
+          "key": "C",
+          "text": "have cut"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "was cut"
+    },
+    {
+      "id": "g_4_25",
+      "questionNumber": 25,
+      "questionText": "I had a terrible time at the gig. I _______ have gone.",
+      "options": [
+        {
+          "key": "A",
+          "text": "shouldn’t"
+        },
+        {
+          "key": "B",
+          "text": "couldn’t"
+        },
+        {
+          "key": "C",
+          "text": "mustn’t"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "shouldn’t"
+    }
+  ],
+  "vocabulary": {
+    "part1": {
+      "title": "Phần 1: Synonym Matching (Từ đồng nghĩa - 5 câu)",
+      "type": "synonym-matching",
+      "questions": [
+        {
+          "number": 1,
+          "word": "ban",
+          "synonym": "prohibit"
+        },
+        {
+          "number": 2,
+          "word": "give",
+          "synonym": "provide"
+        },
+        {
+          "number": 3,
+          "word": "help",
+          "synonym": "aid"
+        },
+        {
+          "number": 4,
+          "word": "cancel",
+          "synonym": "scrap"
+        },
+        {
+          "number": 5,
+          "word": "loathe",
+          "synonym": "hate"
+        }
+      ]
+    },
+    "part2": {
+      "title": "Phần 2: Definition Matching (Định nghĩa từ - 5 câu)",
+      "type": "definition-matching",
+      "questions": [
+        {
+          "number": 1,
+          "definition": "To purchase something is to",
+          "word": "buy"
+        },
+        {
+          "number": 2,
+          "definition": "To convince someone is to",
+          "word": "persuade"
+        },
+        {
+          "number": 3,
+          "definition": "To delay something is to",
+          "word": "postpone"
+        },
+        {
+          "number": 4,
+          "definition": "To disappear is to",
+          "word": "vanish"
+        },
+        {
+          "number": 5,
+          "definition": "To take out money from a bank machine is to",
+          "word": "withdraw"
+        }
+      ]
+    },
+    "part3": {
+      "title": "Phần 3: Sentence Completion (Hoàn thành câu - 5 câu)",
+      "type": "sentence-completion",
+      "questions": [
+        {
+          "number": 1,
+          "sentence": "It is **[forbidden]** to smoke within 2 metres of the entrance. You could get a fine.",
+          "blankSentence": "It is _______ to smoke within 2 metres of the entrance. You could get a fine.",
+          "word": "forbidden"
+        },
+        {
+          "number": 2,
+          "sentence": "I can’t live in a basement apartment because it has very low **[ceilings]** I am tall, so I would hit my head!",
+          "blankSentence": "I can’t live in a basement apartment because it has very low _______ I am tall, so I would hit my head!",
+          "word": "ceilings"
+        },
+        {
+          "number": 3,
+          "sentence": "I received a mysterious envelope today in my mailbox. There was no **[stamp]** on it.",
+          "blankSentence": "I received a mysterious envelope today in my mailbox. There was no _______ on it.",
+          "word": "stamp"
+        },
+        {
+          "number": 4,
+          "sentence": "In high school, a mean girl started a terrible **[rumour]** about me. Everyone believed it!",
+          "blankSentence": "In high school, a mean girl started a terrible _______ about me. Everyone believed it!",
+          "word": "rumour"
+        },
+        {
+          "number": 5,
+          "sentence": "My little brother is very **[curious]** He always wants to learn new things.",
+          "blankSentence": "My little brother is very _______ He always wants to learn new things.",
+          "word": "curious"
+        }
+      ]
+    },
+    "part4": {
+      "title": "Phần 4: Synonym Matching (Từ đồng nghĩa bổ sung - 5 câu)",
+      "type": "synonym-matching-2",
+      "questions": [
+        {
+          "number": 1,
+          "word": "calm",
+          "synonym": "relaxed"
+        },
+        {
+          "number": 2,
+          "word": "wealthy",
+          "synonym": "rich"
+        },
+        {
+          "number": 3,
+          "word": "strange",
+          "synonym": "weird"
+        },
+        {
+          "number": 4,
+          "word": "thought",
+          "synonym": "idea"
+        },
+        {
+          "number": 5,
+          "word": "device",
+          "synonym": "gadget"
+        }
+      ]
+    },
+    "part5": {
+      "title": "Phần 5: Collocation Matching (Từ đi kèm phổ biến - 5 câu)",
+      "type": "collocation-matching",
+      "questions": [
+        {
+          "number": 1,
+          "word": "scavenger",
+          "collocation": "hunt",
+          "phrase": "scavenger hunt"
+        },
+        {
+          "number": 2,
+          "word": "bad",
+          "collocation": "habit",
+          "phrase": "bad habit"
+        },
+        {
+          "number": 3,
+          "word": "business",
+          "collocation": "office",
+          "phrase": "business office"
+        },
+        {
+          "number": 4,
+          "word": "small",
+          "collocation": "talk",
+          "phrase": "small talk"
+        },
+        {
+          "number": 5,
+          "word": "environmentally",
+          "collocation": "friendly",
+          "phrase": "environmentally friendly"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,698 @@
+{
+  "testNumber": 2,
+  "testName": "Bộ đề 2",
+  "grammar": [
+    {
+      "id": "g_2_1",
+      "questionNumber": 1,
+      "questionText": "I usually _______ breakfast at 7 a.m.",
+      "options": [
+        {
+          "key": "A",
+          "text": "have"
+        },
+        {
+          "key": "B",
+          "text": "has"
+        },
+        {
+          "key": "C",
+          "text": "having"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "have"
+    },
+    {
+      "id": "g_2_2",
+      "questionNumber": 2,
+      "questionText": "She _______ to the market every Sunday.",
+      "options": [
+        {
+          "key": "A",
+          "text": "goes"
+        },
+        {
+          "key": "B",
+          "text": "go"
+        },
+        {
+          "key": "C",
+          "text": "going"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "goes"
+    },
+    {
+      "id": "g_2_3",
+      "questionNumber": 3,
+      "questionText": "They _______ playing football when it started to rain.",
+      "options": [
+        {
+          "key": "A",
+          "text": "were"
+        },
+        {
+          "key": "B",
+          "text": "was"
+        },
+        {
+          "key": "C",
+          "text": "are"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "were"
+    },
+    {
+      "id": "g_2_4",
+      "questionNumber": 4,
+      "questionText": "We _______ in this city since 2010.",
+      "options": [
+        {
+          "key": "A",
+          "text": "have lived"
+        },
+        {
+          "key": "B",
+          "text": "live"
+        },
+        {
+          "key": "C",
+          "text": "lived"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "have lived"
+    },
+    {
+      "id": "g_2_5",
+      "questionNumber": 5,
+      "questionText": "I wish I _______ more free time.",
+      "options": [
+        {
+          "key": "A",
+          "text": "had"
+        },
+        {
+          "key": "B",
+          "text": "have"
+        },
+        {
+          "key": "C",
+          "text": "will have"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "had"
+    },
+    {
+      "id": "g_2_6",
+      "questionNumber": 6,
+      "questionText": "By the time she arrived, we _______ our lunch.",
+      "options": [
+        {
+          "key": "A",
+          "text": "had finished"
+        },
+        {
+          "key": "B",
+          "text": "finished"
+        },
+        {
+          "key": "C",
+          "text": "were finishing"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "had finished"
+    },
+    {
+      "id": "g_2_7",
+      "questionNumber": 7,
+      "questionText": "If it _______ tomorrow, we will stay at home.",
+      "options": [
+        {
+          "key": "A",
+          "text": "rains"
+        },
+        {
+          "key": "B",
+          "text": "rained"
+        },
+        {
+          "key": "C",
+          "text": "rain"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "rains"
+    },
+    {
+      "id": "g_2_8",
+      "questionNumber": 8,
+      "questionText": "He is interested _______ learning Spanish.",
+      "options": [
+        {
+          "key": "A",
+          "text": "in"
+        },
+        {
+          "key": "B",
+          "text": "on"
+        },
+        {
+          "key": "C",
+          "text": "at"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "in"
+    },
+    {
+      "id": "g_2_9",
+      "questionNumber": 9,
+      "questionText": "My mom told me _______ my room before dinner.",
+      "options": [
+        {
+          "key": "A",
+          "text": "to clean"
+        },
+        {
+          "key": "B",
+          "text": "clean"
+        },
+        {
+          "key": "C",
+          "text": "cleaning"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "to clean"
+    },
+    {
+      "id": "g_2_10",
+      "questionNumber": 10,
+      "questionText": "Let’s go out, _______?",
+      "options": [
+        {
+          "key": "A",
+          "text": "shall we"
+        },
+        {
+          "key": "B",
+          "text": "don’t we"
+        },
+        {
+          "key": "C",
+          "text": "will we"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "shall we"
+    },
+    {
+      "id": "g_2_11",
+      "questionNumber": 11,
+      "questionText": "I _______ tennis every weekend when I was a child.",
+      "options": [
+        {
+          "key": "A",
+          "text": "used to play"
+        },
+        {
+          "key": "B",
+          "text": "use to play"
+        },
+        {
+          "key": "C",
+          "text": "was used to play"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "used to play"
+    },
+    {
+      "id": "g_2_12",
+      "questionNumber": 12,
+      "questionText": "He apologized _______ being late.",
+      "options": [
+        {
+          "key": "A",
+          "text": "for"
+        },
+        {
+          "key": "B",
+          "text": "about"
+        },
+        {
+          "key": "C",
+          "text": "of"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "for"
+    },
+    {
+      "id": "g_2_13",
+      "questionNumber": 13,
+      "questionText": "This is the _______ film I’ve ever seen.",
+      "options": [
+        {
+          "key": "A",
+          "text": "best"
+        },
+        {
+          "key": "B",
+          "text": "better"
+        },
+        {
+          "key": "C",
+          "text": "good"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "best"
+    },
+    {
+      "id": "g_2_14",
+      "questionNumber": 14,
+      "questionText": "Neither Tom nor his friends _______ coming today.",
+      "options": [
+        {
+          "key": "A",
+          "text": "are"
+        },
+        {
+          "key": "B",
+          "text": "is"
+        },
+        {
+          "key": "C",
+          "text": "be"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "are"
+    },
+    {
+      "id": "g_2_15",
+      "questionNumber": 15,
+      "questionText": "She prefers reading _______ watching TV.",
+      "options": [
+        {
+          "key": "A",
+          "text": "to"
+        },
+        {
+          "key": "B",
+          "text": "than"
+        },
+        {
+          "key": "C",
+          "text": "over"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "to"
+    },
+    {
+      "id": "g_2_16",
+      "questionNumber": 16,
+      "questionText": "I can’t find my phone. I must _______ it at home.",
+      "options": [
+        {
+          "key": "A",
+          "text": "have left"
+        },
+        {
+          "key": "B",
+          "text": "leave"
+        },
+        {
+          "key": "C",
+          "text": "left"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "have left"
+    },
+    {
+      "id": "g_2_17",
+      "questionNumber": 17,
+      "questionText": "I _______ a shower when the phone rang.",
+      "options": [
+        {
+          "key": "A",
+          "text": "was taking"
+        },
+        {
+          "key": "B",
+          "text": "took"
+        },
+        {
+          "key": "C",
+          "text": "take"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "was taking"
+    },
+    {
+      "id": "g_2_18",
+      "questionNumber": 18,
+      "questionText": "If I _______ rich, I would travel the world.",
+      "options": [
+        {
+          "key": "A",
+          "text": "were"
+        },
+        {
+          "key": "B",
+          "text": "was"
+        },
+        {
+          "key": "C",
+          "text": "am"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "were"
+    },
+    {
+      "id": "g_2_19",
+      "questionNumber": 19,
+      "questionText": "She asked me if I _______ help her with homework.",
+      "options": [
+        {
+          "key": "A",
+          "text": "could"
+        },
+        {
+          "key": "B",
+          "text": "can"
+        },
+        {
+          "key": "C",
+          "text": "will"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "could"
+    },
+    {
+      "id": "g_2_20",
+      "questionNumber": 20,
+      "questionText": "My dad is good _______ fixing cars.",
+      "options": [
+        {
+          "key": "A",
+          "text": "at"
+        },
+        {
+          "key": "B",
+          "text": "on"
+        },
+        {
+          "key": "C",
+          "text": "in"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "at"
+    },
+    {
+      "id": "g_2_21",
+      "questionNumber": 21,
+      "questionText": "The letter _______ yesterday.",
+      "options": [
+        {
+          "key": "A",
+          "text": "was sent"
+        },
+        {
+          "key": "B",
+          "text": "sent"
+        },
+        {
+          "key": "C",
+          "text": "is sending"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "was sent"
+    },
+    {
+      "id": "g_2_22",
+      "questionNumber": 22,
+      "questionText": "I don’t have _______ friends in this city.",
+      "options": [
+        {
+          "key": "A",
+          "text": "many"
+        },
+        {
+          "key": "B",
+          "text": "much"
+        },
+        {
+          "key": "C",
+          "text": "few"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "many"
+    },
+    {
+      "id": "g_2_23",
+      "questionNumber": 23,
+      "questionText": "This bag is _______ heavy for me to carry.",
+      "options": [
+        {
+          "key": "A",
+          "text": "too"
+        },
+        {
+          "key": "B",
+          "text": "so"
+        },
+        {
+          "key": "C",
+          "text": "very"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "too"
+    },
+    {
+      "id": "g_2_24",
+      "questionNumber": 24,
+      "questionText": "While I was sleeping, someone _______ my bike.",
+      "options": [
+        {
+          "key": "A",
+          "text": "stole"
+        },
+        {
+          "key": "B",
+          "text": "was stolen"
+        },
+        {
+          "key": "C",
+          "text": "had stolen"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "stole"
+    },
+    {
+      "id": "g_2_25",
+      "questionNumber": 25,
+      "questionText": "We should leave now, _______ we’ll be late.",
+      "options": [
+        {
+          "key": "A",
+          "text": "otherwise"
+        },
+        {
+          "key": "B",
+          "text": "because"
+        },
+        {
+          "key": "C",
+          "text": "although"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "otherwise"
+    }
+  ],
+  "vocabulary": {
+    "part1": {
+      "title": "Phần 1: Synonym Matching (Từ đồng nghĩa - 5 câu)",
+      "type": "synonym-matching",
+      "questions": [
+        {
+          "number": 1,
+          "word": "assist",
+          "synonym": "help"
+        },
+        {
+          "number": 2,
+          "word": "refuse",
+          "synonym": "decline"
+        },
+        {
+          "number": 3,
+          "word": "begin",
+          "synonym": "start"
+        },
+        {
+          "number": 4,
+          "word": "repair",
+          "synonym": "fix"
+        },
+        {
+          "number": 5,
+          "word": "discover",
+          "synonym": "find"
+        }
+      ]
+    },
+    "part2": {
+      "title": "Phần 2: Definition Matching (Định nghĩa từ - 5 câu)",
+      "type": "definition-matching",
+      "questions": [
+        {
+          "number": 1,
+          "definition": "To look for information on the internet is to",
+          "word": "search"
+        },
+        {
+          "number": 2,
+          "definition": "To pour old glass and paper into special bins is to",
+          "word": "recycle"
+        },
+        {
+          "number": 3,
+          "definition": "To take a package to the correct address is to",
+          "word": "deliver"
+        },
+        {
+          "number": 4,
+          "definition": "To heat water until bubbles appear is to",
+          "word": "boil"
+        },
+        {
+          "number": 5,
+          "definition": "To speak very quietly is to",
+          "word": "whisper"
+        }
+      ]
+    },
+    "part3": {
+      "title": "Phần 3: Sentence Completion (Hoàn thành câu - 5 câu)",
+      "type": "sentence-completion",
+      "questions": [
+        {
+          "number": 1,
+          "sentence": "Our flight is at 8 p.m., so don’t forget your **[passport]** before we leave for the airport.",
+          "blankSentence": "Our flight is at 8 p.m., so don’t forget your _______ before we leave for the airport.",
+          "word": "passport"
+        },
+        {
+          "number": 2,
+          "sentence": "After returning the shoes, the store gave me a **[refund]** within three business days.",
+          "blankSentence": "After returning the shoes, the store gave me a _______ within three business days.",
+          "word": "refund"
+        },
+        {
+          "number": 3,
+          "sentence": "The weather **[forecast]** says it will rain all weekend.",
+          "blankSentence": "The weather _______ says it will rain all weekend.",
+          "word": "forecast"
+        },
+        {
+          "number": 4,
+          "sentence": "Please wear a **[helmet]** when you ride the motorbike.",
+          "blankSentence": "Please wear a _______ when you ride the motorbike.",
+          "word": "helmet"
+        },
+        {
+          "number": 5,
+          "sentence": "The project **[deadline]** is next Friday, so let’s finish the report.",
+          "blankSentence": "The project _______ is next Friday, so let’s finish the report.",
+          "word": "deadline"
+        }
+      ]
+    },
+    "part4": {
+      "title": "Phần 4: Synonym Matching (Từ đồng nghĩa bổ sung - 5 câu)",
+      "type": "synonym-matching-2",
+      "questions": [
+        {
+          "number": 1,
+          "word": "angry",
+          "synonym": "mad"
+        },
+        {
+          "number": 2,
+          "word": "brave",
+          "synonym": "courageous"
+        },
+        {
+          "number": 3,
+          "word": "careful",
+          "synonym": "cautious"
+        },
+        {
+          "number": 4,
+          "word": "funny",
+          "synonym": "humorous"
+        },
+        {
+          "number": 5,
+          "word": "small",
+          "synonym": "tiny"
+        }
+      ]
+    },
+    "part5": {
+      "title": "Phần 5: Collocation Matching (Từ đi kèm phổ biến - 5 câu)",
+      "type": "collocation-matching",
+      "questions": [
+        {
+          "number": 1,
+          "word": "carbon",
+          "collocation": "footprint",
+          "phrase": "carbon footprint"
+        },
+        {
+          "number": 2,
+          "word": "credit",
+          "collocation": "card",
+          "phrase": "credit card"
+        },
+        {
+          "number": 3,
+          "word": "strong",
+          "collocation": "coffee",
+          "phrase": "strong coffee"
+        },
+        {
+          "number": 4,
+          "word": "fast",
+          "collocation": "lane",
+          "phrase": "fast lane"
+        },
+        {
+          "number": 5,
+          "word": "make",
+          "collocation": "decision",
+          "phrase": "make decision"
+        }
+      ]
+    }
+  }
+}

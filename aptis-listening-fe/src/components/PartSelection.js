@@ -35,7 +35,7 @@ const PARTS = [
   },
 ];
 
-export default function PartSelection({ loading, onSelectPart }) {
+export default function PartSelection({ loading, onSelectPart, onBack }) {
   return (
     <main
       className="animate-fade-in"
@@ -83,7 +83,7 @@ export default function PartSelection({ loading, onSelectPart }) {
             lineHeight: 1.15,
           }}
         >
-          Luyện tập theo từng phần
+          Practice by Parts
         </h1>
 
         <p
@@ -95,8 +95,8 @@ export default function PartSelection({ loading, onSelectPart }) {
             lineHeight: 1.6,
           }}
         >
-          Chọn phần bạn muốn bắt đầu ôn luyện. Mỗi phần được thiết kế để
-          nâng cao kỹ năng nghe và ghi điểm tối đa trong đề thi Aptis.
+          Select the part you want to start practicing. Each part is designed to
+          enhance your listening skills and maximize your score in the Aptis exam.
         </p>
       </div>
 
@@ -204,8 +204,30 @@ export default function PartSelection({ loading, onSelectPart }) {
               display: "inline-block",
             }}
           />
-          Đang chuẩn bị đề thi ngẫu nhiên...
+          Preparing random mock test...
         </div>
+      )}
+      {/* Back button */}
+      {onBack && (
+        <button
+          onClick={onBack}
+          disabled={loading}
+          style={{
+            background: "none",
+            border: "none",
+            color: "#006590",
+            fontWeight: 700,
+            fontSize: "14px",
+            cursor: loading ? "not-allowed" : "pointer",
+            marginTop: "20px",
+            textDecoration: "underline",
+            fontFamily: "'Plus Jakarta Sans', sans-serif",
+            transition: "opacity 0.2s",
+            opacity: loading ? 0.5 : 1,
+          }}
+        >
+          ← Back to Home
+        </button>
       )}
     </main>
   );

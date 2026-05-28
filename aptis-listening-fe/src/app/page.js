@@ -9,9 +9,14 @@ import Toast from "../components/Toast";
 import ConfirmModal from "../components/ConfirmModal";
 import { IconBack, IconTimer, IconCheck, IconNext } from "../components/Icons";
 import { shuffleArray, getAudioUrl, formatTime } from "../utils/helpers";
+import HomeDashboard from "../components_gv/HomeDashboard";
+import GrammarPractice from "../components_gv/GrammarPractice";
 
 export default function Page() {
-  const [view, setView] = useState("select-part");
+  const [view, setView] = useState("home");
+  const [dashboardTab, setDashboardTab] = useState("grammar-vocab");
+  const [selectedBoDe, setSelectedBoDe] = useState(1);
+  const [selectedMode, setSelectedMode] = useState("grammar");
   const [loading, setLoading] = useState(false);
   const [hideHeader, setHideHeader] = useState(false);
 
@@ -62,7 +67,7 @@ export default function Page() {
           if (prev <= 1) {
             clearInterval(timerRef.current);
             setTimerActive(false);
-            showToast("Hết giờ làm bài!", "warning", 6000);
+            showToast("Time is up!", "warning", 6000);
             return 0;
           }
           return prev - 1;
@@ -262,7 +267,7 @@ export default function Page() {
       }
     } catch (err) {
       console.error("Load error:", err);
-      showToast("Không thể tải ngân hàng câu hỏi. Vui lòng thử lại!", "error");
+      showToast("Unable to load question bank. Please try again!", "error");
     } finally {
       setLoading(false);
     }
@@ -297,9 +302,9 @@ export default function Page() {
 
   const exitToPartSelection = () => {
     setConfirmModal({
-      message: "Thoát giữa chừng sẽ làm mất tiến trình. Bạn có chắc muốn rời đi?",
-      confirmLabel: "Rời đi",
-      cancelLabel: "Ở lại",
+      message: "Exiting now will lose your current practice progress. Are you sure you want to leave?",
+      confirmLabel: "Leave",
+      cancelLabel: "Stay",
       type: "warning",
       onConfirm: () => {
         setConfirmModal(null);
@@ -307,7 +312,8 @@ export default function Page() {
         setTimerActive(false);
         audioRef.current?.pause();
         setIsPlaying(false);
-        setView("select-part");
+        setDashboardTab("grammar-vocab");
+        setView("home");
         setSelectedPart(null);
         setQuestions([]);
       },
@@ -361,16 +367,17 @@ export default function Page() {
       jumpToQuestion(currentIdx + 1);
     } else {
       setConfirmModal({
-        message: "Chúc mừng! Bạn đã hoàn thành phần thi này.",
-        subMessage: "Quay lại trang chọn phần thi?",
-        confirmLabel: "Quay lại",
-        cancelLabel: "Tiếp tục ôn",
+        message: "Congratulations! You have completed this practice test.",
+        subMessage: "Would you like to return to the selection page?",
+        confirmLabel: "Return",
+        cancelLabel: "Keep reviewing",
         type: "success",
         onConfirm: () => {
           setConfirmModal(null);
           clearInterval(timerRef.current);
           setTimerActive(false);
-          setView("select-part");
+          setDashboardTab("grammar-vocab");
+          setView("home");
           setSelectedPart(null);
           setQuestions([]);
         },
@@ -386,7 +393,7 @@ export default function Page() {
     if (q.isMultiQuestion) {
       const allAnswered = q.subQuestions.every((subQ) => selectedAnswers[subQ.id]);
       if (!allAnswered) {
-        showToast("Vui lòng chọn đáp án cho tất cả các câu hỏi trước khi kiểm tra!", "info");
+        showToast("Please select an answer for all questions before checking!", "info");
         return;
       }
       setCheckedResults((prev) => {
@@ -399,7 +406,7 @@ export default function Page() {
       });
     } else {
       if (!selectedAnswers[q.id]) {
-        showToast("Vui lòng chọn một đáp án trước khi kiểm tra!", "info");
+        showToast("Please select an answer before checking!", "info");
         return;
       }
       setCheckedResults((prev) => ({ ...prev, [q.id]: true }));
@@ -417,7 +424,7 @@ export default function Page() {
     }
     setIsPlaying(false);
     setCurrentTime(0);
-    showToast("Đã trộn ngẫu nhiên danh sách câu hỏi!", "info");
+    showToast("Randomized the question list!", "info");
   };
 
   // ─────────────────────────────────────────────────────────────────────────
@@ -433,8 +440,30 @@ export default function Page() {
         fontFamily: "'Be Vietnam Pro', sans-serif",
       }}
     >
+      {view === "home" && (
+        <HomeDashboard
+          initialTab={dashboardTab}
+          onSelectMode={(boDe, mode) => {
+            setSelectedBoDe(boDe);
+            setSelectedMode(mode);
+            setView("grammar-practice");
+          }}
+          onSelectListeningPart={(partNum) => {
+            startPartPractice(partNum);
+          }}
+        />
+      )}
+
+      {view === "grammar-practice" && (
+        <GrammarPractice
+          boDe={selectedBoDe}
+          mode={selectedMode}
+          onExit={() => setView("home")}
+        />
+      )}
+
       {view === "select-part" && (
-        <PartSelection loading={loading} onSelectPart={startPartPractice} />
+        <PartSelection loading={loading} onSelectPart={startPartPractice} onBack={() => setView("home")} />
       )}
 
       <Toast toast={toast} onClose={() => setToast(null)} />
@@ -466,33 +495,7 @@ export default function Page() {
                 backgroundColor: "#fbf9f8",
               }}
             >
-              {/* Floating restore header button */}
-              {hideHeader && (
-                <button
-                  onClick={() => setHideHeader(false)}
-                  style={{
-                    position: "fixed",
-                    top: "12px",
-                    right: "16px",
-                    zIndex: 999,
-                    background: "rgba(255, 255, 255, 0.85)",
-                    backdropFilter: "blur(4px)",
-                    border: "1.5px solid #efeded",
-                    borderRadius: "8px",
-                    padding: "4px 10px",
-                    cursor: "pointer",
-                    fontSize: "11px",
-                    fontWeight: 700,
-                    color: "#006590",
-                    boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "4px",
-                  }}
-                >
-                  Display Header
-                </button>
-              )}
+
 
               {/* ── Sticky Header ──────────────────────────────────────────────── */}
               {!hideHeader && (
@@ -743,29 +746,7 @@ export default function Page() {
                         Randomize
                       </button>
 
-                      {/* Collapse Header toggle */}
-                      <button
-                        onClick={() => setHideHeader(true)}
-                        style={{
-                          padding: "4px 8px",
-                          background: "none",
-                          border: "none",
-                          cursor: "pointer",
-                          color: "#6e7881",
-                          fontSize: "11px",
-                          fontWeight: 600,
-                          display: "flex",
-                          alignItems: "center",
-                          gap: "3px",
-                          transition: "color 0.2s",
-                        }}
-                        onMouseEnter={(e) => (e.currentTarget.style.color = "#ba1a1a")}
-                        onMouseLeave={(e) => (e.currentTarget.style.color = "#6e7881")}
-                        title="Ẩn header để tối ưu không gian hiển thị"
-                      >
-                        Hide Header
-                      </button>
-                    </div>
+                      </div>
 
                     {/* Timer */}
                     <div
@@ -956,7 +937,6 @@ export default function Page() {
                       Check
                     </button>
 
-                    {/* Next / Finish button */}
                     <button
                       className="btn-3d"
                       onClick={handleNextOrFinish}
@@ -985,6 +965,36 @@ export default function Page() {
                           Next <IconNext />
                         </>
                       )}
+                    </button>
+
+                    {/* Header Collapse / Restore Button */}
+                    <button
+                      onClick={() => setHideHeader(!hideHeader)}
+                      style={{
+                        width: "100%",
+                        padding: "8px 6px",
+                        borderRadius: "10px",
+                        border: "1.5px solid #cbd5e0",
+                        background: "white",
+                        fontFamily: "'Plus Jakarta Sans', sans-serif",
+                        fontWeight: 700,
+                        fontSize: "11px",
+                        color: "#718096",
+                        cursor: "pointer",
+                        marginTop: "28px", // Safe spacing to avoid accidental clicks
+                        transition: "all 0.15s ease",
+                        textAlign: "center",
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.background = "#edf2f7";
+                        e.currentTarget.style.color = "#4a5568";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.background = "white";
+                        e.currentTarget.style.color = "#718096";
+                      }}
+                    >
+                      {hideHeader ? "Show Header" : "Hide Header"}
                     </button>
                   </div>
                 </div>

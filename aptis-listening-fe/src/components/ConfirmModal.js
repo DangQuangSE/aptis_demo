@@ -77,7 +77,7 @@ export default function ConfirmModal({ modal }) {
               boxShadow: "0 4px 0 #bdc8d2",
             }}
           >
-            {modal.cancelLabel || "Hủy"}
+            {modal.cancelLabel || "Cancel"}
           </button>
           <button
             onClick={modal.onConfirm}
@@ -95,7 +95,7 @@ export default function ConfirmModal({ modal }) {
               boxShadow: `0 4px 0 ${confirmShadow}`,
             }}
           >
-            {modal.confirmLabel || "Xác nhận"}
+            {modal.confirmLabel || "Confirm"}
           </button>
         </div>
       </div>

@@ -48,7 +48,7 @@ export default function QuestionContent({
               margin: "0 0 6px 0",
             }}
           >
-            Chủ đề: {q.topic}
+            Topic: {q.topic}
           </h2>
         )}
 
@@ -595,7 +595,7 @@ export default function QuestionContent({
               <span style={{ color: "#58CC02", display: "flex" }}>
                 <IconCircleCheck />
               </span>
-              Đáp án đúng:&nbsp;
+              Correct Answer:&nbsp;
               <strong>
                 {q.subQuestions
                   .map((subQ) =>
@@ -629,7 +629,7 @@ export default function QuestionContent({
               <span style={{ color: "#58CC02", display: "flex" }}>
                 <IconCircleCheck />
               </span>
-              Đáp án đúng:&nbsp;<strong>{q.correctKey}</strong>
+              Correct Answer:&nbsp;<strong>{q.correctKey}</strong>
             </div>
           )}
 
