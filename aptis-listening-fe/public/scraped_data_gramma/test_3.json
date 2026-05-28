@@ -1,0 +1,698 @@
+{
+  "testNumber": 3,
+  "testName": "Bộ đề 3",
+  "grammar": [
+    {
+      "id": "g_3_1",
+      "questionNumber": 1,
+      "questionText": "Last night, I _______ to bed at 10:00 pm.",
+      "options": [
+        {
+          "key": "A",
+          "text": "went"
+        },
+        {
+          "key": "B",
+          "text": "go"
+        },
+        {
+          "key": "C",
+          "text": "have gone"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "went"
+    },
+    {
+      "id": "g_3_2",
+      "questionNumber": 2,
+      "questionText": "I usually drive to work, but today I _______ the bus.",
+      "options": [
+        {
+          "key": "A",
+          "text": "am taking"
+        },
+        {
+          "key": "B",
+          "text": "take"
+        },
+        {
+          "key": "C",
+          "text": "have taken"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "am taking"
+    },
+    {
+      "id": "g_3_3",
+      "questionNumber": 3,
+      "questionText": "Lewis _______ me that he was travelling to Scotland.",
+      "options": [
+        {
+          "key": "A",
+          "text": "told"
+        },
+        {
+          "key": "B",
+          "text": "said"
+        },
+        {
+          "key": "C",
+          "text": "spoke"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "told"
+    },
+    {
+      "id": "g_3_4",
+      "questionNumber": 4,
+      "questionText": "If I _______ to the beach, I will bring snacks.",
+      "options": [
+        {
+          "key": "A",
+          "text": "go"
+        },
+        {
+          "key": "B",
+          "text": "went"
+        },
+        {
+          "key": "C",
+          "text": "had gone"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "go"
+    },
+    {
+      "id": "g_3_5",
+      "questionNumber": 5,
+      "questionText": "I visited Canada in the winter and it was _______ freezing!",
+      "options": [
+        {
+          "key": "A",
+          "text": "absolutely"
+        },
+        {
+          "key": "B",
+          "text": "really"
+        },
+        {
+          "key": "C",
+          "text": "very"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "absolutely"
+    },
+    {
+      "id": "g_3_6",
+      "questionNumber": 6,
+      "questionText": "I _______ dinner before I began studying.",
+      "options": [
+        {
+          "key": "A",
+          "text": "had eaten"
+        },
+        {
+          "key": "B",
+          "text": "ate"
+        },
+        {
+          "key": "C",
+          "text": "was eating"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "had eaten"
+    },
+    {
+      "id": "g_3_7",
+      "questionNumber": 7,
+      "questionText": "He was _______ honest man.",
+      "options": [
+        {
+          "key": "A",
+          "text": "an"
+        },
+        {
+          "key": "B",
+          "text": "a"
+        },
+        {
+          "key": "C",
+          "text": "the"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "an"
+    },
+    {
+      "id": "g_3_8",
+      "questionNumber": 8,
+      "questionText": "Russia is the _______ country in the world.",
+      "options": [
+        {
+          "key": "A",
+          "text": "largest"
+        },
+        {
+          "key": "B",
+          "text": "larger"
+        },
+        {
+          "key": "C",
+          "text": "large"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "largest"
+    },
+    {
+      "id": "g_3_9",
+      "questionNumber": 9,
+      "questionText": "_______ I borrow a pencil, please?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Could"
+        },
+        {
+          "key": "B",
+          "text": "Would"
+        },
+        {
+          "key": "C",
+          "text": "Should"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "Could"
+    },
+    {
+      "id": "g_3_10",
+      "questionNumber": 10,
+      "questionText": "They look nothing alike! They _______ be sisters!",
+      "options": [
+        {
+          "key": "A",
+          "text": "can’t"
+        },
+        {
+          "key": "B",
+          "text": "must"
+        },
+        {
+          "key": "C",
+          "text": "don’t have to"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "can’t"
+    },
+    {
+      "id": "g_3_11",
+      "questionNumber": 11,
+      "questionText": "Romeo and Juliet _______ by William Shakespeare.",
+      "options": [
+        {
+          "key": "A",
+          "text": "was written"
+        },
+        {
+          "key": "B",
+          "text": "wrote"
+        },
+        {
+          "key": "C",
+          "text": "had been written"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "was written"
+    },
+    {
+      "id": "g_3_12",
+      "questionNumber": 12,
+      "questionText": "I don’t have _______ money for the ticket.",
+      "options": [
+        {
+          "key": "A",
+          "text": "enough"
+        },
+        {
+          "key": "B",
+          "text": "much"
+        },
+        {
+          "key": "C",
+          "text": "too"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "enough"
+    },
+    {
+      "id": "g_3_13",
+      "questionNumber": 13,
+      "questionText": "_______ of my house mates is at home.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Neither"
+        },
+        {
+          "key": "B",
+          "text": "Both"
+        },
+        {
+          "key": "C",
+          "text": "Either"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "Neither"
+    },
+    {
+      "id": "g_3_14",
+      "questionNumber": 14,
+      "questionText": "I live _______ Peter Street.",
+      "options": [
+        {
+          "key": "A",
+          "text": "on"
+        },
+        {
+          "key": "B",
+          "text": "in"
+        },
+        {
+          "key": "C",
+          "text": "at"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "on"
+    },
+    {
+      "id": "g_3_15",
+      "questionNumber": 15,
+      "questionText": "My best friend _______ 19 years old.",
+      "options": [
+        {
+          "key": "A",
+          "text": "is"
+        },
+        {
+          "key": "B",
+          "text": "has"
+        },
+        {
+          "key": "C",
+          "text": "be"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "is"
+    },
+    {
+      "id": "g_3_16",
+      "questionNumber": 16,
+      "questionText": "Greece, _______ is in Europe, has many beautiful beaches.",
+      "options": [
+        {
+          "key": "A",
+          "text": "which"
+        },
+        {
+          "key": "B",
+          "text": "who"
+        },
+        {
+          "key": "C",
+          "text": "that"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "which"
+    },
+    {
+      "id": "g_3_17",
+      "questionNumber": 17,
+      "questionText": "Thanks for the invitation! I _______ come to the party tonight.",
+      "options": [
+        {
+          "key": "A",
+          "text": "will"
+        },
+        {
+          "key": "B",
+          "text": "would"
+        },
+        {
+          "key": "C",
+          "text": "could"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "will"
+    },
+    {
+      "id": "g_3_18",
+      "questionNumber": 18,
+      "questionText": "My mom has worked at her job _______ she was 20 years old.",
+      "options": [
+        {
+          "key": "A",
+          "text": "since"
+        },
+        {
+          "key": "B",
+          "text": "when"
+        },
+        {
+          "key": "C",
+          "text": "for"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "since"
+    },
+    {
+      "id": "g_3_19",
+      "questionNumber": 19,
+      "questionText": "I didn’t like the taste of tofu at first, but I _______ to eating it.",
+      "options": [
+        {
+          "key": "A",
+          "text": "got used"
+        },
+        {
+          "key": "B",
+          "text": "used"
+        },
+        {
+          "key": "C",
+          "text": "was used"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "got used"
+    },
+    {
+      "id": "g_3_20",
+      "questionNumber": 20,
+      "questionText": "When I was younger, I _______ spend a lot of time on the phone.",
+      "options": [
+        {
+          "key": "A",
+          "text": "would"
+        },
+        {
+          "key": "B",
+          "text": "did"
+        },
+        {
+          "key": "C",
+          "text": "had"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "would"
+    },
+    {
+      "id": "g_3_21",
+      "questionNumber": 21,
+      "questionText": "If he _______ politely, I wouldn’t be so upset now.",
+      "options": [
+        {
+          "key": "A",
+          "text": "had asked"
+        },
+        {
+          "key": "B",
+          "text": "would ask"
+        },
+        {
+          "key": "C",
+          "text": "hadn’t asked"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "had asked"
+    },
+    {
+      "id": "g_3_22",
+      "questionNumber": 22,
+      "questionText": "At this time next week, I will _______ through South America.",
+      "options": [
+        {
+          "key": "A",
+          "text": "be travelling"
+        },
+        {
+          "key": "B",
+          "text": "have travelled"
+        },
+        {
+          "key": "C",
+          "text": "travel"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "be travelling"
+    },
+    {
+      "id": "g_3_23",
+      "questionNumber": 23,
+      "questionText": "It got quite chilly. I _______ have brought a sweater.",
+      "options": [
+        {
+          "key": "A",
+          "text": "should"
+        },
+        {
+          "key": "B",
+          "text": "could"
+        },
+        {
+          "key": "C",
+          "text": "would"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "should"
+    },
+    {
+      "id": "g_3_24",
+      "questionNumber": 24,
+      "questionText": "Excuse me, I would like to know what _______.",
+      "options": [
+        {
+          "key": "A",
+          "text": "the price is"
+        },
+        {
+          "key": "B",
+          "text": "is the price"
+        },
+        {
+          "key": "C",
+          "text": "price"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "the price is"
+    },
+    {
+      "id": "g_3_25",
+      "questionNumber": 25,
+      "questionText": "My parents won’t _______ me go bungee-jumping because they think it’s dangerous.",
+      "options": [
+        {
+          "key": "A",
+          "text": "let"
+        },
+        {
+          "key": "B",
+          "text": "make"
+        },
+        {
+          "key": "C",
+          "text": "allow"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "let"
+    }
+  ],
+  "vocabulary": {
+    "part1": {
+      "title": "Phần 1: Synonym Matching (Từ đồng nghĩa - 5 câu)",
+      "type": "synonym-matching",
+      "questions": [
+        {
+          "number": 1,
+          "word": "conceal",
+          "synonym": "hide"
+        },
+        {
+          "number": 2,
+          "word": "drag",
+          "synonym": "pull"
+        },
+        {
+          "number": 3,
+          "word": "fight",
+          "synonym": "argue"
+        },
+        {
+          "number": 4,
+          "word": "jump",
+          "synonym": "hop"
+        },
+        {
+          "number": 5,
+          "word": "try",
+          "synonym": "attempt"
+        }
+      ]
+    },
+    "part2": {
+      "title": "Phần 2: Definition Matching (Định nghĩa từ - 5 câu)",
+      "type": "definition-matching",
+      "questions": [
+        {
+          "number": 1,
+          "definition": "To give someone something temporarily is to",
+          "word": "lend"
+        },
+        {
+          "number": 2,
+          "definition": "To watch someone’s children is to",
+          "word": "babysit"
+        },
+        {
+          "number": 3,
+          "definition": "To jump head first into water is to",
+          "word": "dive"
+        },
+        {
+          "number": 4,
+          "definition": "To cover a gift with paper is to",
+          "word": "wrap"
+        },
+        {
+          "number": 5,
+          "definition": "To plan how to use money is to",
+          "word": "budget"
+        }
+      ]
+    },
+    "part3": {
+      "title": "Phần 3: Sentence Completion (Hoàn thành câu - 5 câu)",
+      "type": "sentence-completion",
+      "questions": [
+        {
+          "number": 1,
+          "sentence": "I had to **[skip]** lunch in order to finish my project, so now I am really hungry.",
+          "blankSentence": "I had to _______ lunch in order to finish my project, so now I am really hungry.",
+          "word": "skip"
+        },
+        {
+          "number": 2,
+          "sentence": "Last weekend, my mom planted beautiful sunflowers in our **[garden]** .",
+          "blankSentence": "Last weekend, my mom planted beautiful sunflowers in our _______ .",
+          "word": "garden"
+        },
+        {
+          "number": 3,
+          "sentence": "I can’t believe the new iPhone is almost $1000! I’ll need to save up because I can’t **[afford]** that!",
+          "blankSentence": "I can’t believe the new iPhone is almost $1000! I’ll need to save up because I can’t _______ that!",
+          "word": "afford"
+        },
+        {
+          "number": 4,
+          "sentence": "My upstairs neighbours are so **[noisy]** I can hear all of their conversations.",
+          "blankSentence": "My upstairs neighbours are so _______ I can hear all of their conversations.",
+          "word": "noisy"
+        },
+        {
+          "number": 5,
+          "sentence": "I think multiple choice questions are really **[tricky]** They are difficult to answer.",
+          "blankSentence": "I think multiple choice questions are really _______ They are difficult to answer.",
+          "word": "tricky"
+        }
+      ]
+    },
+    "part4": {
+      "title": "Phần 4: Synonym Matching (Từ đồng nghĩa bổ sung - 5 câu)",
+      "type": "synonym-matching-2",
+      "questions": [
+        {
+          "number": 1,
+          "word": "tired",
+          "synonym": "sleepy"
+        },
+        {
+          "number": 2,
+          "word": "remote",
+          "synonym": "distant"
+        },
+        {
+          "number": 3,
+          "word": "messy",
+          "synonym": "disorganized"
+        },
+        {
+          "number": 4,
+          "word": "easy",
+          "synonym": "simple"
+        },
+        {
+          "number": 5,
+          "word": "complicated",
+          "synonym": "complex"
+        }
+      ]
+    },
+    "part5": {
+      "title": "Phần 5: Collocation Matching (Từ đi kèm phổ biến - 5 câu)",
+      "type": "collocation-matching",
+      "questions": [
+        {
+          "number": 1,
+          "word": "minimum",
+          "collocation": "wage",
+          "phrase": "minimum wage"
+        },
+        {
+          "number": 2,
+          "word": "hard",
+          "collocation": "work",
+          "phrase": "hard work"
+        },
+        {
+          "number": 3,
+          "word": "pay",
+          "collocation": "raise",
+          "phrase": "pay raise"
+        },
+        {
+          "number": 4,
+          "word": "thick",
+          "collocation": "accent",
+          "phrase": "thick accent"
+        },
+        {
+          "number": 5,
+          "word": "first",
+          "collocation": "class",
+          "phrase": "first class"
+        }
+      ]
+    }
+  }
+}

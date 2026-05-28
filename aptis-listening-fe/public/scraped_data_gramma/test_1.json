@@ -1,0 +1,698 @@
+{
+  "testNumber": 1,
+  "testName": "Bộ đề 1",
+  "grammar": [
+    {
+      "id": "g_1_1",
+      "questionNumber": 1,
+      "questionText": "If I _______ younger, I would have studied abroad.",
+      "options": [
+        {
+          "key": "A",
+          "text": "were"
+        },
+        {
+          "key": "B",
+          "text": "am"
+        },
+        {
+          "key": "C",
+          "text": "have been"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "were"
+    },
+    {
+      "id": "g_1_2",
+      "questionNumber": 2,
+      "questionText": "My teaching schedule is _______ than last year.",
+      "options": [
+        {
+          "key": "A",
+          "text": "easier"
+        },
+        {
+          "key": "B",
+          "text": "more easy"
+        },
+        {
+          "key": "C",
+          "text": "easiest"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "easier"
+    },
+    {
+      "id": "g_1_3",
+      "questionNumber": 3,
+      "questionText": "The school _______ I work is nearby.",
+      "options": [
+        {
+          "key": "A",
+          "text": "where"
+        },
+        {
+          "key": "B",
+          "text": "that"
+        },
+        {
+          "key": "C",
+          "text": "whose"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "where"
+    },
+    {
+      "id": "g_1_4",
+      "questionNumber": 4,
+      "questionText": "Over summer holidays, I got used to _______ up late.",
+      "options": [
+        {
+          "key": "A",
+          "text": "waking"
+        },
+        {
+          "key": "B",
+          "text": "be woken"
+        },
+        {
+          "key": "C",
+          "text": "wake"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "waking"
+    },
+    {
+      "id": "g_1_5",
+      "questionNumber": 5,
+      "questionText": "The principal, _______ car is red, got a parking ticket.",
+      "options": [
+        {
+          "key": "A",
+          "text": "whose"
+        },
+        {
+          "key": "B",
+          "text": "who"
+        },
+        {
+          "key": "C",
+          "text": "that"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "whose"
+    },
+    {
+      "id": "g_1_6",
+      "questionNumber": 6,
+      "questionText": "Our class photo will be _______ on Friday.",
+      "options": [
+        {
+          "key": "A",
+          "text": "taken"
+        },
+        {
+          "key": "B",
+          "text": "done"
+        },
+        {
+          "key": "C",
+          "text": "made"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "taken"
+    },
+    {
+      "id": "g_1_7",
+      "questionNumber": 7,
+      "questionText": "Sherry _______ in 3 different countries so far.",
+      "options": [
+        {
+          "key": "A",
+          "text": "has taught"
+        },
+        {
+          "key": "B",
+          "text": "was teaching"
+        },
+        {
+          "key": "C",
+          "text": "teaches"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "has taught"
+    },
+    {
+      "id": "g_1_8",
+      "questionNumber": 8,
+      "questionText": "Literature _______ in our English classes this semester.",
+      "options": [
+        {
+          "key": "A",
+          "text": "is being studied"
+        },
+        {
+          "key": "B",
+          "text": "is studied"
+        },
+        {
+          "key": "C",
+          "text": "studied"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "is being studied"
+    },
+    {
+      "id": "g_1_9",
+      "questionNumber": 9,
+      "questionText": "I encourage my students _______ their best.",
+      "options": [
+        {
+          "key": "A",
+          "text": "to do"
+        },
+        {
+          "key": "B",
+          "text": "doing"
+        },
+        {
+          "key": "C",
+          "text": "do"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "to do"
+    },
+    {
+      "id": "g_1_10",
+      "questionNumber": 10,
+      "questionText": "Last year, we _______ on a trip to a museum.",
+      "options": [
+        {
+          "key": "A",
+          "text": "went"
+        },
+        {
+          "key": "B",
+          "text": "have gone"
+        },
+        {
+          "key": "C",
+          "text": "have been"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "went"
+    },
+    {
+      "id": "g_1_11",
+      "questionNumber": 11,
+      "questionText": "By the end of June, I _______ my training course.",
+      "options": [
+        {
+          "key": "A",
+          "text": "will complete"
+        },
+        {
+          "key": "B",
+          "text": "will have complete"
+        },
+        {
+          "key": "C",
+          "text": "will be completing"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "will complete"
+    },
+    {
+      "id": "g_1_12",
+      "questionNumber": 12,
+      "questionText": "The students in my class are _______ kind.",
+      "options": [
+        {
+          "key": "A",
+          "text": "so"
+        },
+        {
+          "key": "B",
+          "text": "such"
+        },
+        {
+          "key": "C",
+          "text": "too"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "so"
+    },
+    {
+      "id": "g_1_13",
+      "questionNumber": 13,
+      "questionText": "The tutors _______ me that teaching is a rewarding job.",
+      "options": [
+        {
+          "key": "A",
+          "text": "told"
+        },
+        {
+          "key": "B",
+          "text": "asked"
+        },
+        {
+          "key": "C",
+          "text": "said"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "told"
+    },
+    {
+      "id": "g_1_14",
+      "questionNumber": 14,
+      "questionText": "_______ I finish my lesson plans, I cannot go to the cinema with my friends.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Unless"
+        },
+        {
+          "key": "B",
+          "text": "If"
+        },
+        {
+          "key": "C",
+          "text": "When"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "Unless"
+    },
+    {
+      "id": "g_1_15",
+      "questionNumber": 15,
+      "questionText": "Students _______ use mobile phones in class. It is forbidden.",
+      "options": [
+        {
+          "key": "A",
+          "text": "mustn’t"
+        },
+        {
+          "key": "B",
+          "text": "don’t have to"
+        },
+        {
+          "key": "C",
+          "text": "couldn’t"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "mustn’t"
+    },
+    {
+      "id": "g_1_16",
+      "questionNumber": 16,
+      "questionText": "King’s College is _______ Beverly Street.",
+      "options": [
+        {
+          "key": "A",
+          "text": "on"
+        },
+        {
+          "key": "B",
+          "text": "in"
+        },
+        {
+          "key": "C",
+          "text": "at"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "on"
+    },
+    {
+      "id": "g_1_17",
+      "questionNumber": 17,
+      "questionText": "I always try to _______ up with new activities for lessons.",
+      "options": [
+        {
+          "key": "A",
+          "text": "come"
+        },
+        {
+          "key": "B",
+          "text": "put"
+        },
+        {
+          "key": "C",
+          "text": "get"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "come"
+    },
+    {
+      "id": "g_1_18",
+      "questionNumber": 18,
+      "questionText": "I wish I _______ teach abroad next semester.",
+      "options": [
+        {
+          "key": "A",
+          "text": "could"
+        },
+        {
+          "key": "B",
+          "text": "could have"
+        },
+        {
+          "key": "C",
+          "text": "can"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "could"
+    },
+    {
+      "id": "g_1_19",
+      "questionNumber": 19,
+      "questionText": "My students are learning _______ to pronounce the sound /r/ today.",
+      "options": [
+        {
+          "key": "A",
+          "text": "how"
+        },
+        {
+          "key": "B",
+          "text": "which"
+        },
+        {
+          "key": "C",
+          "text": "what"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "how"
+    },
+    {
+      "id": "g_1_20",
+      "questionNumber": 20,
+      "questionText": "I _______ my students drink water in class.",
+      "options": [
+        {
+          "key": "A",
+          "text": "let"
+        },
+        {
+          "key": "B",
+          "text": "make"
+        },
+        {
+          "key": "C",
+          "text": "get"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "let"
+    },
+    {
+      "id": "g_1_21",
+      "questionNumber": 21,
+      "questionText": "They should practice _______ with podcasts.",
+      "options": [
+        {
+          "key": "A",
+          "text": "listening"
+        },
+        {
+          "key": "B",
+          "text": "to listen"
+        },
+        {
+          "key": "C",
+          "text": "listen"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "listening"
+    },
+    {
+      "id": "g_1_22",
+      "questionNumber": 22,
+      "questionText": "My mentor always gives me _______ good advice.",
+      "options": [
+        {
+          "key": "A",
+          "text": "-"
+        },
+        {
+          "key": "B",
+          "text": "a"
+        },
+        {
+          "key": "C",
+          "text": "the"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "-"
+    },
+    {
+      "id": "g_1_23",
+      "questionNumber": 23,
+      "questionText": "It is _______ a great passion of mine.",
+      "options": [
+        {
+          "key": "A",
+          "text": "Teaching"
+        },
+        {
+          "key": "B",
+          "text": "To teach"
+        },
+        {
+          "key": "C",
+          "text": "Having taught"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "Teaching"
+    },
+    {
+      "id": "g_1_24",
+      "questionNumber": 24,
+      "questionText": "If I am still feeling sick tomorrow, I _______ the substitute teacher.",
+      "options": [
+        {
+          "key": "A",
+          "text": "will call"
+        },
+        {
+          "key": "B",
+          "text": "would call"
+        },
+        {
+          "key": "C",
+          "text": "call"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "will call"
+    },
+    {
+      "id": "g_1_25",
+      "questionNumber": 25,
+      "questionText": "The teacher gave her pupils _______ homework.",
+      "options": [
+        {
+          "key": "A",
+          "text": "some"
+        },
+        {
+          "key": "B",
+          "text": "much"
+        },
+        {
+          "key": "C",
+          "text": "many"
+        }
+      ],
+      "correctKey": "A",
+      "correctAnswer": "some"
+    }
+  ],
+  "vocabulary": {
+    "part1": {
+      "title": "Phần 1: Synonym Matching (Từ đồng nghĩa - 5 câu)",
+      "type": "synonym-matching",
+      "questions": [
+        {
+          "number": 1,
+          "word": "demonstrate",
+          "synonym": "show"
+        },
+        {
+          "number": 2,
+          "word": "comprehend",
+          "synonym": "understand"
+        },
+        {
+          "number": 3,
+          "word": "encourage",
+          "synonym": "inspire"
+        },
+        {
+          "number": 4,
+          "word": "direct",
+          "synonym": "command"
+        },
+        {
+          "number": 5,
+          "word": "create",
+          "synonym": "make"
+        }
+      ]
+    },
+    "part2": {
+      "title": "Phần 2: Definition Matching (Định nghĩa từ - 5 câu)",
+      "type": "definition-matching",
+      "questions": [
+        {
+          "number": 1,
+          "definition": "To gain knowledge is to…",
+          "word": "learn"
+        },
+        {
+          "number": 2,
+          "definition": "To assess a student’s performance is to…",
+          "word": "evaluate"
+        },
+        {
+          "number": 3,
+          "definition": "To look over something carefully is to…",
+          "word": "review"
+        },
+        {
+          "number": 4,
+          "definition": "To put things in their correct place is to…",
+          "word": "tidy"
+        },
+        {
+          "number": 5,
+          "definition": "To exchange information by speaking is to…",
+          "word": "communicate"
+        }
+      ]
+    },
+    "part3": {
+      "title": "Phần 3: Sentence Completion (Hoàn thành câu - 5 câu)",
+      "type": "sentence-completion",
+      "questions": [
+        {
+          "number": 1,
+          "sentence": "In the fall, we are implementing a new English-language **[curriculum]** at our school.",
+          "blankSentence": "In the fall, we are implementing a new English-language _______ at our school.",
+          "word": "curriculum"
+        },
+        {
+          "number": 2,
+          "sentence": "Every Friday, the students take a short **[quiz]** to see if they understood the week’s concepts.",
+          "blankSentence": "Every Friday, the students take a short _______ to see if they understood the week’s concepts.",
+          "word": "quiz"
+        },
+        {
+          "number": 3,
+          "sentence": "It is important for kids to play in team sports so that they learn **[cooperation]** .",
+          "blankSentence": "It is important for kids to play in team sports so that they learn _______ .",
+          "word": "cooperation"
+        },
+        {
+          "number": 4,
+          "sentence": "The new technology course does not have a **[textbook]** . All material is online.",
+          "blankSentence": "The new technology course does not have a _______ . All material is online.",
+          "word": "textbook"
+        },
+        {
+          "number": 5,
+          "sentence": "We have a lot of **[puzzles]** on the shelves for indoor activities when it rains.",
+          "blankSentence": "We have a lot of _______ on the shelves for indoor activities when it rains.",
+          "word": "puzzles"
+        }
+      ]
+    },
+    "part4": {
+      "title": "Phần 4: Synonym Matching (Từ đồng nghĩa bổ sung - 5 câu)",
+      "type": "synonym-matching-2",
+      "questions": [
+        {
+          "number": 1,
+          "word": "independent",
+          "synonym": "Self-sufficient"
+        },
+        {
+          "number": 2,
+          "word": "rewarding",
+          "synonym": "Satisfying"
+        },
+        {
+          "number": 3,
+          "word": "occupied",
+          "synonym": "Busy"
+        },
+        {
+          "number": 4,
+          "word": "strategy",
+          "synonym": "Technique"
+        },
+        {
+          "number": 5,
+          "word": "achievement",
+          "synonym": "Success"
+        }
+      ]
+    },
+    "part5": {
+      "title": "Phần 5: Collocation Matching (Từ đi kèm phổ biến - 5 câu)",
+      "type": "collocation-matching",
+      "questions": [
+        {
+          "number": 1,
+          "word": "professional",
+          "collocation": "Attire",
+          "phrase": "professional attire"
+        },
+        {
+          "number": 2,
+          "word": "school",
+          "collocation": "Bus",
+          "phrase": "school bus"
+        },
+        {
+          "number": 3,
+          "word": "Master’s",
+          "collocation": "Degree",
+          "phrase": "Master’s degree"
+        },
+        {
+          "number": 4,
+          "word": "staff",
+          "collocation": "Room",
+          "phrase": "staff room"
+        },
+        {
+          "number": 5,
+          "word": "final",
+          "collocation": "Exam",
+          "phrase": "final exam"
+        }
+      ]
+    }
+  }
+}

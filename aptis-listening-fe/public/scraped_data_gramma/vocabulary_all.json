@@ -1,0 +1,857 @@
+[
+  {
+    "testNumber": 1,
+    "testName": "Bộ đề 1",
+    "parts": {
+      "part1": {
+        "title": "Phần 1: Synonym Matching (Từ đồng nghĩa - 5 câu)",
+        "type": "synonym-matching",
+        "questions": [
+          {
+            "number": 1,
+            "word": "demonstrate",
+            "synonym": "show"
+          },
+          {
+            "number": 2,
+            "word": "comprehend",
+            "synonym": "understand"
+          },
+          {
+            "number": 3,
+            "word": "encourage",
+            "synonym": "inspire"
+          },
+          {
+            "number": 4,
+            "word": "direct",
+            "synonym": "command"
+          },
+          {
+            "number": 5,
+            "word": "create",
+            "synonym": "make"
+          }
+        ]
+      },
+      "part2": {
+        "title": "Phần 2: Definition Matching (Định nghĩa từ - 5 câu)",
+        "type": "definition-matching",
+        "questions": [
+          {
+            "number": 1,
+            "definition": "To gain knowledge is to…",
+            "word": "learn"
+          },
+          {
+            "number": 2,
+            "definition": "To assess a student’s performance is to…",
+            "word": "evaluate"
+          },
+          {
+            "number": 3,
+            "definition": "To look over something carefully is to…",
+            "word": "review"
+          },
+          {
+            "number": 4,
+            "definition": "To put things in their correct place is to…",
+            "word": "tidy"
+          },
+          {
+            "number": 5,
+            "definition": "To exchange information by speaking is to…",
+            "word": "communicate"
+          }
+        ]
+      },
+      "part3": {
+        "title": "Phần 3: Sentence Completion (Hoàn thành câu - 5 câu)",
+        "type": "sentence-completion",
+        "questions": [
+          {
+            "number": 1,
+            "sentence": "In the fall, we are implementing a new English-language **[curriculum]** at our school.",
+            "blankSentence": "In the fall, we are implementing a new English-language _______ at our school.",
+            "word": "curriculum"
+          },
+          {
+            "number": 2,
+            "sentence": "Every Friday, the students take a short **[quiz]** to see if they understood the week’s concepts.",
+            "blankSentence": "Every Friday, the students take a short _______ to see if they understood the week’s concepts.",
+            "word": "quiz"
+          },
+          {
+            "number": 3,
+            "sentence": "It is important for kids to play in team sports so that they learn **[cooperation]** .",
+            "blankSentence": "It is important for kids to play in team sports so that they learn _______ .",
+            "word": "cooperation"
+          },
+          {
+            "number": 4,
+            "sentence": "The new technology course does not have a **[textbook]** . All material is online.",
+            "blankSentence": "The new technology course does not have a _______ . All material is online.",
+            "word": "textbook"
+          },
+          {
+            "number": 5,
+            "sentence": "We have a lot of **[puzzles]** on the shelves for indoor activities when it rains.",
+            "blankSentence": "We have a lot of _______ on the shelves for indoor activities when it rains.",
+            "word": "puzzles"
+          }
+        ]
+      },
+      "part4": {
+        "title": "Phần 4: Synonym Matching (Từ đồng nghĩa bổ sung - 5 câu)",
+        "type": "synonym-matching-2",
+        "questions": [
+          {
+            "number": 1,
+            "word": "independent",
+            "synonym": "Self-sufficient"
+          },
+          {
+            "number": 2,
+            "word": "rewarding",
+            "synonym": "Satisfying"
+          },
+          {
+            "number": 3,
+            "word": "occupied",
+            "synonym": "Busy"
+          },
+          {
+            "number": 4,
+            "word": "strategy",
+            "synonym": "Technique"
+          },
+          {
+            "number": 5,
+            "word": "achievement",
+            "synonym": "Success"
+          }
+        ]
+      },
+      "part5": {
+        "title": "Phần 5: Collocation Matching (Từ đi kèm phổ biến - 5 câu)",
+        "type": "collocation-matching",
+        "questions": [
+          {
+            "number": 1,
+            "word": "professional",
+            "collocation": "Attire",
+            "phrase": "professional attire"
+          },
+          {
+            "number": 2,
+            "word": "school",
+            "collocation": "Bus",
+            "phrase": "school bus"
+          },
+          {
+            "number": 3,
+            "word": "Master’s",
+            "collocation": "Degree",
+            "phrase": "Master’s degree"
+          },
+          {
+            "number": 4,
+            "word": "staff",
+            "collocation": "Room",
+            "phrase": "staff room"
+          },
+          {
+            "number": 5,
+            "word": "final",
+            "collocation": "Exam",
+            "phrase": "final exam"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "testNumber": 2,
+    "testName": "Bộ đề 2",
+    "parts": {
+      "part1": {
+        "title": "Phần 1: Synonym Matching (Từ đồng nghĩa - 5 câu)",
+        "type": "synonym-matching",
+        "questions": [
+          {
+            "number": 1,
+            "word": "assist",
+            "synonym": "help"
+          },
+          {
+            "number": 2,
+            "word": "refuse",
+            "synonym": "decline"
+          },
+          {
+            "number": 3,
+            "word": "begin",
+            "synonym": "start"
+          },
+          {
+            "number": 4,
+            "word": "repair",
+            "synonym": "fix"
+          },
+          {
+            "number": 5,
+            "word": "discover",
+            "synonym": "find"
+          }
+        ]
+      },
+      "part2": {
+        "title": "Phần 2: Definition Matching (Định nghĩa từ - 5 câu)",
+        "type": "definition-matching",
+        "questions": [
+          {
+            "number": 1,
+            "definition": "To look for information on the internet is to",
+            "word": "search"
+          },
+          {
+            "number": 2,
+            "definition": "To pour old glass and paper into special bins is to",
+            "word": "recycle"
+          },
+          {
+            "number": 3,
+            "definition": "To take a package to the correct address is to",
+            "word": "deliver"
+          },
+          {
+            "number": 4,
+            "definition": "To heat water until bubbles appear is to",
+            "word": "boil"
+          },
+          {
+            "number": 5,
+            "definition": "To speak very quietly is to",
+            "word": "whisper"
+          }
+        ]
+      },
+      "part3": {
+        "title": "Phần 3: Sentence Completion (Hoàn thành câu - 5 câu)",
+        "type": "sentence-completion",
+        "questions": [
+          {
+            "number": 1,
+            "sentence": "Our flight is at 8 p.m., so don’t forget your **[passport]** before we leave for the airport.",
+            "blankSentence": "Our flight is at 8 p.m., so don’t forget your _______ before we leave for the airport.",
+            "word": "passport"
+          },
+          {
+            "number": 2,
+            "sentence": "After returning the shoes, the store gave me a **[refund]** within three business days.",
+            "blankSentence": "After returning the shoes, the store gave me a _______ within three business days.",
+            "word": "refund"
+          },
+          {
+            "number": 3,
+            "sentence": "The weather **[forecast]** says it will rain all weekend.",
+            "blankSentence": "The weather _______ says it will rain all weekend.",
+            "word": "forecast"
+          },
+          {
+            "number": 4,
+            "sentence": "Please wear a **[helmet]** when you ride the motorbike.",
+            "blankSentence": "Please wear a _______ when you ride the motorbike.",
+            "word": "helmet"
+          },
+          {
+            "number": 5,
+            "sentence": "The project **[deadline]** is next Friday, so let’s finish the report.",
+            "blankSentence": "The project _______ is next Friday, so let’s finish the report.",
+            "word": "deadline"
+          }
+        ]
+      },
+      "part4": {
+        "title": "Phần 4: Synonym Matching (Từ đồng nghĩa bổ sung - 5 câu)",
+        "type": "synonym-matching-2",
+        "questions": [
+          {
+            "number": 1,
+            "word": "angry",
+            "synonym": "mad"
+          },
+          {
+            "number": 2,
+            "word": "brave",
+            "synonym": "courageous"
+          },
+          {
+            "number": 3,
+            "word": "careful",
+            "synonym": "cautious"
+          },
+          {
+            "number": 4,
+            "word": "funny",
+            "synonym": "humorous"
+          },
+          {
+            "number": 5,
+            "word": "small",
+            "synonym": "tiny"
+          }
+        ]
+      },
+      "part5": {
+        "title": "Phần 5: Collocation Matching (Từ đi kèm phổ biến - 5 câu)",
+        "type": "collocation-matching",
+        "questions": [
+          {
+            "number": 1,
+            "word": "carbon",
+            "collocation": "footprint",
+            "phrase": "carbon footprint"
+          },
+          {
+            "number": 2,
+            "word": "credit",
+            "collocation": "card",
+            "phrase": "credit card"
+          },
+          {
+            "number": 3,
+            "word": "strong",
+            "collocation": "coffee",
+            "phrase": "strong coffee"
+          },
+          {
+            "number": 4,
+            "word": "fast",
+            "collocation": "lane",
+            "phrase": "fast lane"
+          },
+          {
+            "number": 5,
+            "word": "make",
+            "collocation": "decision",
+            "phrase": "make decision"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "testNumber": 3,
+    "testName": "Bộ đề 3",
+    "parts": {
+      "part1": {
+        "title": "Phần 1: Synonym Matching (Từ đồng nghĩa - 5 câu)",
+        "type": "synonym-matching",
+        "questions": [
+          {
+            "number": 1,
+            "word": "conceal",
+            "synonym": "hide"
+          },
+          {
+            "number": 2,
+            "word": "drag",
+            "synonym": "pull"
+          },
+          {
+            "number": 3,
+            "word": "fight",
+            "synonym": "argue"
+          },
+          {
+            "number": 4,
+            "word": "jump",
+            "synonym": "hop"
+          },
+          {
+            "number": 5,
+            "word": "try",
+            "synonym": "attempt"
+          }
+        ]
+      },
+      "part2": {
+        "title": "Phần 2: Definition Matching (Định nghĩa từ - 5 câu)",
+        "type": "definition-matching",
+        "questions": [
+          {
+            "number": 1,
+            "definition": "To give someone something temporarily is to",
+            "word": "lend"
+          },
+          {
+            "number": 2,
+            "definition": "To watch someone’s children is to",
+            "word": "babysit"
+          },
+          {
+            "number": 3,
+            "definition": "To jump head first into water is to",
+            "word": "dive"
+          },
+          {
+            "number": 4,
+            "definition": "To cover a gift with paper is to",
+            "word": "wrap"
+          },
+          {
+            "number": 5,
+            "definition": "To plan how to use money is to",
+            "word": "budget"
+          }
+        ]
+      },
+      "part3": {
+        "title": "Phần 3: Sentence Completion (Hoàn thành câu - 5 câu)",
+        "type": "sentence-completion",
+        "questions": [
+          {
+            "number": 1,
+            "sentence": "I had to **[skip]** lunch in order to finish my project, so now I am really hungry.",
+            "blankSentence": "I had to _______ lunch in order to finish my project, so now I am really hungry.",
+            "word": "skip"
+          },
+          {
+            "number": 2,
+            "sentence": "Last weekend, my mom planted beautiful sunflowers in our **[garden]** .",
+            "blankSentence": "Last weekend, my mom planted beautiful sunflowers in our _______ .",
+            "word": "garden"
+          },
+          {
+            "number": 3,
+            "sentence": "I can’t believe the new iPhone is almost $1000! I’ll need to save up because I can’t **[afford]** that!",
+            "blankSentence": "I can’t believe the new iPhone is almost $1000! I’ll need to save up because I can’t _______ that!",
+            "word": "afford"
+          },
+          {
+            "number": 4,
+            "sentence": "My upstairs neighbours are so **[noisy]** I can hear all of their conversations.",
+            "blankSentence": "My upstairs neighbours are so _______ I can hear all of their conversations.",
+            "word": "noisy"
+          },
+          {
+            "number": 5,
+            "sentence": "I think multiple choice questions are really **[tricky]** They are difficult to answer.",
+            "blankSentence": "I think multiple choice questions are really _______ They are difficult to answer.",
+            "word": "tricky"
+          }
+        ]
+      },
+      "part4": {
+        "title": "Phần 4: Synonym Matching (Từ đồng nghĩa bổ sung - 5 câu)",
+        "type": "synonym-matching-2",
+        "questions": [
+          {
+            "number": 1,
+            "word": "tired",
+            "synonym": "sleepy"
+          },
+          {
+            "number": 2,
+            "word": "remote",
+            "synonym": "distant"
+          },
+          {
+            "number": 3,
+            "word": "messy",
+            "synonym": "disorganized"
+          },
+          {
+            "number": 4,
+            "word": "easy",
+            "synonym": "simple"
+          },
+          {
+            "number": 5,
+            "word": "complicated",
+            "synonym": "complex"
+          }
+        ]
+      },
+      "part5": {
+        "title": "Phần 5: Collocation Matching (Từ đi kèm phổ biến - 5 câu)",
+        "type": "collocation-matching",
+        "questions": [
+          {
+            "number": 1,
+            "word": "minimum",
+            "collocation": "wage",
+            "phrase": "minimum wage"
+          },
+          {
+            "number": 2,
+            "word": "hard",
+            "collocation": "work",
+            "phrase": "hard work"
+          },
+          {
+            "number": 3,
+            "word": "pay",
+            "collocation": "raise",
+            "phrase": "pay raise"
+          },
+          {
+            "number": 4,
+            "word": "thick",
+            "collocation": "accent",
+            "phrase": "thick accent"
+          },
+          {
+            "number": 5,
+            "word": "first",
+            "collocation": "class",
+            "phrase": "first class"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "testNumber": 4,
+    "testName": "Bộ đề 4",
+    "parts": {
+      "part1": {
+        "title": "Phần 1: Synonym Matching (Từ đồng nghĩa - 5 câu)",
+        "type": "synonym-matching",
+        "questions": [
+          {
+            "number": 1,
+            "word": "ban",
+            "synonym": "prohibit"
+          },
+          {
+            "number": 2,
+            "word": "give",
+            "synonym": "provide"
+          },
+          {
+            "number": 3,
+            "word": "help",
+            "synonym": "aid"
+          },
+          {
+            "number": 4,
+            "word": "cancel",
+            "synonym": "scrap"
+          },
+          {
+            "number": 5,
+            "word": "loathe",
+            "synonym": "hate"
+          }
+        ]
+      },
+      "part2": {
+        "title": "Phần 2: Definition Matching (Định nghĩa từ - 5 câu)",
+        "type": "definition-matching",
+        "questions": [
+          {
+            "number": 1,
+            "definition": "To purchase something is to",
+            "word": "buy"
+          },
+          {
+            "number": 2,
+            "definition": "To convince someone is to",
+            "word": "persuade"
+          },
+          {
+            "number": 3,
+            "definition": "To delay something is to",
+            "word": "postpone"
+          },
+          {
+            "number": 4,
+            "definition": "To disappear is to",
+            "word": "vanish"
+          },
+          {
+            "number": 5,
+            "definition": "To take out money from a bank machine is to",
+            "word": "withdraw"
+          }
+        ]
+      },
+      "part3": {
+        "title": "Phần 3: Sentence Completion (Hoàn thành câu - 5 câu)",
+        "type": "sentence-completion",
+        "questions": [
+          {
+            "number": 1,
+            "sentence": "It is **[forbidden]** to smoke within 2 metres of the entrance. You could get a fine.",
+            "blankSentence": "It is _______ to smoke within 2 metres of the entrance. You could get a fine.",
+            "word": "forbidden"
+          },
+          {
+            "number": 2,
+            "sentence": "I can’t live in a basement apartment because it has very low **[ceilings]** I am tall, so I would hit my head!",
+            "blankSentence": "I can’t live in a basement apartment because it has very low _______ I am tall, so I would hit my head!",
+            "word": "ceilings"
+          },
+          {
+            "number": 3,
+            "sentence": "I received a mysterious envelope today in my mailbox. There was no **[stamp]** on it.",
+            "blankSentence": "I received a mysterious envelope today in my mailbox. There was no _______ on it.",
+            "word": "stamp"
+          },
+          {
+            "number": 4,
+            "sentence": "In high school, a mean girl started a terrible **[rumour]** about me. Everyone believed it!",
+            "blankSentence": "In high school, a mean girl started a terrible _______ about me. Everyone believed it!",
+            "word": "rumour"
+          },
+          {
+            "number": 5,
+            "sentence": "My little brother is very **[curious]** He always wants to learn new things.",
+            "blankSentence": "My little brother is very _______ He always wants to learn new things.",
+            "word": "curious"
+          }
+        ]
+      },
+      "part4": {
+        "title": "Phần 4: Synonym Matching (Từ đồng nghĩa bổ sung - 5 câu)",
+        "type": "synonym-matching-2",
+        "questions": [
+          {
+            "number": 1,
+            "word": "calm",
+            "synonym": "relaxed"
+          },
+          {
+            "number": 2,
+            "word": "wealthy",
+            "synonym": "rich"
+          },
+          {
+            "number": 3,
+            "word": "strange",
+            "synonym": "weird"
+          },
+          {
+            "number": 4,
+            "word": "thought",
+            "synonym": "idea"
+          },
+          {
+            "number": 5,
+            "word": "device",
+            "synonym": "gadget"
+          }
+        ]
+      },
+      "part5": {
+        "title": "Phần 5: Collocation Matching (Từ đi kèm phổ biến - 5 câu)",
+        "type": "collocation-matching",
+        "questions": [
+          {
+            "number": 1,
+            "word": "scavenger",
+            "collocation": "hunt",
+            "phrase": "scavenger hunt"
+          },
+          {
+            "number": 2,
+            "word": "bad",
+            "collocation": "habit",
+            "phrase": "bad habit"
+          },
+          {
+            "number": 3,
+            "word": "business",
+            "collocation": "office",
+            "phrase": "business office"
+          },
+          {
+            "number": 4,
+            "word": "small",
+            "collocation": "talk",
+            "phrase": "small talk"
+          },
+          {
+            "number": 5,
+            "word": "environmentally",
+            "collocation": "friendly",
+            "phrase": "environmentally friendly"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "testNumber": 5,
+    "testName": "Bộ đề 5",
+    "parts": {
+      "part1": {
+        "title": "Phần 1: Synonym Matching (Từ đồng nghĩa - 5 câu)",
+        "type": "synonym-matching",
+        "questions": [
+          {
+            "number": 1,
+            "word": "argue",
+            "synonym": "disagree"
+          },
+          {
+            "number": 2,
+            "word": "swap",
+            "synonym": "exchange"
+          },
+          {
+            "number": 3,
+            "word": "collapse",
+            "synonym": "fall"
+          },
+          {
+            "number": 4,
+            "word": "own",
+            "synonym": "possess"
+          },
+          {
+            "number": 5,
+            "word": "occur",
+            "synonym": "happen"
+          }
+        ]
+      },
+      "part2": {
+        "title": "Phần 2: Definition Matching (Định nghĩa từ - 5 câu)",
+        "type": "definition-matching",
+        "questions": [
+          {
+            "number": 1,
+            "definition": "To get better at something is to",
+            "word": "improve"
+          },
+          {
+            "number": 2,
+            "definition": "To choose something is to",
+            "word": "decide"
+          },
+          {
+            "number": 3,
+            "definition": "To get money from work is to",
+            "word": "earn"
+          },
+          {
+            "number": 4,
+            "definition": "To help someone is to",
+            "word": "assist"
+          },
+          {
+            "number": 5,
+            "definition": "To give someone a job is to",
+            "word": "employ"
+          }
+        ]
+      },
+      "part3": {
+        "title": "Phần 3: Sentence Completion (Hoàn thành câu - 5 câu)",
+        "type": "sentence-completion",
+        "questions": [
+          {
+            "number": 1,
+            "sentence": "After it rained, the path was all **[muddy]** and my trainers got dirty.",
+            "blankSentence": "After it rained, the path was all _______ and my trainers got dirty.",
+            "word": "muddy"
+          },
+          {
+            "number": 2,
+            "sentence": "The movie was so **[boring]** that I fell asleep halfway through.",
+            "blankSentence": "The movie was so _______ that I fell asleep halfway through.",
+            "word": "boring"
+          },
+          {
+            "number": 3,
+            "sentence": "Her room was so **[messy]** that she couldn't find anything.",
+            "blankSentence": "Her room was so _______ that she couldn't find anything.",
+            "word": "messy"
+          },
+          {
+            "number": 4,
+            "sentence": "The concert was absolutely **[rewarding]** and worth every penny.",
+            "blankSentence": "The concert was absolutely _______ and worth every penny.",
+            "word": "rewarding"
+          },
+          {
+            "number": 5,
+            "sentence": "The hotel we stayed at was very **[luxurious]** and had an incredible view.",
+            "blankSentence": "The hotel we stayed at was very _______ and had an incredible view.",
+            "word": "luxurious"
+          }
+        ]
+      },
+      "part4": {
+        "title": "Phần 4: Synonym Matching (Từ đồng nghĩa bổ sung - 5 câu)",
+        "type": "synonym-matching-2",
+        "questions": [
+          {
+            "number": 1,
+            "word": "jog",
+            "synonym": "run"
+          },
+          {
+            "number": 2,
+            "word": "inspire",
+            "synonym": "influence"
+          },
+          {
+            "number": 3,
+            "word": "notice",
+            "synonym": "see"
+          },
+          {
+            "number": 4,
+            "word": "utilize",
+            "synonym": "use"
+          },
+          {
+            "number": 5,
+            "word": "conceal",
+            "synonym": "hide"
+          }
+        ]
+      },
+      "part5": {
+        "title": "Phần 5: Collocation Matching (Từ đi kèm phổ biến - 5 câu)",
+        "type": "collocation-matching",
+        "questions": [
+          {
+            "number": 1,
+            "word": "reduced",
+            "collocation": "price",
+            "phrase": "reduced price"
+          },
+          {
+            "number": 2,
+            "word": "sentimental",
+            "collocation": "value",
+            "phrase": "sentimental value"
+          },
+          {
+            "number": 3,
+            "word": "immediate",
+            "collocation": "family",
+            "phrase": "immediate family"
+          },
+          {
+            "number": 4,
+            "word": "white-water",
+            "collocation": "rafting",
+            "phrase": "white-water rafting"
+          },
+          {
+            "number": 5,
+            "word": "semi-precious",
+            "collocation": "jewels",
+            "phrase": "semi-precious jewels"
+          }
+        ]
+      }
+    }
+  }
+]
