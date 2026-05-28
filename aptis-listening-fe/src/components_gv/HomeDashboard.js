@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const BODE_LIST = [
   {
@@ -43,9 +43,48 @@ const BODE_LIST = [
   },
 ];
 
-export default function HomeDashboard({ onSelectMode, onStartListening }) {
-  const [activeTab, setActiveTab] = useState("grammar-vocab");
+const LISTENING_PARTS = [
+  {
+    num: 1,
+    label: "Question 1 - 13",
+    tag: "Part 1",
+    icon: "📖",
+    bg: "#1877F2",
+    shadow: "#0D52AB",
+  },
+  {
+    num: 2,
+    label: "Question 14",
+    tag: "Part 2",
+    icon: "🧩",
+    bg: "#00C8F8",
+    shadow: "#008EAF",
+  },
+  {
+    num: 3,
+    label: "Question 15",
+    tag: "Part 3",
+    icon: "✅",
+    bg: "#FFC107",
+    shadow: "#B38600",
+  },
+  {
+    num: 4,
+    label: "Question 16 & 17",
+    tag: "Part 4",
+    icon: "💡",
+    bg: "#1E8E49",
+    shadow: "#12592D",
+  },
+];
+
+export default function HomeDashboard({ onSelectMode, onSelectListeningPart, initialTab = "grammar-vocab" }) {
+  const [activeTab, setActiveTab] = useState(initialTab);
   const [selectedBoDe, setSelectedBoDe] = useState(null);
+
+  useEffect(() => {
+    setActiveTab(initialTab);
+  }, [initialTab]);
 
   const handleSelectBoDe = (bodeNum) => {
     setSelectedBoDe(bodeNum);
@@ -133,7 +172,10 @@ export default function HomeDashboard({ onSelectMode, onStartListening }) {
             ✏️ Grammar & Vocabulary
           </button>
           <button
-            onClick={onStartListening}
+            onClick={() => {
+              setActiveTab("listening");
+              setSelectedBoDe(null);
+            }}
             style={{
               padding: "10px 24px",
               borderRadius: "12px",
@@ -370,6 +412,87 @@ export default function HomeDashboard({ onSelectMode, onStartListening }) {
               </div>
             </div>
           )}
+        </div>
+      )}
+
+      {activeTab === "listening" && (
+        <div className="animate-fade-in" style={{ width: "100%" }}>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+              gap: "20px",
+              width: "100%",
+              marginBottom: "40px",
+            }}
+          >
+            {LISTENING_PARTS.map((part) => (
+              <button
+                key={part.num}
+                onClick={() => onSelectListeningPart && onSelectListeningPart(part.num)}
+                className="btn-3d"
+                style={{
+                  background: part.bg,
+                  color: part.num === 3 ? "#5A4300" : "white",
+                  padding: "30px 20px",
+                  borderRadius: "24px",
+                  boxShadow: `0 6px 0 ${part.shadow}`,
+                  border: "none",
+                  cursor: "pointer",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "14px",
+                  minHeight: "180px",
+                  width: "100%",
+                  transition: "transform 0.2s, box-shadow 0.2s",
+                }}
+              >
+                <div
+                  style={{
+                    width: "60px",
+                    height: "60px",
+                    borderRadius: "50%",
+                    background:
+                      part.num === 3
+                        ? "rgba(0,0,0,0.1)"
+                        : "rgba(255,255,255,0.2)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: "28px",
+                  }}
+                >
+                  {part.icon}
+                </div>
+                <span
+                  style={{
+                    fontFamily: "'Plus Jakarta Sans', sans-serif",
+                    fontWeight: 800,
+                    fontSize: "18px",
+                  }}
+                >
+                  {part.label}
+                </span>
+                <span
+                  style={{
+                    fontSize: "11px",
+                    fontWeight: 600,
+                    background:
+                      part.num === 3
+                        ? "rgba(0,0,0,0.08)"
+                        : "rgba(255,255,255,0.18)",
+                    padding: "4px 12px",
+                    borderRadius: "999px",
+                    letterSpacing: "0.02em",
+                  }}
+                >
+                  {part.tag}
+                </span>
+              </button>
+            ))}
+          </div>
         </div>
       )}
 

@@ -14,6 +14,7 @@ import GrammarPractice from "../components_gv/GrammarPractice";
 
 export default function Page() {
   const [view, setView] = useState("home");
+  const [dashboardTab, setDashboardTab] = useState("grammar-vocab");
   const [selectedBoDe, setSelectedBoDe] = useState(1);
   const [selectedMode, setSelectedMode] = useState("grammar");
   const [loading, setLoading] = useState(false);
@@ -311,7 +312,8 @@ export default function Page() {
         setTimerActive(false);
         audioRef.current?.pause();
         setIsPlaying(false);
-        setView("select-part");
+        setDashboardTab("listening");
+        setView("home");
         setSelectedPart(null);
         setQuestions([]);
       },
@@ -374,7 +376,8 @@ export default function Page() {
           setConfirmModal(null);
           clearInterval(timerRef.current);
           setTimerActive(false);
-          setView("select-part");
+          setDashboardTab("listening");
+          setView("home");
           setSelectedPart(null);
           setQuestions([]);
         },
@@ -439,12 +442,15 @@ export default function Page() {
     >
       {view === "home" && (
         <HomeDashboard
+          initialTab={dashboardTab}
           onSelectMode={(boDe, mode) => {
             setSelectedBoDe(boDe);
             setSelectedMode(mode);
             setView("grammar-practice");
           }}
-          onStartListening={() => setView("select-part")}
+          onSelectListeningPart={(partNum) => {
+            startPartPractice(partNum);
+          }}
         />
       )}
 
