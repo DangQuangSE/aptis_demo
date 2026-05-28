@@ -1,414 +1,19 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-
-// ─── Icon SVGs ────────────────────────────────────────────────────────────────
-
-const IconBack = () => (
-  <svg
-    width="20"
-    height="20"
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={2.5}
-      d="M10 19l-7-7m0 0l7-7m-7 7h18"
-    />
-  </svg>
-);
-
-const IconPlay = () => (
-  <svg width="28" height="28" fill="currentColor" viewBox="0 0 24 24">
-    <path d="M8 5v14l11-7z" />
-  </svg>
-);
-
-const IconPause = () => (
-  <svg width="28" height="28" fill="currentColor" viewBox="0 0 24 24">
-    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
-  </svg>
-);
-
-const IconVolume = () => (
-  <svg
-    width="20"
-    height="20"
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={2}
-      d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"
-    />
-  </svg>
-);
-
-const IconMute = () => (
-  <svg
-    width="20"
-    height="20"
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={2}
-      d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15zM17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"
-    />
-  </svg>
-);
-
-const IconTimer = () => (
-  <svg
-    width="20"
-    height="20"
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={2}
-      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-    />
-  </svg>
-);
-
-const IconCheck = () => (
-  <svg
-    width="18"
-    height="18"
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={2.5}
-      d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
-    />
-  </svg>
-);
-
-const IconNext = () => (
-  <svg
-    width="16"
-    height="16"
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={3}
-      d="M9 5l7 7-7 7"
-    />
-  </svg>
-);
-
-const IconTranscript = () => (
-  <svg
-    width="14"
-    height="14"
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={2}
-      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-    />
-  </svg>
-);
-
-const IconCircleCheck = () => (
-  <svg
-    width="18"
-    height="18"
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={2.5}
-      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-    />
-  </svg>
-);
-
-// ─── Helpers ──────────────────────────────────────────────────────────────────
-
-const shuffleArray = (arr) => {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-};
-
-const getAudioUrl = (url) => {
-  if (!url) return "";
-  if (url.startsWith("http")) return url;
-  return `https://aptiskey.com/${url}`;
-};
-
-const formatTime = (secs) => {
-  if (!secs || isNaN(secs)) return "0:00";
-  const m = Math.floor(secs / 60);
-  const s = Math.floor(secs % 60);
-  return `${m}:${s < 10 ? "0" : ""}${s}`;
-};
-
-// ─── Toast & Confirm Modal ────────────────────────────────────────────────────
-
-const TOAST_CONFIG = {
-  info: {
-    bg: "#006590",
-    border: "#004f72",
-    icon: "ℹ️",
-    shadow: "rgba(0,101,144,0.28)",
-  },
-  error: {
-    bg: "#ba1a1a",
-    border: "#8B0000",
-    icon: "❌",
-    shadow: "rgba(186,26,26,0.28)",
-  },
-  success: {
-    bg: "#1E8E49",
-    border: "#12592D",
-    icon: "✅",
-    shadow: "rgba(30,142,73,0.28)",
-  },
-  warning: {
-    bg: "#755b00",
-    border: "#5A4300",
-    icon: "⏰",
-    shadow: "rgba(117,91,0,0.28)",
-  },
-};
-
-function Toast({ toast, onClose }) {
-  if (!toast) return null;
-  const c = TOAST_CONFIG[toast.type] || TOAST_CONFIG.info;
-  return (
-    <div
-      key={toast.id}
-      className="animate-toast-in"
-      role="alert"
-      style={{
-        position: "fixed",
-        top: "24px",
-        left: "50%",
-        transform: "translateX(-50%)",
-        zIndex: 9999,
-        background: c.bg,
-        border: `1.5px solid ${c.border}`,
-        color: "#fff",
-        borderRadius: "14px",
-        padding: "13px 16px 13px 16px",
-        display: "flex",
-        alignItems: "center",
-        gap: "10px",
-        fontFamily: "'Be Vietnam Pro', sans-serif",
-        fontWeight: 600,
-        fontSize: "15px",
-        boxShadow: `0 8px 32px ${c.shadow}, 0 2px 8px rgba(0,0,0,0.1)`,
-        maxWidth: "440px",
-        minWidth: "260px",
-      }}
-    >
-      <span style={{ fontSize: "18px", lineHeight: 1, flexShrink: 0 }}>
-        {c.icon}
-      </span>
-      <span style={{ flex: 1, lineHeight: 1.45 }}>{toast.message}</span>
-      <button
-        onClick={onClose}
-        aria-label="Đóng"
-        style={{
-          background: "rgba(255,255,255,0.2)",
-          border: "none",
-          color: "#fff",
-          width: "26px",
-          height: "26px",
-          borderRadius: "7px",
-          cursor: "pointer",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          flexShrink: 0,
-          fontSize: "13px",
-          fontWeight: 700,
-        }}
-      >
-        ✕
-      </button>
-    </div>
-  );
-}
-
-function ConfirmModal({ modal }) {
-  if (!modal) return null;
-  const isSuccess = modal.type === "success";
-  const confirmBg = isSuccess ? "#1E8E49" : "#ba1a1a";
-  const confirmShadow = isSuccess ? "#12592D" : "#8B0000";
-  return (
-    <div
-      style={{
-        position: "fixed",
-        inset: 0,
-        zIndex: 9998,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        background: "rgba(27,28,28,0.50)",
-        backdropFilter: "blur(5px)",
-        padding: "24px",
-      }}
-    >
-      <div
-        className="animate-modal-in"
-        role="dialog"
-        aria-modal="true"
-        style={{
-          background: "#fbf9f8",
-          borderRadius: "24px",
-          padding: "36px 32px 28px",
-          maxWidth: "380px",
-          width: "100%",
-          boxShadow: "0 24px 64px rgba(0,0,0,0.2), 0 4px 16px rgba(0,0,0,0.08)",
-          textAlign: "center",
-        }}
-      >
-        <div style={{ fontSize: "44px", marginBottom: "14px", lineHeight: 1 }}>
-          {isSuccess ? "🎉" : "⚠️"}
-        </div>
-        <h3
-          style={{
-            fontFamily: "'Plus Jakarta Sans', sans-serif",
-            fontWeight: 700,
-            fontSize: "17px",
-            color: "#1b1c1c",
-            marginBottom: modal.subMessage ? "8px" : "26px",
-            lineHeight: 1.45,
-          }}
-        >
-          {modal.message}
-        </h3>
-        {modal.subMessage && (
-          <p
-            style={{
-              fontSize: "14px",
-              color: "#3e4850",
-              marginBottom: "26px",
-              lineHeight: 1.55,
-            }}
-          >
-            {modal.subMessage}
-          </p>
-        )}
-        <div style={{ display: "flex", gap: "12px", justifyContent: "center" }}>
-          <button
-            onClick={modal.onCancel}
-            className="btn-3d"
-            style={{
-              padding: "11px 22px",
-              borderRadius: "12px",
-              border: "2px solid #bdc8d2",
-              background: "white",
-              color: "#3e4850",
-              fontFamily: "'Plus Jakarta Sans', sans-serif",
-              fontWeight: 700,
-              fontSize: "14px",
-              cursor: "pointer",
-              boxShadow: "0 4px 0 #bdc8d2",
-            }}
-          >
-            {modal.cancelLabel || "Hủy"}
-          </button>
-          <button
-            onClick={modal.onConfirm}
-            className="btn-3d"
-            style={{
-              padding: "11px 22px",
-              borderRadius: "12px",
-              border: "none",
-              background: confirmBg,
-              color: "white",
-              fontFamily: "'Plus Jakarta Sans', sans-serif",
-              fontWeight: 700,
-              fontSize: "14px",
-              cursor: "pointer",
-              boxShadow: `0 4px 0 ${confirmShadow}`,
-            }}
-          >
-            {modal.confirmLabel || "Xác nhận"}
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-// ─── Part Card Config ─────────────────────────────────────────────────────────
-
-const PARTS = [
-  {
-    num: 1,
-    label: "Question 1 - 13",
-    tag: "Part 1",
-    icon: "📖",
-    bg: "#1877F2",
-    shadow: "#0D52AB",
-  },
-  {
-    num: 2,
-    label: "Question 14",
-    tag: "Part 2",
-    icon: "🧩",
-    bg: "#00C8F8",
-    shadow: "#008EAF",
-  },
-  {
-    num: 3,
-    label: "Question 15",
-    tag: "Part 3",
-    icon: "✅",
-    bg: "#FFC107",
-    shadow: "#B38600",
-  },
-  {
-    num: 4,
-    label: "Question 16 & 17",
-    tag: "Part 4",
-    icon: "💡",
-    bg: "#1E8E49",
-    shadow: "#12592D",
-  },
-];
-
-// ─── Main Page ────────────────────────────────────────────────────────────────
+import PartSelection from "../components/PartSelection";
+import SidebarMatrix from "../components/SidebarMatrix";
+import AudioPlayer from "../components/AudioPlayer";
+import QuestionContent from "../components/QuestionContent";
+import Toast from "../components/Toast";
+import ConfirmModal from "../components/ConfirmModal";
+import { IconBack, IconTimer, IconCheck, IconNext } from "../components/Icons";
+import { shuffleArray, getAudioUrl, formatTime } from "../utils/helpers";
 
 export default function Page() {
   const [view, setView] = useState("select-part");
   const [loading, setLoading] = useState(false);
+  const [hideHeader, setHideHeader] = useState(false);
 
   const [modes, setModes] = useState({
     autoShowAnswer: false,
@@ -495,14 +100,12 @@ export default function Page() {
     if (audioRef.current) audioRef.current.playbackRate = playbackRate;
   }, [playbackRate, currentIdx]);
 
-  // visitedIds is updated from event handlers (jumpToQuestion, autoShowAnswer toggle)
-
   // ── Auto-play audio when navigating questions ─────────────────────────────
 
   useEffect(() => {
     if (!modes.autoPlayAudio) return;
     const timer = setTimeout(() => {
-      audioRef.current?.play().catch(() => {});
+      audioRef.current?.play().catch(() => { });
     }, 1000);
     return () => clearTimeout(timer);
   }, [currentIdx, modes.autoPlayAudio]);
@@ -517,6 +120,7 @@ export default function Page() {
     setVisitedIds({});
     setCurrentIdx(0);
     setSidebarPage(0);
+    setHideHeader(false);
     if (audioRef.current) {
       audioRef.current.pause();
       audioRef.current.currentTime = 0;
@@ -567,7 +171,7 @@ export default function Page() {
               options: opts,
               correctKey: ["A", "B", "C", "D"][i],
               transcript: topic.transcript,
-              displayHeading: `Topic ${topicIdx + 1} - Person ${p} (Part 2: Matching)`,
+              displayHeading: `Topic ${topicIdx + 1} - Person ${p} (Part 2)`,
             });
           });
         });
@@ -629,9 +233,31 @@ export default function Page() {
       }
 
       setQuestions(formatted);
-      setTimeLeft(formatted.length * 60); // 1 phút mỗi câu
+      setTimeLeft(formatted.length * 60);
       setTimerActive(true);
       setView("practice");
+
+      if (modes.autoShowAnswer && formatted[0]) {
+        setVisitedIds({ [formatted[0].id]: true });
+        if (formatted[0].isMultiQuestion) {
+          const firstQ = formatted[0];
+          setSelectedAnswers((prev) => {
+            const next = { ...prev };
+            firstQ.subQuestions.forEach((subQ) => {
+              next[subQ.id] = subQ.correctKey;
+            });
+            return next;
+          });
+          setCheckedResults((prev) => {
+            const next = { ...prev };
+            firstQ.subQuestions.forEach((subQ) => {
+              next[subQ.id] = true;
+            });
+            next[firstQ.id] = true;
+            return next;
+          });
+        }
+      }
     } catch (err) {
       console.error("Load error:", err);
       showToast("Không thể tải ngân hàng câu hỏi. Vui lòng thử lại!", "error");
@@ -653,13 +279,20 @@ export default function Page() {
     }
     setCurrentIdx(idx);
 
-    // Mark visited when auto answer is on
+    // Mark visited and auto answer when on
     if (modes.autoShowAnswer) {
       const q = questions[idx];
-      if (q) setVisitedIds((prev) => ({ ...prev, [q.id]: true }));
+      if (q) {
+        setVisitedIds((prev) => ({ ...prev, [q.id]: true }));
+        if (q.isMultiQuestion) {
+          q.subQuestions.forEach((subQ) => {
+            setSelectedAnswers((prev) => ({ ...prev, [subQ.id]: subQ.correctKey }));
+            setCheckedResults((prev) => ({ ...prev, [subQ.id]: true }));
+          });
+        }
+      }
     }
 
-    // Auto-update pagination if question is outside current page
     const targetPage = Math.floor(idx / 25);
     if (targetPage !== sidebarPage) {
       setSidebarPage(targetPage);
@@ -668,8 +301,7 @@ export default function Page() {
 
   const exitToPartSelection = () => {
     setConfirmModal({
-      message:
-        "Thoát giữa chừng sẽ làm mất tiến trình. Bạn có chắc muốn rời đi?",
+      message: "Thoát giữa chừng sẽ làm mất tiến trình. Bạn có chắc muốn rời đi?",
       confirmLabel: "Rời đi",
       cancelLabel: "Ở lại",
       type: "warning",
@@ -720,10 +352,12 @@ export default function Page() {
     if (!next) audioRef.current.volume = volume;
   };
 
-  const selectOption = (key) => {
+  const selectOption = (key, subQId = null) => {
     const q = questions[currentIdx];
-    if (!q || checkedResults[q.id]) return;
-    setSelectedAnswers((prev) => ({ ...prev, [q.id]: key }));
+    if (!q) return;
+    const targetId = subQId || q.id;
+    if (checkedResults[targetId]) return;
+    setSelectedAnswers((prev) => ({ ...prev, [targetId]: key }));
   };
 
   const handleNextOrFinish = () => {
@@ -752,11 +386,28 @@ export default function Page() {
   const checkCurrentAnswer = () => {
     const q = questions[currentIdx];
     if (!q) return;
-    if (!selectedAnswers[q.id]) {
-      showToast("Vui lòng chọn một đáp án trước khi kiểm tra!", "info");
-      return;
+
+    if (q.isMultiQuestion) {
+      const allAnswered = q.subQuestions.every((subQ) => selectedAnswers[subQ.id]);
+      if (!allAnswered) {
+        showToast("Vui lòng chọn đáp án cho tất cả các câu hỏi trước khi kiểm tra!", "info");
+        return;
+      }
+      setCheckedResults((prev) => {
+        const next = { ...prev };
+        q.subQuestions.forEach((subQ) => {
+          next[subQ.id] = true;
+        });
+        next[q.id] = true;
+        return next;
+      });
+    } else {
+      if (!selectedAnswers[q.id]) {
+        showToast("Vui lòng chọn một đáp án trước khi kiểm tra!", "info");
+        return;
+      }
+      setCheckedResults((prev) => ({ ...prev, [q.id]: true }));
     }
-    setCheckedResults((prev) => ({ ...prev, [q.id]: true }));
   };
 
   const handleShuffle = () => {
@@ -786,215 +437,28 @@ export default function Page() {
         fontFamily: "'Be Vietnam Pro', sans-serif",
       }}
     >
-      {/* ====================================================================
-          SCREEN 1 – CHỌN PHẦN THI
-          ==================================================================== */}
       {view === "select-part" && (
-        <main
-          className="animate-fade-in"
-          style={{
-            minHeight: "100vh",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            padding: "48px 24px",
-            maxWidth: "960px",
-            margin: "0 auto",
-            width: "100%",
-          }}
-        >
-          {/* Brand */}
-          <div
-            style={{ textAlign: "center", marginBottom: "48px", width: "100%" }}
-          >
-            <div
-              style={{
-                fontFamily: "'Plus Jakarta Sans', sans-serif",
-                color: "#006590",
-                fontWeight: 900,
-                fontSize: "13px",
-                letterSpacing: "0.12em",
-                textTransform: "uppercase",
-                marginBottom: "20px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "8px",
-              }}
-            >
-              <span style={{ fontSize: "20px" }}>🎧</span>
-              <span>Aptis Keys</span>
-            </div>
-
-            <h1
-              style={{
-                fontFamily: "'Plus Jakarta Sans', sans-serif",
-                fontWeight: 800,
-                fontSize: "clamp(28px, 5vw, 46px)",
-                letterSpacing: "-0.025em",
-                color: "#1b1c1c",
-                marginBottom: "14px",
-                lineHeight: 1.15,
-              }}
-            >
-              Luyện tập theo từng phần
-            </h1>
-
-            <p
-              style={{
-                fontSize: "16px",
-                color: "#3e4850",
-                maxWidth: "520px",
-                margin: "0 auto",
-                lineHeight: 1.65,
-              }}
-            >
-              Chọn phần bạn muốn bắt đầu ôn luyện. Mỗi phần được thiết kế để
-              nâng cao kỹ năng nghe và ghi điểm tối đa trong đề thi Aptis.
-            </p>
-          </div>
-
-          {/* Part Cards Grid */}
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-              gap: "20px",
-              width: "100%",
-              marginBottom: "40px",
-            }}
-          >
-            {PARTS.map((part) => (
-              <button
-                key={part.num}
-                onClick={() => !loading && startPartPractice(part.num)}
-                disabled={loading}
-                className="btn-3d"
-                style={{
-                  background: part.bg,
-                  color: part.num === 3 ? "#5A4300" : "white",
-                  padding: "32px 24px",
-                  borderRadius: "24px",
-                  boxShadow: `0 6px 0 ${part.shadow}`,
-                  border: "none",
-                  cursor: loading ? "not-allowed" : "pointer",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: "12px",
-                  minHeight: "180px",
-                  opacity: loading ? 0.65 : 1,
-                  width: "100%",
-                }}
-              >
-                <div
-                  style={{
-                    width: "60px",
-                    height: "60px",
-                    borderRadius: "50%",
-                    background:
-                      part.num === 3
-                        ? "rgba(0,0,0,0.12)"
-                        : "rgba(255,255,255,0.22)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontSize: "26px",
-                  }}
-                >
-                  {part.icon}
-                </div>
-                <span
-                  style={{
-                    fontFamily: "'Plus Jakarta Sans', sans-serif",
-                    fontWeight: 700,
-                    fontSize: "15px",
-                  }}
-                >
-                  {part.label}
-                </span>
-                <span
-                  style={{
-                    fontSize: "11px",
-                    fontWeight: 600,
-                    background:
-                      part.num === 3
-                        ? "rgba(0,0,0,0.12)"
-                        : "rgba(255,255,255,0.2)",
-                    padding: "3px 12px",
-                    borderRadius: "999px",
-                    letterSpacing: "0.04em",
-                  }}
-                >
-                  {part.tag}
-                </span>
-              </button>
-            ))}
-          </div>
-
-          {loading && (
-            <div
-              className="animate-soft-pulse"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "10px",
-                color: "#006590",
-                fontWeight: 700,
-                fontSize: "14px",
-                background: "rgba(0,101,144,0.08)",
-                padding: "10px 22px",
-                borderRadius: "999px",
-              }}
-            >
-              <span
-                className="animate-ping"
-                style={{
-                  width: "9px",
-                  height: "9px",
-                  borderRadius: "50%",
-                  background: "#006590",
-                  display: "inline-block",
-                }}
-              />
-              Đang chuẩn bị đề thi ngẫu nhiên...
-            </div>
-          )}
-        </main>
+        <PartSelection loading={loading} onSelectPart={startPartPractice} />
       )}
 
       <Toast toast={toast} onClose={() => setToast(null)} />
       <ConfirmModal modal={confirmModal} />
 
-      {/* ====================================================================
-          SCREEN 2 – LUYỆN TẬP (Sidebar Layout, matching Stitch design)
-          ==================================================================== */}
       {view === "practice" &&
         questions.length > 0 &&
         (() => {
           const q = questions[currentIdx];
-
-          // Determine if we should visually show as answered/checked based on Auto Answer
           const isManuallyChecked = !!checkedResults[q.id];
           const isChecked = isManuallyChecked || modes.autoShowAnswer;
-          const userAns = modes.autoShowAnswer
-            ? q.correctKey
-            : selectedAnswers[q.id];
 
           const progress = ((currentIdx + 1) / questions.length) * 100;
 
-          // Sidebar score counters
-          const checkedIds = modes.autoShowAnswer
-            ? Object.keys(visitedIds)
-            : Object.keys(checkedResults);
-          const correctCount = modes.autoShowAnswer
-            ? checkedIds.length
-            : checkedIds.filter((id) => {
-                const qq = questions.find((x) => x.id === id);
-                return qq && selectedAnswers[id] === qq.correctKey;
-              }).length;
+          // Determine check state and user selection for disabling checks
+          const isCheckDisabled =
+            isChecked ||
+            (q.isMultiQuestion
+              ? !q.subQuestions.every((subQ) => selectedAnswers[subQ.id])
+              : !selectedAnswers[q.id]);
 
           return (
             <div
@@ -1006,315 +470,357 @@ export default function Page() {
                 backgroundColor: "#fbf9f8",
               }}
             >
-              {/* ── Sticky Header ──────────────────────────────────────────────── */}
-              <header
-                style={{
-                  backgroundColor: "white",
-                  borderBottom: "2px solid #efeded",
-                  boxShadow: "0 2px 12px rgba(0,0,0,0.04)",
-                  position: "sticky",
-                  top: 0,
-                  zIndex: 50,
-                  width: "100%",
-                }}
-              >
-                <div
+              {/* Floating restore header button */}
+              {hideHeader && (
+                <button
+                  onClick={() => setHideHeader(false)}
                   style={{
+                    position: "fixed",
+                    top: "12px",
+                    right: "16px",
+                    zIndex: 999,
+                    background: "rgba(255, 255, 255, 0.85)",
+                    backdropFilter: "blur(4px)",
+                    border: "1.5px solid #efeded",
+                    borderRadius: "8px",
+                    padding: "4px 10px",
+                    cursor: "pointer",
+                    fontSize: "11px",
+                    fontWeight: 700,
+                    color: "#006590",
+                    boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
                     display: "flex",
-                    justifyContent: "space-between",
                     alignItems: "center",
-                    maxWidth: "1200px",
-                    margin: "0 auto",
-                    padding: "0 24px",
-                    height: "64px",
+                    gap: "4px",
                   }}
                 >
-                  {/* Back + Brand */}
-                  <button
-                    onClick={exitToPartSelection}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "10px",
-                      background: "none",
-                      border: "none",
-                      cursor: "pointer",
-                      padding: "6px 0",
-                      transition: "opacity 0.15s",
-                    }}
-                    onMouseEnter={(e) =>
-                      (e.currentTarget.style.opacity = "0.7")
-                    }
-                    onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
-                  >
-                    <span style={{ color: "#006590" }}>
-                      <IconBack />
-                    </span>
-                    <span
-                      style={{
-                        fontFamily: "'Plus Jakarta Sans', sans-serif",
-                        fontWeight: 800,
-                        fontSize: "18px",
-                        color: "#006590",
-                      }}
-                    >
-                      Aptis Listening
-                    </span>
-                    <span
-                      style={{
-                        background: "#efeded",
-                        color: "#3e4850",
-                        fontSize: "11px",
-                        fontWeight: 700,
-                        letterSpacing: "0.08em",
-                        textTransform: "uppercase",
-                        padding: "3px 10px",
-                        borderRadius: "999px",
-                      }}
-                    >
-                      Part {selectedPart}
-                    </span>
-                  </button>
+                  Display Header
+                </button>
+              )}
 
-                  {/* Center: Mode Toggles & Randomize Action */}
+              {/* ── Sticky Header ──────────────────────────────────────────────── */}
+              {!hideHeader && (
+                <header
+                  style={{
+                    backgroundColor: "white",
+                    borderBottom: "2px solid #efeded",
+                    boxShadow: "0 2px 12px rgba(0,0,0,0.04)",
+                    position: "sticky",
+                    top: 0,
+                    zIndex: 50,
+                    width: "100%",
+                  }}
+                >
                   <div
                     style={{
                       display: "flex",
-                      gap: "20px",
+                      justifyContent: "space-between",
                       alignItems: "center",
+                      maxWidth: "1200px",
+                      margin: "0 auto",
+                      padding: "0 16px",
+                      height: "52px",
                     }}
                   >
-                    <label
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "8px",
-                        cursor: "pointer",
-                        fontSize: "14px",
-                        fontWeight: 600,
-                        color: "#3e4850",
-                      }}
-                    >
-                      <div
-                        style={{
-                          width: "36px",
-                          height: "20px",
-                          background: modes.autoShowAnswer
-                            ? "#006590"
-                            : "#d1d5db",
-                          borderRadius: "10px",
-                          position: "relative",
-                          transition: "background 0.2s",
-                        }}
-                      >
-                        <div
-                          style={{
-                            width: "16px",
-                            height: "16px",
-                            background: "white",
-                            borderRadius: "50%",
-                            position: "absolute",
-                            top: "2px",
-                            left: modes.autoShowAnswer ? "18px" : "2px",
-                            transition: "left 0.2s",
-                            boxShadow: "0 1px 2px rgba(0,0,0,0.2)",
-                          }}
-                        />
-                      </div>
-                      <input
-                        type="checkbox"
-                        style={{ display: "none" }}
-                        checked={modes.autoShowAnswer}
-                        onChange={(e) => {
-                          setModes((m) => ({
-                            ...m,
-                            autoShowAnswer: e.target.checked,
-                          }));
-                          if (e.target.checked) {
-                            const q = questions[currentIdx];
-                            if (q) setVisitedIds((prev) => ({ ...prev, [q.id]: true }));
-                          }
-                        }}
-                      />
-                      Auto Answer
-                    </label>
-
-                    <label
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "8px",
-                        cursor: "pointer",
-                        fontSize: "14px",
-                        fontWeight: 600,
-                        color: "#3e4850",
-                      }}
-                    >
-                      <div
-                        style={{
-                          width: "36px",
-                          height: "20px",
-                          background: modes.autoShowTranscript
-                            ? "#006590"
-                            : "#d1d5db",
-                          borderRadius: "10px",
-                          position: "relative",
-                          transition: "background 0.2s",
-                        }}
-                      >
-                        <div
-                          style={{
-                            width: "16px",
-                            height: "16px",
-                            background: "white",
-                            borderRadius: "50%",
-                            position: "absolute",
-                            top: "2px",
-                            left: modes.autoShowTranscript ? "18px" : "2px",
-                            transition: "left 0.2s",
-                            boxShadow: "0 1px 2px rgba(0,0,0,0.2)",
-                          }}
-                        />
-                      </div>
-                      <input
-                        type="checkbox"
-                        style={{ display: "none" }}
-                        checked={modes.autoShowTranscript}
-                        onChange={(e) =>
-                          setModes((m) => ({
-                            ...m,
-                            autoShowTranscript: e.target.checked,
-                          }))
-                        }
-                      />
-                      Auto Transcript
-                    </label>
-
-                    <label
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "8px",
-                        cursor: "pointer",
-                        fontSize: "14px",
-                        fontWeight: 600,
-                        color: "#3e4850",
-                      }}
-                    >
-                      <div
-                        style={{
-                          width: "36px",
-                          height: "20px",
-                          background: modes.autoPlayAudio
-                            ? "#1E8E49"
-                            : "#d1d5db",
-                          borderRadius: "10px",
-                          position: "relative",
-                          transition: "background 0.2s",
-                        }}
-                      >
-                        <div
-                          style={{
-                            width: "16px",
-                            height: "16px",
-                            background: "white",
-                            borderRadius: "50%",
-                            position: "absolute",
-                            top: "2px",
-                            left: modes.autoPlayAudio ? "18px" : "2px",
-                            transition: "left 0.2s",
-                            boxShadow: "0 1px 2px rgba(0,0,0,0.2)",
-                          }}
-                        />
-                      </div>
-                      <input
-                        type="checkbox"
-                        style={{ display: "none" }}
-                        checked={modes.autoPlayAudio}
-                        onChange={(e) =>
-                          setModes((m) => ({
-                            ...m,
-                            autoPlayAudio: e.target.checked,
-                          }))
-                        }
-                      />
-                      Auto Play
-                    </label>
-
+                    {/* Back + Brand */}
                     <button
-                      onClick={handleShuffle}
+                      onClick={exitToPartSelection}
                       style={{
-                        padding: "6px 12px",
-                        background: "#f0f4f8",
-                        color: "#006590",
-                        border: "1.5px solid #006590",
-                        borderRadius: "8px",
-                        fontSize: "13px",
-                        fontWeight: 700,
-                        cursor: "pointer",
                         display: "flex",
                         alignItems: "center",
                         gap: "6px",
+                        background: "none",
+                        border: "none",
+                        cursor: "pointer",
+                        padding: "4px 0",
+                        transition: "opacity 0.15s",
+                      }}
+                      onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.7")}
+                      onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
+                    >
+                      <span style={{ color: "#006590", display: "flex" }}>
+                        <IconBack />
+                      </span>
+                      <span
+                        style={{
+                          fontFamily: "'Plus Jakarta Sans', sans-serif",
+                          fontWeight: 800,
+                          fontSize: "15px",
+                          color: "#006590",
+                        }}
+                      >
+                        Aptis Listening
+                      </span>
+                      <span
+                        style={{
+                          background: "#efeded",
+                          color: "#3e4850",
+                          fontSize: "10px",
+                          fontWeight: 700,
+                          letterSpacing: "0.08em",
+                          textTransform: "uppercase",
+                          padding: "2px 8px",
+                          borderRadius: "999px",
+                        }}
+                      >
+                        Part {selectedPart}
+                      </span>
+                    </button>
+
+                    {/* Center: Mode Toggles, Randomize & Hide Header Action */}
+                    <div
+                      style={{
+                        display: "flex",
+                        gap: "14px",
+                        alignItems: "center",
                       }}
                     >
-                      <svg
-                        width="14"
-                        height="14"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
+                      <label
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "6px",
+                          cursor: "pointer",
+                          fontSize: "12px",
+                          fontWeight: 600,
+                          color: "#3e4850",
+                        }}
                       >
-                        <polyline points="16 3 21 3 21 8"></polyline>
-                        <line x1="4" y1="20" x2="21" y2="3"></line>
-                        <polyline points="21 16 21 21 16 21"></polyline>
-                        <line x1="15" y1="15" x2="21" y2="21"></line>
-                        <line x1="4" y1="4" x2="9" y2="9"></line>
-                      </svg>
-                      Randomize
-                    </button>
+                        <div
+                          style={{
+                            width: "32px",
+                            height: "18px",
+                            background: modes.autoShowAnswer ? "#006590" : "#d1d5db",
+                            borderRadius: "10px",
+                            position: "relative",
+                            transition: "background 0.2s",
+                          }}
+                        >
+                          <div
+                            style={{
+                              width: "14px",
+                              height: "14px",
+                              background: "white",
+                              borderRadius: "50%",
+                              position: "absolute",
+                              top: "2px",
+                              left: modes.autoShowAnswer ? "16px" : "2px",
+                              transition: "left 0.2s",
+                              boxShadow: "0 1px 2px rgba(0,0,0,0.2)",
+                            }}
+                          />
+                        </div>
+                        <input
+                          type="checkbox"
+                          style={{ display: "none" }}
+                          checked={modes.autoShowAnswer}
+                          onChange={(e) => {
+                            setModes((m) => ({
+                              ...m,
+                              autoShowAnswer: e.target.checked,
+                            }));
+                            if (e.target.checked) {
+                              const currentQ = questions[currentIdx];
+                              if (currentQ) {
+                                setVisitedIds((prev) => ({ ...prev, [currentQ.id]: true }));
+                                if (currentQ.isMultiQuestion) {
+                                  currentQ.subQuestions.forEach((subQ) => {
+                                    setSelectedAnswers((prev) => ({ ...prev, [subQ.id]: subQ.correctKey }));
+                                    setCheckedResults((prev) => ({ ...prev, [subQ.id]: true }));
+                                  });
+                                }
+                              }
+                            }
+                          }}
+                        />
+                        Auto Answer
+                      </label>
+
+                      <label
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "6px",
+                          cursor: "pointer",
+                          fontSize: "12px",
+                          fontWeight: 600,
+                          color: "#3e4850",
+                        }}
+                      >
+                        <div
+                          style={{
+                            width: "32px",
+                            height: "18px",
+                            background: modes.autoShowTranscript ? "#006590" : "#d1d5db",
+                            borderRadius: "10px",
+                            position: "relative",
+                            transition: "background 0.2s",
+                          }}
+                        >
+                          <div
+                            style={{
+                              width: "14px",
+                              height: "14px",
+                              background: "white",
+                              borderRadius: "50%",
+                              position: "absolute",
+                              top: "2px",
+                              left: modes.autoShowTranscript ? "16px" : "2px",
+                              transition: "left 0.2s",
+                              boxShadow: "0 1px 2px rgba(0,0,0,0.2)",
+                            }}
+                          />
+                        </div>
+                        <input
+                          type="checkbox"
+                          style={{ display: "none" }}
+                          checked={modes.autoShowTranscript}
+                          onChange={(e) =>
+                            setModes((m) => ({
+                              ...m,
+                              autoShowTranscript: e.target.checked,
+                            }))
+                          }
+                        />
+                        Auto Transcript
+                      </label>
+
+                      <label
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "6px",
+                          cursor: "pointer",
+                          fontSize: "12px",
+                          fontWeight: 600,
+                          color: "#3e4850",
+                        }}
+                      >
+                        <div
+                          style={{
+                            width: "32px",
+                            height: "18px",
+                            background: modes.autoPlayAudio ? "#1E8E49" : "#d1d5db",
+                            borderRadius: "10px",
+                            position: "relative",
+                            transition: "background 0.2s",
+                          }}
+                        >
+                          <div
+                            style={{
+                              width: "14px",
+                              height: "14px",
+                              background: "white",
+                              borderRadius: "50%",
+                              position: "absolute",
+                              top: "2px",
+                              left: modes.autoPlayAudio ? "16px" : "2px",
+                              transition: "left 0.2s",
+                              boxShadow: "0 1px 2px rgba(0,0,0,0.2)",
+                            }}
+                          />
+                        </div>
+                        <input
+                          type="checkbox"
+                          style={{ display: "none" }}
+                          checked={modes.autoPlayAudio}
+                          onChange={(e) =>
+                            setModes((m) => ({
+                              ...m,
+                              autoPlayAudio: e.target.checked,
+                            }))
+                          }
+                        />
+                        Auto Play
+                      </label>
+
+                      <button
+                        onClick={handleShuffle}
+                        style={{
+                          padding: "4px 8px",
+                          background: "#f0f4f8",
+                          color: "#006590",
+                          border: "1.5px solid #006590",
+                          borderRadius: "8px",
+                          fontSize: "11px",
+                          fontWeight: 700,
+                          cursor: "pointer",
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "4px",
+                        }}
+                      >
+                        Randomize
+                      </button>
+
+                      {/* Collapse Header toggle */}
+                      <button
+                        onClick={() => setHideHeader(true)}
+                        style={{
+                          padding: "4px 8px",
+                          background: "none",
+                          border: "none",
+                          cursor: "pointer",
+                          color: "#6e7881",
+                          fontSize: "11px",
+                          fontWeight: 600,
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "3px",
+                          transition: "color 0.2s",
+                        }}
+                        onMouseEnter={(e) => (e.currentTarget.style.color = "#ba1a1a")}
+                        onMouseLeave={(e) => (e.currentTarget.style.color = "#6e7881")}
+                        title="Ẩn header để tối ưu không gian hiển thị"
+                      >
+                        Hide Header
+                      </button>
+                    </div>
+
+                    {/* Timer */}
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "4px",
+                        color: timeLeft < 120 ? "#ba1a1a" : "#3e4850",
+                        fontWeight: 700,
+                        fontSize: "13px",
+                        transition: "color 0.3s",
+                      }}
+                    >
+                      <IconTimer />
+                      <span
+                        style={{
+                          fontFamily: "monospace",
+                          letterSpacing: "0.05em",
+                        }}
+                      >
+                        {formatTime(timeLeft)}
+                      </span>
+                    </div>
                   </div>
 
-                  {/* Timer */}
+                  {/* Progress Bar */}
                   <div
                     style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "5px",
-                      color: timeLeft < 120 ? "#ba1a1a" : "#3e4850",
-                      fontWeight: 700,
-                      fontSize: "15px",
-                      transition: "color 0.3s",
+                      width: "100%",
+                      height: "2px",
+                      background: "#efeded",
                     }}
                   >
-                    <IconTimer />
-                    <span
+                    <div
+                      className="progress-bar-fill"
                       style={{
-                        fontFamily: "monospace",
-                        letterSpacing: "0.05em",
+                        width: `${progress}%`,
+                        height: "100%",
+                        background: "#006590",
+                        transition: "width 0.2s ease",
                       }}
-                    >
-                      {formatTime(timeLeft)}
-                    </span>
+                    />
                   </div>
-                </div>
-
-                {/* Progress Bar */}
-                <div
-                  style={{
-                    width: "100%",
-                    height: "3px",
-                    background: "#efeded",
-                  }}
-                >
-                  <div
-                    className="progress-bar-fill"
-                    style={{ width: `${progress}%` }}
-                  />
-                </div>
-              </header>
+                </header>
+              )}
 
               {/* ── Body: Sidebar + Main ─────────────────────────────────────── */}
               <div
@@ -1324,235 +830,33 @@ export default function Page() {
                   maxWidth: "1200px",
                   margin: "0 auto",
                   width: "100%",
-                  padding: "24px 24px 40px",
-                  gap: "24px",
+                  padding: hideHeader ? "12px 16px 20px" : "16px 16px 24px",
+                  gap: "16px",
                   alignItems: "flex-start",
                 }}
               >
-                {/* ════════════════════════════════════════════════════════
-                  LEFT SIDEBAR: Question Navigator
-                  ════════════════════════════════════════════════════════ */}
-                <aside
-                  style={{
-                    width: "256px",
-                    flexShrink: 0,
-                    backgroundColor: "white",
-                    borderRadius: "16px",
-                    border: "2px solid #efeded",
-                    overflow: "hidden",
-                    position: "sticky",
-                    top: "88px",
-                    boxShadow: "0 4px 16px rgba(0,0,0,0.04)",
-                  }}
-                >
-                  {/* Sidebar header */}
-                  <div
-                    style={{
-                      padding: "13px 16px",
-                      borderBottom: "1.5px solid #efeded",
-                      backgroundColor: "#f5f3f3",
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "8px",
-                    }}
-                  >
-                    <h2
-                      style={{
-                        fontFamily: "'Plus Jakarta Sans', sans-serif",
-                        fontWeight: 700,
-                        fontSize: "13px",
-                        color: "#006590",
-                        margin: 0,
-                      }}
-                    >
-                      Danh sách câu hỏi
-                    </h2>
-                  </div>
+                {/* LEFT SIDEBAR: Question Navigator */}
+                <SidebarMatrix
+                  questions={questions}
+                  currentIdx={currentIdx}
+                  selectedAnswers={selectedAnswers}
+                  checkedResults={checkedResults}
+                  visitedIds={visitedIds}
+                  modes={modes}
+                  sidebarPage={sidebarPage}
+                  setSidebarPage={setSidebarPage}
+                  jumpToQuestion={jumpToQuestion}
+                  hideHeader={hideHeader}
+                />
 
-                  {/* Question list matrix */}
-                  <div
-                    style={{
-                      padding: "16px",
-                      display: "grid",
-                      gridTemplateColumns: "repeat(5, 1fr)",
-                      gap: "10px",
-                      maxHeight: "calc(100vh - 240px)",
-                      overflowY: "auto",
-                    }}
-                  >
-                    {questions
-                      .slice(sidebarPage * 25, (sidebarPage + 1) * 25)
-                      .map((item, displayIdx) => {
-                        const idx = sidebarPage * 25 + displayIdx;
-                        const isActive = idx === currentIdx;
-                        const isAnswered = !!selectedAnswers[item.id];
-                        const isGraded = !!checkedResults[item.id];
-                        const isAutoVisited =
-                          modes.autoShowAnswer && !!visitedIds[item.id];
-                        const isCorr =
-                          isAutoVisited ||
-                          (isGraded &&
-                            selectedAnswers[item.id] === item.correctKey);
-                        const isWrong = !isAutoVisited && isGraded && !isCorr;
-
-                        let badgeBg = "#eae8e7",
-                          badgeCol = "#6e7881";
-                        let badge = String(idx + 1);
-                        if (isActive) {
-                          badgeBg = "#006590";
-                          badgeCol = "white";
-                        } else if (isCorr) {
-                          badgeBg = "#d4f0b8";
-                          badgeCol = "#2a6000";
-                        } else if (isWrong) {
-                          badgeBg = "#ffdad6";
-                          badgeCol = "#93000a";
-                        } else if (isAnswered) {
-                          badgeBg = "#e0f4ff";
-                          badgeCol = "#004c6e";
-                        }
-
-                        let borderStyle = isActive
-                          ? "2px solid #006590"
-                          : "2px solid transparent";
-
-                        return (
-                          <button
-                            key={item.id}
-                            onClick={() => jumpToQuestion(idx)}
-                            className="q-matrix-btn"
-                            title={`Câu hỏi ${idx + 1}`}
-                            style={{
-                              width: "100%",
-                              aspectRatio: "1/1",
-                              borderRadius: "8px",
-                              background: badgeBg,
-                              color: badgeCol,
-                              border: borderStyle,
-                              display: "flex",
-                              alignItems: "center",
-                              justifyContent: "center",
-                              fontWeight: 700,
-                              fontSize: "13px",
-                              cursor: "pointer",
-                              transition: "all 0.2s",
-                            }}
-                          >
-                            {badge}
-                          </button>
-                        );
-                      })}
-                  </div>
-
-                  {/* Pagination Controls */}
-                  {questions.length > 25 && (
-                    <div
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "space-between",
-                        padding: "10px 16px",
-                        borderTop: "1.5px solid #efeded",
-                        backgroundColor: "#fbf9f8",
-                      }}
-                    >
-                      <button
-                        disabled={sidebarPage === 0}
-                        onClick={() =>
-                          setSidebarPage((p) => Math.max(0, p - 1))
-                        }
-                        style={{
-                          border: "none",
-                          background: "none",
-                          cursor: sidebarPage === 0 ? "not-allowed" : "pointer",
-                          color: sidebarPage === 0 ? "#ccc" : "#006590",
-                          fontWeight: "bold",
-                        }}
-                      >
-                        Prev
-                      </button>
-                      <span
-                        style={{
-                          fontSize: "12px",
-                          color: "#6e7881",
-                          fontWeight: 600,
-                        }}
-                      >
-                        {sidebarPage + 1} / {Math.ceil(questions.length / 25)}
-                      </span>
-                      <button
-                        disabled={
-                          sidebarPage >= Math.ceil(questions.length / 25) - 1
-                        }
-                        onClick={() =>
-                          setSidebarPage((p) =>
-                            Math.min(
-                              Math.ceil(questions.length / 25) - 1,
-                              p + 1,
-                            ),
-                          )
-                        }
-                        style={{
-                          border: "none",
-                          background: "none",
-                          cursor:
-                            sidebarPage >= Math.ceil(questions.length / 25) - 1
-                              ? "not-allowed"
-                              : "pointer",
-                          color:
-                            sidebarPage >= Math.ceil(questions.length / 25) - 1
-                              ? "#ccc"
-                              : "#006590",
-                          fontWeight: "bold",
-                        }}
-                      >
-                        Next
-                      </button>
-                    </div>
-                  )}
-
-                  {/* Sidebar footer: score summary */}
-                  <div
-                    style={{
-                      padding: "10px 14px",
-                      borderTop: "1.5px solid #efeded",
-                      backgroundColor: "#f5f3f3",
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                    }}
-                  >
-                    <span
-                      style={{
-                        fontSize: "11px",
-                        fontWeight: 600,
-                        color: "#6e7881",
-                      }}
-                    >
-                      {checkedIds.length}/{questions.length} đã kiểm tra
-                    </span>
-                    <span
-                      style={{
-                        fontSize: "11px",
-                        fontWeight: 700,
-                        color: "#2a6000",
-                      }}
-                    >
-                      ✓ {correctCount} đúng
-                    </span>
-                  </div>
-                </aside>
-
-                {/* ════════════════════════════════════════════════════════
-                  MAIN CONTENT
-                  ════════════════════════════════════════════════════════ */}
+                {/* MAIN CONTENT AREA */}
                 <div
                   style={{
                     flex: 1,
                     minWidth: 0,
                     display: "flex",
                     flexDirection: "row",
-                    gap: "16px",
+                    gap: "14px",
                     alignItems: "flex-start",
                   }}
                 >
@@ -1562,510 +866,126 @@ export default function Page() {
                       flex: 1,
                       minWidth: 0,
                       backgroundColor: "white",
-                      borderRadius: "20px",
+                      borderRadius: "16px",
                       border: "2px solid #efeded",
                       overflow: "hidden",
-                      boxShadow: "0 4px 24px rgba(0,0,0,0.05)",
+                      boxShadow: "0 4px 20px rgba(0,0,0,0.04)",
                     }}
                   >
                     <audio ref={audioRef} src={q.audioUrl} />
 
-                    {/* Audio Player */}
-                    <div
-                      style={{
-                        background: "#006590",
-                        padding: "10px 24px",
-                        color: "white",
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "18px",
-                      }}
-                    >
-                      {/* Play Button */}
-                      <button
-                        onClick={togglePlay}
-                        style={{
-                          width: "36px",
-                          height: "36px",
-                          borderRadius: "50%",
-                          background: "white",
-                          color: "#006590",
-                          border: "none",
-                          cursor: "pointer",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          boxShadow: "0 3px 10px rgba(0,0,0,0.22)",
-                          flexShrink: 0,
-                          transition: "transform 0.1s ease",
-                        }}
-                        onMouseDown={(e) =>
-                          (e.currentTarget.style.transform = "scale(0.92)")
-                        }
-                        onMouseUp={(e) =>
-                          (e.currentTarget.style.transform = "scale(1)")
-                        }
-                        onMouseLeave={(e) =>
-                          (e.currentTarget.style.transform = "scale(1)")
-                        }
-                      >
-                        {isPlaying ? <IconPause /> : <IconPlay />}
-                      </button>
+                    {/* Compact Audio Player */}
+                    <AudioPlayer
+                      isPlaying={isPlaying}
+                      togglePlay={togglePlay}
+                      currentTime={currentTime}
+                      duration={duration}
+                      handleSeek={handleSeek}
+                      playbackRate={playbackRate}
+                      setPlaybackRate={setPlaybackRate}
+                      toggleMute={toggleMute}
+                      isMuted={isMuted}
+                      volume={volume}
+                      handleVolume={handleVolume}
+                    />
 
-                      {/* Timeline Scrubber */}
-                      <div
-                        style={{
-                          flex: 1,
-                          display: "flex",
-                          alignItems: "center",
-                          gap: "10px",
-                        }}
-                      >
-                        <span
-                          style={{
-                            fontSize: "10px",
-                            fontWeight: 700,
-                            opacity: 0.85,
-                            whiteSpace: "nowrap",
-                          }}
-                        >
-                          {formatTime(currentTime)}
-                        </span>
-                        <input
-                          type="range"
-                          min={0}
-                          max={duration || 100}
-                          value={currentTime}
-                          onChange={handleSeek}
-                          className="audio-scrubber"
-                          style={{
-                            width: "100%",
-                            accentColor: "white",
-                            height: "4px",
-                          }}
-                        />
-                        <span
-                          style={{
-                            fontSize: "10px",
-                            fontWeight: 700,
-                            opacity: 0.85,
-                            whiteSpace: "nowrap",
-                          }}
-                        >
-                          {formatTime(duration)}
-                        </span>
-                      </div>
-
-                      {/* Speed Controls */}
-                      <div
-                        style={{
-                          display: "flex",
-                          background: "rgba(0,0,0,0.2)",
-                          borderRadius: "10px",
-                          padding: "2px",
-                          gap: "1px",
-                          flexShrink: 0,
-                        }}
-                      >
-                        {[1.0, 1.25, 1.5].map((rate) => (
-                          <button
-                            key={rate}
-                            onClick={() => setPlaybackRate(rate)}
-                            style={{
-                              padding: "2px 8px",
-                              borderRadius: "8px",
-                              border: "none",
-                              cursor: "pointer",
-                              fontSize: "11px",
-                              fontWeight: 700,
-                              background:
-                                playbackRate === rate ? "white" : "transparent",
-                              color:
-                                playbackRate === rate
-                                  ? "#006590"
-                                  : "rgba(255,255,255,0.8)",
-                              boxShadow:
-                                playbackRate === rate
-                                  ? "0 1px 4px rgba(0,0,0,0.18)"
-                                  : "none",
-                              transition: "all 0.15s ease",
-                            }}
-                          >
-                            {rate}x
-                          </button>
-                        ))}
-                      </div>
-
-                      {/* Volume Controls */}
-                      <div
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          gap: "6px",
-                          flexShrink: 0,
-                        }}
-                      >
-                        <button
-                          onClick={toggleMute}
-                          style={{
-                            background: "transparent",
-                            border: "none",
-                            color: "white",
-                            cursor: "pointer",
-                            display: "flex",
-                            alignItems: "center",
-                          }}
-                        >
-                          {isMuted ? <IconMute /> : <IconVolume />}
-                        </button>
-                        <input
-                          type="range"
-                          min={0}
-                          max={1}
-                          step={0.05}
-                          value={isMuted ? 0 : volume}
-                          onChange={handleVolume}
-                          className="volume-slider"
-                          style={{
-                            accentColor: "white",
-                            width: "50px",
-                            height: "4px",
-                          }}
-                        />
-                      </div>
-                    </div>
-
-                    {/* Question & Options */}
-                    <div
-                      style={{
-                        padding: "24px 28px",
-                        display: "flex",
-                        flexDirection: "column",
-                        gap: "18px",
-                      }}
-                    >
-                      {/* Heading */}
-                      <div
-                        style={{
-                          display: "flex",
-                          flexDirection: "column",
-                          gap: "4px",
-                        }}
-                      >
-                        <span
-                          style={{
-                            fontSize: "10px",
-                            fontWeight: 800,
-                            letterSpacing: "0.1em",
-                            textTransform: "uppercase",
-                            color: "#006590",
-                          }}
-                        >
-                          {q.displayHeading}
-                        </span>
-                        <h2
-                          style={{
-                            fontFamily: "'Plus Jakarta Sans', sans-serif",
-                            fontWeight: 700,
-                            fontSize: "clamp(16px, 2vw, 21px)",
-                            color: "#1b1c1c",
-                            lineHeight: 1.45,
-                            letterSpacing: "-0.01em",
-                            margin: 0,
-                          }}
-                        >
-                          {q.questionText}
-                        </h2>
-                      </div>
-
-                      {/* Options */}
-                      <div
-                        style={{
-                          display: "flex",
-                          flexDirection: "column",
-                          gap: "8px",
-                        }}
-                      >
-                        {q.options.map((opt) => {
-                          const isSel = userAns === opt.key;
-                          const isCorr = q.correctKey === opt.key;
-                          const displayChecked = isChecked; // isChecked already encompasses modes.autoShowAnswer now
-
-                          let bg = "#fbf9f8",
-                            bdr = "#bdc8d2";
-                          let ind = { bg: "transparent", border: "#bdc8d2" };
-
-                          if (isSel && !displayChecked) {
-                            bg = "rgba(28,176,246,0.10)";
-                            bdr = "#006590";
-                            ind = { bg: "#006590", border: "#006590" };
-                          }
-
-                          if (displayChecked) {
-                            if (isCorr) {
-                              bg = "rgba(88,204,2,0.10)";
-                              bdr = "#58CC02";
-                              ind = { bg: "#58CC02", border: "#58CC02" };
-                            } else if (isSel) {
-                              bg = "rgba(186,26,26,0.08)";
-                              bdr = "#ba1a1a";
-                              ind = { bg: "#ba1a1a", border: "#ba1a1a" };
-                            } else {
-                              bg = "white";
-                              bdr = "#e4e2e2";
-                              ind = { bg: "transparent", border: "#e4e2e2" };
-                            }
-                          }
-
-                          const showCheck =
-                            (isSel && !displayChecked) ||
-                            (displayChecked && isCorr);
-                          const showX = displayChecked && isSel && !isCorr;
-
-                          return (
-                            <div
-                              key={opt.key}
-                              onClick={() =>
-                                !isChecked && selectOption(opt.key)
-                              }
-                              className="option-card"
-                              style={{
-                                padding: "13px 16px",
-                                borderRadius: "14px",
-                                border: `2px solid ${bdr}`,
-                                background: bg,
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "space-between",
-                                cursor: isChecked ? "default" : "pointer",
-                                opacity:
-                                  isChecked && !isCorr && !isSel ? 0.5 : 1,
-                              }}
-                            >
-                              <span
-                                style={{
-                                  fontWeight: 600,
-                                  fontSize: "14px",
-                                  color: "#1b1c1c",
-                                }}
-                              >
-                                <strong
-                                  style={{
-                                    color: "#006590",
-                                    marginRight: "7px",
-                                    fontSize: "15px",
-                                  }}
-                                >
-                                  {opt.key}.
-                                </strong>
-                                {opt.text}
-                              </span>
-                              <div
-                                style={{
-                                  width: "22px",
-                                  height: "22px",
-                                  borderRadius: "50%",
-                                  border: `2px solid ${ind.border}`,
-                                  background: ind.bg,
-                                  display: "flex",
-                                  alignItems: "center",
-                                  justifyContent: "center",
-                                  flexShrink: 0,
-                                  marginLeft: "10px",
-                                  transition: "all 0.15s ease",
-                                }}
-                              >
-                                {showCheck && (
-                                  <span
-                                    style={{
-                                      color: "white",
-                                      fontSize: "10px",
-                                      fontWeight: 800,
-                                    }}
-                                  >
-                                    ✓
-                                  </span>
-                                )}
-                                {showX && (
-                                  <span
-                                    style={{
-                                      color: "white",
-                                      fontSize: "10px",
-                                      fontWeight: 800,
-                                    }}
-                                  >
-                                    ✗
-                                  </span>
-                                )}
-                              </div>
-                            </div>
-                          );
-                        })}
-                      </div>
-
-                      {/* Transcript revealed after check or via mode */}
-                      {(modes.autoShowTranscript || isManuallyChecked) && (
-                        <div
-                          className="transcript-reveal"
-                          style={{
-                            padding: "15px 18px",
-                            background: "#f5f3f3",
-                            borderRadius: "14px",
-                            border: "1.5px solid #bdc8d2",
-                          }}
-                        >
-                          <div
-                            style={{
-                              display: "flex",
-                              alignItems: "center",
-                              gap: "6px",
-                              color: "#006590",
-                              fontWeight: 800,
-                              fontSize: "10px",
-                              textTransform: "uppercase",
-                              letterSpacing: "0.09em",
-                              marginBottom: "12px",
-                            }}
-                          >
-                            <IconTranscript /> Transcript & Explanation
-                          </div>
-
-                          {/* Answer Box moved top */}
-                          <div
-                            style={{
-                              marginBottom: "14px",
-                              display: "flex",
-                              alignItems: "center",
-                              gap: "6px",
-                              background: "rgba(88,204,2,0.10)",
-                              border: "1.5px solid #58CC02",
-                              borderRadius: "10px",
-                              padding: "8px 12px",
-                              fontSize: "12px",
-                              fontWeight: 600,
-                              color: "#2a6000",
-                            }}
-                          >
-                            <span style={{ color: "#58CC02", display: "flex" }}>
-                              <IconCircleCheck />
-                            </span>
-                            Đáp án đúng:&nbsp;<strong>{q.correctKey}</strong>
-                            &nbsp; (
-                            {
-                              q.options.find((o) => o.key === q.correctKey)
-                                ?.text
-                            }
-                            )
-                          </div>
-
-                          <p
-                            style={{
-                              fontSize: "13px",
-                              color: "#3e4850",
-                              lineHeight: 1.7,
-                              whiteSpace: "pre-line",
-                              margin: 0,
-                            }}
-                          >
-                            {q.transcript}
-                          </p>
-                        </div>
-                      )}
-                    </div>
+                    {/* Question Content Viewport */}
+                    <QuestionContent
+                      q={q}
+                      selectedAnswers={selectedAnswers}
+                      checkedResults={checkedResults}
+                      modes={modes}
+                      selectOption={selectOption}
+                    />
                   </div>
 
-                  {/* Action Buttons Column (sticky right) */}
+                  {/* Sticky Right Action Buttons */}
                   <div
                     style={{
                       display: "flex",
                       flexDirection: "column",
-                      gap: "10px",
+                      gap: "8px",
                       position: "sticky",
-                      top: "88px",
+                      top: hideHeader ? "16px" : "68px",
                       flexShrink: 0,
-                      width: "116px",
+                      width: "108px",
+                      transition: "top 0.2s ease",
                     }}
                   >
-                    {/* Back */}
+                    {/* Back button */}
                     <button
-                      onClick={() =>
-                        currentIdx > 0 && jumpToQuestion(currentIdx - 1)
-                      }
+                      onClick={() => currentIdx > 0 && jumpToQuestion(currentIdx - 1)}
                       disabled={currentIdx === 0}
                       className={currentIdx > 0 ? "btn-3d" : ""}
                       style={{
                         width: "100%",
-                        padding: "13px 8px",
-                        borderRadius: "14px",
+                        padding: "10px 8px",
+                        borderRadius: "12px",
                         border: "none",
                         fontFamily: "'Plus Jakarta Sans', sans-serif",
                         fontWeight: 700,
-                        fontSize: "13px",
+                        fontSize: "12px",
                         cursor: currentIdx === 0 ? "not-allowed" : "pointer",
                         background: currentIdx === 0 ? "#e4e2e2" : "#efeded",
                         color: currentIdx === 0 ? "#a0a0a0" : "#1b1c1c",
-                        boxShadow:
-                          currentIdx === 0 ? "none" : "0 4px 0 #bdc8d2",
+                        boxShadow: currentIdx === 0 ? "none" : "0 3px 0 #bdc8d2",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        gap: "5px",
+                        gap: "4px",
                       }}
                     >
                       ← Back
                     </button>
 
-                    {/* Check Result */}
+                    {/* Check Result button */}
                     <button
                       onClick={checkCurrentAnswer}
-                      disabled={isChecked || !userAns}
-                      className={!isChecked && userAns ? "btn-3d" : ""}
+                      disabled={isCheckDisabled}
+                      className={!isCheckDisabled ? "btn-3d" : ""}
                       style={{
                         width: "100%",
-                        padding: "13px 8px",
-                        borderRadius: "14px",
+                        padding: "10px 8px",
+                        borderRadius: "12px",
                         border: "none",
                         fontFamily: "'Plus Jakarta Sans', sans-serif",
                         fontWeight: 700,
-                        fontSize: "13px",
+                        fontSize: "12px",
                         display: "flex",
                         flexDirection: "column",
                         alignItems: "center",
                         justifyContent: "center",
-                        gap: "5px",
-                        cursor:
-                          isChecked || !userAns ? "not-allowed" : "pointer",
-                        background:
-                          isChecked || !userAns ? "#e4e2e2" : "#FFC107",
-                        color: isChecked || !userAns ? "#a0a0a0" : "#5A4300",
-                        boxShadow:
-                          isChecked || !userAns ? "none" : "0 4px 0 #B38600",
+                        gap: "4px",
+                        cursor: isCheckDisabled ? "not-allowed" : "pointer",
+                        background: isCheckDisabled ? "#e4e2e2" : "#FFC107",
+                        color: isCheckDisabled ? "#a0a0a0" : "#5A4300",
+                        boxShadow: isCheckDisabled ? "none" : "0 3px 0 #B38600",
                       }}
                     >
                       <IconCheck />
                       Check
                     </button>
 
-                    {/* Next / Finish */}
+                    {/* Next / Finish button */}
                     <button
                       className="btn-3d"
                       onClick={handleNextOrFinish}
                       style={{
                         width: "100%",
-                        padding: "13px 8px",
-                        borderRadius: "14px",
+                        padding: "10px 8px",
+                        borderRadius: "12px",
                         border: "none",
                         fontFamily: "'Plus Jakarta Sans', sans-serif",
                         fontWeight: 700,
-                        fontSize: "13px",
+                        fontSize: "12px",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        gap: "5px",
+                        gap: "4px",
                         cursor: "pointer",
                         background: "#1cb0f6",
                         color: "white",
-                        boxShadow: "0 4px 0 #008EAF",
+                        boxShadow: "0 3px 0 #008EAF",
                       }}
                     >
                       {currentIdx === questions.length - 1 ? (
@@ -2078,9 +998,7 @@ export default function Page() {
                     </button>
                   </div>
                 </div>
-                {/* end MAIN */}
               </div>
-              {/* end Body */}
             </div>
           );
         })()}
