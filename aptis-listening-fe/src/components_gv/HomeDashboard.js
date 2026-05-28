@@ -304,15 +304,7 @@ export default function HomeDashboard({ onSelectMode, onSelectListeningPart, ini
               >
                 Select Practice Mode: Test {selectedBoDe}
               </h2>
-              <p
-                style={{
-                  fontSize: "14px",
-                  color: "#718096",
-                  marginBottom: "24px",
-                }}
-              >
-                Select a practice mode that best fits your study needs.
-              </p>
+
 
               <div
                 style={{
