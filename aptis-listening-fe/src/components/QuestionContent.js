@@ -332,7 +332,7 @@ export default function QuestionContent({
       )}
 
       {/* Transcript revealed after check or via mode */}
-      {(modes.autoShowTranscript || isChecked) && (
+      {(modes.autoShowTranscript || isManuallyChecked) && (
         <div
           className="transcript-reveal"
           style={{
