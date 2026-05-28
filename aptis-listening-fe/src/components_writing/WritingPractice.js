@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { IconBack, IconTimer, IconCheck, IconNext } from "../components/Icons";
 import ConfirmModal from "../components/ConfirmModal";
 import Toast from "../components/Toast";
+import WritingResult from "./WritingResult";
 
 export default function WritingPractice({ testId, onExit }) {
   const [testData, setTestData] = useState(null);
@@ -12,6 +13,8 @@ export default function WritingPractice({ testId, onExit }) {
   const [timerActive, setTimerActive] = useState(true);
   const [confirmModal, setConfirmModal] = useState(null);
   const [toast, setToast] = useState(null);
+  const [isGrading, setIsGrading] = useState(false);
+  const [aiResult, setAiResult] = useState(null);
 
   useEffect(() => {
     fetch("/scraped_data_writing/writing_all.json")
@@ -51,6 +54,31 @@ export default function WritingPractice({ testId, onExit }) {
     return `${m.toString().padStart(2, "0")}:${s.toString().padStart(2, "0")}`;
   };
 
+  const submitForGrading = async () => {
+    setIsGrading(true);
+    setTimerActive(false);
+    try {
+      const res = await fetch("http://localhost:8080/api/writing/grade", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ answers, testData })
+      });
+      if (!res.ok) {
+        const errData = await res.json().catch(() => ({}));
+        throw new Error(errData.error || "Failed to grade writing");
+      }
+      const data = await res.json();
+      if (data.error) throw new Error(data.error);
+      setAiResult(data);
+    } catch (err) {
+      console.error(err);
+      setToast({ message: "Grading failed: " + err.message, type: "error", id: Date.now() });
+      setTimerActive(true);
+    } finally {
+      setIsGrading(false);
+    }
+  };
+
   const handleExit = () => {
     setConfirmModal({
       message: "Exiting now will lose your current practice progress. Are you sure you want to leave?",
@@ -82,8 +110,7 @@ export default function WritingPractice({ testId, onExit }) {
         type: "success",
         onConfirm: () => {
           setConfirmModal(null);
-          setTimerActive(false);
-          onExit();
+          submitForGrading();
         },
         onCancel: () => setConfirmModal(null),
       });
@@ -100,6 +127,21 @@ export default function WritingPractice({ testId, onExit }) {
   }
 
   if (!testData) return <div>Data not found</div>;
+
+  if (isGrading) {
+    return (
+      <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", backgroundColor: "#fbf9f8", fontFamily: "'Be Vietnam Pro', sans-serif" }}>
+        <div style={{ width: "48px", height: "48px", border: "5px solid #e2e8f0", borderTopColor: "#006590", borderRadius: "50%", animation: "spin 1s linear infinite" }}></div>
+        <h2 style={{ marginTop: "24px", fontSize: "20px", color: "#006590", fontWeight: 700 }}>AI is grading your writing...</h2>
+        <p style={{ marginTop: "8px", color: "#64748b", fontSize: "15px" }}>Please wait while the examiner reviews your answers.</p>
+        <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+      </div>
+    );
+  }
+
+  if (aiResult) {
+    return <WritingResult result={aiResult} onReturn={onExit} />;
+  }
 
   return (
     <div style={{ backgroundColor: "#fbf9f8", minHeight: "100vh", color: "#1b1c1c", fontFamily: "'Be Vietnam Pro', sans-serif" }}>
