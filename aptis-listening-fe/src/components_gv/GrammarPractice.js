@@ -194,15 +194,6 @@ export default function GrammarPractice({ boDe, mode, onExit }) {
     if (targetPage !== sidebarPage) {
       setSidebarPage(targetPage);
     }
-    
-    // Auto Answer for Grammar
-    if (modes.autoShowAnswer && targetNode.type === "grammar") {
-      const q = targetNode.qData;
-      if (q && !selectedAnswers[targetNode.id]) {
-        setSelectedAnswers((prev) => ({ ...prev, [targetNode.id]: q.correctKey }));
-        setCheckedResults((prev) => ({ ...prev, [targetNode.id]: true }));
-      }
-    }
   };
 
   const checkCurrentAnswer = () => {
@@ -294,8 +285,13 @@ export default function GrammarPractice({ boDe, mode, onExit }) {
       totalQuestionsCount += 1;
       const qId = node.id;
       const hasAns = !!selectedAnswers[qId];
-      const isGraded = !!checkedResults[qId] || modes.autoShowAnswer;
-      if (isGraded && hasAns) {
+      const isAutoVisited = modes.autoShowAnswer && !!visitedIds[qId];
+      const isGraded = !!checkedResults[qId] || isAutoVisited;
+
+      if (isAutoVisited) {
+        checkedCount += 1;
+        correctCount += 1;
+      } else if (isGraded && hasAns) {
         checkedCount += 1;
         if (selectedAnswers[qId] === node.qData.correctKey) {
           correctCount += 1;
@@ -464,13 +460,8 @@ export default function GrammarPractice({ boDe, mode, onExit }) {
                   checked={modes.autoShowAnswer}
                   onChange={(e) => {
                     setModes((m) => ({ ...m, autoShowAnswer: e.target.checked }));
-                    if (e.target.checked && activeNode && activeNode.type === "grammar") {
-                      const qId = activeNode.id;
-                      setVisitedIds((prev) => ({ ...prev, [qId]: true }));
-                      if (!selectedAnswers[qId]) {
-                        setSelectedAnswers((prev) => ({ ...prev, [qId]: activeNode.qData.correctKey }));
-                        setCheckedResults((prev) => ({ ...prev, [qId]: true }));
-                      }
+                    if (e.target.checked && activeNode) {
+                      setVisitedIds((prev) => ({ ...prev, [activeNode.id]: true }));
                     }
                   }}
                 />
@@ -608,11 +599,14 @@ export default function GrammarPractice({ boDe, mode, onExit }) {
                 // Answer verification
                 let hasAnswer = false;
                 let isNodeCorrect = null;
+                const isAutoVisited = modes.autoShowAnswer && !!visitedIds[node.id];
 
                 if (node.type === "grammar") {
                   hasAnswer = !!selectedAnswers[node.id];
-                  if (checkedResults[node.id] || (modes.autoShowAnswer && selectedAnswers[node.id])) {
+                  if (checkedResults[node.id]) {
                     isNodeCorrect = selectedAnswers[node.id] === node.qData.correctKey;
+                  } else if (isAutoVisited) {
+                    isNodeCorrect = true;
                   }
                 } else {
                   const partNum = node.partNum;
