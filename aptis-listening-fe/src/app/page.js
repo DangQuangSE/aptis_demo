@@ -179,56 +179,66 @@ export default function Page() {
         const raw = await (
           await fetch("/scraped_data/question_15.json")
         ).json();
-        const opts = [
-          { key: "A", text: "Man only" },
-          { key: "B", text: "Woman only" },
-          { key: "C", text: "Both Man and Woman" },
-        ];
-        raw.forEach((topic, topicIdx) => {
-          topic.questions.forEach((stmt, idx) => {
-            const ans = topic.correctAnswer[idx];
-            const ck =
-              ans?.toLowerCase() === "man"
-                ? "A"
-                : ans?.toLowerCase() === "woman"
-                  ? "B"
-                  : "C";
-            formatted.push({
-              id: `p3_${topicIdx}_${idx}`,
-              partNumber: 3,
-              audioUrl: getAudioUrl(topic.audioUrl),
-              questionText: stmt,
-              options: opts,
-              correctKey: ck,
-              transcript: topic.transcript,
-              displayHeading: `Topic ${topicIdx + 1} - Statement ${idx + 1}`,
-            });
-          });
+        formatted = raw.map((topic, topicIdx) => {
+          return {
+            id: `p3_${topicIdx}`,
+            partNumber: 3,
+            audioUrl: getAudioUrl(topic.audioUrl),
+            topic: topic.topic,
+            transcript: topic.transcript,
+            displayHeading: `Topic ${topicIdx + 1} (Part 3)`,
+            isMultiQuestion: true,
+            isStatementMatching: true,
+            subQuestions: topic.questions.map((stmt, idx) => {
+              const ans = topic.correctAnswer[idx];
+              const ck =
+                ans?.toLowerCase() === "man"
+                  ? "A"
+                  : ans?.toLowerCase() === "woman"
+                    ? "B"
+                    : "C";
+              return {
+                id: `p3_${topicIdx}_${idx}`,
+                questionText: stmt,
+                correctKey: ck,
+                options: [
+                  { key: "A", text: "Man" },
+                  { key: "B", text: "Woman" },
+                  { key: "C", text: "Both" },
+                ],
+              };
+            }),
+          };
         });
       } else if (partNum === 4) {
         const raw = await (
           await fetch("/scraped_data/question_16_17.json")
         ).json();
-        raw.forEach((lec, li) => {
-          lec.questions.forEach((pq, qi) => {
-            const rawOpts = [...pq.options];
-            const correctText = rawOpts[0];
-            const shuffledOpts = shuffleArray(rawOpts);
-            const ck = ["A", "B", "C"][shuffledOpts.indexOf(correctText)];
-            formatted.push({
-              id: `p4_${li}_${qi}`,
-              partNumber: 4,
-              audioUrl: getAudioUrl(lec.audioUrl),
-              questionText: pq.question,
-              options: shuffledOpts.map((t, i) => ({
-                key: ["A", "B", "C"][i],
-                text: t,
-              })),
-              correctKey: ck,
-              transcript: lec.transcript,
-              displayHeading: `Lecture ${li + 1} - Question ${qi + 1}`,
-            });
-          });
+        formatted = raw.map((lec, li) => {
+          return {
+            id: `p4_${li}`,
+            partNumber: 4,
+            audioUrl: getAudioUrl(lec.audioUrl),
+            topic: lec.topic,
+            transcript: lec.transcript,
+            displayHeading: `Lecture ${li + 1}`,
+            isMultiQuestion: true,
+            subQuestions: lec.questions.map((pq, qi) => {
+              const rawOpts = [...pq.options];
+              const correctText = rawOpts[0];
+              const shuffledOpts = shuffleArray(rawOpts);
+              const ck = ["A", "B", "C"][shuffledOpts.indexOf(correctText)];
+              return {
+                id: `p4_${li}_${qi}`,
+                questionText: pq.question,
+                options: shuffledOpts.map((t, i) => ({
+                  key: ["A", "B", "C"][i],
+                  text: t,
+                })),
+                correctKey: ck,
+              };
+            }),
+          };
         });
       }
 
@@ -239,24 +249,6 @@ export default function Page() {
 
       if (modes.autoShowAnswer && formatted[0]) {
         setVisitedIds({ [formatted[0].id]: true });
-        if (formatted[0].isMultiQuestion) {
-          const firstQ = formatted[0];
-          setSelectedAnswers((prev) => {
-            const next = { ...prev };
-            firstQ.subQuestions.forEach((subQ) => {
-              next[subQ.id] = subQ.correctKey;
-            });
-            return next;
-          });
-          setCheckedResults((prev) => {
-            const next = { ...prev };
-            firstQ.subQuestions.forEach((subQ) => {
-              next[subQ.id] = true;
-            });
-            next[firstQ.id] = true;
-            return next;
-          });
-        }
       }
     } catch (err) {
       console.error("Load error:", err);
@@ -279,17 +271,11 @@ export default function Page() {
     }
     setCurrentIdx(idx);
 
-    // Mark visited and auto answer when on
+    // Mark visited when auto answer is on
     if (modes.autoShowAnswer) {
       const q = questions[idx];
       if (q) {
         setVisitedIds((prev) => ({ ...prev, [q.id]: true }));
-        if (q.isMultiQuestion) {
-          q.subQuestions.forEach((subQ) => {
-            setSelectedAnswers((prev) => ({ ...prev, [subQ.id]: subQ.correctKey }));
-            setCheckedResults((prev) => ({ ...prev, [subQ.id]: true }));
-          });
-        }
       }
     }
 
@@ -623,12 +609,6 @@ export default function Page() {
                               const currentQ = questions[currentIdx];
                               if (currentQ) {
                                 setVisitedIds((prev) => ({ ...prev, [currentQ.id]: true }));
-                                if (currentQ.isMultiQuestion) {
-                                  currentQ.subQuestions.forEach((subQ) => {
-                                    setSelectedAnswers((prev) => ({ ...prev, [subQ.id]: subQ.correctKey }));
-                                    setCheckedResults((prev) => ({ ...prev, [subQ.id]: true }));
-                                  });
-                                }
                               }
                             }
                           }}
