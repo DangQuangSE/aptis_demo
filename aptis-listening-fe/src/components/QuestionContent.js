@@ -450,33 +450,38 @@ export default function QuestionContent({
 
           {/* Answer Box */}
           {q.isMultiQuestion ? (
-            <div style={{ display: "flex", flexDirection: "column", gap: "6px", marginBottom: "10px" }}>
-              {q.subQuestions.map((subQ, subIdx) => (
-                <div
-                  key={subQ.id}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "6px",
-                    background: "rgba(88,204,2,0.10)",
-                    border: "1.5px solid #58CC02",
-                    borderRadius: "8px",
-                    padding: "6px 10px",
-                    fontSize: "12px",
-                    fontWeight: 600,
-                    color: "#2a6000",
-                  }}
-                >
-                  <span style={{ color: "#58CC02", display: "flex" }}>
-                    <IconCircleCheck />
-                  </span>
-                  Câu {subIdx + 1}: Đáp án đúng:&nbsp;<strong>{
+            <div
+              style={{
+                marginBottom: "10px",
+                display: "flex",
+                alignItems: "center",
+                gap: "6px",
+                background: "rgba(88,204,2,0.10)",
+                border: "1.5px solid #58CC02",
+                borderRadius: "8px",
+                padding: "6px 10px",
+                fontSize: "12px",
+                fontWeight: 600,
+                color: "#2a6000",
+              }}
+            >
+              <span style={{ color: "#58CC02", display: "flex" }}>
+                <IconCircleCheck />
+              </span>
+              Đáp án đúng:&nbsp;
+              <strong>
+                {q.subQuestions
+                  .map((subQ) =>
                     q.isStatementMatching
-                      ? (subQ.correctKey === "A" ? "Man" : subQ.correctKey === "B" ? "Woman" : "Both")
+                      ? subQ.correctKey === "A"
+                        ? "Man"
+                        : subQ.correctKey === "B"
+                        ? "Woman"
+                        : "Both"
                       : subQ.correctKey
-                  }</strong>
-                </div>
-              ))}
+                  )
+                  .join(" - ")}
+              </strong>
             </div>
           ) : (
             <div
