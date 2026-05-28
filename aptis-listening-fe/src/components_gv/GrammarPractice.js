@@ -468,21 +468,6 @@ export default function GrammarPractice({ boDe, mode, onExit }) {
                 Auto Answer (Grammar)
               </label>
 
-              {/* Collapse Header toggle */}
-              <button
-                onClick={() => setModes((m) => ({ ...m, hideHeader: true }))}
-                style={{
-                  padding: "4px 8px",
-                  background: "none",
-                  border: "none",
-                  cursor: "pointer",
-                  color: "#718096",
-                  fontSize: "11px",
-                  fontWeight: 600,
-                }}
-              >
-                Hide Header
-              </button>
             </div>
 
             {/* Timer */}
@@ -505,30 +490,7 @@ export default function GrammarPractice({ boDe, mode, onExit }) {
         </header>
       )}
 
-      {/* Floating Restore Header Action */}
-      {modes.hideHeader && (
-        <button
-          onClick={() => setModes((m) => ({ ...m, hideHeader: false }))}
-          style={{
-            position: "fixed",
-            top: "12px",
-            right: "16px",
-            zIndex: 999,
-            background: "rgba(255, 255, 255, 0.9)",
-            backdropFilter: "blur(4px)",
-            border: "1.5px solid #efeded",
-            borderRadius: "8px",
-            padding: "4px 10px",
-            cursor: "pointer",
-            fontSize: "11px",
-            fontWeight: 700,
-            color: "#006590",
-            boxShadow: "0 2px 8px rgba(0,0,0,0.06)",
-          }}
-        >
-          Display Header
-        </button>
-      )}
+
 
       {/* ── Body: Sidebar + Main ─────────────────────────────────────── */}
       <div
@@ -927,7 +889,6 @@ export default function GrammarPractice({ boDe, mode, onExit }) {
               Check
             </button>
 
-            {/* Next / Finish button */}
             <button
               className="btn-3d"
               onClick={handleNextOrFinish}
@@ -956,6 +917,36 @@ export default function GrammarPractice({ boDe, mode, onExit }) {
                   Next <IconNext />
                 </>
               )}
+            </button>
+
+            {/* Header Collapse / Restore Button */}
+            <button
+              onClick={() => setModes((m) => ({ ...m, hideHeader: !m.hideHeader }))}
+              style={{
+                width: "100%",
+                padding: "8px 6px",
+                borderRadius: "10px",
+                border: "1.5px solid #cbd5e0",
+                background: "white",
+                fontFamily: "'Plus Jakarta Sans', sans-serif",
+                fontWeight: 700,
+                fontSize: "11px",
+                color: "#718096",
+                cursor: "pointer",
+                marginTop: "28px", // Safe spacing to avoid accidental clicks
+                transition: "all 0.15s ease",
+                textAlign: "center",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "#edf2f7";
+                e.currentTarget.style.color = "#4a5568";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "white";
+                e.currentTarget.style.color = "#718096";
+              }}
+            >
+              {modes.hideHeader ? "Show Header" : "Hide Header"}
             </button>
           </div>
         </div>

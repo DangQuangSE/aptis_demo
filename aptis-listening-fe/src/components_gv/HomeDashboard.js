@@ -133,9 +133,7 @@ export default function HomeDashboard({ onSelectMode, onStartListening }) {
             ✏️ Grammar & Vocabulary
           </button>
           <button
-            onClick={() => {
-              setActiveTab("listening");
-            }}
+            onClick={onStartListening}
             style={{
               padding: "10px 24px",
               borderRadius: "12px",
@@ -151,22 +149,6 @@ export default function HomeDashboard({ onSelectMode, onStartListening }) {
             }}
           >
             🎧 Listening
-            <span
-              style={{
-                position: "absolute",
-                top: "-6px",
-                right: "-12px",
-                background: "#e53e3e",
-                color: "white",
-                fontSize: "8px",
-                fontWeight: 800,
-                padding: "2px 6px",
-                borderRadius: "99px",
-                textTransform: "uppercase",
-              }}
-            >
-              Soon
-            </span>
           </button>
         </div>
       </div>
@@ -391,66 +373,6 @@ export default function HomeDashboard({ onSelectMode, onStartListening }) {
         </div>
       )}
 
-      {activeTab === "listening" && (
-        <div
-          className="animate-fade-in"
-          style={{
-            width: "100%",
-            maxWidth: "600px",
-            margin: "0 auto",
-            backgroundColor: "white",
-            border: "2px solid #efeded",
-            borderRadius: "24px",
-            padding: "40px 24px",
-            boxShadow: "0 10px 30px rgba(0,0,0,0.04)",
-            textAlign: "center",
-          }}
-        >
-          <div style={{ fontSize: "48px", marginBottom: "16px" }}>🔒</div>
-          <h2
-            style={{
-              fontFamily: "'Plus Jakarta Sans', sans-serif",
-              fontWeight: 800,
-              fontSize: "22px",
-              color: "#1b1c1c",
-              marginBottom: "8px",
-            }}
-          >
-            Listening Mode is Under Syncing
-          </h2>
-          <p
-            style={{
-              fontSize: "14px",
-              color: "#718096",
-              lineHeight: 1.6,
-              marginBottom: "28px",
-            }}
-          >
-            The system is currently syncing mock test data from the Listening developer.
-            In the meantime, feel free to practice our high-quality Grammar and Vocabulary sets.
-          </p>
-          <button
-            onClick={() => {
-              setActiveTab("grammar-vocab");
-            }}
-            className="btn-3d"
-            style={{
-              background: "#1877F2",
-              color: "white",
-              padding: "12px 30px",
-              borderRadius: "14px",
-              border: "none",
-              fontFamily: "'Plus Jakarta Sans', sans-serif",
-              fontWeight: 700,
-              fontSize: "14px",
-              boxShadow: "0 4px 0 #0D52AB",
-              cursor: "pointer",
-            }}
-          >
-            Practice Grammar & Vocab Now
-          </button>
-        </div>
-      )}
     </main>
   );
 }

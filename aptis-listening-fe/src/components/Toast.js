@@ -63,7 +63,7 @@ export default function Toast({ toast, onClose }) {
       <span style={{ flex: 1, lineHeight: 1.45 }}>{toast.message}</span>
       <button
         onClick={onClose}
-        aria-label="Đóng"
+        aria-label="Close"
         style={{
           background: "rgba(255,255,255,0.2)",
           border: "none",

@@ -76,7 +76,7 @@ export default function SidebarMatrix({
             margin: 0,
           }}
         >
-          Danh sách câu hỏi
+          Question List
         </h2>
       </div>
 
@@ -156,7 +156,7 @@ export default function SidebarMatrix({
                 key={item.id}
                 onClick={() => jumpToQuestion(idx)}
                 className="q-matrix-btn"
-                title={item.isMultiQuestion ? `Bài nghe ${idx + 1}` : `Câu hỏi ${idx + 1}`}
+                title={item.isMultiQuestion ? `Audio Topic ${idx + 1}` : `Question ${idx + 1}`}
                 style={{
                   width: "100%",
                   aspectRatio: "1/1",
@@ -259,7 +259,7 @@ export default function SidebarMatrix({
             color: "#6e7881",
           }}
         >
-          {checkedCount}/{totalQuestionsCount} đã kiểm tra
+          {checkedCount}/{totalQuestionsCount} checked
         </span>
         <span
           style={{
@@ -268,7 +268,7 @@ export default function SidebarMatrix({
             color: "#2a6000",
           }}
         >
-          ✓ {correctCount} đúng
+          ✓ {correctCount} correct
         </span>
       </div>
     </aside>
