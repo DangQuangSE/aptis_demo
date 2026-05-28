@@ -9,9 +9,13 @@ import Toast from "../components/Toast";
 import ConfirmModal from "../components/ConfirmModal";
 import { IconBack, IconTimer, IconCheck, IconNext } from "../components/Icons";
 import { shuffleArray, getAudioUrl, formatTime } from "../utils/helpers";
+import HomeDashboard from "../components_gv/HomeDashboard";
+import GrammarPractice from "../components_gv/GrammarPractice";
 
 export default function Page() {
-  const [view, setView] = useState("select-part");
+  const [view, setView] = useState("home");
+  const [selectedBoDe, setSelectedBoDe] = useState(1);
+  const [selectedMode, setSelectedMode] = useState("grammar");
   const [loading, setLoading] = useState(false);
   const [hideHeader, setHideHeader] = useState(false);
 
@@ -423,6 +427,24 @@ export default function Page() {
         fontFamily: "'Be Vietnam Pro', sans-serif",
       }}
     >
+      {view === "home" && (
+        <HomeDashboard
+          onSelectMode={(boDe, mode) => {
+            setSelectedBoDe(boDe);
+            setSelectedMode(mode);
+            setView("grammar-practice");
+          }}
+        />
+      )}
+
+      {view === "grammar-practice" && (
+        <GrammarPractice
+          boDe={selectedBoDe}
+          mode={selectedMode}
+          onExit={() => setView("home")}
+        />
+      )}
+
       {view === "select-part" && (
         <PartSelection loading={loading} onSelectPart={startPartPractice} />
       )}

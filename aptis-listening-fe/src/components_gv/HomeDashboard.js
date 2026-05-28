@@ -3,7 +3,7 @@ import React, { useState } from "react";
 const BODE_LIST = [
   {
     num: 1,
-    title: "Bộ đề 1",
+    title: "Test 1",
     desc: "25 Grammar + 25 Vocabulary",
     icon: "📚",
     bg: "#1877F2",
@@ -11,7 +11,7 @@ const BODE_LIST = [
   },
   {
     num: 2,
-    title: "Bộ đề 2",
+    title: "Test 2",
     desc: "25 Grammar + 25 Vocabulary",
     icon: "🧩",
     bg: "#00C8F8",
@@ -19,7 +19,7 @@ const BODE_LIST = [
   },
   {
     num: 3,
-    title: "Bộ đề 3",
+    title: "Test 3",
     desc: "25 Grammar + 25 Vocabulary",
     icon: "⚡",
     bg: "#FFC107",
@@ -27,7 +27,7 @@ const BODE_LIST = [
   },
   {
     num: 4,
-    title: "Bộ đề 4",
+    title: "Test 4",
     desc: "25 Grammar + 25 Vocabulary",
     icon: "💡",
     bg: "#1E8E49",
@@ -35,7 +35,7 @@ const BODE_LIST = [
   },
   {
     num: 5,
-    title: "Bộ đề 5",
+    title: "Test 5",
     desc: "25 Grammar + 25 Vocabulary",
     icon: "🔥",
     bg: "#9C27B0",
@@ -87,8 +87,7 @@ export default function HomeDashboard({ onSelectMode, onStartListening }) {
             gap: "8px",
           }}
         >
-          <span style={{ fontSize: "22px" }}>⚡</span>
-          <span>Aptis Keys Dashboard</span>
+
         </div>
 
         <h1
@@ -102,20 +101,8 @@ export default function HomeDashboard({ onSelectMode, onStartListening }) {
             lineHeight: 1.15,
           }}
         >
-          Hệ Thống Ôn Luyện Aptis
+          Aptis Learning System
         </h1>
-
-        <p
-          style={{
-            fontSize: "16px",
-            color: "#4a5568",
-            maxWidth: "600px",
-            margin: "0 auto 30px",
-            lineHeight: 1.6,
-          }}
-        >
-          Chọn kỹ năng bạn muốn ôn luyện. Đề thi được thiết kế chuẩn cấu trúc để giúp bạn nâng cao phản xạ và đạt điểm số tối đa.
-        </p>
 
         {/* Tab Selector */}
         <div
@@ -143,11 +130,10 @@ export default function HomeDashboard({ onSelectMode, onStartListening }) {
               boxShadow: activeTab === "grammar-vocab" ? "0 4px 10px rgba(0,0,0,0.08)" : "none",
             }}
           >
-            ✏️ Ngữ pháp & Từ vựng
+            ✏️ Grammar & Vocabulary
           </button>
           <button
             onClick={() => {
-              // Inform user listening is pending link, but visually select to show aesthetic integration
               setActiveTab("listening");
             }}
             style={{
@@ -164,7 +150,7 @@ export default function HomeDashboard({ onSelectMode, onStartListening }) {
               position: "relative",
             }}
           >
-            🎧 Luyện nghe
+            🎧 Listening
             <span
               style={{
                 position: "absolute",
@@ -292,7 +278,7 @@ export default function HomeDashboard({ onSelectMode, onStartListening }) {
                   marginBottom: "8px",
                 }}
               >
-                Chọn chế độ ôn tập: Bộ đề {selectedBoDe}
+                Select Practice Mode: Test {selectedBoDe}
               </h2>
               <p
                 style={{
@@ -301,7 +287,7 @@ export default function HomeDashboard({ onSelectMode, onStartListening }) {
                   marginBottom: "24px",
                 }}
               >
-                Lựa chọn chế độ làm bài phù hợp với nhu cầu ôn luyện của bạn.
+                Select a practice mode that best fits your study needs.
               </p>
 
               <div
@@ -331,8 +317,8 @@ export default function HomeDashboard({ onSelectMode, onStartListening }) {
                     justifyContent: "space-between",
                   }}
                 >
-                  <span>📝 Chỉ luyện Ngữ pháp (25 câu)</span>
-                  <span style={{ fontSize: "12px", opacity: 0.85 }}>25 phút</span>
+                  <span>📝 Grammar Practice Only (25 Qs)</span>
+                  <span style={{ fontSize: "12px", opacity: 0.85 }}>25 mins</span>
                 </button>
 
                 {/* 2. Vocabulary Mode */}
@@ -355,8 +341,8 @@ export default function HomeDashboard({ onSelectMode, onStartListening }) {
                     justifyContent: "space-between",
                   }}
                 >
-                  <span>🧩 Chỉ luyện Từ vựng (25 câu / 5 phần)</span>
-                  <span style={{ fontSize: "12px", opacity: 0.85 }}>25 phút</span>
+                  <span>🧩 Vocabulary Practice Only (25 Qs)</span>
+                  <span style={{ fontSize: "12px", opacity: 0.85 }}>25 mins</span>
                 </button>
 
                 {/* 3. Full Test Mode */}
@@ -379,8 +365,8 @@ export default function HomeDashboard({ onSelectMode, onStartListening }) {
                     justifyContent: "space-between",
                   }}
                 >
-                  <span>🏆 Đề thi tổng hợp Grammar & Vocab (50 câu)</span>
-                  <span style={{ fontSize: "12px", opacity: 0.85 }}>50 phút</span>
+                  <span>🏆 Comprehensive Mock Test (50 Qs)</span>
+                  <span style={{ fontSize: "12px", opacity: 0.85 }}>50 mins</span>
                 </button>
 
                 {/* Back button */}
@@ -397,7 +383,7 @@ export default function HomeDashboard({ onSelectMode, onStartListening }) {
                     textDecoration: "underline",
                   }}
                 >
-                  Quay lại chọn bộ đề
+                  Back to select test
                 </button>
               </div>
             </div>
@@ -430,7 +416,7 @@ export default function HomeDashboard({ onSelectMode, onStartListening }) {
               marginBottom: "8px",
             }}
           >
-            Chế Độ Luyện Nghe Đang Được Cập Nhật
+            Listening Mode is Under Syncing
           </h2>
           <p
             style={{
@@ -440,13 +426,11 @@ export default function HomeDashboard({ onSelectMode, onStartListening }) {
               marginBottom: "28px",
             }}
           >
-            Hệ thống đang đồng bộ dữ liệu phần thi Listening từ đối tác phát triển. 
-            Bạn có thể ôn luyện trước các kiến thức Ngữ pháp và Từ vựng cực kỳ chất lượng của chúng tôi.
+            The system is currently syncing mock test data from the Listening developer.
+            In the meantime, feel free to practice our high-quality Grammar and Vocabulary sets.
           </p>
           <button
             onClick={() => {
-              // Fallback or trigger listening if user forces
-              // (but as user settings required, we only link grammar now, so let's redirect them to grammar tab)
               setActiveTab("grammar-vocab");
             }}
             className="btn-3d"
@@ -463,7 +447,7 @@ export default function HomeDashboard({ onSelectMode, onStartListening }) {
               cursor: "pointer",
             }}
           >
-            Luyện tập Ngữ pháp & Từ vựng Ngay
+            Practice Grammar & Vocab Now
           </button>
         </div>
       )}

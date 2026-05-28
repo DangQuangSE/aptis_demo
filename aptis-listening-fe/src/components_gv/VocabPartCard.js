@@ -12,7 +12,7 @@ export default function VocabPartCard({
 
   useEffect(() => {
     if (!partData || !partData.questions) return;
-    
+
     // Extract the list of answer words to form the option pool
     let pool = [];
     if (partNum === 1 || partNum === 4) {
@@ -111,7 +111,7 @@ export default function VocabPartCard({
       >
         {partData.title}
       </h3>
-      
+
       {/* Instructions */}
       <p
         style={{
@@ -126,19 +126,19 @@ export default function VocabPartCard({
         }}
       >
         {partNum === 1 || partNum === 4
-          ? "👉 Hãy so khớp từ gốc bên trái với từ đồng nghĩa chính xác ở bảng lựa chọn."
+          ? "Select a word from the list that has the most similar meaning to the word on the left."
           : partNum === 2
-            ? "👉 Hãy so khớp định nghĩa bên trái với từ vựng chính xác ở bảng lựa chọn."
+            ? "Match the definition on the left with the correct vocabulary word from the dropdown."
             : partNum === 3
-              ? "👉 Hãy chọn từ chính xác để điền vào chỗ trống hoàn thành câu văn."
-              : "👉 Hãy chọn từ kết hợp chính xác để tạo nên cụm từ (collocation) thông dụng."}
+              ? "Select the correct word to fill in the blank and complete the sentence."
+              : "Choose the correct combination word to form a common English collocation."}
       </p>
 
       {/* Questions Container */}
       <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
         {partData.questions.map((q, idx) => {
           const subId = `v_${partNum}_${idx}`;
-          
+
           if (partNum === 1 || partNum === 4) {
             // Synonym Matching
             return (
@@ -193,7 +193,7 @@ export default function VocabPartCard({
             // Sentence Completion
             // Display sentence with a gap or select box inline
             const sentenceParts = q.blankSentence.split("_______");
-            
+
             return (
               <div
                 key={idx}
@@ -225,10 +225,10 @@ export default function VocabPartCard({
                   </span>
                   {sentenceParts[1]}
                 </div>
-                
+
                 {/* Dropdown for Selection */}
                 <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "center", gap: "12px" }}>
-                  <span style={{ fontSize: "12px", color: "#718096", fontWeight: 600 }}>Điền vào chỗ trống:</span>
+                  <span style={{ fontSize: "12px", color: "#718096", fontWeight: 600 }}>Fill in the blank:</span>
                   {renderDropdown(idx, subId, q.word)}
                 </div>
               </div>
@@ -256,10 +256,10 @@ export default function VocabPartCard({
                   </span>
                   <span style={{ color: "#718096", fontSize: "14px" }}>+</span>
                 </div>
-                
+
                 <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
                   {renderDropdown(idx, subId, q.collocation)}
-                  
+
                   {/* Phrase Preview */}
                   <span
                     style={{

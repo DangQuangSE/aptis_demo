@@ -156,7 +156,7 @@ export default function GrammarQuestionCard({
               marginBottom: "6px",
             }}
           >
-            ĐÁP ÁN CHI TIẾT
+            DETAILED EXPLANATION
           </span>
           <p
             style={{
@@ -166,7 +166,7 @@ export default function GrammarQuestionCard({
               fontWeight: 500,
             }}
           >
-            Đáp án đúng là: <strong style={{ color: "#2e7d32" }}>{q.correctAnswer}</strong> (Lựa chọn {q.correctKey})
+            The correct answer is: <strong style={{ color: "#2e7d32" }}>{q.correctAnswer}</strong> (Option {q.correctKey})
           </p>
         </div>
       )}
