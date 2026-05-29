@@ -314,7 +314,7 @@ export default function Page() {
         setTimerActive(false);
         audioRef.current?.pause();
         setIsPlaying(false);
-        setDashboardTab("grammar-vocab");
+        setDashboardTab("listening");
         setView("home");
         setSelectedPart(null);
         setQuestions([]);
@@ -378,7 +378,7 @@ export default function Page() {
           setConfirmModal(null);
           clearInterval(timerRef.current);
           setTimerActive(false);
-          setDashboardTab("grammar-vocab");
+          setDashboardTab("listening");
           setView("home");
           setSelectedPart(null);
           setQuestions([]);
