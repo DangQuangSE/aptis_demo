@@ -11,12 +11,14 @@ import { IconBack, IconTimer, IconCheck, IconNext } from "../components/Icons";
 import { shuffleArray, getAudioUrl, formatTime } from "../utils/helpers";
 import HomeDashboard from "../components_gv/HomeDashboard";
 import GrammarPractice from "../components_gv/GrammarPractice";
+import ReadingPractice from "../components_reading/ReadingPractice";
 
 export default function Page() {
   const [view, setView] = useState("home");
   const [dashboardTab, setDashboardTab] = useState("grammar-vocab");
   const [selectedBoDe, setSelectedBoDe] = useState(1);
   const [selectedMode, setSelectedMode] = useState("grammar");
+  const [selectedReadingPart, setSelectedReadingPart] = useState(null);
   const [loading, setLoading] = useState(false);
   const [hideHeader, setHideHeader] = useState(false);
 
@@ -443,10 +445,15 @@ export default function Page() {
       {view === "home" && (
         <HomeDashboard
           initialTab={dashboardTab}
-          onSelectMode={(boDe, mode) => {
-            setSelectedBoDe(boDe);
+          onSelectMode={(boDe, mode, partNum) => {
+            if (boDe !== null) setSelectedBoDe(boDe);
             setSelectedMode(mode);
-            setView("grammar-practice");
+            if (mode === "reading") {
+              setSelectedReadingPart(partNum);
+              setView("reading-practice");
+            } else {
+              setView("grammar-practice");
+            }
           }}
           onSelectListeningPart={(partNum) => {
             startPartPractice(partNum);
@@ -458,6 +465,14 @@ export default function Page() {
         <GrammarPractice
           boDe={selectedBoDe}
           mode={selectedMode}
+          onExit={() => setView("home")}
+        />
+      )}
+
+      {view === "reading-practice" && (
+        <ReadingPractice
+          testId={selectedBoDe}
+          partNum={selectedReadingPart}
           onExit={() => setView("home")}
         />
       )}

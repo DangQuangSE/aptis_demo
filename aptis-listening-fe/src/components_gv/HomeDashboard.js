@@ -78,6 +78,41 @@ const LISTENING_PARTS = [
   },
 ];
 
+const READING_PARTS = [
+  {
+    num: 1,
+    label: "Sentence Comprehension",
+    tag: "Reading Question 1",
+    icon: "📝",
+    bg: "#1877F2",
+    shadow: "#0D52AB",
+  },
+  {
+    num: 2,
+    label: "Text Cohesion",
+    tag: "Reading Q2&3",
+    icon: "🧩",
+    bg: "#00C8F8",
+    shadow: "#008EAF",
+  },
+  {
+    num: 3,
+    label: "Short Text Matching",
+    tag: "Reading Question 4",
+    icon: "✅",
+    bg: "#FFC107",
+    shadow: "#B38600",
+  },
+  {
+    num: 4,
+    label: "Long Text Comprehension",
+    tag: "Reading Question 5",
+    icon: "💡",
+    bg: "#1E8E49",
+    shadow: "#12592D",
+  }
+];
+
 export default function HomeDashboard({ onSelectMode, onSelectListeningPart, initialTab = "grammar-vocab" }) {
   const [activeTab, setActiveTab] = useState(initialTab);
   const [selectedBoDe, setSelectedBoDe] = useState(null);
@@ -187,10 +222,31 @@ export default function HomeDashboard({ onSelectMode, onSelectListeningPart, ini
               transition: "all 0.2s ease",
               background: activeTab === "listening" ? "white" : "transparent",
               color: activeTab === "listening" ? "#006590" : "#718096",
-              position: "relative",
+              boxShadow: activeTab === "listening" ? "0 4px 10px rgba(0,0,0,0.08)" : "none",
             }}
           >
             🎧 Listening
+          </button>
+          <button
+            onClick={() => {
+              setActiveTab("reading");
+              setSelectedBoDe(null);
+            }}
+            style={{
+              padding: "10px 24px",
+              borderRadius: "12px",
+              border: "none",
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
+              fontWeight: 700,
+              fontSize: "14px",
+              cursor: "pointer",
+              transition: "all 0.2s ease",
+              background: activeTab === "reading" ? "white" : "transparent",
+              color: activeTab === "reading" ? "#006590" : "#718096",
+              boxShadow: activeTab === "reading" ? "0 4px 10px rgba(0,0,0,0.08)" : "none",
+            }}
+          >
+            📖 Reading
           </button>
         </div>
       </div>
@@ -422,6 +478,87 @@ export default function HomeDashboard({ onSelectMode, onSelectListeningPart, ini
               <button
                 key={part.num}
                 onClick={() => onSelectListeningPart && onSelectListeningPart(part.num)}
+                className="btn-3d"
+                style={{
+                  background: part.bg,
+                  color: part.num === 3 ? "#5A4300" : "white",
+                  padding: "30px 20px",
+                  borderRadius: "24px",
+                  boxShadow: `0 6px 0 ${part.shadow}`,
+                  border: "none",
+                  cursor: "pointer",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "14px",
+                  minHeight: "180px",
+                  width: "100%",
+                  transition: "transform 0.2s, box-shadow 0.2s",
+                }}
+              >
+                <div
+                  style={{
+                    width: "60px",
+                    height: "60px",
+                    borderRadius: "50%",
+                    background:
+                      part.num === 3
+                        ? "rgba(0,0,0,0.1)"
+                        : "rgba(255,255,255,0.2)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: "28px",
+                  }}
+                >
+                  {part.icon}
+                </div>
+                <span
+                  style={{
+                    fontFamily: "'Plus Jakarta Sans', sans-serif",
+                    fontWeight: 800,
+                    fontSize: "18px",
+                  }}
+                >
+                  {part.label}
+                </span>
+                <span
+                  style={{
+                    fontSize: "11px",
+                    fontWeight: 600,
+                    background:
+                      part.num === 3
+                        ? "rgba(0,0,0,0.08)"
+                        : "rgba(255,255,255,0.18)",
+                    padding: "4px 12px",
+                    borderRadius: "999px",
+                    letterSpacing: "0.02em",
+                  }}
+                >
+                  {part.tag}
+                </span>
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {activeTab === "reading" && (
+        <div className="animate-fade-in" style={{ width: "100%" }}>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+              gap: "20px",
+              width: "100%",
+              marginBottom: "40px",
+            }}
+          >
+            {READING_PARTS.map((part) => (
+              <button
+                key={part.num}
+                onClick={() => onSelectMode(null, "reading", part.num)}
                 className="btn-3d"
                 style={{
                   background: part.bg,
