@@ -6,7 +6,7 @@ export default function ReadingResult({ result, onReturn }) {
 
   return (
     <div style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, backgroundColor: "rgba(0,0,0,0.5)", zIndex: 100, display: "flex", alignItems: "center", justifyContent: "center", padding: "20px" }}>
-      <div className="animate-fade-in" style={{ background: "white", borderRadius: "16px", width: "100%", maxWidth: "600px", maxHeight: "90vh", overflowY: "auto", position: "relative", boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }}>
+      <div className="animate-fade-in" style={{ background: "white", borderRadius: "16px", width: "100%", maxWidth: "600px", maxHeight: "90vh", overflowY: "auto", position: "relative", boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)", fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
         
         <div style={{ position: "sticky", top: 0, background: "white", padding: "16px 24px", borderBottom: "1px solid #e5e7eb", display: "flex", justifyContent: "space-between", alignItems: "center", zIndex: 10 }}>
           <h2 style={{ margin: 0, fontSize: "18px", fontWeight: 800, color: "#111827" }}>Topic Result</h2>
@@ -16,7 +16,7 @@ export default function ReadingResult({ result, onReturn }) {
         </div>
 
         <div style={{ padding: "24px" }}>
-          <div style={{ background: "linear-gradient(135deg, #9C27B0, #7B1FA2)", padding: "24px", borderRadius: "12px", color: "white", marginBottom: "24px" }}>
+          <div style={{ background: "linear-gradient(135deg, #1877F2, #0d52ab)", padding: "24px", borderRadius: "12px", color: "white", marginBottom: "24px" }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
               <div>
                 <p style={{ margin: "0 0 8px 0", fontSize: "14px", opacity: 0.9 }}>{result.overallSummary}</p>

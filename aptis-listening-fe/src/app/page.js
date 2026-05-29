@@ -449,9 +449,11 @@ export default function Page() {
             if (boDe !== null) setSelectedBoDe(boDe);
             setSelectedMode(mode);
             if (mode === "reading") {
+              setDashboardTab("reading");
               setSelectedReadingPart(partNum);
               setView("reading-practice");
             } else {
+              setDashboardTab("grammar-vocab");
               setView("grammar-practice");
             }
           }}
