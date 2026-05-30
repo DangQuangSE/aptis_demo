@@ -132,10 +132,10 @@ export default function SidebarMatrix({
       {/* Question list matrix */}
       <div
         style={{
-          padding: "12px",
+          padding: isMobileDrawer ? "8px" : "12px",
           display: "grid",
-          gridTemplateColumns: "repeat(5, 1fr)",
-          gap: "8px",
+          gridTemplateColumns: isMobileDrawer ? "repeat(10, 1fr)" : "repeat(5, 1fr)",
+          gap: isMobileDrawer ? "6px" : "8px",
           maxHeight: isMobileDrawer ? "55vh" : (hideHeader ? "calc(100vh - 120px)" : "calc(100vh - 170px)"),
           overflowY: "auto",
         }}
@@ -205,7 +205,7 @@ export default function SidebarMatrix({
                  style={{
                    width: "100%",
                    aspectRatio: "1/1",
-                   borderRadius: "12px",
+                   borderRadius: isMobileDrawer ? "8px" : "12px",
                    background: badgeBg,
                    color: badgeCol,
                    border: "none",
@@ -214,7 +214,7 @@ export default function SidebarMatrix({
                    alignItems: "center",
                    justifyContent: "center",
                    fontWeight: 700,
-                   fontSize: "12px",
+                   fontSize: isMobileDrawer ? "11px" : "12px",
                    cursor: "pointer",
                  }}
                >
