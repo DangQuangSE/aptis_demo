@@ -3,6 +3,15 @@ import { IconBack, IconTimer, IconNext, IconCheck } from "../components/Icons";
 import ConfirmModal from "../components/ConfirmModal";
 import Toast from "../components/Toast";
 import ToggleSwitch from "../components/ui/ToggleSwitch";
+
+const IconSettings = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+);
+
+const IconGrid = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+);
+
 export default function ReadingPractice({ partNum, onExit }) {
   const [partData, setPartData] = useState([]);
   const [topicIndex, setTopicIndex] = useState(0);
@@ -20,6 +29,9 @@ export default function ReadingPractice({ partNum, onExit }) {
   const [aiResult, setAiResult] = useState(null);
   const [hideHeader, setHideHeader] = useState(false);
   const [autoShowAnswer, setAutoShowAnswer] = useState(false);
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isBottomBarVisible, setIsBottomBarVisible] = useState(true);
 
   useEffect(() => {
     setLoading(true);
@@ -162,93 +174,192 @@ export default function ReadingPractice({ partNum, onExit }) {
   const testData = partData[topicIndex];
   if (!testData) return <div>Data not found</div>;
 
-  return (
-    <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", backgroundColor: "#fbf9f8" }}>
-      {toast && <Toast message={toast.message} type={toast.type} onClose={() => setToast(null)} />}
-      
-      {confirmModal && (
-        <ConfirmModal modal={confirmModal} />
+  // Compute once — used by both desktop buttons and mobile bottom bar
+  let isAllAnswered = false;
+  if (testData) {
+    if (partNum === 1 || partNum === 3) isAllAnswered = testData.questions?.some(q => !!answers[q.id]);
+    else if (partNum === 2)             isAllAnswered = !!answers.part2Order;
+    else if (partNum === 4)             isAllAnswered = testData.paragraphs?.some(p => !!answers[p.id]);
+  }
+  const isCheckDisabled = !isAllAnswered || isGrading || !!aiResult || autoShowAnswer;
+
+  const renderTopicSidebar = (isMobileDrawer) => (
+    <div
+      style={{
+        backgroundColor: "white",
+        borderRadius: isMobileDrawer ? "0" : "16px",
+        border: isMobileDrawer ? "none" : "2px solid #efeded",
+        overflow: "hidden",
+        boxShadow: isMobileDrawer ? "none" : "0 4px 16px rgba(0,0,0,0.04)",
+      }}
+    >
+      {/* Sidebar header */}
+      <div style={{ padding: "10px 14px", borderBottom: "1.5px solid #efeded", backgroundColor: "#f5f3f3" }}>
+        <h2 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, fontSize: "12px", color: "#006590", margin: 0 }}>
+          Topic List ({partData.length})
+        </h2>
+      </div>
+
+      <div style={{ padding: "12px", display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: "8px", maxHeight: hideHeader ? "calc(100vh - 120px)" : "calc(100vh - 170px)", overflowY: "auto" }}>
+        {partData
+          .slice(sidebarPage * 25, (sidebarPage + 1) * 25)
+          .map((topic, displayIdx) => {
+            const idx = sidebarPage * 25 + displayIdx;
+            const isActive = idx === topicIndex;
+            const topicAnswers = allAnswers[idx] || {};
+            const topicResult = allResults[idx];
+
+            let isAnswered = false;
+            if (partNum === 1 || partNum === 3) isAnswered = topic.questions?.some(q => !!topicAnswers[q.id]);
+            else if (partNum === 2)             isAnswered = !!topicAnswers.part2Order;
+            else if (partNum === 4)             isAnswered = topic.paragraphs?.some(p => !!topicAnswers[p.id]);
+
+            const isAutoVisited = autoShowAnswer && !!visitedTopics[idx];
+            const isGradedTopic = !!topicResult || isAutoVisited;
+            let isCorr = false, isWrong = false;
+            if (isGradedTopic) {
+              if (isAutoVisited) isCorr = true;
+              else if (topicResult) {
+                const wrongCount = topicResult.explanations?.length || 0;
+                if (wrongCount > 0) isWrong = true; else isCorr = true;
+              }
+            }
+
+            let badgeBg = "#eae8e7", badgeCol = "#6e7881";
+            if (isActive)    { badgeBg = "#006590"; badgeCol = "white"; }
+            else if (isCorr) { badgeBg = "#d4f0b8"; badgeCol = "#2a6000"; }
+            else if (isWrong){ badgeBg = "#ffdad6"; badgeCol = "#93000a"; }
+            else if (isAnswered) { badgeBg = "#e0f4ff"; badgeCol = "#004c6e"; }
+
+            return (
+              <button
+                key={idx}
+                onClick={() => { setTopicIndex(idx); if (isMobileDrawer) setIsSidebarOpen(false); }}
+                className={`q-matrix-btn ${isActive ? "active" : ""}`}
+                title={`Topic ${idx + 1}`}
+                style={{
+                  width: "100%", aspectRatio: "1/1", borderRadius: isMobileDrawer ? "6px" : "8px",
+                  background: badgeBg, color: badgeCol,
+                  border: isActive ? "2.5px solid #006590" : "2px solid transparent",
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                  fontWeight: 700, fontSize: isMobileDrawer ? "11px" : "12px",
+                  cursor: "pointer", transition: "all 0.2s",
+                  boxShadow: isActive ? "0 0 8px rgba(0,101,144,0.3)" : "none",
+                }}
+              >
+                {idx + 1}
+              </button>
+            );
+          })}
+      </div>
+
+      {/* Pagination */}
+      {partData.length > 25 && (
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "8px 12px", borderTop: "1.5px solid #efeded", backgroundColor: "#fbf9f8" }}>
+          <button disabled={sidebarPage === 0} onClick={() => setSidebarPage(p => Math.max(0, p - 1))}
+            style={{ border: "none", background: "none", cursor: sidebarPage === 0 ? "not-allowed" : "pointer", color: sidebarPage === 0 ? "#ccc" : "#006590", fontWeight: "bold", fontSize: "12px" }}>
+            Prev
+          </button>
+          <span style={{ fontSize: "11px", color: "#6e7881", fontWeight: 600 }}>
+            {sidebarPage + 1} / {Math.ceil(partData.length / 25)}
+          </span>
+          <button
+            disabled={sidebarPage >= Math.ceil(partData.length / 25) - 1}
+            onClick={() => setSidebarPage(p => Math.min(Math.ceil(partData.length / 25) - 1, p + 1))}
+            style={{ border: "none", background: "none", cursor: sidebarPage >= Math.ceil(partData.length / 25) - 1 ? "not-allowed" : "pointer", color: sidebarPage >= Math.ceil(partData.length / 25) - 1 ? "#ccc" : "#006590", fontWeight: "bold", fontSize: "12px" }}>
+            Next
+          </button>
+        </div>
       )}
 
-      {/* AI Result is now rendered inline */}
+      {/* Footer stats */}
+      <div style={{ padding: "10px 14px", borderTop: "1.5px solid #efeded", backgroundColor: "#f5f3f3", display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: "11px", color: "#6e7881", fontWeight: 600 }}>
+        {(() => {
+          let checkedCount = 0, correctCount = 0;
+          partData.forEach((topic, idx) => {
+            const topicResult = allResults[idx];
+            const isAutoVis = autoShowAnswer && !!visitedTopics[idx];
+            if (isAutoVis) { checkedCount++; correctCount++; }
+            else if (topicResult) { checkedCount++; if ((topicResult.explanations?.length || 0) === 0) correctCount++; }
+          });
+          return (<><span>{checkedCount}/{partData.length} checked</span><span style={{ color: "#2a6000" }}>✓ {correctCount} correct</span></>);
+        })()}
+      </div>
+    </div>
+  );
+
+  return (
+    <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", backgroundColor: "#fbf9f8", fontFamily: "'Be Vietnam Pro', sans-serif" }}>
+      <Toast toast={toast} onClose={() => setToast(null)} />
+      <ConfirmModal modal={confirmModal} />
+
+      {/* Mobile Settings Overlay */}
+      {isSettingsOpen && (
+        <div className="settings-overlay animate-fade-in" onClick={() => setIsSettingsOpen(false)}>
+          <div className="animate-modal-in" onClick={(e) => e.stopPropagation()}
+            style={{ background: "#fbf9f8", borderRadius: "20px", padding: "24px 20px", maxWidth: "340px", width: "100%", boxShadow: "0 10px 25px rgba(0,0,0,0.1)" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", borderBottom: "1.5px solid #efeded", paddingBottom: "12px", marginBottom: "16px" }}>
+              <h3 style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, fontSize: "15px", color: "#006590", margin: 0 }}>Practice Settings</h3>
+              <button onClick={() => setIsSettingsOpen(false)} style={{ background: "none", border: "none", cursor: "pointer", fontSize: "16px", fontWeight: "bold", color: "#6e7881" }}>✕</button>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "8px 4px" }}>
+                <span style={{ fontSize: "13px", fontWeight: 600, color: "#3e4850" }}>Auto Answer</span>
+                <ToggleSwitch
+                  checked={autoShowAnswer}
+                  onChange={(v) => {
+                    setAutoShowAnswer(v);
+                    if (v) {
+                      setVisitedTopics((prev) => ({ ...prev, [topicIndex]: true }));
+                      if (!aiResult) submitForGrading();
+                    } else {
+                      setAiResult(null);
+                      setAllResults((all) => { const next = { ...all }; delete next[topicIndex]; return next; });
+                    }
+                    setIsSettingsOpen(false);
+                  }}
+                />
+              </div>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "8px 4px" }}>
+                <span style={{ fontSize: "13px", fontWeight: 600, color: "#3e4850" }}>Hide Header</span>
+                <ToggleSwitch checked={hideHeader} onChange={(v) => { setHideHeader(v); setIsSettingsOpen(false); }} />
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Mobile Sidebar Drawer */}
+      <div className={`drawer-backdrop ${isSidebarOpen ? "open" : ""}`} onClick={() => setIsSidebarOpen(false)}>
+        <div className={`drawer-content ${isSidebarOpen ? "open" : ""}`} onClick={(e) => e.stopPropagation()}>
+          <div style={{ display: "flex", justifyContent: "center", padding: "8px 0 4px" }}>
+            <div style={{ width: "40px", height: "5px", background: "#dbd9d9", borderRadius: "999px" }} />
+          </div>
+          {renderTopicSidebar(true)}
+        </div>
+      </div>
 
       {/* ── Sticky Header ──────────────────────────────────────────────── */}
       {!hideHeader && (
-        <header
-          style={{
-            backgroundColor: "white",
-            borderBottom: "2px solid #efeded",
-            boxShadow: "0 2px 12px rgba(0,0,0,0.04)",
-            position: "sticky",
-            top: 0,
-            zIndex: 50,
-            width: "100%",
-          }}
-        >
+        <header style={{ backgroundColor: "white", borderBottom: "2px solid #efeded", boxShadow: "0 2px 12px rgba(0,0,0,0.03)", position: "sticky", top: 0, zIndex: 50, width: "100%" }}>
           <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              maxWidth: "1400px",
-              margin: "0 auto",
-              padding: "0 16px",
-              height: "52px",
-            }}
+            className="px-2 sm:px-4 lg:px-6 w-full animate-fade-in"
+            style={{ display: "flex", justifyContent: "space-between", alignItems: "center", maxWidth: "1200px", margin: "0 auto", height: "52px" }}
           >
-            {/* Back + Brand */}
-            <button
-              onClick={handleExit}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "6px",
-                background: "none",
-                border: "none",
-                cursor: "pointer",
-                padding: "4px 0",
-                transition: "opacity 0.15s",
-              }}
+            {/* Left: Back + Brand */}
+            <button onClick={handleExit} style={{ display: "flex", alignItems: "center", gap: "6px", background: "none", border: "none", cursor: "pointer", padding: "4px 0", transition: "opacity 0.15s" }}
               onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.7")}
               onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
             >
-              <span style={{ color: "#006590", display: "flex" }}>
-                <IconBack />
-              </span>
-              <span
-                style={{
-                  fontFamily: "'Plus Jakarta Sans', sans-serif",
-                  fontWeight: 800,
-                  fontSize: "15px",
-                  color: "#006590",
-                }}
-              >
-                Aptis Reading
-              </span>
-              <span
-                style={{
-                  background: "#efeded",
-                  color: "#3e4850",
-                  fontSize: "10px",
-                  fontWeight: 700,
-                  letterSpacing: "0.08em",
-                  textTransform: "uppercase",
-                  padding: "2px 8px",
-                  borderRadius: "999px",
-                }}
-              >
+              <span style={{ color: "#006590", display: "flex" }}><IconBack /></span>
+              <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 800, fontSize: "15px", color: "#006590" }}>Aptis Reading</span>
+              <span style={{ background: "#efeded", color: "#3e4850", fontSize: "10px", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", padding: "2px 8px", borderRadius: "999px" }}>
                 Part {partNum}
               </span>
             </button>
 
-            {/* Center: Mode Toggles */}
-            <div
-              style={{
-                display: "flex",
-                gap: "14px",
-                alignItems: "center",
-              }}
-            >
+            {/* Center: Toggle (desktop only) */}
+            <div className="hidden lg:flex items-center gap-3.5">
               <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
                 <ToggleSwitch
                   checked={autoShowAnswer}
@@ -260,315 +371,78 @@ export default function ReadingPractice({ partNum, onExit }) {
                       if (!aiResult) submitForGrading();
                     } else {
                       setAiResult(null);
-                      setAllResults((all) => {
-                        const next = { ...all };
-                        delete next[topicIndex];
-                        return next;
-                      });
+                      setAllResults((all) => { const next = { ...all }; delete next[topicIndex]; return next; });
                     }
                   }}
                 />
-                <span style={{ fontSize: "12px", fontWeight: 600, color: "#3e4850", cursor: "default" }}>Auto Answer</span>
+                <span style={{ fontSize: "12px", fontWeight: 600, color: "#3e4850" }}>Auto Answer</span>
               </div>
             </div>
 
-            {/* Timer */}
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "4px",
-                color: timeLeft < 120 ? "#ba1a1a" : "#3e4850",
-                fontWeight: 700,
-                fontSize: "13px",
-                transition: "color 0.3s",
-              }}
-            >
-              <IconTimer />
-              <span
-                style={{
-                  fontFamily: "monospace",
-                  letterSpacing: "0.05em",
-                }}
+            {/* Right: Mobile icons + Timer + Hide header */}
+            <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+              {/* Mobile quick icons */}
+              <div className="flex lg:hidden items-center gap-1.5">
+                <button onClick={() => setIsSettingsOpen(true)} aria-label="Settings"
+                  style={{ padding: "6px 8px", borderRadius: "8px", background: "#f0f4f8", color: "#006590", border: "none", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", transition: "background 0.15s" }}
+                  onMouseEnter={(e) => (e.currentTarget.style.background = "#e1e9f0")}
+                  onMouseLeave={(e) => (e.currentTarget.style.background = "#f0f4f8")}
+                >
+                  <IconSettings />
+                </button>
+                <button onClick={() => setIsSidebarOpen(true)} aria-label="Topic List"
+                  style={{ padding: "6px 8px", borderRadius: "8px", background: "#f0f4f8", color: "#006590", border: "none", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", transition: "background 0.15s" }}
+                  onMouseEnter={(e) => (e.currentTarget.style.background = "#e1e9f0")}
+                  onMouseLeave={(e) => (e.currentTarget.style.background = "#f0f4f8")}
+                >
+                  <IconGrid />
+                </button>
+              </div>
+              {/* Timer */}
+              <div style={{ display: "flex", alignItems: "center", gap: "4px", color: timeLeft < 120 ? "#ba1a1a" : "#3e4850", fontWeight: 700, fontSize: "13px", transition: "color 0.3s" }}>
+                <IconTimer />
+                <span style={{ fontFamily: "monospace", letterSpacing: "0.05em" }}>{formatTime(timeLeft)}</span>
+              </div>
+              {/* Hide header (desktop only) */}
+              <button onClick={() => setHideHeader(true)} aria-label="Hide header" title="Hide header"
+                className="hidden lg:flex"
+                style={{ padding: "5px 7px", borderRadius: "8px", background: "#f0f4f8", color: "#6e7881", border: "none", cursor: "pointer", alignItems: "center", justifyContent: "center", transition: "background 0.15s" }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = "#e1e9f0")}
+                onMouseLeave={(e) => (e.currentTarget.style.background = "#f0f4f8")}
               >
-                {formatTime(timeLeft)}
-              </span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+              </button>
             </div>
           </div>
 
           {/* Progress Bar */}
-          <div
-            style={{
-              width: "100%",
-              height: "2px",
-              background: "#efeded",
-            }}
-          >
-            <div
-              className="progress-bar-fill"
-              style={{
-                width: `${((topicIndex + 1) / partData.length) * 100}%`,
-                height: "100%",
-                background: "#006590",
-                transition: "width 0.2s ease",
-              }}
-            />
+          <div style={{ width: "100%", height: "2px", background: "#efeded" }}>
+            <div style={{ width: `${((topicIndex + 1) / partData.length) * 100}%`, height: "100%", background: "#006590", transition: "width 0.2s ease" }} />
           </div>
         </header>
       )}
 
       {/* ── Body: Sidebar + Main ─────────────────────────────────────── */}
       <div
-        style={{
-          flex: 1,
-          display: "flex",
-          maxWidth: "1400px",
-          margin: "0 auto",
-          width: "100%",
-          padding: hideHeader ? "12px 16px 20px" : "16px 16px 24px",
-          gap: "16px",
-          alignItems: "flex-start",
-        }}
+        className="flex-1 flex flex-col lg:flex-row w-full max-w-[1200px] mx-auto self-center items-stretch lg:items-start p-2 sm:p-4 lg:p-6 pb-28 lg:pb-6 gap-4 animate-fade-in"
+        style={hideHeader ? { paddingTop: "44px" } : undefined}
       >
-        {/* LEFT SIDEBAR: Topic Navigation Matrix */}
-        <aside
-          style={{
-            width: "240px",
-            flexShrink: 0,
-            backgroundColor: "white",
-            borderRadius: "16px",
-            border: "2px solid #efeded",
-            overflow: "hidden",
-            position: "sticky",
-            top: hideHeader ? "16px" : "68px",
-            boxShadow: "0 4px 16px rgba(0,0,0,0.04)",
-            transition: "top 0.2s ease",
-          }}
+        {/* LEFT SIDEBAR: Topic Navigation (Desktop only) */}
+        <div
+          className="hidden lg:block shrink-0 w-[240px]"
+          style={{ position: "sticky", top: hideHeader ? "16px" : "68px", transition: "top 0.2s ease" }}
         >
-          {/* Sidebar header */}
-          <div
-            style={{
-              padding: "10px 14px",
-              borderBottom: "1.5px solid #efeded",
-              backgroundColor: "#f5f3f3",
-            }}
-          >
-            <h2
-              style={{
-                fontFamily: "'Plus Jakarta Sans', sans-serif",
-                fontWeight: 700,
-                fontSize: "12px",
-                color: "#006590",
-                margin: 0,
-              }}
-            >
-              Topic List ({partData.length})
-            </h2>
-          </div>
-
-          <div style={{ padding: "12px", display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: "8px", maxHeight: hideHeader ? "calc(100vh - 120px)" : "calc(100vh - 170px)", overflowY: "auto" }}>
-            {partData
-              .slice(sidebarPage * 25, (sidebarPage + 1) * 25)
-              .map((topic, displayIdx) => {
-                const idx = sidebarPage * 25 + displayIdx;
-                const isActive = idx === topicIndex;
-                const topicAnswers = allAnswers[idx] || {};
-                const topicResult = allResults[idx];
-
-                let isAnswered = false;
-                if (partNum === 1 || partNum === 3) {
-                  isAnswered = topic.questions?.some(q => !!topicAnswers[q.id]);
-                } else if (partNum === 2) {
-                  isAnswered = !!topicAnswers.part2Order;
-                } else if (partNum === 4) {
-                  isAnswered = topic.paragraphs?.some(p => !!topicAnswers[p.id]);
-                }
-
-                const isAutoVisited = autoShowAnswer && !!visitedTopics[idx];
-                const isGraded = !!topicResult || isAutoVisited;
-                
-                let isCorr = false;
-                let isWrong = false;
-
-                if (isGraded) {
-                  if (isAutoVisited) {
-                    isCorr = true;
-                  } else if (topicResult) {
-                    const wrongCount = topicResult.explanations?.length || 0;
-                    if (wrongCount > 0) {
-                      isWrong = true;
-                    } else {
-                      isCorr = true;
-                    }
-                  }
-                }
-
-                let badgeBg = "#eae8e7", badgeCol = "#6e7881";
-                if (isActive) {
-                  badgeBg = "#006590";
-                  badgeCol = "white";
-                } else if (isCorr) {
-                  badgeBg = "#d4f0b8";
-                  badgeCol = "#2a6000";
-                } else if (isWrong) {
-                  badgeBg = "#ffdad6";
-                  badgeCol = "#93000a";
-                } else if (isAnswered) {
-                  badgeBg = "#e0f4ff";
-                  badgeCol = "#004c6e";
-                }
-
-                return (
-                  <button
-                    key={idx}
-                    onClick={() => setTopicIndex(idx)}
-                    className={`q-matrix-btn ${isActive ? "active" : ""}`}
-                    title={`Topic ${idx + 1}`}
-                    style={{
-                      width: "100%",
-                      aspectRatio: "1/1",
-                      borderRadius: "8px",
-                      background: badgeBg,
-                      color: badgeCol,
-                      border: isActive ? "2.5px solid #006590" : "2px solid transparent",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      fontWeight: 700,
-                      fontSize: "12px",
-                      cursor: "pointer",
-                      transition: "all 0.2s",
-                      boxShadow: isActive ? "0 0 8px rgba(0, 101, 144, 0.3)" : "none",
-                    }}
-                  >
-                    {idx + 1}
-                  </button>
-                );
-              })}
-          </div>
-
-          {/* Pagination Controls */}
-          {partData.length > 25 && (
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                padding: "8px 12px",
-                borderTop: "1.5px solid #efeded",
-                backgroundColor: "#fbf9f8",
-              }}
-            >
-              <button
-                disabled={sidebarPage === 0}
-                onClick={() => setSidebarPage((p) => Math.max(0, p - 1))}
-                style={{
-                  border: "none",
-                  background: "none",
-                  cursor: sidebarPage === 0 ? "not-allowed" : "pointer",
-                  color: sidebarPage === 0 ? "#ccc" : "#006590",
-                  fontWeight: "bold",
-                  fontSize: "12px",
-                }}
-              >
-                Prev
-              </button>
-              <span
-                style={{
-                  fontSize: "11px",
-                  color: "#6e7881",
-                  fontWeight: 600,
-                }}
-              >
-                {sidebarPage + 1} / {Math.ceil(partData.length / 25)}
-              </span>
-              <button
-                disabled={sidebarPage >= Math.ceil(partData.length / 25) - 1}
-                onClick={() =>
-                  setSidebarPage((p) =>
-                    Math.min(Math.ceil(partData.length / 25) - 1, p + 1)
-                  )
-                }
-                style={{
-                  border: "none",
-                  background: "none",
-                  cursor:
-                    sidebarPage >= Math.ceil(partData.length / 25) - 1
-                      ? "not-allowed"
-                      : "pointer",
-                  color:
-                    sidebarPage >= Math.ceil(partData.length / 25) - 1
-                      ? "#ccc"
-                      : "#006590",
-                  fontWeight: "bold",
-                  fontSize: "12px",
-                }}
-              >
-                Next
-              </button>
-            </div>
-          )}
-
-          {/* Sidebar footer */}
-          <div
-            style={{
-              padding: "10px 14px",
-              borderTop: "1.5px solid #efeded",
-              backgroundColor: "#f5f3f3",
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              fontSize: "11px",
-              color: "#6e7881",
-              fontWeight: 600,
-            }}
-          >
-            {(() => {
-              let totalTopics = partData.length;
-              let checkedCount = 0;
-              let correctCount = 0;
-
-              partData.forEach((topic, idx) => {
-                const topicResult = allResults[idx];
-                const isAutoVisited = autoShowAnswer && !!visitedTopics[idx];
-                if (isAutoVisited) {
-                  checkedCount += 1;
-                  correctCount += 1;
-                } else if (topicResult) {
-                  checkedCount += 1;
-                  const wrongCount = topicResult.explanations?.length || 0;
-                  if (wrongCount === 0) {
-                    correctCount += 1;
-                  }
-                }
-              });
-
-              return (
-                <>
-                  <span>{checkedCount}/{totalTopics} checked</span>
-                  <span style={{ color: "#2a6000" }}>✓ {correctCount} correct</span>
-                </>
-              );
-            })()}
-          </div>
-        </aside>
+          {renderTopicSidebar(false)}
+        </div>
 
         {/* MAIN CONTENT AREA */}
         <div
-          style={{
-            flex: 1,
-            minWidth: 0,
-            display: "flex",
-            flexDirection: "row",
-            gap: "16px",
-            alignItems: "flex-start",
-          }}
+          className="flex-1 min-w-0 flex flex-col lg:flex-row gap-4 items-stretch lg:items-start"
         >
           {/* Question Card */}
           <div
+            className="flex-1 min-w-0"
             style={{
-              flex: 1,
-              minWidth: 0,
               backgroundColor: "white",
               borderRadius: "16px",
               border: "2px solid #efeded",
@@ -739,7 +613,7 @@ export default function ReadingPractice({ partNum, onExit }) {
               )}
 
               {partNum === 3 && testData && (
-                <div className="animate-fade-in" style={{ display: "flex", gap: "24px", alignItems: "flex-start", width: "100%" }}>
+                <div className="animate-fade-in flex flex-col lg:flex-row" style={{ gap: "24px", alignItems: "flex-start", width: "100%" }}>
                   {/* Left Column: Passage Text */}
                   <div style={{ flex: "1.35", minWidth: 0, position: "sticky", top: hideHeader ? "16px" : "68px" }}>
                     <p style={{ fontSize: "13px", color: "#3e4850", margin: "0 0 12px 0", lineHeight: 1.5, fontStyle: "italic" }}>{testData.instructions}</p>
@@ -860,155 +734,106 @@ export default function ReadingPractice({ partNum, onExit }) {
             
           </div>
 
-          {/* Sticky Right Action Buttons */}
+          {/* Sticky Right Action Buttons (Desktop only) */}
           <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "8px",
-              position: "sticky",
-              top: hideHeader ? "16px" : "68px",
-              flexShrink: 0,
-              width: "108px",
-              transition: "top 0.2s ease",
-            }}
+            className="hidden lg:flex flex-col gap-2 shrink-0 w-[108px] sticky"
+            style={{ top: hideHeader ? "16px" : "68px", transition: "top 0.2s ease" }}
           >
-            {/* Back button */}
             <button
               onClick={() => topicIndex > 0 && setTopicIndex(topicIndex - 1)}
               disabled={topicIndex === 0}
               className={topicIndex > 0 ? "btn-3d" : ""}
-              style={{
-                width: "100%",
-                padding: "10px 8px",
-                borderRadius: "12px",
-                border: "none",
-                fontFamily: "'Plus Jakarta Sans', sans-serif",
-                fontWeight: 700,
-                fontSize: "12px",
-                cursor: topicIndex === 0 ? "not-allowed" : "pointer",
-                background: topicIndex === 0 ? "#e4e2e2" : "#efeded",
-                color: topicIndex === 0 ? "#a0a0a0" : "#1b1c1c",
-                boxShadow: topicIndex === 0 ? "none" : "0 3px 0 #bdc8d2",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "4px",
-              }}
+              style={{ width: "100%", padding: "10px 8px", borderRadius: "12px", border: "none", fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, fontSize: "12px", cursor: topicIndex === 0 ? "not-allowed" : "pointer", background: topicIndex === 0 ? "#e4e2e2" : "#efeded", color: topicIndex === 0 ? "#a0a0a0" : "#1b1c1c", boxShadow: topicIndex === 0 ? "none" : "0 3px 0 #bdc8d2", display: "flex", alignItems: "center", justifyContent: "center", gap: "4px" }}
             >
               ← Back
             </button>
 
-            {/* Check Result button */}
-            {(() => {
-              let isAllAnswered = true;
-              if (testData) {
-                if (partNum === 1 || partNum === 3) {
-                  isAllAnswered = testData.questions?.some(q => !!answers[q.id]);
-                } else if (partNum === 2) {
-                  isAllAnswered = !!answers.part2Order;
-                } else if (partNum === 4) {
-                  isAllAnswered = testData.paragraphs?.some(p => !!answers[p.id]);
-                }
-              }
-              const isCheckDisabled = !isAllAnswered || isGrading || !!aiResult || autoShowAnswer;
-
-              return (
-                <button
-                  onClick={submitForGrading}
-                  disabled={isCheckDisabled}
-                  className={!isCheckDisabled ? "btn-3d" : ""}
-                  style={{
-                    width: "100%",
-                    padding: "10px 8px",
-                    borderRadius: "12px",
-                    border: "none",
-                    fontFamily: "'Plus Jakarta Sans', sans-serif",
-                    fontWeight: 700,
-                    fontSize: "12px",
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: "4px",
-                    cursor: isCheckDisabled ? "not-allowed" : "pointer",
-                    background: isCheckDisabled ? "#e4e2e2" : "#FFC107",
-                    color: isCheckDisabled ? "#a0a0a0" : "#5A4300",
-                    boxShadow: isCheckDisabled ? "none" : "0 3px 0 #B38600",
-                  }}
-                >
-                  <IconCheck />
-                  {isGrading ? "Checking" : (aiResult || autoShowAnswer ? "Checked" : "Check")}
-                </button>
-              );
-            })()}
-
-            {/* Next button */}
             <button
-              className="btn-3d"
-              onClick={() => {
-                if (topicIndex < partData.length - 1) setTopicIndex(topicIndex + 1);
-                else handleExit();
-              }}
-              style={{
-                width: "100%",
-                padding: "10px 8px",
-                borderRadius: "12px",
-                border: "none",
-                fontFamily: "'Plus Jakarta Sans', sans-serif",
-                fontWeight: 700,
-                fontSize: "12px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "4px",
-                cursor: "pointer",
-                background: "#1cb0f6",
-                color: "white",
-                boxShadow: "0 3px 0 #008EAF",
-              }}
+              onClick={submitForGrading}
+              disabled={isCheckDisabled}
+              className={!isCheckDisabled ? "btn-3d" : ""}
+              style={{ width: "100%", padding: "10px 8px", borderRadius: "12px", border: "none", fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, fontSize: "12px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "4px", cursor: isCheckDisabled ? "not-allowed" : "pointer", background: isCheckDisabled ? "#e4e2e2" : "#FFC107", color: isCheckDisabled ? "#a0a0a0" : "#5A4300", boxShadow: isCheckDisabled ? "none" : "0 3px 0 #B38600" }}
             >
-              {topicIndex === partData.length - 1 ? (
-                "Finish 🎉"
-              ) : (
-                <>
-                  Next <IconNext />
-                </>
-              )}
+              <IconCheck />
+              {isGrading ? "Checking" : (aiResult || autoShowAnswer ? "Checked" : "Check")}
             </button>
 
-            {/* Header Collapse / Restore Button */}
             <button
-              onClick={() => setHideHeader(!hideHeader)}
-              style={{
-                width: "100%",
-                padding: "8px 6px",
-                borderRadius: "10px",
-                border: "1.5px solid #cbd5e0",
-                background: "white",
-                fontFamily: "'Plus Jakarta Sans', sans-serif",
-                fontWeight: 700,
-                fontSize: "11px",
-                color: "#718096",
-                cursor: "pointer",
-                marginTop: "28px",
-                transition: "all 0.15s ease",
-                textAlign: "center",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = "#edf2f7";
-                e.currentTarget.style.color = "#4a5568";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = "white";
-                e.currentTarget.style.color = "#718096";
-              }}
+              className="btn-3d"
+              onClick={() => { if (topicIndex < partData.length - 1) setTopicIndex(topicIndex + 1); else handleExit(); }}
+              style={{ width: "100%", padding: "10px 8px", borderRadius: "12px", border: "none", fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, fontSize: "12px", display: "flex", alignItems: "center", justifyContent: "center", gap: "4px", cursor: "pointer", background: "#1cb0f6", color: "white", boxShadow: "0 3px 0 #008EAF" }}
+            >
+              {topicIndex === partData.length - 1 ? "Finish 🎉" : <> Next <IconNext /></>}
+            </button>
+
+            <button
+              onClick={() => setHideHeader(v => !v)}
+              style={{ width: "100%", padding: "8px 6px", borderRadius: "10px", border: "1.5px solid #cbd5e0", background: "white", fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, fontSize: "11px", color: "#718096", cursor: "pointer", marginTop: "28px", transition: "all 0.15s ease", textAlign: "center" }}
+              onMouseEnter={(e) => { e.currentTarget.style.background = "#edf2f7"; e.currentTarget.style.color = "#4a5568"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.background = "white"; e.currentTarget.style.color = "#718096"; }}
             >
               {hideHeader ? "Show Header" : "Hide Header"}
             </button>
           </div>
         </div>
       </div>
+
+      {/* Floating Bottom Action Bar (Mobile/Tablet only) */}
+      <div
+        className="lg:hidden fixed bottom-4 left-4 right-4 z-40 bg-white/90 backdrop-blur-md border border-[#efeded] p-3 rounded-[20px] flex justify-between gap-3 shadow-[0_10px_30px_-5px_rgba(0,0,0,0.1)]"
+        style={{ transform: isBottomBarVisible ? "translateY(0)" : "translateY(130%)", transition: "transform 0.4s cubic-bezier(0.22, 1, 0.36, 1)" }}
+      >
+        {/* Collapse button */}
+        <button
+          onClick={() => setIsBottomBarVisible(false)}
+          title="Hide controls"
+          className="hover:scale-[1.08] active:scale-[0.92] spring-transition-fast z-50"
+          style={{ position: "absolute", top: "-12px", right: "12px", width: "24px", height: "24px", borderRadius: "50%", backgroundColor: "white", border: "1px solid #efeded", boxShadow: "0 2px 8px rgba(0,0,0,0.08)", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", color: "#6e7881", transition: "all 0.15s ease" }}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+
+        {/* Back */}
+        <button
+          onClick={() => topicIndex > 0 && setTopicIndex(topicIndex - 1)}
+          disabled={topicIndex === 0}
+          className={topicIndex > 0 ? "btn-3d" : ""}
+          style={{ flex: 1, padding: "12px 8px", borderRadius: "12px", border: "none", fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, fontSize: "13px", cursor: topicIndex === 0 ? "not-allowed" : "pointer", background: topicIndex === 0 ? "#e4e2e2" : "#efeded", color: topicIndex === 0 ? "#a0a0a0" : "#1b1c1c", boxShadow: topicIndex === 0 ? "none" : "0 3px 0 #bdc8d2", display: "flex", alignItems: "center", justifyContent: "center", gap: "4px" }}
+        >
+          ← Back
+        </button>
+
+        {/* Check */}
+        <button
+          onClick={submitForGrading}
+          disabled={isCheckDisabled}
+          className={!isCheckDisabled ? "btn-3d" : ""}
+          style={{ flex: 1, padding: "12px 8px", borderRadius: "12px", border: "none", fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, fontSize: "13px", display: "flex", alignItems: "center", justifyContent: "center", gap: "6px", cursor: isCheckDisabled ? "not-allowed" : "pointer", background: isCheckDisabled ? "#e4e2e2" : "#FFC107", color: isCheckDisabled ? "#a0a0a0" : "#5A4300", boxShadow: isCheckDisabled ? "none" : "0 3px 0 #B38600" }}
+        >
+          <IconCheck />
+          {isGrading ? "Checking..." : (aiResult || autoShowAnswer ? "Checked" : "Check")}
+        </button>
+
+        {/* Next */}
+        <button
+          className="btn-3d"
+          onClick={() => { if (topicIndex < partData.length - 1) setTopicIndex(topicIndex + 1); else handleExit(); }}
+          style={{ flex: 1, padding: "12px 8px", borderRadius: "12px", border: "none", fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, fontSize: "13px", display: "flex", alignItems: "center", justifyContent: "center", gap: "4px", cursor: "pointer", background: "#1cb0f6", color: "white", boxShadow: "0 3px 0 #008EAF" }}
+        >
+          {topicIndex === partData.length - 1 ? "Finish 🎉" : <> Next <IconNext /></>}
+        </button>
+      </div>
+
+      {/* Re-show bottom bar button (when hidden) */}
+      {!isBottomBarVisible && (
+        <button
+          className="lg:hidden fixed bottom-4 right-4 z-40 shadow-[0_4px_16px_rgba(0,0,0,0.12)]"
+          onClick={() => setIsBottomBarVisible(true)}
+          style={{ width: "44px", height: "44px", borderRadius: "50%", background: "#006590", border: "none", color: "white", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+        </button>
+      )}
     </div>
   );
 }
