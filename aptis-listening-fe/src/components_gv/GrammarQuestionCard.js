@@ -120,10 +120,35 @@ export default function GrammarQuestionCard({
               {isChecked && (
                 <div>
                   {isCorrectOption && (
-                    <span style={{ color: "#2e7d32", fontSize: "18px", fontWeight: "bold" }}>✓</span>
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="#2e7d32"
+                      strokeWidth="3.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      style={{ display: "inline-block" }}
+                    >
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
                   )}
                   {isSelected && !isCorrectOption && (
-                    <span style={{ color: "#c62828", fontSize: "16px", fontWeight: "bold" }}>✗</span>
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="#c62828"
+                      strokeWidth="3.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      style={{ display: "inline-block" }}
+                    >
+                      <line x1="18" y1="6" x2="6" y2="18" />
+                      <line x1="6" y1="6" x2="18" y2="18" />
+                    </svg>
                   )}
                 </div>
               )}
