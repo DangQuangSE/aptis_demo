@@ -498,7 +498,6 @@ export default function Page() {
 
           return (
             <div
-              className="animate-fade-in"
               style={{
                 minHeight: "100vh",
                 display: "flex",
@@ -750,6 +749,7 @@ export default function Page() {
               {/* ── Sticky Header ──────────────────────────────────────────────── */}
               {!hideHeader && (
                 <header
+                  className="animate-fade-in"
                   style={{
                     backgroundColor: "white",
                     borderBottom: "2px solid #efeded",
@@ -761,13 +761,13 @@ export default function Page() {
                   }}
                 >
                   <div
+                    className="px-2 sm:px-4 lg:px-6 w-full"
                     style={{
                       display: "flex",
                       justifyContent: "space-between",
                       alignItems: "center",
                       maxWidth: "1200px",
                       margin: "0 auto",
-                      padding: "0 16px",
                       height: "52px",
                     }}
                   >
@@ -1121,10 +1121,10 @@ export default function Page() {
 
               {/* ── Body: Sidebar + Main ─────────────────────────────────────── */}
               <div
-                className="flex-1 flex flex-col lg:flex-row w-full max-w-[1200px] mx-auto items-stretch lg:items-start p-2 sm:p-4 lg:p-6 pb-20 lg:pb-6 gap-4"
+                className="flex-1 flex flex-col lg:flex-row w-full max-w-[1200px] mx-auto self-center items-stretch lg:items-start p-2 sm:p-4 lg:p-6 pb-28 lg:pb-6 gap-4 animate-fade-in"
               >
                 {/* LEFT SIDEBAR: Question Navigator (Desktop only) */}
-                <div className="hidden lg:block">
+                <div className="hidden lg:block shrink-0 w-[240px]">
                   <SidebarMatrix
                     questions={questions}
                     currentIdx={currentIdx}
@@ -1143,18 +1143,14 @@ export default function Page() {
                 <div
                   className="flex-1 min-w-0 flex flex-col lg:flex-row gap-4 items-stretch lg:items-start"
                 >
-                  {/* Question Card */}
+                  {/* Question Card (Double-Bezel Outer Shell) */}
                   <div
-                    style={{
-                      flex: 1,
-                      minWidth: 0,
-                      backgroundColor: "white",
-                      borderRadius: "16px",
-                      border: "2px solid #efeded",
-                      overflow: "hidden",
-                      boxShadow: "0 4px 20px rgba(0,0,0,0.04)",
-                    }}
+                    className="flex-1 min-w-0 bg-[#eae8e7] border border-[#eae8e7] p-[5px] rounded-[24px] shadow-[0_10px_30px_-10px_rgba(0,0,0,0.03)]"
                   >
+                    {/* Inner Core */}
+                    <div
+                      className="bg-white rounded-[19px] overflow-hidden shadow-[inset_0_1px_1px_rgba(255,255,255,0.6)] flex flex-col h-full"
+                    >
                     <audio ref={audioRef} src={q.audioUrl} />
 
                     {/* Compact Audio Player */}
@@ -1180,6 +1176,7 @@ export default function Page() {
                       modes={modes}
                       selectOption={selectOption}
                     />
+                    </div>
                   </div>
 
                   {/* Sticky Right Action Buttons (Desktop only) */}
@@ -1266,7 +1263,7 @@ export default function Page() {
                       }}
                     >
                       {currentIdx === questions.length - 1 ? (
-                        "Finish 🎉"
+                        "Finish Test"
                       ) : (
                         <>
                           Next <IconNext />
@@ -1305,9 +1302,9 @@ export default function Page() {
                     </button>
                   </div>
 
-                  {/* Sticky Bottom Action Bar (Mobile/Tablet only) */}
+                  {/* Floating Bottom Action Bar (Mobile/Tablet only) */}
                   <div
-                    className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white border-t-2 border-[#efeded] p-3 flex justify-between gap-3 shadow-[0_-4px_16px_rgba(0,0,0,0.06)]"
+                    className="lg:hidden fixed bottom-4 left-4 right-4 z-40 bg-white/90 backdrop-blur-md border border-[#efeded] p-3 rounded-[20px] flex justify-between gap-3 shadow-[0_10px_30px_-5px_rgba(0,0,0,0.1)]"
                   >
                     {/* Back Button */}
                     <button
@@ -1387,7 +1384,7 @@ export default function Page() {
                       }}
                     >
                       {currentIdx === questions.length - 1 ? (
-                        "Finish 🎉"
+                        "Finish Test"
                       ) : (
                         <>
                           Next <IconNext />

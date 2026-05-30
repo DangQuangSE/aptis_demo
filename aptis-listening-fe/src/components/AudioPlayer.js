@@ -17,30 +17,26 @@ export default function AudioPlayer({
 }) {
   return (
     <div
-      className="flex flex-wrap md:flex-nowrap items-center gap-3 bg-[#006590] p-3 md:py-1.5 md:px-4 text-white"
+      className="flex flex-wrap md:flex-nowrap items-center gap-3 bg-slate-50/90 backdrop-blur-md border-b border-[#efeded] p-3 md:py-2 md:px-4 text-slate-800"
     >
       {/* Play Button */}
       <button
         onClick={togglePlay}
-        className="order-2 md:order-1"
+        className="order-2 md:order-1 spring-transition hover:scale-[1.08] active:scale-[0.92]"
         style={{
           width: "32px",
           height: "32px",
           borderRadius: "50%",
-          background: "white",
-          color: "#006590",
+          background: "var(--primary)",
+          color: "white",
           border: "none",
           cursor: "pointer",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          boxShadow: "0 3px 8px rgba(0,0,0,0.18)",
+          boxShadow: "0 3px 8px rgba(0, 101, 144, 0.25), inset 0 -1.5px 0.5px rgba(0,0,0,0.15)",
           flexShrink: 0,
-          transition: "transform 0.1s ease",
         }}
-        onMouseDown={(e) => (e.currentTarget.style.transform = "scale(0.92)")}
-        onMouseUp={(e) => (e.currentTarget.style.transform = "scale(1)")}
-        onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
       >
         {isPlaying ? <IconPause /> : <IconPlay />}
       </button>
@@ -55,10 +51,10 @@ export default function AudioPlayer({
         }}
       >
         <span
+          className="text-slate-500 font-mono"
           style={{
-            fontSize: "10px",
+            fontSize: "10.5px",
             fontWeight: 700,
-            opacity: 0.85,
             whiteSpace: "nowrap",
           }}
         >
@@ -73,16 +69,16 @@ export default function AudioPlayer({
           className="audio-scrubber"
           style={{
             width: "100%",
-            accentColor: "white",
+            accentColor: "var(--primary)",
             height: "4px",
             margin: 0,
           }}
         />
         <span
+          className="text-slate-500 font-mono"
           style={{
-            fontSize: "10px",
+            fontSize: "10.5px",
             fontWeight: 700,
-            opacity: 0.85,
             whiteSpace: "nowrap",
           }}
         >
@@ -92,10 +88,9 @@ export default function AudioPlayer({
 
       {/* Speed Controls */}
       <div
-        className="order-3 md:order-3"
+        className="order-3 md:order-3 bg-[#e2e8f0]"
         style={{
           display: "flex",
-          background: "rgba(0,0,0,0.2)",
           borderRadius: "10px",
           padding: "2px",
           gap: "1px",
@@ -114,9 +109,9 @@ export default function AudioPlayer({
               fontSize: "10px",
               fontWeight: 700,
               background: playbackRate === rate ? "white" : "transparent",
-              color: playbackRate === rate ? "#006590" : "rgba(255,255,255,0.8)",
-              boxShadow: playbackRate === rate ? "0 1px 4px rgba(0,0,0,0.18)" : "none",
-              transition: "all 0.15s ease",
+              color: playbackRate === rate ? "var(--primary)" : "#64748b",
+              boxShadow: playbackRate === rate ? "0 1.5px 4px rgba(0,0,0,0.06), inset 0 0.5px 0.5px rgba(255,255,255,0.8)" : "none",
+              transition: "all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1)",
             }}
           >
             {rate}x
@@ -136,10 +131,10 @@ export default function AudioPlayer({
       >
         <button
           onClick={toggleMute}
+          className="text-slate-500 hover:text-slate-700 transition-colors"
           style={{
             background: "transparent",
             border: "none",
-            color: "white",
             cursor: "pointer",
             display: "flex",
             alignItems: "center",
@@ -157,7 +152,7 @@ export default function AudioPlayer({
           onChange={handleVolume}
           className="volume-slider hidden md:block"
           style={{
-            accentColor: "white",
+            accentColor: "var(--primary)",
             width: "40px",
             height: "4px",
             margin: 0,
