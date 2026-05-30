@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { IconBack, IconTimer, IconNext, IconCheck } from "../components/Icons";
 import ConfirmModal from "../components/ConfirmModal";
 import Toast from "../components/Toast";
+import ToggleSwitch from "../components/ui/ToggleSwitch";
 export default function ReadingPractice({ partNum, onExit }) {
   const [partData, setPartData] = useState([]);
   const [topicIndex, setTopicIndex] = useState(0);
@@ -248,53 +249,15 @@ export default function ReadingPractice({ partNum, onExit }) {
                 alignItems: "center",
               }}
             >
-              <label
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "6px",
-                  cursor: "pointer",
-                  fontSize: "12px",
-                  fontWeight: 600,
-                  color: "#3e4850",
-                }}
-              >
-                <div
-                  style={{
-                    width: "32px",
-                    height: "18px",
-                    background: autoShowAnswer ? "#006590" : "#d1d5db",
-                    borderRadius: "10px",
-                    position: "relative",
-                    transition: "background 0.2s",
-                  }}
-                >
-                  <div
-                    style={{
-                      width: "14px",
-                      height: "14px",
-                      background: "white",
-                      borderRadius: "50%",
-                      position: "absolute",
-                      top: "2px",
-                      left: autoShowAnswer ? "16px" : "2px",
-                      transition: "left 0.2s",
-                      boxShadow: "0 1px 2px rgba(0,0,0,0.2)",
-                    }}
-                  />
-                </div>
-                <input
-                  type="checkbox"
-                  style={{ display: "none" }}
+              <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                <ToggleSwitch
                   checked={autoShowAnswer}
-                  onChange={(e) => {
-                    const checked = e.target.checked;
-                    setAutoShowAnswer(checked);
-                    if (checked) {
+                  size="sm"
+                  onChange={(v) => {
+                    setAutoShowAnswer(v);
+                    if (v) {
                       setVisitedTopics((prev) => ({ ...prev, [topicIndex]: true }));
-                      if (!aiResult) {
-                        submitForGrading();
-                      }
+                      if (!aiResult) submitForGrading();
                     } else {
                       setAiResult(null);
                       setAllResults((all) => {
@@ -305,8 +268,8 @@ export default function ReadingPractice({ partNum, onExit }) {
                     }
                   }}
                 />
-                Auto Answer
-              </label>
+                <span style={{ fontSize: "12px", fontWeight: 600, color: "#3e4850", cursor: "default" }}>Auto Answer</span>
+              </div>
             </div>
 
             {/* Timer */}

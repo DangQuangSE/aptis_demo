@@ -5,6 +5,7 @@ import { IconBack, IconTimer, IconCheck, IconNext } from "../components/Icons";
 import ConfirmModal from "../components/ConfirmModal";
 import Toast from "../components/Toast";
 import { formatTime } from "../utils/helpers";
+import ToggleSwitch from "../components/ui/ToggleSwitch";
 
 const IconSettings = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
@@ -662,101 +663,23 @@ export default function GrammarPractice({ boDe, mode, onExit }) {
             </div>
 
             <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
-              <label
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  cursor: "pointer",
-                  fontSize: "13px",
-                  fontWeight: 600,
-                  color: "#3e4850",
-                  padding: "8px 4px",
-                }}
-              >
-                <span>Auto Answer (Grammar)</span>
-                <div
-                  style={{
-                    width: "36px",
-                    height: "20px",
-                    background: modes.autoShowAnswer ? "#006590" : "#d1d5db",
-                    borderRadius: "10px",
-                    position: "relative",
-                    transition: "background 0.2s",
-                  }}
-                >
-                  <div
-                    style={{
-                      width: "16px",
-                      height: "16px",
-                      background: "white",
-                      borderRadius: "50%",
-                      position: "absolute",
-                      top: "2px",
-                      left: modes.autoShowAnswer ? "18px" : "2px",
-                      transition: "left 0.2s",
-                      boxShadow: "0 1px 2px rgba(0,0,0,0.2)",
-                    }}
-                  />
-                </div>
-                <input
-                  type="checkbox"
-                  style={{ display: "none" }}
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "8px 4px" }}>
+                <span style={{ fontSize: "13px", fontWeight: 600, color: "#3e4850" }}>Auto Answer (Grammar)</span>
+                <ToggleSwitch
                   checked={modes.autoShowAnswer}
-                  onChange={(e) => {
-                    setModes((m) => ({ ...m, autoShowAnswer: e.target.checked }));
-                    if (e.target.checked && activeNode) {
-                      setVisitedIds((prev) => ({ ...prev, [activeNode.id]: true }));
-                    }
+                  onChange={(v) => {
+                    setModes((m) => ({ ...m, autoShowAnswer: v }));
+                    if (v && activeNode) setVisitedIds((prev) => ({ ...prev, [activeNode.id]: true }));
                   }}
                 />
-              </label>
-
-              {/* Hide Header Option on Mobile */}
-              <label
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  cursor: "pointer",
-                  fontSize: "13px",
-                  fontWeight: 600,
-                  color: "#3e4850",
-                  padding: "8px 4px",
-                }}
-              >
-                <span>Hide Header</span>
-                <div
-                  style={{
-                    width: "36px",
-                    height: "20px",
-                    background: modes.hideHeader ? "#006590" : "#d1d5db",
-                    borderRadius: "10px",
-                    position: "relative",
-                    transition: "background 0.2s",
-                  }}
-                >
-                  <div
-                    style={{
-                      width: "16px",
-                      height: "16px",
-                      background: "white",
-                      borderRadius: "50%",
-                      position: "absolute",
-                      top: "2px",
-                      left: modes.hideHeader ? "18px" : "2px",
-                      transition: "left 0.2s",
-                      boxShadow: "0 1px 2px rgba(0,0,0,0.2)",
-                    }}
-                  />
-                </div>
-                <input
-                  type="checkbox"
-                  style={{ display: "none" }}
+              </div>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "8px 4px" }}>
+                <span style={{ fontSize: "13px", fontWeight: 600, color: "#3e4850" }}>Hide Header</span>
+                <ToggleSwitch
                   checked={modes.hideHeader}
-                  onChange={(e) => setModes((m) => ({ ...m, hideHeader: e.target.checked }))}
+                  onChange={(v) => setModes((m) => ({ ...m, hideHeader: v }))}
                 />
-              </label>
+              </div>
             </div>
           </div>
         </div>
@@ -865,54 +788,17 @@ export default function GrammarPractice({ boDe, mode, onExit }) {
 
             {/* Desktop Center Toggles */}
             <div className="hidden lg:flex items-center gap-3.5">
-              <label
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "6px",
-                  cursor: "pointer",
-                  fontSize: "12px",
-                  fontWeight: 600,
-                  color: "#3e4850",
-                }}
-              >
-                <div
-                  style={{
-                    width: "32px",
-                    height: "18px",
-                    background: modes.autoShowAnswer ? "#006590" : "#d1d5db",
-                    borderRadius: "10px",
-                    position: "relative",
-                    transition: "background 0.2s",
-                  }}
-                >
-                  <div
-                    style={{
-                      width: "14px",
-                      height: "14px",
-                      background: "white",
-                      borderRadius: "50%",
-                      position: "absolute",
-                      top: "2px",
-                      left: modes.autoShowAnswer ? "16px" : "2px",
-                      transition: "left 0.2s",
-                      boxShadow: "0 1px 2px rgba(0,0,0,0.2)",
-                    }}
-                  />
-                </div>
-                <input
-                  type="checkbox"
-                  style={{ display: "none" }}
+              <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                <ToggleSwitch
                   checked={modes.autoShowAnswer}
-                  onChange={(e) => {
-                    setModes((m) => ({ ...m, autoShowAnswer: e.target.checked }));
-                    if (e.target.checked && activeNode) {
-                      setVisitedIds((prev) => ({ ...prev, [activeNode.id]: true }));
-                    }
+                  size="sm"
+                  onChange={(v) => {
+                    setModes((m) => ({ ...m, autoShowAnswer: v }));
+                    if (v && activeNode) setVisitedIds((prev) => ({ ...prev, [activeNode.id]: true }));
                   }}
                 />
-                Auto Answer
-              </label>
+                <span style={{ fontSize: "12px", fontWeight: 600, color: "#3e4850" }}>Auto Answer</span>
+              </div>
             </div>
 
             {/* Right side: Timer & Mobile Quick Options */}

@@ -9,6 +9,7 @@ import Toast from "../components/Toast";
 import ConfirmModal from "../components/ConfirmModal";
 import { IconBack, IconTimer, IconCheck, IconNext } from "../components/Icons";
 import { shuffleArray, getAudioUrl, formatTime } from "../utils/helpers";
+import ToggleSwitch from "../components/ui/ToggleSwitch";
 import HomeDashboard from "../components_gv/HomeDashboard";
 import GrammarPractice from "../components_gv/GrammarPractice";
 import ReadingPractice from "../components_reading/ReadingPractice";
@@ -579,207 +580,44 @@ export default function Page() {
                     </div>
 
                     <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
-                      <label
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "space-between",
-                          cursor: "pointer",
-                          fontSize: "13px",
-                          fontWeight: 600,
-                          color: "#3e4850",
-                          padding: "8px 4px",
-                        }}
-                      >
-                        <span>Auto Answer</span>
-                        <div
-                          style={{
-                            width: "36px",
-                            height: "20px",
-                            background: modes.autoShowAnswer ? "#006590" : "#d1d5db",
-                            borderRadius: "10px",
-                            position: "relative",
-                            transition: "background 0.2s",
-                          }}
-                        >
-                          <div
-                            style={{
-                              width: "16px",
-                              height: "16px",
-                              background: "white",
-                              borderRadius: "50%",
-                              position: "absolute",
-                              top: "2px",
-                              left: modes.autoShowAnswer ? "18px" : "2px",
-                              transition: "left 0.2s",
-                              boxShadow: "0 1px 2px rgba(0,0,0,0.2)",
-                            }}
-                          />
-                        </div>
-                        <input
-                          type="checkbox"
-                          style={{ display: "none" }}
+                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "8px 4px" }}>
+                        <span style={{ fontSize: "13px", fontWeight: 600, color: "#3e4850" }}>Auto Answer</span>
+                        <ToggleSwitch
                           checked={modes.autoShowAnswer}
-                          onChange={(e) => {
-                            setModes((m) => ({
-                              ...m,
-                              autoShowAnswer: e.target.checked,
-                            }));
-                            if (e.target.checked) {
+                          onChange={(v) => {
+                            setModes((m) => ({ ...m, autoShowAnswer: v }));
+                            if (v) {
                               const currentQ = questions[currentIdx];
-                              if (currentQ) {
-                                setVisitedIds((prev) => ({ ...prev, [currentQ.id]: true }));
-                              }
+                              if (currentQ) setVisitedIds((prev) => ({ ...prev, [currentQ.id]: true }));
                             }
                           }}
                         />
-                      </label>
+                      </div>
 
-                      <label
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "space-between",
-                          cursor: "pointer",
-                          fontSize: "13px",
-                          fontWeight: 600,
-                          color: "#3e4850",
-                          padding: "8px 4px",
-                        }}
-                      >
-                        <span>Auto Transcript</span>
-                        <div
-                          style={{
-                            width: "36px",
-                            height: "20px",
-                            background: modes.autoShowTranscript ? "#006590" : "#d1d5db",
-                            borderRadius: "10px",
-                            position: "relative",
-                            transition: "background 0.2s",
-                          }}
-                        >
-                          <div
-                            style={{
-                              width: "16px",
-                              height: "16px",
-                              background: "white",
-                              borderRadius: "50%",
-                              position: "absolute",
-                              top: "2px",
-                              left: modes.autoShowTranscript ? "18px" : "2px",
-                              transition: "left 0.2s",
-                              boxShadow: "0 1px 2px rgba(0,0,0,0.2)",
-                            }}
-                          />
-                        </div>
-                        <input
-                          type="checkbox"
-                          style={{ display: "none" }}
+                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "8px 4px" }}>
+                        <span style={{ fontSize: "13px", fontWeight: 600, color: "#3e4850" }}>Auto Transcript</span>
+                        <ToggleSwitch
                           checked={modes.autoShowTranscript}
-                          onChange={(e) =>
-                            setModes((m) => ({
-                              ...m,
-                              autoShowTranscript: e.target.checked,
-                            }))
-                          }
+                          onChange={(v) => setModes((m) => ({ ...m, autoShowTranscript: v }))}
                         />
-                      </label>
+                      </div>
 
-                      <label
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "space-between",
-                          cursor: "pointer",
-                          fontSize: "13px",
-                          fontWeight: 600,
-                          color: "#3e4850",
-                          padding: "8px 4px",
-                        }}
-                      >
-                        <span>Auto Play Audio</span>
-                        <div
-                          style={{
-                            width: "36px",
-                            height: "20px",
-                            background: modes.autoPlayAudio ? "#1E8E49" : "#d1d5db",
-                            borderRadius: "10px",
-                            position: "relative",
-                            transition: "background 0.2s",
-                          }}
-                        >
-                          <div
-                            style={{
-                              width: "16px",
-                              height: "16px",
-                              background: "white",
-                              borderRadius: "50%",
-                              position: "absolute",
-                              top: "2px",
-                              left: modes.autoPlayAudio ? "18px" : "2px",
-                              transition: "left 0.2s",
-                              boxShadow: "0 1px 2px rgba(0,0,0,0.2)",
-                            }}
-                          />
-                        </div>
-                        <input
-                          type="checkbox"
-                          style={{ display: "none" }}
+                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "8px 4px" }}>
+                        <span style={{ fontSize: "13px", fontWeight: 600, color: "#3e4850" }}>Auto Play Audio</span>
+                        <ToggleSwitch
                           checked={modes.autoPlayAudio}
-                          onChange={(e) =>
-                            setModes((m) => ({
-                              ...m,
-                              autoPlayAudio: e.target.checked,
-                            }))
-                          }
+                          onChange={(v) => setModes((m) => ({ ...m, autoPlayAudio: v }))}
+                          color="#1E8E49"
                         />
-                      </label>
+                      </div>
 
-                      {/* Hide Header Option on Mobile */}
-                      <label
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "space-between",
-                          cursor: "pointer",
-                          fontSize: "13px",
-                          fontWeight: 600,
-                          color: "#3e4850",
-                          padding: "8px 4px",
-                        }}
-                      >
-                        <span>Hide Header</span>
-                        <div
-                          style={{
-                            width: "36px",
-                            height: "20px",
-                            background: hideHeader ? "#006590" : "#d1d5db",
-                            borderRadius: "10px",
-                            position: "relative",
-                            transition: "background 0.2s",
-                          }}
-                        >
-                          <div
-                            style={{
-                              width: "16px",
-                              height: "16px",
-                              background: "white",
-                              borderRadius: "50%",
-                              position: "absolute",
-                              top: "2px",
-                              left: hideHeader ? "18px" : "2px",
-                              transition: "left 0.2s",
-                              boxShadow: "0 1px 2px rgba(0,0,0,0.2)",
-                            }}
-                          />
-                        </div>
-                        <input
-                          type="checkbox"
-                          style={{ display: "none" }}
+                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "8px 4px" }}>
+                        <span style={{ fontSize: "13px", fontWeight: 600, color: "#3e4850" }}>Hide Header</span>
+                        <ToggleSwitch
                           checked={hideHeader}
-                          onChange={(e) => setHideHeader(e.target.checked)}
+                          onChange={setHideHeader}
                         />
-                      </label>
+                      </div>
 
                       <button
                         onClick={() => {
@@ -884,158 +722,39 @@ export default function Page() {
                     <div
                       className="hidden lg:flex items-center gap-3.5"
                     >
-                      <label
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          gap: "6px",
-                          cursor: "pointer",
-                          fontSize: "12px",
-                          fontWeight: 600,
-                          color: "#3e4850",
-                        }}
-                      >
-                        <div
-                          style={{
-                            width: "32px",
-                            height: "18px",
-                            background: modes.autoShowAnswer ? "#006590" : "#d1d5db",
-                            borderRadius: "10px",
-                            position: "relative",
-                            transition: "background 0.2s",
-                          }}
-                        >
-                          <div
-                            style={{
-                              width: "14px",
-                              height: "14px",
-                              background: "white",
-                              borderRadius: "50%",
-                              position: "absolute",
-                              top: "2px",
-                              left: modes.autoShowAnswer ? "16px" : "2px",
-                              transition: "left 0.2s",
-                              boxShadow: "0 1px 2px rgba(0,0,0,0.2)",
-                            }}
-                          />
-                        </div>
-                        <input
-                          type="checkbox"
-                          style={{ display: "none" }}
+                      <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                        <ToggleSwitch
                           checked={modes.autoShowAnswer}
-                          onChange={(e) => {
-                            setModes((m) => ({
-                              ...m,
-                              autoShowAnswer: e.target.checked,
-                            }));
-                            if (e.target.checked) {
+                          size="sm"
+                          onChange={(v) => {
+                            setModes((m) => ({ ...m, autoShowAnswer: v }));
+                            if (v) {
                               const currentQ = questions[currentIdx];
-                              if (currentQ) {
-                                setVisitedIds((prev) => ({ ...prev, [currentQ.id]: true }));
-                              }
+                              if (currentQ) setVisitedIds((prev) => ({ ...prev, [currentQ.id]: true }));
                             }
                           }}
                         />
-                        Auto Answer
-                      </label>
+                        <span style={{ fontSize: "12px", fontWeight: 600, color: "#3e4850" }}>Auto Answer</span>
+                      </div>
 
-                      <label
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          gap: "6px",
-                          cursor: "pointer",
-                          fontSize: "12px",
-                          fontWeight: 600,
-                          color: "#3e4850",
-                        }}
-                      >
-                        <div
-                          style={{
-                            width: "32px",
-                            height: "18px",
-                            background: modes.autoShowTranscript ? "#006590" : "#d1d5db",
-                            borderRadius: "10px",
-                            position: "relative",
-                            transition: "background 0.2s",
-                          }}
-                        >
-                          <div
-                            style={{
-                              width: "14px",
-                              height: "14px",
-                              background: "white",
-                              borderRadius: "50%",
-                              position: "absolute",
-                              top: "2px",
-                              left: modes.autoShowTranscript ? "16px" : "2px",
-                              transition: "left 0.2s",
-                              boxShadow: "0 1px 2px rgba(0,0,0,0.2)",
-                            }}
-                          />
-                        </div>
-                        <input
-                          type="checkbox"
-                          style={{ display: "none" }}
+                      <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                        <ToggleSwitch
                           checked={modes.autoShowTranscript}
-                          onChange={(e) =>
-                            setModes((m) => ({
-                              ...m,
-                              autoShowTranscript: e.target.checked,
-                            }))
-                          }
+                          size="sm"
+                          onChange={(v) => setModes((m) => ({ ...m, autoShowTranscript: v }))}
                         />
-                        Auto Transcript
-                      </label>
+                        <span style={{ fontSize: "12px", fontWeight: 600, color: "#3e4850" }}>Auto Transcript</span>
+                      </div>
 
-                      <label
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          gap: "6px",
-                          cursor: "pointer",
-                          fontSize: "12px",
-                          fontWeight: 600,
-                          color: "#3e4850",
-                        }}
-                      >
-                        <div
-                          style={{
-                            width: "32px",
-                            height: "18px",
-                            background: modes.autoPlayAudio ? "#1E8E49" : "#d1d5db",
-                            borderRadius: "10px",
-                            position: "relative",
-                            transition: "background 0.2s",
-                          }}
-                        >
-                          <div
-                            style={{
-                              width: "14px",
-                              height: "14px",
-                              background: "white",
-                              borderRadius: "50%",
-                              position: "absolute",
-                              top: "2px",
-                              left: modes.autoPlayAudio ? "16px" : "2px",
-                              transition: "left 0.2s",
-                              boxShadow: "0 1px 2px rgba(0,0,0,0.2)",
-                            }}
-                          />
-                        </div>
-                        <input
-                          type="checkbox"
-                          style={{ display: "none" }}
+                      <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                        <ToggleSwitch
                           checked={modes.autoPlayAudio}
-                          onChange={(e) =>
-                            setModes((m) => ({
-                              ...m,
-                              autoPlayAudio: e.target.checked,
-                            }))
-                          }
+                          size="sm"
+                          color="#1E8E49"
+                          onChange={(v) => setModes((m) => ({ ...m, autoPlayAudio: v }))}
                         />
-                        Auto Play
-                      </label>
+                        <span style={{ fontSize: "12px", fontWeight: 600, color: "#3e4850" }}>Auto Play</span>
+                      </div>
 
                       <button
                         onClick={handleShuffle}

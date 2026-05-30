@@ -1,4 +1,5 @@
 import React from "react";
+import { getGrammarOptionStyle } from "../utils/styleHelpers";
 
 export default function GrammarQuestionCard({
   q,
@@ -35,36 +36,10 @@ export default function GrammarQuestionCard({
         }}
       >
         {q.options.map((opt) => {
-          const isSelected = selectedAnswer === opt.key;
+          const isSelected      = selectedAnswer === opt.key;
           const isCorrectOption = opt.key === q.correctKey;
-          
-          let optBg = "white";
-          let optBorder = "2px solid #efeded";
-          let optShadow = "0 3px 0 #efeded";
-          let optColor = "#1b1c1c";
-
-          if (isSelected) {
-            optBg = "#e3f2fd";
-            optBorder = "2px solid #1877F2";
-            optShadow = "0 3px 0 #1877F2";
-            optColor = "#0d47a1";
-          }
-
-          if (isChecked) {
-            if (isCorrectOption) {
-              // Highlight correct option in green
-              optBg = "#e8f5e9";
-              optBorder = "2px solid #2e7d32";
-              optShadow = "0 3px 0 #1b5e20";
-              optColor = "#1b5e20";
-            } else if (isSelected) {
-              // Highlight selected incorrect option in red
-              optBg = "#ffebee";
-              optBorder = "2px solid #c62828";
-              optShadow = "0 3px 0 #b71c1c";
-              optColor = "#b71c1c";
-            }
-          }
+          const { bg, border, shadow, color, keyBg, keyColor } =
+            getGrammarOptionStyle(isSelected, isChecked, isCorrectOption);
 
           return (
             <button
@@ -74,16 +49,16 @@ export default function GrammarQuestionCard({
               className={!isChecked ? "btn-3d" : ""}
               style={{
                 width: "100%",
-                background: optBg,
-                border: optBorder,
+                background: bg,
+                border,
                 borderRadius: "14px",
                 padding: "16px 20px",
                 textAlign: "left",
                 fontFamily: "'Plus Jakarta Sans', sans-serif",
                 fontWeight: 600,
                 fontSize: "15px",
-                color: optColor,
-                boxShadow: optShadow,
+                color,
+                boxShadow: shadow,
                 cursor: isChecked ? "not-allowed" : "pointer",
                 display: "flex",
                 alignItems: "center",
@@ -98,17 +73,13 @@ export default function GrammarQuestionCard({
                     width: "28px",
                     height: "28px",
                     borderRadius: "8px",
-                    background: isSelected 
-                      ? (isChecked && !isCorrectOption ? "#ef9a9a" : "#bbdefb")
-                      : (isChecked && isCorrectOption ? "#a5d6a7" : "#f0f4f8"),
+                    background: keyBg,
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     fontWeight: 700,
                     fontSize: "13px",
-                    color: isSelected 
-                      ? (isChecked && !isCorrectOption ? "#b71c1c" : "#0d47a1")
-                      : (isChecked && isCorrectOption ? "#1b5e20" : "#4a5568"),
+                    color: keyColor,
                   }}
                 >
                   {opt.key}

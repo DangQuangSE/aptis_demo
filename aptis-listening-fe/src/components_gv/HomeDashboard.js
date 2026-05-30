@@ -1,116 +1,26 @@
 import React, { useState, useEffect } from "react";
+import SubjectCard from "./SubjectCard";
 
 const BODE_LIST = [
-  {
-    num: 1,
-    title: "Test 1",
-    desc: "25 Grammar + 25 Vocabulary",
-    icon: "📚",
-    bg: "#1877F2",
-    shadow: "#0D52AB",
-  },
-  {
-    num: 2,
-    title: "Test 2",
-    desc: "25 Grammar + 25 Vocabulary",
-    icon: "🧩",
-    bg: "#00C8F8",
-    shadow: "#008EAF",
-  },
-  {
-    num: 3,
-    title: "Test 3",
-    desc: "25 Grammar + 25 Vocabulary",
-    icon: "⚡",
-    bg: "#FFC107",
-    shadow: "#B38600",
-  },
-  {
-    num: 4,
-    title: "Test 4",
-    desc: "25 Grammar + 25 Vocabulary",
-    icon: "💡",
-    bg: "#1E8E49",
-    shadow: "#12592D",
-  },
-  {
-    num: 5,
-    title: "Test 5",
-    desc: "25 Grammar + 25 Vocabulary",
-    icon: "🔥",
-    bg: "#9C27B0",
-    shadow: "#7B1FA2",
-  },
+  { num: 1, title: "Test 1", desc: "25 Grammar + 25 Vocabulary", icon: "📚", bg: "#1877F2", shadow: "#0D52AB" },
+  { num: 2, title: "Test 2", desc: "25 Grammar + 25 Vocabulary", icon: "🧩", bg: "#00C8F8", shadow: "#008EAF" },
+  { num: 3, title: "Test 3", desc: "25 Grammar + 25 Vocabulary", icon: "⚡", bg: "#FFC107", shadow: "#B38600", isDark: true },
+  { num: 4, title: "Test 4", desc: "25 Grammar + 25 Vocabulary", icon: "💡", bg: "#1E8E49", shadow: "#12592D" },
+  { num: 5, title: "Test 5", desc: "25 Grammar + 25 Vocabulary", icon: "🔥", bg: "#9C27B0", shadow: "#7B1FA2" },
 ];
 
 const LISTENING_PARTS = [
-  {
-    num: 1,
-    label: "Question 1 - 13",
-    tag: "Part 1",
-    icon: "📖",
-    bg: "#1877F2",
-    shadow: "#0D52AB",
-  },
-  {
-    num: 2,
-    label: "Question 14",
-    tag: "Part 2",
-    icon: "🧩",
-    bg: "#00C8F8",
-    shadow: "#008EAF",
-  },
-  {
-    num: 3,
-    label: "Question 15",
-    tag: "Part 3",
-    icon: "✅",
-    bg: "#FFC107",
-    shadow: "#B38600",
-  },
-  {
-    num: 4,
-    label: "Question 16 & 17",
-    tag: "Part 4",
-    icon: "💡",
-    bg: "#1E8E49",
-    shadow: "#12592D",
-  },
+  { num: 1, label: "Question 1 - 13",   tag: "Part 1", icon: "📖", bg: "#1877F2", shadow: "#0D52AB" },
+  { num: 2, label: "Question 14",       tag: "Part 2", icon: "🧩", bg: "#00C8F8", shadow: "#008EAF" },
+  { num: 3, label: "Question 15",       tag: "Part 3", icon: "✅", bg: "#FFC107", shadow: "#B38600", isDark: true },
+  { num: 4, label: "Question 16 & 17",  tag: "Part 4", icon: "💡", bg: "#1E8E49", shadow: "#12592D" },
 ];
 
 const READING_PARTS = [
-  {
-    num: 1,
-    label: "Sentence Comprehension",
-    tag: "Reading Question 1",
-    icon: "📝",
-    bg: "#1877F2",
-    shadow: "#0D52AB",
-  },
-  {
-    num: 2,
-    label: "Text Cohesion",
-    tag: "Reading Q2&3",
-    icon: "🧩",
-    bg: "#00C8F8",
-    shadow: "#008EAF",
-  },
-  {
-    num: 3,
-    label: "Short Text Matching",
-    tag: "Reading Question 4",
-    icon: "✅",
-    bg: "#FFC107",
-    shadow: "#B38600",
-  },
-  {
-    num: 4,
-    label: "Long Text Comprehension",
-    tag: "Reading Question 5",
-    icon: "💡",
-    bg: "#1E8E49",
-    shadow: "#12592D",
-  }
+  { num: 1, label: "Sentence Comprehension",  tag: "Reading Question 1", icon: "📝", bg: "#1877F2", shadow: "#0D52AB" },
+  { num: 2, label: "Text Cohesion",            tag: "Reading Q2&3",       icon: "🧩", bg: "#00C8F8", shadow: "#008EAF" },
+  { num: 3, label: "Short Text Matching",      tag: "Reading Question 4", icon: "✅", bg: "#FFC107", shadow: "#B38600", isDark: true },
+  { num: 4, label: "Long Text Comprehension",  tag: "Reading Question 5", icon: "💡", bg: "#1E8E49", shadow: "#12592D" },
 ];
 
 export default function HomeDashboard({ onSelectMode, onSelectListeningPart, initialTab = "grammar-vocab" }) {
@@ -266,70 +176,7 @@ export default function HomeDashboard({ onSelectMode, onSelectListeningPart, ini
                 }}
               >
                 {BODE_LIST.map((bode) => (
-                  <button
-                    key={bode.num}
-                    onClick={() => handleSelectBoDe(bode.num)}
-                    className="btn-3d"
-                    style={{
-                      background: bode.bg,
-                      color: bode.num === 3 ? "#5A4300" : "white",
-                      padding: "30px 20px",
-                      borderRadius: "24px",
-                      boxShadow: `0 6px 0 ${bode.shadow}`,
-                      border: "none",
-                      cursor: "pointer",
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      gap: "14px",
-                      minHeight: "180px",
-                      width: "100%",
-                      transition: "transform 0.2s, box-shadow 0.2s",
-                    }}
-                  >
-                    <div
-                      style={{
-                        width: "60px",
-                        height: "60px",
-                        borderRadius: "50%",
-                        background:
-                          bode.num === 3
-                            ? "rgba(0,0,0,0.1)"
-                            : "rgba(255,255,255,0.2)",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        fontSize: "28px",
-                      }}
-                    >
-                      {bode.icon}
-                    </div>
-                    <span
-                      style={{
-                        fontFamily: "'Plus Jakarta Sans', sans-serif",
-                        fontWeight: 800,
-                        fontSize: "18px",
-                      }}
-                    >
-                      {bode.title}
-                    </span>
-                    <span
-                      style={{
-                        fontSize: "11px",
-                        fontWeight: 600,
-                        background:
-                          bode.num === 3
-                            ? "rgba(0,0,0,0.08)"
-                            : "rgba(255,255,255,0.18)",
-                        padding: "4px 12px",
-                        borderRadius: "999px",
-                        letterSpacing: "0.02em",
-                      }}
-                    >
-                      {bode.desc}
-                    </span>
-                  </button>
+                  <SubjectCard key={bode.num} item={bode} onClick={() => handleSelectBoDe(bode.num)} />
                 ))}
               </div>
             </div>
@@ -475,70 +322,7 @@ export default function HomeDashboard({ onSelectMode, onSelectListeningPart, ini
             }}
           >
             {LISTENING_PARTS.map((part) => (
-              <button
-                key={part.num}
-                onClick={() => onSelectListeningPart && onSelectListeningPart(part.num)}
-                className="btn-3d"
-                style={{
-                  background: part.bg,
-                  color: part.num === 3 ? "#5A4300" : "white",
-                  padding: "30px 20px",
-                  borderRadius: "24px",
-                  boxShadow: `0 6px 0 ${part.shadow}`,
-                  border: "none",
-                  cursor: "pointer",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: "14px",
-                  minHeight: "180px",
-                  width: "100%",
-                  transition: "transform 0.2s, box-shadow 0.2s",
-                }}
-              >
-                <div
-                  style={{
-                    width: "60px",
-                    height: "60px",
-                    borderRadius: "50%",
-                    background:
-                      part.num === 3
-                        ? "rgba(0,0,0,0.1)"
-                        : "rgba(255,255,255,0.2)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontSize: "28px",
-                  }}
-                >
-                  {part.icon}
-                </div>
-                <span
-                  style={{
-                    fontFamily: "'Plus Jakarta Sans', sans-serif",
-                    fontWeight: 800,
-                    fontSize: "18px",
-                  }}
-                >
-                  {part.label}
-                </span>
-                <span
-                  style={{
-                    fontSize: "11px",
-                    fontWeight: 600,
-                    background:
-                      part.num === 3
-                        ? "rgba(0,0,0,0.08)"
-                        : "rgba(255,255,255,0.18)",
-                    padding: "4px 12px",
-                    borderRadius: "999px",
-                    letterSpacing: "0.02em",
-                  }}
-                >
-                  {part.tag}
-                </span>
-              </button>
+              <SubjectCard key={part.num} item={part} onClick={() => onSelectListeningPart && onSelectListeningPart(part.num)} />
             ))}
           </div>
         </div>
@@ -556,70 +340,7 @@ export default function HomeDashboard({ onSelectMode, onSelectListeningPart, ini
             }}
           >
             {READING_PARTS.map((part) => (
-              <button
-                key={part.num}
-                onClick={() => onSelectMode(null, "reading", part.num)}
-                className="btn-3d"
-                style={{
-                  background: part.bg,
-                  color: part.num === 3 ? "#5A4300" : "white",
-                  padding: "30px 20px",
-                  borderRadius: "24px",
-                  boxShadow: `0 6px 0 ${part.shadow}`,
-                  border: "none",
-                  cursor: "pointer",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: "14px",
-                  minHeight: "180px",
-                  width: "100%",
-                  transition: "transform 0.2s, box-shadow 0.2s",
-                }}
-              >
-                <div
-                  style={{
-                    width: "60px",
-                    height: "60px",
-                    borderRadius: "50%",
-                    background:
-                      part.num === 3
-                        ? "rgba(0,0,0,0.1)"
-                        : "rgba(255,255,255,0.2)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontSize: "28px",
-                  }}
-                >
-                  {part.icon}
-                </div>
-                <span
-                  style={{
-                    fontFamily: "'Plus Jakarta Sans', sans-serif",
-                    fontWeight: 800,
-                    fontSize: "18px",
-                  }}
-                >
-                  {part.label}
-                </span>
-                <span
-                  style={{
-                    fontSize: "11px",
-                    fontWeight: 600,
-                    background:
-                      part.num === 3
-                        ? "rgba(0,0,0,0.08)"
-                        : "rgba(255,255,255,0.18)",
-                    padding: "4px 12px",
-                    borderRadius: "999px",
-                    letterSpacing: "0.02em",
-                  }}
-                >
-                  {part.tag}
-                </span>
-              </button>
+              <SubjectCard key={part.num} item={part} onClick={() => onSelectMode(null, "reading", part.num)} />
             ))}
           </div>
         </div>

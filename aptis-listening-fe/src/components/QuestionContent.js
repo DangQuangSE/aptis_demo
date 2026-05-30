@@ -1,5 +1,6 @@
 import React from "react";
 import { IconTranscript, IconCircleCheck } from "./Icons";
+import { getListeningOptionStyle, getListeningSelectStyle } from "../utils/styleHelpers";
 
 export default function QuestionContent({
   q,
@@ -83,28 +84,7 @@ export default function QuestionContent({
                 const subChecked = !!checkedResults[subQ.id] || modes.autoShowAnswer;
                 const subUserAns = modes.autoShowAnswer ? subQ.correctKey : selectedAnswers[subQ.id];
                 const isCorrect = subUserAns === subQ.correctKey;
-
-                let bg = "white",
-                  bdr = "#bdc8d2",
-                  color = "#1b1c1c";
-                if (subUserAns && !subChecked) {
-                  bg = "rgba(28,176,246,0.05)";
-                  bdr = "#006590";
-                }
-                if (subChecked) {
-                  if (isCorrect) {
-                    bg = "rgba(88,204,2,0.08)";
-                    bdr = "#58CC02";
-                    color = "#2a6000";
-                  } else if (subUserAns) {
-                    bg = "rgba(186,26,26,0.06)";
-                    bdr = "#ba1a1a";
-                    color = "#93000a";
-                  } else {
-                    bg = "#fbf9f8";
-                    bdr = "#e4e2e2";
-                  }
-                }
+                const { bg, border: bdr, color } = getListeningSelectStyle(!!subUserAns, subChecked, isCorrect);
 
                 return (
                   <div
@@ -139,7 +119,7 @@ export default function QuestionContent({
                           borderRadius: "10px",
                           border: `2px solid ${bdr}`,
                           background: bg,
-                          color: color,
+                          color,
                           fontFamily: "'Be Vietnam Pro', sans-serif",
                           fontWeight: 700,
                           fontSize: "12px",
@@ -198,26 +178,7 @@ export default function QuestionContent({
                 const subChecked = !!checkedResults[subQ.id] || modes.autoShowAnswer;
                 const subUserAns = modes.autoShowAnswer ? subQ.correctKey : selectedAnswers[subQ.id];
                 const isCorrect = subUserAns === subQ.correctKey;
-                
-                let bg = "white", bdr = "#bdc8d2", color = "#1b1c1c";
-                if (subUserAns && !subChecked) {
-                  bg = "rgba(28,176,246,0.05)";
-                  bdr = "#006590";
-                }
-                if (subChecked) {
-                  if (isCorrect) {
-                    bg = "rgba(88,204,2,0.08)";
-                    bdr = "#58CC02";
-                    color = "#2a6000";
-                  } else if (subUserAns) {
-                    bg = "rgba(186,26,26,0.06)";
-                    bdr = "#ba1a1a";
-                    color = "#93000a";
-                  } else {
-                    bg = "#fbf9f8";
-                    bdr = "#e4e2e2";
-                  }
-                }
+                const { bg, border: bdr, color } = getListeningSelectStyle(!!subUserAns, subChecked, isCorrect);
 
                 return (
                   <div 
@@ -434,32 +395,7 @@ export default function QuestionContent({
           {q.options.map((opt) => {
             const isSel = userAns === opt.key;
             const isCorr = q.correctKey === opt.key;
-
-            let bg = "#fbf9f8",
-              bdr = "#bdc8d2";
-            let ind = { bg: "transparent", border: "#bdc8d2" };
-
-            if (isSel && !isChecked) {
-              bg = "rgba(28,176,246,0.10)";
-              bdr = "#006590";
-              ind = { bg: "#006590", border: "#006590" };
-            }
-
-            if (isChecked) {
-              if (isCorr) {
-                bg = "rgba(88,204,2,0.10)";
-                bdr = "#58CC02";
-                ind = { bg: "#58CC02", border: "#58CC02" };
-              } else if (isSel) {
-                bg = "rgba(186,26,26,0.08)";
-                bdr = "#ba1a1a";
-                ind = { bg: "#ba1a1a", border: "#ba1a1a" };
-              } else {
-                bg = "white";
-                bdr = "#e4e2e2";
-                ind = { bg: "transparent", border: "#e4e2e2" };
-              }
-            }
+            const { bg, border: bdr, indicator: ind } = getListeningOptionStyle(isSel, isChecked, isCorr);
 
             const showCheck = (isSel && !isChecked) || (isChecked && isCorr);
             const showX = isChecked && isSel && !isCorr;
