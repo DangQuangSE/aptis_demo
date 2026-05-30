@@ -11,6 +11,8 @@ export default function SidebarMatrix({
   setSidebarPage,
   jumpToQuestion,
   hideHeader,
+  isMobileDrawer = false,
+  onClose,
 }) {
   // Helpers to count correct/checked answers dynamically
   const getFlatQuestions = () => {
@@ -44,9 +46,15 @@ export default function SidebarMatrix({
     return checkedResults[q.id] && selectedAnswers[q.id] === q.correctKey;
   }).length;
 
-  return (
-    <aside
-      style={{
+  const wrapperStyle = isMobileDrawer
+    ? {
+        width: "100%",
+        backgroundColor: "white",
+        overflow: "hidden",
+        display: "flex",
+        flexDirection: "column",
+      }
+    : {
         width: "240px",
         flexShrink: 0,
         backgroundColor: "white",
@@ -57,27 +65,52 @@ export default function SidebarMatrix({
         top: hideHeader ? "16px" : "68px",
         boxShadow: "0 4px 16px rgba(0,0,0,0.04)",
         transition: "top 0.2s ease",
-      }}
-    >
+      };
+
+  return (
+    <div style={wrapperStyle}>
       {/* Sidebar header */}
       <div
         style={{
-          padding: "10px 14px",
+          padding: "12px 16px",
           borderBottom: "1.5px solid #efeded",
           backgroundColor: "#f5f3f3",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
         }}
       >
         <h2
           style={{
             fontFamily: "'Plus Jakarta Sans', sans-serif",
             fontWeight: 700,
-            fontSize: "12px",
+            fontSize: "13px",
             color: "#006590",
             margin: 0,
           }}
         >
-          Question List
+          {isMobileDrawer ? "Question Map" : "Question List"}
         </h2>
+        {isMobileDrawer && (
+          <button
+            onClick={onClose}
+            aria-label="Close question map"
+            style={{
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              fontSize: "18px",
+              fontWeight: "bold",
+              color: "#6e7881",
+              padding: "2px 6px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            ✕
+          </button>
+        )}
       </div>
 
       {/* Question list matrix */}
@@ -87,7 +120,7 @@ export default function SidebarMatrix({
           display: "grid",
           gridTemplateColumns: "repeat(5, 1fr)",
           gap: "8px",
-          maxHeight: hideHeader ? "calc(100vh - 120px)" : "calc(100vh - 170px)",
+          maxHeight: isMobileDrawer ? "55vh" : (hideHeader ? "calc(100vh - 120px)" : "calc(100vh - 170px)"),
           overflowY: "auto",
         }}
       >
@@ -271,6 +304,6 @@ export default function SidebarMatrix({
           ✓ {correctCount} correct
         </span>
       </div>
-    </aside>
+    </div>
   );
 }

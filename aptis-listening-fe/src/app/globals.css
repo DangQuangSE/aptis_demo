@@ -335,3 +335,60 @@ input[type="range"].volume-slider {
 .animate-modal-in {
   animation: modalScaleIn 0.28s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
+
+/* --------------------------------------------------------------------------
+   Responsive Bottom Sheet (Drawer) for Mobile/Tablet Question Map
+   -------------------------------------------------------------------------- */
+.drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(27, 28, 28, 0.45);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.drawer-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.drawer-content {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-height: 85vh;
+  background: white;
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+  z-index: 1001;
+  transform: translateY(100%);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.drawer-content.open {
+  transform: translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Settings Menu Overlay
+   -------------------------------------------------------------------------- */
+.settings-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(27, 28, 28, 0.45);
+  backdrop-filter: blur(4px);
+  z-index: 1010;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+

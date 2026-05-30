@@ -14,8 +14,8 @@ export default function QuestionContent({
 
   return (
     <div
+      className="p-3 sm:p-5"
       style={{
-        padding: "16px 20px",
         display: "flex",
         flexDirection: "column",
         gap: "14px",
@@ -109,12 +109,8 @@ export default function QuestionContent({
                 return (
                   <div
                     key={subQ.id}
+                    className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-2 md:gap-3 p-3 md:py-2 md:px-3"
                     style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                      gap: "12px",
-                      padding: "8px 12px",
                       borderRadius: "10px",
                       border: "1.5px solid #efeded",
                       background: "#fbf9f8",
@@ -125,25 +121,19 @@ export default function QuestionContent({
                         fontSize: "13px",
                         fontWeight: 600,
                         color: "#1b1c1c",
-                        flexShrink: 0,
                       }}
                     >
                       {subQ.questionText}
                     </span>
 
                     <div
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "8px",
-                        flex: 1,
-                        justifyContent: "flex-end",
-                      }}
+                      className="flex items-center gap-2 w-full md:w-auto justify-between md:justify-end flex-shrink-0"
                     >
                       <select
                         disabled={subChecked}
                         value={subUserAns || ""}
                         onChange={(e) => selectOption(e.target.value, subQ.id)}
+                        className="w-full md:w-[350px]"
                         style={{
                           padding: "5px 10px",
                           borderRadius: "8px",
@@ -157,7 +147,6 @@ export default function QuestionContent({
                           outline: "none",
                           boxShadow: "0 1px 3px rgba(0,0,0,0.02)",
                           maxWidth: "100%",
-                          width: "350px",
                         }}
                       >
                         <option value="">-- Select an answer --</option>
@@ -233,12 +222,8 @@ export default function QuestionContent({
                 return (
                   <div 
                     key={subQ.id}
+                    className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-2 md:gap-3 p-3 md:py-2 md:px-3"
                     style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                      gap: "12px",
-                      padding: "8px 12px",
                       borderRadius: "10px",
                       border: "1.5px solid #efeded",
                       background: "#fbf9f8",
@@ -248,11 +233,12 @@ export default function QuestionContent({
                       {subQ.questionText}
                     </span>
 
-                    <div style={{ display: "flex", alignItems: "center", gap: "8px", flexShrink: 0 }}>
+                    <div className="flex items-center gap-2 w-full md:w-auto justify-between md:justify-end flex-shrink-0">
                       <select
                         disabled={subChecked}
                         value={subUserAns || ""}
                         onChange={(e) => selectOption(e.target.value, subQ.id)}
+                        className="w-full md:w-auto min-w-[120px]"
                         style={{
                           padding: "5px 10px",
                           borderRadius: "8px",

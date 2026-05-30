@@ -17,18 +17,12 @@ export default function AudioPlayer({
 }) {
   return (
     <div
-      style={{
-        background: "#006590",
-        padding: "6px 16px",
-        color: "white",
-        display: "flex",
-        alignItems: "center",
-        gap: "14px",
-      }}
+      className="flex flex-wrap md:flex-nowrap items-center gap-3 bg-[#006590] p-3 md:py-1.5 md:px-4 text-white"
     >
       {/* Play Button */}
       <button
         onClick={togglePlay}
+        className="order-2 md:order-1"
         style={{
           width: "32px",
           height: "32px",
@@ -53,8 +47,8 @@ export default function AudioPlayer({
 
       {/* Timeline Scrubber */}
       <div
+        className="order-1 md:order-2 w-full md:w-auto flex-1"
         style={{
-          flex: 1,
           display: "flex",
           alignItems: "center",
           gap: "8px",
@@ -98,6 +92,7 @@ export default function AudioPlayer({
 
       {/* Speed Controls */}
       <div
+        className="order-3 md:order-3"
         style={{
           display: "flex",
           background: "rgba(0,0,0,0.2)",
@@ -131,6 +126,7 @@ export default function AudioPlayer({
 
       {/* Volume Controls */}
       <div
+        className="order-4 md:order-4"
         style={{
           display: "flex",
           alignItems: "center",
@@ -159,7 +155,7 @@ export default function AudioPlayer({
           step={0.05}
           value={isMuted ? 0 : volume}
           onChange={handleVolume}
-          className="volume-slider"
+          className="volume-slider hidden md:block"
           style={{
             accentColor: "white",
             width: "40px",
