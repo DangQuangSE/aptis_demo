@@ -11,6 +11,8 @@ export default function SidebarMatrix({
   setSidebarPage,
   jumpToQuestion,
   hideHeader,
+  isMobileDrawer = false,
+  onClose,
 }) {
   // Helpers to count correct/checked answers dynamically
   const getFlatQuestions = () => {
@@ -44,40 +46,87 @@ export default function SidebarMatrix({
     return checkedResults[q.id] && selectedAnswers[q.id] === q.correctKey;
   }).length;
 
-  return (
-    <aside
-      style={{
+  const wrapperStyle = isMobileDrawer
+    ? {
+        width: "100%",
+        backgroundColor: "white",
+        overflow: "hidden",
+        display: "flex",
+        flexDirection: "column",
+      }
+    : {
         width: "240px",
         flexShrink: 0,
-        backgroundColor: "white",
-        borderRadius: "16px",
-        border: "2px solid #efeded",
+        backgroundColor: "#eae8e7",
+        borderRadius: "24px",
+        border: "1px solid rgba(0, 0, 0, 0.045)",
+        padding: "5px",
         overflow: "hidden",
         position: "sticky",
         top: hideHeader ? "16px" : "68px",
-        boxShadow: "0 4px 16px rgba(0,0,0,0.04)",
+        boxShadow: "0 10px 30px -10px rgba(0,0,0,0.03)",
         transition: "top 0.2s ease",
-      }}
-    >
+      };
+
+  return (
+    <div style={wrapperStyle}>
+      <div
+        style={isMobileDrawer ? {
+          display: "flex",
+          flexDirection: "column",
+          width: "100%",
+        } : {
+          backgroundColor: "white",
+          borderRadius: "19px",
+          overflow: "hidden",
+          display: "flex",
+          flexDirection: "column",
+          width: "100%",
+          height: "100%",
+        }}
+      >
       {/* Sidebar header */}
       <div
         style={{
-          padding: "10px 14px",
+          padding: "12px 16px",
           borderBottom: "1.5px solid #efeded",
           backgroundColor: "#f5f3f3",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
         }}
       >
         <h2
           style={{
             fontFamily: "'Plus Jakarta Sans', sans-serif",
             fontWeight: 700,
-            fontSize: "12px",
+            fontSize: "13px",
             color: "#006590",
             margin: 0,
           }}
         >
-          Question List
+          {isMobileDrawer ? "Question Map" : "Question List"}
         </h2>
+        {isMobileDrawer && (
+          <button
+            onClick={onClose}
+            aria-label="Close question map"
+            style={{
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              fontSize: "18px",
+              fontWeight: "bold",
+              color: "#6e7881",
+              padding: "2px 6px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            ✕
+          </button>
+        )}
       </div>
 
       {/* Question list matrix */}
@@ -87,7 +136,7 @@ export default function SidebarMatrix({
           display: "grid",
           gridTemplateColumns: "repeat(5, 1fr)",
           gap: "8px",
-          maxHeight: hideHeader ? "calc(100vh - 120px)" : "calc(100vh - 170px)",
+          maxHeight: isMobileDrawer ? "55vh" : (hideHeader ? "calc(100vh - 120px)" : "calc(100vh - 170px)"),
           overflowY: "auto",
         }}
       >
@@ -147,32 +196,28 @@ export default function SidebarMatrix({
               badgeCol = "#004c6e";
             }
 
-            const borderStyle = isActive
-              ? "2px solid #006590"
-              : "2px solid transparent";
-
-            return (
-              <button
-                key={item.id}
-                onClick={() => jumpToQuestion(idx)}
-                className="q-matrix-btn"
-                title={item.isMultiQuestion ? `Audio Topic ${idx + 1}` : `Question ${idx + 1}`}
-                style={{
-                  width: "100%",
-                  aspectRatio: "1/1",
-                  borderRadius: "8px",
-                  background: badgeBg,
-                  color: badgeCol,
-                  border: borderStyle,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontWeight: 700,
-                  fontSize: "12px",
-                  cursor: "pointer",
-                  transition: "all 0.2s",
-                }}
-              >
+             return (
+               <button
+                 key={item.id}
+                 onClick={() => jumpToQuestion(idx)}
+                 className="q-matrix-btn spring-transition-fast hover:scale-[1.06] active:scale-[0.92]"
+                 title={item.isMultiQuestion ? `Audio Topic ${idx + 1}` : `Question ${idx + 1}`}
+                 style={{
+                   width: "100%",
+                   aspectRatio: "1/1",
+                   borderRadius: "12px",
+                   background: badgeBg,
+                   color: badgeCol,
+                   border: "none",
+                   boxShadow: isActive ? "0 0 0 2px #006590" : "0 1px 3px rgba(0,0,0,0.02)",
+                   display: "flex",
+                   alignItems: "center",
+                   justifyContent: "center",
+                   fontWeight: 700,
+                   fontSize: "12px",
+                   cursor: "pointer",
+                 }}
+               >
                 {badge}
               </button>
             );
@@ -266,11 +311,16 @@ export default function SidebarMatrix({
             fontSize: "10px",
             fontWeight: 700,
             color: "#2a6000",
+            display: "flex",
+            alignItems: "center",
+            gap: "3px",
           }}
         >
-          ✓ {correctCount} correct
+          <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          {correctCount} correct
         </span>
       </div>
-    </aside>
-  );
+    </div>
+  </div>
+);
 }
