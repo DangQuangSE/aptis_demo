@@ -9,6 +9,7 @@ export default function ReadingPractice({ partNum, onExit }) {
   const [allAnswers, setAllAnswers] = useState({});
   const [allResults, setAllResults] = useState({});
   const [visitedTopics, setVisitedTopics] = useState({ 0: true });
+  const [sidebarPage, setSidebarPage] = useState(0);
   const [loading, setLoading] = useState(true);
   const [timeLeft, setTimeLeft] = useState(35 * 60);
   const [timerActive, setTimerActive] = useState(true);
@@ -27,6 +28,7 @@ export default function ReadingPractice({ partNum, onExit }) {
     setAnswers({});
     setAiResult(null);
     setVisitedTopics({ 0: true });
+    setSidebarPage(0);
     fetch(`/scraped_data_reading/reading_part${partNum}.json`)
       .then((res) => res.json())
       .then((data) => {
@@ -41,7 +43,11 @@ export default function ReadingPractice({ partNum, onExit }) {
 
   useEffect(() => {
     setVisitedTopics((prev) => ({ ...prev, [topicIndex]: true }));
-  }, [topicIndex]);
+    const targetPage = Math.floor(topicIndex / 25);
+    if (targetPage !== sidebarPage) {
+      setSidebarPage(targetPage);
+    }
+  }, [topicIndex, sidebarPage]);
 
   useEffect(() => {
     if (partData && partData[topicIndex]) {
@@ -183,7 +189,7 @@ export default function ReadingPractice({ partNum, onExit }) {
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
-              maxWidth: "1200px",
+              maxWidth: "1400px",
               margin: "0 auto",
               padding: "0 16px",
               height: "52px",
@@ -353,7 +359,7 @@ export default function ReadingPractice({ partNum, onExit }) {
         style={{
           flex: 1,
           display: "flex",
-          maxWidth: "1200px",
+          maxWidth: "1400px",
           margin: "0 auto",
           width: "100%",
           padding: hideHeader ? "12px 16px 20px" : "16px 16px 24px",
@@ -398,82 +404,147 @@ export default function ReadingPractice({ partNum, onExit }) {
           </div>
 
           <div style={{ padding: "12px", display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: "8px", maxHeight: hideHeader ? "calc(100vh - 120px)" : "calc(100vh - 170px)", overflowY: "auto" }}>
-            {partData.map((topic, idx) => {
-              const isActive = idx === topicIndex;
-              const topicAnswers = allAnswers[idx] || {};
-              const topicResult = allResults[idx];
+            {partData
+              .slice(sidebarPage * 25, (sidebarPage + 1) * 25)
+              .map((topic, displayIdx) => {
+                const idx = sidebarPage * 25 + displayIdx;
+                const isActive = idx === topicIndex;
+                const topicAnswers = allAnswers[idx] || {};
+                const topicResult = allResults[idx];
 
-              let isAnswered = false;
-              if (partNum === 1 || partNum === 3) {
-                isAnswered = topic.questions?.some(q => !!topicAnswers[q.id]);
-              } else if (partNum === 2) {
-                isAnswered = !!topicAnswers.part2Order;
-              } else if (partNum === 4) {
-                isAnswered = topic.paragraphs?.some(p => !!topicAnswers[p.id]);
-              }
+                let isAnswered = false;
+                if (partNum === 1 || partNum === 3) {
+                  isAnswered = topic.questions?.some(q => !!topicAnswers[q.id]);
+                } else if (partNum === 2) {
+                  isAnswered = !!topicAnswers.part2Order;
+                } else if (partNum === 4) {
+                  isAnswered = topic.paragraphs?.some(p => !!topicAnswers[p.id]);
+                }
 
-              const isAutoVisited = autoShowAnswer && !!visitedTopics[idx];
-              const isGraded = !!topicResult || isAutoVisited;
-              
-              let isCorr = false;
-              let isWrong = false;
+                const isAutoVisited = autoShowAnswer && !!visitedTopics[idx];
+                const isGraded = !!topicResult || isAutoVisited;
+                
+                let isCorr = false;
+                let isWrong = false;
 
-              if (isGraded) {
-                if (isAutoVisited) {
-                  isCorr = true;
-                } else if (topicResult) {
-                  const wrongCount = topicResult.explanations?.length || 0;
-                  if (wrongCount > 0) {
-                    isWrong = true;
-                  } else {
+                if (isGraded) {
+                  if (isAutoVisited) {
                     isCorr = true;
+                  } else if (topicResult) {
+                    const wrongCount = topicResult.explanations?.length || 0;
+                    if (wrongCount > 0) {
+                      isWrong = true;
+                    } else {
+                      isCorr = true;
+                    }
                   }
                 }
-              }
 
-              let badgeBg = "#eae8e7", badgeCol = "#6e7881";
-              if (isActive) {
-                badgeBg = "#006590";
-                badgeCol = "white";
-              } else if (isCorr) {
-                badgeBg = "#d4f0b8";
-                badgeCol = "#2a6000";
-              } else if (isWrong) {
-                badgeBg = "#ffdad6";
-                badgeCol = "#93000a";
-              } else if (isAnswered) {
-                badgeBg = "#e0f4ff";
-                badgeCol = "#004c6e";
-              }
+                let badgeBg = "#eae8e7", badgeCol = "#6e7881";
+                if (isActive) {
+                  badgeBg = "#006590";
+                  badgeCol = "white";
+                } else if (isCorr) {
+                  badgeBg = "#d4f0b8";
+                  badgeCol = "#2a6000";
+                } else if (isWrong) {
+                  badgeBg = "#ffdad6";
+                  badgeCol = "#93000a";
+                } else if (isAnswered) {
+                  badgeBg = "#e0f4ff";
+                  badgeCol = "#004c6e";
+                }
 
-              return (
-                <button
-                  key={idx}
-                  onClick={() => setTopicIndex(idx)}
-                  className={`q-matrix-btn ${isActive ? "active" : ""}`}
-                  title={`Topic ${idx + 1}`}
-                  style={{
-                    width: "100%",
-                    aspectRatio: "1/1",
-                    borderRadius: "8px",
-                    background: badgeBg,
-                    color: badgeCol,
-                    border: isActive ? "2.5px solid #006590" : "2px solid transparent",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontWeight: 700,
-                    fontSize: "12px",
-                    cursor: "pointer",
-                    transition: "all 0.2s",
-                    boxShadow: isActive ? "0 0 8px rgba(0, 101, 144, 0.3)" : "none",
-                  }}
-                >
-                  {idx + 1}
-                </button>
-              );
-            })}
+                return (
+                  <button
+                    key={idx}
+                    onClick={() => setTopicIndex(idx)}
+                    className={`q-matrix-btn ${isActive ? "active" : ""}`}
+                    title={`Topic ${idx + 1}`}
+                    style={{
+                      width: "100%",
+                      aspectRatio: "1/1",
+                      borderRadius: "8px",
+                      background: badgeBg,
+                      color: badgeCol,
+                      border: isActive ? "2.5px solid #006590" : "2px solid transparent",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      fontWeight: 700,
+                      fontSize: "12px",
+                      cursor: "pointer",
+                      transition: "all 0.2s",
+                      boxShadow: isActive ? "0 0 8px rgba(0, 101, 144, 0.3)" : "none",
+                    }}
+                  >
+                    {idx + 1}
+                  </button>
+                );
+              })}
           </div>
+
+          {/* Pagination Controls */}
+          {partData.length > 25 && (
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                padding: "8px 12px",
+                borderTop: "1.5px solid #efeded",
+                backgroundColor: "#fbf9f8",
+              }}
+            >
+              <button
+                disabled={sidebarPage === 0}
+                onClick={() => setSidebarPage((p) => Math.max(0, p - 1))}
+                style={{
+                  border: "none",
+                  background: "none",
+                  cursor: sidebarPage === 0 ? "not-allowed" : "pointer",
+                  color: sidebarPage === 0 ? "#ccc" : "#006590",
+                  fontWeight: "bold",
+                  fontSize: "12px",
+                }}
+              >
+                Prev
+              </button>
+              <span
+                style={{
+                  fontSize: "11px",
+                  color: "#6e7881",
+                  fontWeight: 600,
+                }}
+              >
+                {sidebarPage + 1} / {Math.ceil(partData.length / 25)}
+              </span>
+              <button
+                disabled={sidebarPage >= Math.ceil(partData.length / 25) - 1}
+                onClick={() =>
+                  setSidebarPage((p) =>
+                    Math.min(Math.ceil(partData.length / 25) - 1, p + 1)
+                  )
+                }
+                style={{
+                  border: "none",
+                  background: "none",
+                  cursor:
+                    sidebarPage >= Math.ceil(partData.length / 25) - 1
+                      ? "not-allowed"
+                      : "pointer",
+                  color:
+                    sidebarPage >= Math.ceil(partData.length / 25) - 1
+                      ? "#ccc"
+                      : "#006590",
+                  fontWeight: "bold",
+                  fontSize: "12px",
+                }}
+              >
+                Next
+              </button>
+            </div>
+          )}
 
           {/* Sidebar footer */}
           <div
@@ -705,12 +776,17 @@ export default function ReadingPractice({ partNum, onExit }) {
               )}
 
               {partNum === 3 && testData && (
-                <div className="animate-fade-in">
-                  <p style={{ fontSize: "13px", color: "#3e4850", margin: "0 0 16px 0", lineHeight: 1.5, fontStyle: "italic" }}>{testData.instructions}</p>
-                  <div style={{ background: "#fbf9f8", padding: "16px 20px", borderRadius: "10px", border: "1.5px solid #efeded", marginBottom: "20px" }}>
-                    <p style={{ fontSize: "14px", lineHeight: "1.7", whiteSpace: "pre-wrap", color: "#1b1c1c", margin: 0 }}>{testData.text}</p>
+                <div className="animate-fade-in" style={{ display: "flex", gap: "24px", alignItems: "flex-start", width: "100%" }}>
+                  {/* Left Column: Passage Text */}
+                  <div style={{ flex: "1.35", minWidth: 0, position: "sticky", top: hideHeader ? "16px" : "68px" }}>
+                    <p style={{ fontSize: "13px", color: "#3e4850", margin: "0 0 12px 0", lineHeight: 1.5, fontStyle: "italic" }}>{testData.instructions}</p>
+                    <div style={{ background: "#fbf9f8", padding: "16px 20px", borderRadius: "10px", border: "1.5px solid #efeded", maxHeight: hideHeader ? "calc(100vh - 120px)" : "calc(100vh - 180px)", overflowY: "auto" }}>
+                      <p style={{ fontSize: "14px", lineHeight: "1.7", whiteSpace: "pre-wrap", color: "#1b1c1c", margin: 0 }}>{testData.text}</p>
+                    </div>
                   </div>
-                  <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+
+                  {/* Right Column: Questions List */}
+                  <div style={{ flex: "0.65", minWidth: 0, display: "flex", flexDirection: "column", gap: "12px", maxHeight: hideHeader ? "calc(100vh - 90px)" : "calc(100vh - 150px)", overflowY: "auto", paddingRight: "4px" }}>
                     {testData.questions.map((q, idx) => {
                       const currentVal = autoShowAnswer ? q.correctAnswer : answers[q.id];
                       return (
@@ -865,11 +941,11 @@ export default function ReadingPractice({ partNum, onExit }) {
               let isAllAnswered = true;
               if (testData) {
                 if (partNum === 1 || partNum === 3) {
-                  isAllAnswered = testData.questions?.every(q => !!answers[q.id]);
+                  isAllAnswered = testData.questions?.some(q => !!answers[q.id]);
                 } else if (partNum === 2) {
                   isAllAnswered = !!answers.part2Order;
                 } else if (partNum === 4) {
-                  isAllAnswered = testData.paragraphs?.every(p => !!answers[p.id]);
+                  isAllAnswered = testData.paragraphs?.some(p => !!answers[p.id]);
                 }
               }
               const isCheckDisabled = !isAllAnswered || isGrading || !!aiResult || autoShowAnswer;
