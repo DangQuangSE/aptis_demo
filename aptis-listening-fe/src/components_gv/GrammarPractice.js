@@ -17,7 +17,7 @@ const IconGrid = () => (
 export default function GrammarPractice({ boDe, mode, onExit }) {
   const [loading, setLoading] = useState(true);
   const [testData, setTestData] = useState(null);
-  
+
   // Navigation
   const [questions, setQuestions] = useState([]); // Array of question nodes for the sidebar
   const [currentIdx, setCurrentIdx] = useState(0);
@@ -31,6 +31,7 @@ export default function GrammarPractice({ boDe, mode, onExit }) {
   // Responsive Drawer and Settings states
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [isBottomBarVisible, setIsBottomBarVisible] = useState(true);
 
   // Mode settings
   const [modes, setModes] = useState({
@@ -165,7 +166,8 @@ export default function GrammarPractice({ boDe, mode, onExit }) {
           }}
         />
         Loading Test {boDe} data...
-        <style dangerouslySetInnerHTML={{__html: `
+        <style dangerouslySetInnerHTML={{
+          __html: `
           @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
@@ -180,7 +182,7 @@ export default function GrammarPractice({ boDe, mode, onExit }) {
   const handleSelectOptionGrammar = (key) => {
     if (!activeNode || activeNode.type !== "grammar") return;
     const qId = activeNode.id;
-    
+
     // Save selection
     setSelectedAnswers((prev) => ({ ...prev, [qId]: key }));
 
@@ -200,7 +202,7 @@ export default function GrammarPractice({ boDe, mode, onExit }) {
     setCurrentIdx(idx);
     const targetNode = questions[idx];
     setVisitedIds((prev) => ({ ...prev, [targetNode.id]: true }));
-    
+
     // Auto Page Sidebar
     const targetPage = Math.floor(idx / 25);
     if (targetPage !== sidebarPage) {
@@ -223,7 +225,7 @@ export default function GrammarPractice({ boDe, mode, onExit }) {
       const partNum = activeNode.partNum;
       const subIds = [0, 1, 2, 3, 4].map((i) => `v_${partNum}_${i}`);
       const unanswered = subIds.some((id) => !selectedAnswers[id]);
-      
+
       if (unanswered) {
         showToast("Please select an answer for all items in this part before checking!", "info");
         return;
@@ -314,7 +316,7 @@ export default function GrammarPractice({ boDe, mode, onExit }) {
       totalQuestionsCount += 5;
       const partNum = node.partNum;
       const isPartChecked = !!checkedResults[node.id];
-      
+
       node.qData.questions.forEach((q, subIdx) => {
         const ans = selectedAnswers[`v_${partNum}_${subIdx}`];
         if (ans && isPartChecked) {
@@ -323,7 +325,7 @@ export default function GrammarPractice({ boDe, mode, onExit }) {
           if (partNum === 1 || partNum === 4) expected = q.synonym;
           else if (partNum === 2 || partNum === 3) expected = q.word;
           else if (partNum === 5) expected = q.collocation;
-          
+
           if (ans === expected) {
             correctCount += 1;
           }
@@ -394,7 +396,7 @@ export default function GrammarPractice({ boDe, mode, onExit }) {
             .map((node, displayIdx) => {
               const idx = sidebarPage * 25 + displayIdx;
               const isSelected = idx === currentIdx;
-              
+
               // Answer verification
               let hasAnswer = false;
               let isNodeCorrect = null;
@@ -491,16 +493,16 @@ export default function GrammarPractice({ boDe, mode, onExit }) {
             }}
           >
             <button
-               disabled={sidebarPage === 0}
-               onClick={() => setSidebarPage((p) => Math.max(0, p - 1))}
-               style={{
-                 border: "none",
-                 background: "none",
-                 cursor: sidebarPage === 0 ? "not-allowed" : "pointer",
-                 color: sidebarPage === 0 ? "#ccc" : "#006590",
-                 fontWeight: "bold",
-                 fontSize: "12px",
-               }}
+              disabled={sidebarPage === 0}
+              onClick={() => setSidebarPage((p) => Math.max(0, p - 1))}
+              style={{
+                border: "none",
+                background: "none",
+                cursor: sidebarPage === 0 ? "not-allowed" : "pointer",
+                color: sidebarPage === 0 ? "#ccc" : "#006590",
+                fontWeight: "bold",
+                fontSize: "12px",
+              }}
             >
               Prev
             </button>
@@ -709,6 +711,52 @@ export default function GrammarPractice({ boDe, mode, onExit }) {
                   }}
                 />
               </label>
+
+              {/* Hide Header Option on Mobile */}
+              <label
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  cursor: "pointer",
+                  fontSize: "13px",
+                  fontWeight: 600,
+                  color: "#3e4850",
+                  padding: "8px 4px",
+                }}
+              >
+                <span>Hide Header</span>
+                <div
+                  style={{
+                    width: "36px",
+                    height: "20px",
+                    background: modes.hideHeader ? "#006590" : "#d1d5db",
+                    borderRadius: "10px",
+                    position: "relative",
+                    transition: "background 0.2s",
+                  }}
+                >
+                  <div
+                    style={{
+                      width: "16px",
+                      height: "16px",
+                      background: "white",
+                      borderRadius: "50%",
+                      position: "absolute",
+                      top: "2px",
+                      left: modes.hideHeader ? "18px" : "2px",
+                      transition: "left 0.2s",
+                      boxShadow: "0 1px 2px rgba(0,0,0,0.2)",
+                    }}
+                  />
+                </div>
+                <input
+                  type="checkbox"
+                  style={{ display: "none" }}
+                  checked={modes.hideHeader}
+                  onChange={(e) => setModes((m) => ({ ...m, hideHeader: e.target.checked }))}
+                />
+              </label>
             </div>
           </div>
         </div>
@@ -727,7 +775,7 @@ export default function GrammarPractice({ boDe, mode, onExit }) {
           <div style={{ display: "flex", justifyContent: "center", padding: "8px 0 4px" }}>
             <div style={{ width: "40px", height: "5px", background: "#dbd9d9", borderRadius: "999px" }} />
           </div>
-          
+
           {renderSidebarMatrix(true)}
         </div>
       </div>
@@ -935,6 +983,31 @@ export default function GrammarPractice({ boDe, mode, onExit }) {
                   {formatTime(timeLeft)}
                 </span>
               </div>
+
+              {/* Hide Header Button */}
+              <button
+                onClick={() => setModes((m) => ({ ...m, hideHeader: true }))}
+                aria-label="Hide header"
+                title="Hide header"
+                style={{
+                  padding: "5px 7px",
+                  borderRadius: "8px",
+                  background: "#f0f4f8",
+                  color: "#6e7881",
+                  border: "none",
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  transition: "background 0.15s ease",
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = "#e1e9f0")}
+                onMouseLeave={(e) => (e.currentTarget.style.background = "#f0f4f8")}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+              </button>
             </div>
           </div>
         </header>
@@ -943,6 +1016,7 @@ export default function GrammarPractice({ boDe, mode, onExit }) {
       {/* ── Body: Sidebar + Main ─────────────────────────────────────── */}
       <div
         className="flex-1 flex flex-col lg:flex-row w-full max-w-[1200px] mx-auto self-center items-stretch lg:items-start p-2 sm:p-4 lg:p-6 pb-28 lg:pb-6 gap-4 animate-fade-in"
+        style={modes.hideHeader ? { paddingTop: "44px" } : undefined}
       >
         {/* LEFT SIDEBAR: Question Navigator (Desktop only) */}
         <div className="hidden lg:block shrink-0 w-[240px]">
@@ -1155,99 +1229,180 @@ export default function GrammarPractice({ boDe, mode, onExit }) {
               {modes.hideHeader ? "Show Header" : "Hide Header"}
             </button>
           </div>
-
-          {/* Floating Bottom Action Bar (Mobile/Tablet only) */}
-          <div
-            className="lg:hidden fixed bottom-4 left-4 right-4 z-40 bg-white/90 backdrop-blur-md border border-[#efeded] p-3 rounded-[20px] flex justify-between gap-3 shadow-[0_10px_30px_-5px_rgba(0,0,0,0.1)]"
-          >
-            {/* Back Button */}
-            <button
-              onClick={() => currentIdx > 0 && jumpToQuestion(currentIdx - 1)}
-              disabled={currentIdx === 0}
-              className={currentIdx > 0 ? "btn-3d" : ""}
-              style={{
-                flex: 1,
-                padding: "12px 8px",
-                borderRadius: "12px",
-                border: "none",
-                fontFamily: "'Plus Jakarta Sans', sans-serif",
-                fontWeight: 700,
-                fontSize: "13px",
-                cursor: currentIdx === 0 ? "not-allowed" : "pointer",
-                background: currentIdx === 0 ? "#e4e2e2" : "#efeded",
-                color: currentIdx === 0 ? "#a0a0a0" : "#1b1c1c",
-                boxShadow: currentIdx === 0 ? "none" : "0 3px 0 #bdc8d2",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "4px",
-              }}
-            >
-              ← Back
-            </button>
-
-            {/* Check Button */}
-            <button
-              onClick={checkCurrentAnswer}
-              disabled={isCheckDisabled}
-              className={!isCheckDisabled ? "btn-3d" : ""}
-              style={{
-                flex: 1,
-                padding: "12px 8px",
-                borderRadius: "12px",
-                border: "none",
-                fontFamily: "'Plus Jakarta Sans', sans-serif",
-                fontWeight: 700,
-                fontSize: "13px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "6px",
-                cursor: isCheckDisabled ? "not-allowed" : "pointer",
-                background: isCheckDisabled ? "#e4e2e2" : "#FFC107",
-                color: isCheckDisabled ? "#a0a0a0" : "#5A4300",
-                boxShadow: isCheckDisabled ? "none" : "0 3px 0 #B38600",
-              }}
-            >
-              <span style={{ display: "flex", scale: "0.9" }}>
-                <IconCheck />
-              </span>
-              Check
-            </button>
-
-            {/* Next/Finish Button */}
-            <button
-              className="btn-3d"
-              onClick={handleNextOrFinish}
-              style={{
-                flex: 1.2,
-                padding: "12px 8px",
-                borderRadius: "12px",
-                border: "none",
-                fontFamily: "'Plus Jakarta Sans', sans-serif",
-                fontWeight: 700,
-                fontSize: "13px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "4px",
-                cursor: "pointer",
-                background: "#1cb0f6",
-                color: "white",
-                boxShadow: "0 3px 0 #008EAF",
-              }}
-            >
-              {currentIdx === questions.length - 1 ? (
-                "Finish Test"
-              ) : (
-                <>
-                  Next <IconNext />
-                </>
-              )}
-            </button>
-          </div>
         </div>
       </div>
+
+      {/* Floating Bottom Action Bar (Mobile/Tablet only) */}
+      <div
+        className="lg:hidden fixed bottom-4 left-4 right-4 z-40 bg-white/90 backdrop-blur-md border border-[#efeded] p-3 rounded-[20px] flex justify-between gap-3 shadow-[0_10px_30px_-5px_rgba(0,0,0,0.1)]"
+        style={{
+          transform: isBottomBarVisible ? "translateY(0)" : "translateY(130%)",
+          transition: "transform 0.4s cubic-bezier(0.22, 1, 0.36, 1)",
+        }}
+      >
+        {/* Collapse Button */}
+        <button
+          onClick={() => setIsBottomBarVisible(false)}
+          title="Hide controls"
+          aria-label="Hide navigation controls"
+          style={{
+            position: "absolute",
+            top: "-12px",
+            right: "12px",
+            width: "24px",
+            height: "24px",
+            borderRadius: "50%",
+            backgroundColor: "white",
+            border: "1px solid #efeded",
+            boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            cursor: "pointer",
+            color: "#6e7881",
+            transition: "all 0.15s ease",
+          }}
+          className="hover:scale-[1.08] active:scale-[0.92] spring-transition-fast z-50"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+
+        {/* Back Button */}
+        <button
+          onClick={() => currentIdx > 0 && jumpToQuestion(currentIdx - 1)}
+          disabled={currentIdx === 0}
+          className={currentIdx > 0 ? "btn-3d" : ""}
+          style={{
+            flex: 1,
+            padding: "12px 8px",
+            borderRadius: "12px",
+            border: "none",
+            fontFamily: "'Plus Jakarta Sans', sans-serif",
+            fontWeight: 700,
+            fontSize: "13px",
+            cursor: currentIdx === 0 ? "not-allowed" : "pointer",
+            background: currentIdx === 0 ? "#e4e2e2" : "#efeded",
+            color: currentIdx === 0 ? "#a0a0a0" : "#1b1c1c",
+            boxShadow: currentIdx === 0 ? "none" : "0 3px 0 #bdc8d2",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "4px",
+          }}
+        >
+          ← Back
+        </button>
+
+        {/* Check Button */}
+        <button
+          onClick={checkCurrentAnswer}
+          disabled={isCheckDisabled}
+          className={!isCheckDisabled ? "btn-3d" : ""}
+          style={{
+            flex: 1,
+            padding: "12px 8px",
+            borderRadius: "12px",
+            border: "none",
+            fontFamily: "'Plus Jakarta Sans', sans-serif",
+            fontWeight: 700,
+            fontSize: "13px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "6px",
+            cursor: isCheckDisabled ? "not-allowed" : "pointer",
+            background: isCheckDisabled ? "#e4e2e2" : "#FFC107",
+            color: isCheckDisabled ? "#a0a0a0" : "#5A4300",
+            boxShadow: isCheckDisabled ? "none" : "0 3px 0 #B38600",
+          }}
+        >
+          <span style={{ display: "flex", scale: "0.9" }}>
+            <IconCheck />
+          </span>
+          Check
+        </button>
+
+        {/* Next/Finish Button */}
+        <button
+          className="btn-3d"
+          onClick={handleNextOrFinish}
+          style={{
+            flex: 1.2,
+            padding: "12px 8px",
+            borderRadius: "12px",
+            border: "none",
+            fontFamily: "'Plus Jakarta Sans', sans-serif",
+            fontWeight: 700,
+            fontSize: "13px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "4px",
+            cursor: "pointer",
+            background: "#1cb0f6",
+            color: "white",
+            boxShadow: "0 3px 0 #008EAF",
+          }}
+        >
+          {currentIdx === questions.length - 1 ? (
+            "Finish Test"
+          ) : (
+            <>
+              Next <IconNext />
+            </>
+          )}
+        </button>
+      </div>
+
+      {/* Restore Bottom Action Bar Button */}
+      {!isBottomBarVisible && (
+        <button
+          onClick={() => setIsBottomBarVisible(true)}
+          className="lg:hidden fixed bottom-4 right-4 z-40 animate-modal-in spring-transition hover:scale-[1.05] active:scale-[0.95]"
+          style={{
+            padding: "10px 14px",
+            borderRadius: "999px",
+            backgroundColor: "white",
+            border: "1.5px solid #efeded",
+            boxShadow: "0 8px 24px rgba(0,0,0,0.08)",
+            display: "flex",
+            alignItems: "center",
+            gap: "6px",
+            fontFamily: "'Plus Jakarta Sans', sans-serif",
+            fontWeight: 700,
+            fontSize: "12px",
+            color: "#006590",
+            cursor: "pointer",
+          }}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" style={{ transform: "rotate(180deg)" }}><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+      )}
+
+      {/* Floating Restore Header Button (Mobile/Tablet only) */}
+      {modes.hideHeader && (
+        <button
+          onClick={() => setModes((m) => ({ ...m, hideHeader: false }))}
+          className="lg:hidden fixed top-2 right-2 z-40 animate-modal-in spring-transition hover:scale-[1.05] active:scale-[0.95]"
+          aria-label="Show header"
+          title="Show header"
+          style={{
+            width: "34px",
+            height: "34px",
+            borderRadius: "50%",
+            backgroundColor: "white",
+            border: "1.5px solid #efeded",
+            boxShadow: "0 4px 14px rgba(0,0,0,0.1)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            color: "#006590",
+            cursor: "pointer",
+          }}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+      )}
     </div>
   );
 }
