@@ -48,7 +48,7 @@ export default function QuestionContent({
               margin: "0 0 6px 0",
             }}
           >
-            Topic: {q.topic}
+            Topic: {q.topic.replace(/^Topic:\s*/i, "")}
           </h2>
         )}
 
