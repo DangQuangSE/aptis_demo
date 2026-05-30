@@ -1,0 +1,743 @@
+[
+  {
+    "topicId": 1,
+    "title": "Topic: Sentence Comprehension 1",
+    "instructions": "Choose the word that fits in the gap. The first one is done for you.",
+    "questions": [
+      {
+        "id": "p1_q1",
+        "text": "Where is the train [blank] in this town?",
+        "options": [
+          "station",
+          "school",
+          "market"
+        ],
+        "correctAnswer": "station"
+      },
+      {
+        "id": "p1_q2",
+        "text": "The bus [blank] here every morning.",
+        "options": [
+          "runs",
+          "stops",
+          "flies"
+        ],
+        "correctAnswer": "stops"
+      },
+      {
+        "id": "p1_q3",
+        "text": "The traffic light is [blank] so you can go now.",
+        "options": [
+          "red",
+          "yellow",
+          "green"
+        ],
+        "correctAnswer": "green"
+      },
+      {
+        "id": "p1_q4",
+        "text": "We usually have [blank] at 7 p.m.",
+        "options": [
+          "breakfast",
+          "lunch",
+          "dinner"
+        ],
+        "correctAnswer": "dinner"
+      },
+      {
+        "id": "p1_q5",
+        "text": "Do you like watching [blank] on weekends?",
+        "options": [
+          "books",
+          "movies",
+          "hotdog"
+        ],
+        "correctAnswer": "movies"
+      }
+    ]
+  },
+  {
+    "topicId": 2,
+    "title": "Topic: Sentence Comprehension 2",
+    "instructions": "Choose the word that fits in the gap. The first one is done for you.",
+    "questions": [
+      {
+        "id": "p1_q1",
+        "text": "I always study in the [blank] before school.",
+        "options": [
+          "morning",
+          "sea",
+          "roof"
+        ],
+        "correctAnswer": "morning"
+      },
+      {
+        "id": "p1_q2",
+        "text": "My [blank] and I play football after class.",
+        "options": [
+          "friends",
+          "dog",
+          "tree"
+        ],
+        "correctAnswer": "friends"
+      },
+      {
+        "id": "p1_q3",
+        "text": "I always [blank] my bag on the chair.",
+        "options": [
+          "leave",
+          "go",
+          "love"
+        ],
+        "correctAnswer": "leave"
+      },
+      {
+        "id": "p1_q4",
+        "text": "Apples are very [blank] for your health.",
+        "options": [
+          "hate",
+          "lovely",
+          "good"
+        ],
+        "correctAnswer": "good"
+      },
+      {
+        "id": "p1_q5",
+        "text": "We eat rice and [blank] every day.",
+        "options": [
+          "food",
+          "books",
+          "games"
+        ],
+        "correctAnswer": "food"
+      }
+    ]
+  },
+  {
+    "topicId": 3,
+    "title": "Topic: Sentence Comprehension 3",
+    "instructions": "Choose the word that fits in the gap. The first one is done for you.",
+    "questions": [
+      {
+        "id": "p1_q1",
+        "text": "Where is your [blank] ?",
+        "options": [
+          "home",
+          "sea",
+          "park"
+        ],
+        "correctAnswer": "home"
+      },
+      {
+        "id": "p1_q2",
+        "text": "Do you talk to [blank] at work?",
+        "options": [
+          "customers",
+          "bird",
+          "chair"
+        ],
+        "correctAnswer": "customers"
+      },
+      {
+        "id": "p1_q3",
+        "text": "Is the task [blank] for you?",
+        "options": [
+          "easy",
+          "go",
+          "bring"
+        ],
+        "correctAnswer": "easy"
+      },
+      {
+        "id": "p1_q4",
+        "text": "What do you [blank] in the morning?",
+        "options": [
+          "prepare",
+          "big",
+          "team"
+        ],
+        "correctAnswer": "prepare"
+      },
+      {
+        "id": "p1_q5",
+        "text": "What do you like to [blank] on TV?",
+        "options": [
+          "watch",
+          "read",
+          "take"
+        ],
+        "correctAnswer": "watch"
+      }
+    ]
+  },
+  {
+    "topicId": 4,
+    "title": "Topic: Sentence Comprehension 4",
+    "instructions": "Choose the word that fits in the gap. The first one is done for you.",
+    "questions": [
+      {
+        "id": "p1_q1",
+        "text": "Do you jog in the [blank] in the morning?",
+        "options": [
+          "park",
+          "moon",
+          "tree"
+        ],
+        "correctAnswer": "park"
+      },
+      {
+        "id": "p1_q2",
+        "text": "Does the gym offer [blank] for yoga?",
+        "options": [
+          "classes",
+          "running",
+          "books"
+        ],
+        "correctAnswer": "classes"
+      },
+      {
+        "id": "p1_q3",
+        "text": "Is English [blank] for you?",
+        "options": [
+          "easy",
+          "try",
+          "bye"
+        ],
+        "correctAnswer": "easy"
+      },
+      {
+        "id": "p1_q4",
+        "text": "What do you eat for [blank] every day?",
+        "options": [
+          "breakfast",
+          "love",
+          "cold"
+        ],
+        "correctAnswer": "breakfast"
+      },
+      {
+        "id": "p1_q5",
+        "text": "Do you practice [blank] to relax?",
+        "options": [
+          "meditation",
+          "book",
+          "healthy"
+        ],
+        "correctAnswer": "meditation"
+      }
+    ]
+  },
+  {
+    "topicId": 5,
+    "title": "Topic: Sentence Comprehension 5",
+    "instructions": "Choose the word that fits in the gap. The first one is done for you.",
+    "questions": [
+      {
+        "id": "p1_q1",
+        "text": "Is your neighborhood [blank] ?",
+        "options": [
+          "friendly",
+          "hate",
+          "big"
+        ],
+        "correctAnswer": "friendly"
+      },
+      {
+        "id": "p1_q2",
+        "text": "How do you usually [blank] to work?",
+        "options": [
+          "run",
+          "walk",
+          "buy"
+        ],
+        "correctAnswer": "walk"
+      },
+      {
+        "id": "p1_q3",
+        "text": "When did you meet your friend [blank] ?",
+        "options": [
+          "first",
+          "love",
+          "bring"
+        ],
+        "correctAnswer": "first"
+      },
+      {
+        "id": "p1_q4",
+        "text": "Can you [blank] French?",
+        "options": [
+          "speak",
+          "big",
+          "most"
+        ],
+        "correctAnswer": "speak"
+      },
+      {
+        "id": "p1_q5",
+        "text": "Do you like going out [blank] with your friends?",
+        "options": [
+          "alone",
+          "together",
+          "morning"
+        ],
+        "correctAnswer": "together"
+      }
+    ]
+  },
+  {
+    "topicId": 6,
+    "title": "Topic: Sentence Comprehension 6",
+    "instructions": "Choose the word that fits in the gap. The first one is done for you.",
+    "questions": [
+      {
+        "id": "p1_q1",
+        "text": "I go to school by  [blank] .",
+        "options": [
+          "spaceship",
+          "plane",
+          "bicycle"
+        ],
+        "correctAnswer": "bicycle"
+      },
+      {
+        "id": "p1_q2",
+        "text": "The buildings in my city are very  [blank] .",
+        "options": [
+          "hate",
+          "tall",
+          "went"
+        ],
+        "correctAnswer": "tall"
+      },
+      {
+        "id": "p1_q3",
+        "text": "There are many green  [blank]  near my home.",
+        "options": [
+          "road",
+          "buy",
+          "trees"
+        ],
+        "correctAnswer": "trees"
+      },
+      {
+        "id": "p1_q4",
+        "text": "I eat  [blank]  with my family every morning.",
+        "options": [
+          "breakfast",
+          "lunch",
+          "dinner"
+        ],
+        "correctAnswer": "breakfast"
+      },
+      {
+        "id": "p1_q5",
+        "text": "I play  [blank]  to feel relaxed.",
+        "options": [
+          "games",
+          "make",
+          "time"
+        ],
+        "correctAnswer": "games"
+      }
+    ]
+  },
+  {
+    "topicId": 7,
+    "title": "Topic: Sentence Comprehension 7",
+    "instructions": "Choose the word that fits in the gap. The first one is done for you.",
+    "questions": [
+      {
+        "id": "p1_q1",
+        "text": "I want to  [blank]  my grandparents this weekend.",
+        "options": [
+          "visit",
+          "clean",
+          "run"
+        ],
+        "correctAnswer": "visit"
+      },
+      {
+        "id": "p1_q2",
+        "text": "My  [blank]  is very clean and bright.",
+        "options": [
+          "room",
+          "father",
+          "mother"
+        ],
+        "correctAnswer": "room"
+      },
+      {
+        "id": "p1_q3",
+        "text": "The weather is  [blank]  today.",
+        "options": [
+          "big",
+          "hot",
+          "small"
+        ],
+        "correctAnswer": "hot"
+      },
+      {
+        "id": "p1_q4",
+        "text": "We went to the city by  [blank] .",
+        "options": [
+          "spaceship",
+          "plane",
+          "train"
+        ],
+        "correctAnswer": "train"
+      },
+      {
+        "id": "p1_q5",
+        "text": "I can  [blank]  English very well.",
+        "options": [
+          "make",
+          "speak",
+          "love"
+        ],
+        "correctAnswer": "speak"
+      }
+    ]
+  },
+  {
+    "topicId": 8,
+    "title": "Topic: Sentence Comprehension 8",
+    "instructions": "Choose the word that fits in the gap. The first one is done for you.",
+    "questions": [
+      {
+        "id": "p1_q1",
+        "text": "My uncle works on a  [blank] .",
+        "options": [
+          "farm",
+          "compare",
+          "spare"
+        ],
+        "correctAnswer": "farm"
+      },
+      {
+        "id": "p1_q2",
+        "text": "The children were very  [blank]  about the trip.",
+        "options": [
+          "run",
+          "excited",
+          "most"
+        ],
+        "correctAnswer": "excited"
+      },
+      {
+        "id": "p1_q3",
+        "text": "Turn  [blank]  at the next corner.",
+        "options": [
+          "big",
+          "left",
+          "go"
+        ],
+        "correctAnswer": "left"
+      },
+      {
+        "id": "p1_q4",
+        "text": "We walked along the  [blank]  to the park.",
+        "options": [
+          "water",
+          "street",
+          "cloud"
+        ],
+        "correctAnswer": "street"
+      },
+      {
+        "id": "p1_q5",
+        "text": "I usually  [blank]  milk in the morning.",
+        "options": [
+          "stone",
+          "drink",
+          "school"
+        ],
+        "correctAnswer": "drink"
+      }
+    ]
+  },
+  {
+    "topicId": 9,
+    "title": "Topic: Sentence Comprehension 9",
+    "instructions": "Choose the word that fits in the gap. The first one is done for you.",
+    "questions": [
+      {
+        "id": "p1_q1",
+        "text": "I usually stay at  [blank]  on Sundays.",
+        "options": [
+          "cloud",
+          "home",
+          "road"
+        ],
+        "correctAnswer": "home"
+      },
+      {
+        "id": "p1_q2",
+        "text": "My father can  [blank]  very well.",
+        "options": [
+          "fly",
+          "drive",
+          "big"
+        ],
+        "correctAnswer": "drive"
+      },
+      {
+        "id": "p1_q3",
+        "text": "I like spending time with my  [blank]  after school.",
+        "options": [
+          "tree",
+          "friends",
+          "go"
+        ],
+        "correctAnswer": "friends"
+      },
+      {
+        "id": "p1_q4",
+        "text": "Let’s go for a  [blank]  in the park.",
+        "options": [
+          "walk",
+          "big",
+          "sea"
+        ],
+        "correctAnswer": "walk"
+      },
+      {
+        "id": "p1_q5",
+        "text": "Your sister looks very  [blank]  today.",
+        "options": [
+          "pretty",
+          "father",
+          "went"
+        ],
+        "correctAnswer": "pretty"
+      }
+    ]
+  },
+  {
+    "topicId": 10,
+    "title": "Topic: Sentence Comprehension 10",
+    "instructions": "Choose the word that fits in the gap. The first one is done for you.",
+    "questions": [
+      {
+        "id": "p1_q1",
+        "text": "I want to travel to the  [blank]  this summer.",
+        "options": [
+          "country",
+          "small",
+          "big"
+        ],
+        "correctAnswer": "country"
+      },
+      {
+        "id": "p1_q2",
+        "text": "Please keep your room  [blank] .",
+        "options": [
+          "green",
+          "boring",
+          "clean"
+        ],
+        "correctAnswer": "clean"
+      },
+      {
+        "id": "p1_q3",
+        "text": "We have English  [blank]  on Monday.",
+        "options": [
+          "class",
+          "lunch",
+          "sea"
+        ],
+        "correctAnswer": "class"
+      },
+      {
+        "id": "p1_q4",
+        "text": "I like helping  [blank]  people.",
+        "options": [
+          "myself",
+          "father",
+          "other"
+        ],
+        "correctAnswer": "other"
+      },
+      {
+        "id": "p1_q5",
+        "text": "Can you spell these  [blank]  for me?",
+        "options": [
+          "small",
+          "bring",
+          "words"
+        ],
+        "correctAnswer": "words"
+      }
+    ]
+  },
+  {
+    "topicId": 11,
+    "title": "Topic: Sentence Comprehension 11",
+    "instructions": "Choose the word that fits in the gap. The first one is done for you.",
+    "questions": [
+      {
+        "id": "p1_q1",
+        "text": "My bedroom is very  [blank] .",
+        "options": [
+          "boring",
+          "small",
+          "healthy"
+        ],
+        "correctAnswer": "small"
+      },
+      {
+        "id": "p1_q2",
+        "text": "We usually  [blank]  at a hotel on vacation.",
+        "options": [
+          "stay",
+          "movie",
+          "bring"
+        ],
+        "correctAnswer": "stay"
+      },
+      {
+        "id": "p1_q3",
+        "text": "There are many flowers in the  [blank] .",
+        "options": [
+          "sky",
+          "garden",
+          "water"
+        ],
+        "correctAnswer": "garden"
+      },
+      {
+        "id": "p1_q4",
+        "text": "Some  [blank]  near my home are very tall.",
+        "options": [
+          "cloud",
+          "trees",
+          "morning"
+        ],
+        "correctAnswer": "trees"
+      },
+      {
+        "id": "p1_q5",
+        "text": "My grandfather is very  [blank]  but still strong.",
+        "options": [
+          "hot",
+          "old",
+          "free"
+        ],
+        "correctAnswer": "old"
+      }
+    ]
+  },
+  {
+    "topicId": 12,
+    "title": "Topic: Sentence Comprehension 12",
+    "instructions": "Choose the word that fits in the gap. The first one is done for you.",
+    "questions": [
+      {
+        "id": "p1_q1",
+        "text": "I  [blank]  reading books in the library.",
+        "options": [
+          "love",
+          "make",
+          "run"
+        ],
+        "correctAnswer": "love"
+      },
+      {
+        "id": "p1_q2",
+        "text": "My bag is a bit  [blank]  for my laptop.",
+        "options": [
+          "mean",
+          "small",
+          "again"
+        ],
+        "correctAnswer": "small"
+      },
+      {
+        "id": "p1_q3",
+        "text": "Can you go to the  [blank]  to buy some milk?",
+        "options": [
+          "shop",
+          "park",
+          "sea"
+        ],
+        "correctAnswer": "shop"
+      },
+      {
+        "id": "p1_q4",
+        "text": "There are many  [blank]  in the class.",
+        "options": [
+          "people",
+          "birds",
+          "trees"
+        ],
+        "correctAnswer": "people"
+      },
+      {
+        "id": "p1_q5",
+        "text": "They want to  [blank]  the class.",
+        "options": [
+          "room",
+          "visit",
+          "fly"
+        ],
+        "correctAnswer": "visit"
+      }
+    ]
+  },
+  {
+    "topicId": 13,
+    "title": "Topic: Sentence Comprehension 13",
+    "instructions": "Choose the word that fits in the gap. The first one is done for you.",
+    "questions": [
+      {
+        "id": "p1_q1",
+        "text": "I drink coffee in the  [blank] .",
+        "options": [
+          "morning",
+          "sky",
+          "free"
+        ],
+        "correctAnswer": "morning"
+      },
+      {
+        "id": "p1_q2",
+        "text": "Children play in the  [blank] .",
+        "options": [
+          "park",
+          "big",
+          "hot"
+        ],
+        "correctAnswer": "park"
+      },
+      {
+        "id": "p1_q3",
+        "text": "What time do you  [blank]  home?",
+        "options": [
+          "leave",
+          "bring",
+          "stop"
+        ],
+        "correctAnswer": "leave"
+      },
+      {
+        "id": "p1_q4",
+        "text": "We eat bread for  [blank] .",
+        "options": [
+          "breakfast",
+          "train",
+          "time"
+        ],
+        "correctAnswer": "breakfast"
+      },
+      {
+        "id": "p1_q5",
+        "text": "Nice to  [blank]  you.",
+        "options": [
+          "meet",
+          "hate",
+          "look"
+        ],
+        "correctAnswer": "meet"
+      }
+    ]
+  }
+]

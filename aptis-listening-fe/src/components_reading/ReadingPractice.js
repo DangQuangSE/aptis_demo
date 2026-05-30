@@ -6,6 +6,9 @@ export default function ReadingPractice({ partNum, onExit }) {
   const [partData, setPartData] = useState([]);
   const [topicIndex, setTopicIndex] = useState(0);
   const [answers, setAnswers] = useState({});
+  const [allAnswers, setAllAnswers] = useState({});
+  const [allResults, setAllResults] = useState({});
+  const [visitedTopics, setVisitedTopics] = useState({ 0: true });
   const [loading, setLoading] = useState(true);
   const [timeLeft, setTimeLeft] = useState(35 * 60);
   const [timerActive, setTimerActive] = useState(true);
@@ -17,11 +20,17 @@ export default function ReadingPractice({ partNum, onExit }) {
   const [autoShowAnswer, setAutoShowAnswer] = useState(false);
 
   useEffect(() => {
-    fetch("/scraped_data_reading/reading_all.json")
+    setLoading(true);
+    setAllAnswers({});
+    setAllResults({});
+    setTopicIndex(0);
+    setAnswers({});
+    setAiResult(null);
+    setVisitedTopics({ 0: true });
+    fetch(`/scraped_data_reading/reading_part${partNum}.json`)
       .then((res) => res.json())
       .then((data) => {
-        const pData = data["part" + partNum] || [];
-        setPartData(pData);
+        setPartData(data || []);
         setLoading(false);
       })
       .catch((err) => {
@@ -31,9 +40,13 @@ export default function ReadingPractice({ partNum, onExit }) {
   }, [partNum]);
 
   useEffect(() => {
+    setVisitedTopics((prev) => ({ ...prev, [topicIndex]: true }));
+  }, [topicIndex]);
+
+  useEffect(() => {
     if (partData && partData[topicIndex]) {
-      setAnswers({});
-      setAiResult(null); // Reset result if any
+      setAnswers(allAnswers[topicIndex] || {});
+      setAiResult(allResults[topicIndex] || null);
     }
   }, [topicIndex, partData, partNum]);
 
@@ -77,6 +90,7 @@ export default function ReadingPractice({ partNum, onExit }) {
       const data = await res.json();
       if (data.error) throw new Error(data.error);
       setAiResult(data);
+      setAllResults((all) => ({ ...all, [topicIndex]: data }));
     } catch (err) {
       console.error(err);
       setToast({ message: "Grading failed: " + err.message, type: "error", id: Date.now() });
@@ -102,7 +116,11 @@ export default function ReadingPractice({ partNum, onExit }) {
   };
 
   const handleAnswerChange = (key, value) => {
-    setAnswers((prev) => ({ ...prev, [key]: value }));
+    setAnswers((prev) => {
+      const next = { ...prev, [key]: value };
+      setAllAnswers((all) => ({ ...all, [topicIndex]: next }));
+      return next;
+    });
   };
 
   const moveSentence = (sentenceId, direction) => {
@@ -124,7 +142,9 @@ export default function ReadingPractice({ partNum, onExit }) {
         currentOrder[otherId] = currentPos;
         currentOrder[sentenceId] = newPos;
       }
-      return { ...prev, part2Order: currentOrder };
+      const next = { ...prev, part2Order: currentOrder };
+      setAllAnswers((all) => ({ ...all, [topicIndex]: next }));
+      return next;
     });
   };
 
@@ -262,9 +282,20 @@ export default function ReadingPractice({ partNum, onExit }) {
                   style={{ display: "none" }}
                   checked={autoShowAnswer}
                   onChange={(e) => {
-                    setAutoShowAnswer(e.target.checked);
-                    if (e.target.checked && !aiResult) {
-                      submitForGrading();
+                    const checked = e.target.checked;
+                    setAutoShowAnswer(checked);
+                    if (checked) {
+                      setVisitedTopics((prev) => ({ ...prev, [topicIndex]: true }));
+                      if (!aiResult) {
+                        submitForGrading();
+                      }
+                    } else {
+                      setAiResult(null);
+                      setAllResults((all) => {
+                        const next = { ...all };
+                        delete next[topicIndex];
+                        return next;
+                      });
                     }
                   }}
                 />
@@ -346,7 +377,6 @@ export default function ReadingPractice({ partNum, onExit }) {
           }}
         >
           {/* Sidebar header */}
-          {/* Sidebar header */}
           <div
             style={{
               padding: "10px 14px",
@@ -363,85 +393,86 @@ export default function ReadingPractice({ partNum, onExit }) {
                 margin: 0,
               }}
             >
-              Question List
+              Topic List ({partData.length})
             </h2>
           </div>
 
           <div style={{ padding: "12px", display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: "8px", maxHeight: hideHeader ? "calc(100vh - 120px)" : "calc(100vh - 170px)", overflowY: "auto" }}>
-            {(() => {
-              let qs = [];
-              if (testData) {
-                if (partNum === 1 || partNum === 3) {
-                  testData.questions?.forEach((q, qIdx) => qs.push({ id: q.id, label: `Question ${qIdx + 1}` }));
-                } else if (partNum === 2) {
-                  testData.sentences?.forEach((s, sIdx) => qs.push({ id: s.id, label: `Sentence ${sIdx + 1}` }));
-                } else if (partNum === 4) {
-                  testData.paragraphs?.forEach((p, pIdx) => qs.push({ id: p.id, label: `Paragraph ${pIdx + 1}` }));
+            {partData.map((topic, idx) => {
+              const isActive = idx === topicIndex;
+              const topicAnswers = allAnswers[idx] || {};
+              const topicResult = allResults[idx];
+
+              let isAnswered = false;
+              if (partNum === 1 || partNum === 3) {
+                isAnswered = topic.questions?.some(q => !!topicAnswers[q.id]);
+              } else if (partNum === 2) {
+                isAnswered = !!topicAnswers.part2Order;
+              } else if (partNum === 4) {
+                isAnswered = topic.paragraphs?.some(p => !!topicAnswers[p.id]);
+              }
+
+              const isAutoVisited = autoShowAnswer && !!visitedTopics[idx];
+              const isGraded = !!topicResult || isAutoVisited;
+              
+              let isCorr = false;
+              let isWrong = false;
+
+              if (isGraded) {
+                if (isAutoVisited) {
+                  isCorr = true;
+                } else if (topicResult) {
+                  const wrongCount = topicResult.explanations?.length || 0;
+                  if (wrongCount > 0) {
+                    isWrong = true;
+                  } else {
+                    isCorr = true;
+                  }
                 }
               }
 
-              return qs.map((qItem, idx) => {
-                const isActive = qItem.topicIndex === topicIndex;
-                let isAnswered = false;
-                if (partNum === 2) {
-                  isAnswered = !!answers.part2Order;
-                } else {
-                  isAnswered = !!answers[qItem.id];
-                }
+              let badgeBg = "#eae8e7", badgeCol = "#6e7881";
+              if (isActive) {
+                badgeBg = "#006590";
+                badgeCol = "white";
+              } else if (isCorr) {
+                badgeBg = "#d4f0b8";
+                badgeCol = "#2a6000";
+              } else if (isWrong) {
+                badgeBg = "#ffdad6";
+                badgeCol = "#93000a";
+              } else if (isAnswered) {
+                badgeBg = "#e0f4ff";
+                badgeCol = "#004c6e";
+              }
 
-                const isGraded = !!aiResult || autoShowAnswer;
-                
-                let isCorr = false;
-                let isWrong = false;
-
-                if (isGraded) {
-                  if (autoShowAnswer) {
-                    isCorr = true;
-                  } else if (aiResult) {
-                    const wrongItem = aiResult.explanations?.find(e => e.questionId === qItem.label);
-                    if (wrongItem) isWrong = true;
-                    else isCorr = true;
-                  }
-                }
-
-                let badgeBg = "#eae8e7", badgeCol = "#6e7881";
-                if (isCorr) {
-                  badgeBg = "#d4f0b8";
-                  badgeCol = "#2a6000";
-                } else if (isWrong) {
-                  badgeBg = "#ffdad6";
-                  badgeCol = "#93000a";
-                } else if (isAnswered) {
-                  badgeBg = "#e0f4ff";
-                  badgeCol = "#004c6e";
-                }
-
-                return (
-                  <button
-                    key={idx}
-                    className="q-matrix-btn"
-                    title={`Question ${idx + 1}`}
-                    style={{
-                      width: "100%",
-                      aspectRatio: "1/1",
-                      borderRadius: "8px",
-                      background: badgeBg,
-                      color: badgeCol,
-                      border: "2px solid transparent",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      fontWeight: 700,
-                      fontSize: "12px",
-                      cursor: "default",
-                      transition: "all 0.2s",
-                    }}
-                  >
-                    {idx + 1}
-                  </button>
-                );
-              });
-            })()}
+              return (
+                <button
+                  key={idx}
+                  onClick={() => setTopicIndex(idx)}
+                  className={`q-matrix-btn ${isActive ? "active" : ""}`}
+                  title={`Topic ${idx + 1}`}
+                  style={{
+                    width: "100%",
+                    aspectRatio: "1/1",
+                    borderRadius: "8px",
+                    background: badgeBg,
+                    color: badgeCol,
+                    border: isActive ? "2.5px solid #006590" : "2px solid transparent",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontWeight: 700,
+                    fontSize: "12px",
+                    cursor: "pointer",
+                    transition: "all 0.2s",
+                    boxShadow: isActive ? "0 0 8px rgba(0, 101, 144, 0.3)" : "none",
+                  }}
+                >
+                  {idx + 1}
+                </button>
+              );
+            })}
           </div>
 
           {/* Sidebar footer */}
@@ -459,24 +490,29 @@ export default function ReadingPractice({ partNum, onExit }) {
             }}
           >
             {(() => {
-              let totalQs = 0;
-              let answeredCount = 0;
-              if (testData) {
-                if (partNum === 1 || partNum === 3) {
-                  totalQs = testData.questions?.length || 0;
-                  answeredCount = testData.questions?.filter(q => !!answers[q.id]).length || 0;
-                } else if (partNum === 2) {
-                  totalQs = testData.sentences?.length || 0;
-                  answeredCount = answers.part2Order ? totalQs : 0;
-                } else if (partNum === 4) {
-                  totalQs = testData.paragraphs?.length || 0;
-                  answeredCount = testData.paragraphs?.filter(p => !!answers[p.id]).length || 0;
+              let totalTopics = partData.length;
+              let checkedCount = 0;
+              let correctCount = 0;
+
+              partData.forEach((topic, idx) => {
+                const topicResult = allResults[idx];
+                const isAutoVisited = autoShowAnswer && !!visitedTopics[idx];
+                if (isAutoVisited) {
+                  checkedCount += 1;
+                  correctCount += 1;
+                } else if (topicResult) {
+                  checkedCount += 1;
+                  const wrongCount = topicResult.explanations?.length || 0;
+                  if (wrongCount === 0) {
+                    correctCount += 1;
+                  }
                 }
-              }
+              });
+
               return (
                 <>
-                  <span>{answeredCount}/{totalQs} checked</span>
-                  <span style={{ color: "#166534" }}>{autoShowAnswer ? `✓ ${totalQs} correct` : (aiResult ? `✓ ${aiResult.totalScore.split('/')[0].trim()} correct` : "✓ 0 correct")}</span>
+                  <span>{checkedCount}/{totalTopics} checked</span>
+                  <span style={{ color: "#2a6000" }}>✓ {correctCount} correct</span>
                 </>
               );
             })()}
@@ -517,7 +553,20 @@ export default function ReadingPractice({ partNum, onExit }) {
                   <p style={{ margin: "4px 0 0", color: "#15803d", fontSize: "14px", fontWeight: 500 }}>{aiResult.overallSummary}</p>
                 </div>
                 <button 
-                  onClick={() => { setAiResult(null); setAnswers({}); }} 
+                  onClick={() => {
+                    setAiResult(null); 
+                    setAnswers({});
+                    setAllAnswers((all) => {
+                      const next = { ...all };
+                      delete next[topicIndex];
+                      return next;
+                    });
+                    setAllResults((all) => {
+                      const next = { ...all };
+                      delete next[topicIndex];
+                      return next;
+                    });
+                  }} 
                   style={{ padding: "8px 16px", background: "white", border: "1px solid #166534", color: "#166534", borderRadius: "8px", cursor: "pointer", fontWeight: 700, fontSize: "13px" }}
                 >
                   Try Again

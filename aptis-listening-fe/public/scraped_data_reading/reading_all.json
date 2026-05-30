@@ -745,9 +745,13 @@
   "part2": [
     {
       "topicId": 1,
-      "title": "Topic: Text Cohesion 1",
+      "title": "Topic: Films",
       "instructions": "Put the sentences below in the right order. The first sentence is done for you.",
       "sentences": [
+        {
+          "id": "s2",
+          "text": "That's because the movies were only in black and white, and sometimes without sound."
+        },
         {
           "id": "s1",
           "text": "Old movies were very different from today's movies."
@@ -759,10 +763,6 @@
         {
           "id": "s5",
           "text": "Now things have changed, actors and filmmakers can earn thousands of dollars from film production."
-        },
-        {
-          "id": "s2",
-          "text": "That's because the movies were only in black and white, and sometimes without sound."
         },
         {
           "id": "s4",
@@ -779,28 +779,28 @@
     },
     {
       "topicId": 2,
-      "title": "Topic: Text Cohesion 2",
+      "title": "Topic: Weekend activities",
       "instructions": "Put the sentences below in the right order. The first sentence is done for you.",
       "sentences": [
         {
-          "id": "s1",
-          "text": "It was held on Saturday morning, there was a 10 km race for adults."
-        },
-        {
-          "id": "s5",
-          "text": "After playing, the children were very hungry and ate with their parents."
+          "id": "s4",
+          "text": "Activities including football, swimming, skipping rope, and the children played together very happily."
         },
         {
           "id": "s3",
           "text": "After she received the prize, the following time was for children's activities."
         },
         {
-          "id": "s4",
-          "text": "Activities including football, swimming, skipping rope, and the children played together very happily."
+          "id": "s5",
+          "text": "After playing, the children were very hungry and ate with their parents."
         },
         {
           "id": "s2",
           "text": "There were 60 participants, in which Ms. Kamus kept the fastest speed and won."
+        },
+        {
+          "id": "s1",
+          "text": "It was held on Saturday morning, there was a 10 km race for adults."
         }
       ],
       "correctOrder": [
@@ -813,28 +813,28 @@
     },
     {
       "topicId": 3,
-      "title": "Topic: Text Cohesion 3",
+      "title": "Topic: The famous singer",
       "instructions": "Put the sentences below in the right order. The first sentence is done for you.",
       "sentences": [
         {
-          "id": "s2",
-          "text": "At the age of fifteen, he studied music at a special school."
-        },
-        {
           "id": "s1",
           "text": "He is a famous singer who is loved by many fans."
-        },
-        {
-          "id": "s5",
-          "text": "Thanks to his talent and personality, he became well-known to a large audience."
         },
         {
           "id": "s3",
           "text": "Before becoming famous, he had to practice very hard every day."
         },
         {
+          "id": "s5",
+          "text": "Thanks to his talent and personality, he became well-known to a large audience."
+        },
+        {
           "id": "s4",
           "text": "With his unique style and clothes, he soon attracted attention."
+        },
+        {
+          "id": "s2",
+          "text": "At the age of fifteen, he studied music at a special school."
         }
       ],
       "correctOrder": [
@@ -847,20 +847,12 @@
     },
     {
       "topicId": 4,
-      "title": "Topic: Text Cohesion 4",
+      "title": "Topic: Family sports day",
       "instructions": "Put the sentences below in the right order. The first sentence is done for you.",
       "sentences": [
         {
-          "id": "s2",
-          "text": "Sixty people took part, and among them, Ms Kamus kept the fastest pace and won the race."
-        },
-        {
           "id": "s3",
           "text": "After she got her prize, the next part was for children's activities."
-        },
-        {
-          "id": "s1",
-          "text": "It took place on Sunday morning in the park, there was a race for adults."
         },
         {
           "id": "s5",
@@ -869,6 +861,14 @@
         {
           "id": "s4",
           "text": "The activities were football, swimming, skipping, and more, and the kids had fun playing together."
+        },
+        {
+          "id": "s2",
+          "text": "Sixty people took part, and among them, Ms Kamus kept the fastest pace and won the race."
+        },
+        {
+          "id": "s1",
+          "text": "It took place on Sunday morning in the park, there was a race for adults."
         }
       ],
       "correctOrder": [
@@ -881,17 +881,9 @@
     },
     {
       "topicId": 5,
-      "title": "Topic: Text Cohesion 5",
+      "title": "Topic: Writing about a place",
       "instructions": "Put the sentences below in the right order. The first sentence is done for you.",
       "sentences": [
-        {
-          "id": "s3",
-          "text": "Even if you can not visit the place, your writing will still look similar to real experiences."
-        },
-        {
-          "id": "s5",
-          "text": "Such comparisons will make your writing more interesting and meaningful."
-        },
         {
           "id": "s1",
           "text": "Before writing about a place, you need to do some research on it."
@@ -903,6 +895,14 @@
         {
           "id": "s2",
           "text": "It is important to learn about the people and the history there carefully."
+        },
+        {
+          "id": "s5",
+          "text": "Such comparisons will make your writing more interesting and meaningful."
+        },
+        {
+          "id": "s3",
+          "text": "Even if you can not visit the place, your writing will still look similar to real experiences."
         }
       ],
       "correctOrder": [
@@ -915,28 +915,28 @@
     },
     {
       "topicId": 6,
-      "title": "Topic: Text Cohesion 6",
+      "title": "Topic: Movies then and now",
       "instructions": "Put the sentences below in the right order. The first sentence is done for you.",
       "sentences": [
+        {
+          "id": "s4",
+          "text": "Because of the lack of money, actors also earn little money from acting."
+        },
         {
           "id": "s2",
           "text": "In the old days, films were only in black and white, and sometimes even without sound."
         },
         {
-          "id": "s5",
-          "text": "Nowadays, everything has changed: actors and producers can earn a lot of money from producing films."
-        },
-        {
-          "id": "s4",
-          "text": "Because of the lack of money, actors also earn little money from acting."
+          "id": "s3",
+          "text": "In addition to these technological limits, producers had very low budgets."
         },
         {
           "id": "s1",
           "text": "Movies today are very different from movies in the past"
         },
         {
-          "id": "s3",
-          "text": "In addition to these technological limits, producers had very low budgets."
+          "id": "s5",
+          "text": "Nowadays, everything has changed: actors and producers can earn a lot of money from producing films."
         }
       ],
       "correctOrder": [
@@ -949,28 +949,28 @@
     },
     {
       "topicId": 7,
-      "title": "Topic: Text Cohesion 7",
+      "title": "Topic: The history of transportation",
       "instructions": "Put the sentences below in the right order. The first sentence is done for you.",
       "sentences": [
+        {
+          "id": "s2",
+          "text": "Later, air travel became popular among business professionals."
+        },
         {
           "id": "s4",
           "text": "These made traveling more accessible to everyone."
         },
         {
-          "id": "s3",
-          "text": "Eventually, buses and trains were introduced as affordable alternatives."
+          "id": "s1",
+          "text": "In the past, transportation was primarily accessible to the wealthy."
         },
         {
           "id": "s5",
           "text": "Today, buses and trains are among the most common transportation options."
         },
         {
-          "id": "s2",
-          "text": "Later, air travel became popular among business professionals."
-        },
-        {
-          "id": "s1",
-          "text": "In the past, transportation was primarily accessible to the wealthy."
+          "id": "s3",
+          "text": "Eventually, buses and trains were introduced as affordable alternatives."
         }
       ],
       "correctOrder": [
@@ -983,7 +983,7 @@
     },
     {
       "topicId": 8,
-      "title": "Topic: Text Cohesion 8",
+      "title": "Topic: New coffee shop",
       "instructions": "Put the sentences below in the right order. The first sentence is done for you.",
       "sentences": [
         {
@@ -995,16 +995,16 @@
           "text": "A waiter assisted me in finding a table and handed me the menu."
         },
         {
-          "id": "s4",
-          "text": "The sandwich was both delicious and beautifully presented."
+          "id": "s5",
+          "text": "I might return to try different types of drinks next time."
         },
         {
           "id": "s3",
           "text": "The menu was not as good as expected and quite pricey, so I decided to order a sandwich."
         },
         {
-          "id": "s5",
-          "text": "I might return to try different types of drinks next time."
+          "id": "s4",
+          "text": "The sandwich was both delicious and beautifully presented."
         }
       ],
       "correctOrder": [
@@ -1017,12 +1017,16 @@
     },
     {
       "topicId": 9,
-      "title": "Topic: Text Cohesion 9",
+      "title": "Topic: Artificial intelligence",
       "instructions": "Put the sentences below in the right order. The first sentence is done for you.",
       "sentences": [
         {
           "id": "s2",
           "text": "The early AI systems were limited to simple pattern recognition tasks."
+        },
+        {
+          "id": "s3",
+          "text": "High computational costs previously hindered the development of AI."
         },
         {
           "id": "s4",
@@ -1031,10 +1035,6 @@
         {
           "id": "s5",
           "text": "Modern AI tools help businesses to analyze data and make better decisions."
-        },
-        {
-          "id": "s3",
-          "text": "High computational costs previously hindered the development of AI."
         },
         {
           "id": "s1",
@@ -1051,12 +1051,12 @@
     },
     {
       "topicId": 10,
-      "title": "Topic: Text Cohesion 10",
+      "title": "Topic: Company wellness day",
       "instructions": "Put the sentences below in the right order. The first sentence is done for you.",
       "sentences": [
         {
-          "id": "s5",
-          "text": "Employees enjoyed healthy snacks and exchanged tips for managing stress."
+          "id": "s3",
+          "text": "Activities included team yoga, time management seminars, and a group walk."
         },
         {
           "id": "s4",
@@ -1067,8 +1067,8 @@
           "text": "This month, the wellness day took place on Friday, focusing on work-life balance."
         },
         {
-          "id": "s3",
-          "text": "Activities included team yoga, time management seminars, and a group walk."
+          "id": "s5",
+          "text": "Employees enjoyed healthy snacks and exchanged tips for managing stress."
         },
         {
           "id": "s2",
@@ -1085,12 +1085,16 @@
     },
     {
       "topicId": 11,
-      "title": "Topic: Text Cohesion 11",
+      "title": "Topic: Workplace evolution",
       "instructions": "Put the sentences below in the right order. The first sentence is done for you.",
       "sentences": [
         {
-          "id": "s5",
-          "text": "Today, companies experiment with shorter workweeks to boost productivity."
+          "id": "s4",
+          "text": "Managers now use software to track project progress remotely."
+        },
+        {
+          "id": "s2",
+          "text": "Limited technology once restricted remote work possibilities."
         },
         {
           "id": "s1",
@@ -1101,12 +1105,8 @@
           "text": "Modern workplaces are adopting more flexible work models."
         },
         {
-          "id": "s2",
-          "text": "Limited technology once restricted remote work possibilities."
-        },
-        {
-          "id": "s4",
-          "text": "Managers now use software to track project progress remotely."
+          "id": "s5",
+          "text": "Today, companies experiment with shorter workweeks to boost productivity."
         }
       ],
       "correctOrder": [
@@ -1119,7 +1119,7 @@
     },
     {
       "topicId": 12,
-      "title": "Topic: Text Cohesion 12",
+      "title": "Topic: Music show at the park (Music festivals)",
       "instructions": "Put the sentences below in the right order. The first sentence is done for you.",
       "sentences": [
         {
@@ -1127,20 +1127,20 @@
           "text": "Many attendees arrived early and browsed local shops before the event began."
         },
         {
-          "id": "s1",
-          "text": "The event was fully planned, financed, and supported by local authorities."
-        },
-        {
-          "id": "s2",
-          "text": "As a result, entry was free, and around five thousand people attended."
-        },
-        {
           "id": "s4",
           "text": "Despite the busy day, workers finished ahead of schedule and watched the famous singer perform."
         },
         {
+          "id": "s1",
+          "text": "The event was fully planned, financed, and supported by local authorities."
+        },
+        {
           "id": "s5",
           "text": "The two-hour performance thrilled the audience, leaving everyone in high spirits."
+        },
+        {
+          "id": "s2",
+          "text": "As a result, entry was free, and around five thousand people attended."
         }
       ],
       "correctOrder": [
@@ -1153,28 +1153,28 @@
     },
     {
       "topicId": 13,
-      "title": "Topic: Text Cohesion 13",
+      "title": "Topic: Mae - The Math Girl",
       "instructions": "Put the sentences below in the right order. The first sentence is done for you.",
       "sentences": [
         {
-          "id": "s3",
-          "text": "Mae worked diligently and achieved several remarkable milestones."
+          "id": "s1",
+          "text": "Mae’s father worked as a nurse, and her mother was a teacher."
         },
         {
-          "id": "s5",
-          "text": "Eventually, she had the opportunity to undergo a training program in the United States."
+          "id": "s3",
+          "text": "Mae worked diligently and achieved several remarkable milestones."
         },
         {
           "id": "s2",
           "text": "Her parents motivated Mae to pursue higher education and focus on scientific studies."
         },
         {
-          "id": "s1",
-          "text": "Mae’s father worked as a nurse, and her mother was a teacher."
-        },
-        {
           "id": "s4",
           "text": "She later joined a team, contributing her skills and knowledge."
+        },
+        {
+          "id": "s5",
+          "text": "Eventually, she had the opportunity to undergo a training program in the United States."
         }
       ],
       "correctOrder": [
@@ -1187,20 +1187,20 @@
     },
     {
       "topicId": 14,
-      "title": "Topic: Text Cohesion 14",
+      "title": "Topic: IoT - Internet of Things ",
       "instructions": "Put the sentences below in the right order. The first sentence is done for you.",
       "sentences": [
         {
-          "id": "s3",
-          "text": "High development costs previously slowed the widespread adoption of IoT technology."
+          "id": "s2",
+          "text": "Early IoT devices faced limitations due to slow internet speeds and compatibility challenges."
         },
         {
           "id": "s1",
           "text": "The Internet of Things (IoT) links everyday devices to improve their capabilities."
         },
         {
-          "id": "s2",
-          "text": "Early IoT devices faced limitations due to slow internet speeds and compatibility challenges."
+          "id": "s3",
+          "text": "High development costs previously slowed the widespread adoption of IoT technology."
         },
         {
           "id": "s4",
@@ -1221,12 +1221,20 @@
     },
     {
       "topicId": 15,
-      "title": "Topic: Text Cohesion 15",
+      "title": "Topic: Eating at restaurant",
       "instructions": "Put the sentences below in the right order. The first sentence is done for you.",
       "sentences": [
         {
+          "id": "s1",
+          "text": "I decided to try a new café located at the end of the street."
+        },
+        {
           "id": "s4",
           "text": "I was a bit surprised to see that there were only a few items to choose from."
+        },
+        {
+          "id": "s2",
+          "text": "The place was quite busy, with a lively atmosphere."
         },
         {
           "id": "s5",
@@ -1235,14 +1243,6 @@
         {
           "id": "s3",
           "text": "Even so, a staff member quickly noticed me and brought over the menu."
-        },
-        {
-          "id": "s1",
-          "text": "I decided to try a new café located at the end of the street."
-        },
-        {
-          "id": "s2",
-          "text": "The place was quite busy, with a lively atmosphere."
         }
       ],
       "correctOrder": [
@@ -1255,28 +1255,28 @@
     },
     {
       "topicId": 16,
-      "title": "Topic: Text Cohesion 16",
+      "title": "Topic: A group presentation",
       "instructions": "Put the sentences below in the right order. The first sentence is done for you.",
       "sentences": [
         {
-          "id": "s5",
-          "text": "Finally, each group member took turns answering the questions."
-        },
-        {
-          "id": "s1",
-          "text": "First, we prepared the materials for our group presentation."
+          "id": "s4",
+          "text": "After the presentation, other students asked questions."
         },
         {
           "id": "s2",
           "text": "Then, we presented our topic for 10 minutes."
         },
         {
-          "id": "s4",
-          "text": "After the presentation, other students asked questions."
-        },
-        {
           "id": "s3",
           "text": "Throughout the presentation, we used images to explain our ideas."
+        },
+        {
+          "id": "s1",
+          "text": "First, we prepared the materials for our group presentation."
+        },
+        {
+          "id": "s5",
+          "text": "Finally, each group member took turns answering the questions."
         }
       ],
       "correctOrder": [
@@ -1289,28 +1289,28 @@
     },
     {
       "topicId": 17,
-      "title": "Topic: Text Cohesion 17",
+      "title": "Topic: Workplace evolution (phiên bản 2)",
       "instructions": "Put the sentences below in the right order. The first sentence is done for you.",
       "sentences": [
         {
-          "id": "s3",
-          "text": "Modern offices are now moving toward more flexible ways of working."
-        },
-        {
-          "id": "s1",
-          "text": "In the past, most workers followed fixed schedules from nine to five."
-        },
-        {
-          "id": "s2",
-          "text": "Because technology was limited, working from home was almost impossible."
+          "id": "s4",
+          "text": "Managers now use digital tools to follow project progress remotely."
         },
         {
           "id": "s5",
           "text": "Many companies today are trying shorter workweeks to increase efficiency."
         },
         {
-          "id": "s4",
-          "text": "Managers now use digital tools to follow project progress remotely."
+          "id": "s2",
+          "text": "Because technology was limited, working from home was almost impossible."
+        },
+        {
+          "id": "s1",
+          "text": "In the past, most workers followed fixed schedules from nine to five."
+        },
+        {
+          "id": "s3",
+          "text": "Modern offices are now moving toward more flexible ways of working."
         }
       ],
       "correctOrder": [
@@ -1323,9 +1323,21 @@
     },
     {
       "topicId": 18,
-      "title": "Topic: Text Cohesion 18",
+      "title": "Topic: The first american woman in space",
       "instructions": "Put the sentences below in the right order. The first sentence is done for you.",
       "sentences": [
+        {
+          "id": "s2",
+          "text": "Her strong academic record earned her a place in a training program in the United States."
+        },
+        {
+          "id": "s3",
+          "text": "Her passion for space led Mae to join a dedicated research team."
+        },
+        {
+          "id": "s1",
+          "text": "Encouraged by her parents, she decided to study science at university."
+        },
         {
           "id": "s5",
           "text": "Some of these experiments involved growing plants and observing animals aboard the spacecraft."
@@ -1333,18 +1345,6 @@
         {
           "id": "s4",
           "text": "As a member of the team, she traveled into space and carried out numerous experiments."
-        },
-        {
-          "id": "s3",
-          "text": "Her passion for space led Mae to join a dedicated research team."
-        },
-        {
-          "id": "s2",
-          "text": "Her strong academic record earned her a place in a training program in the United States."
-        },
-        {
-          "id": "s1",
-          "text": "Encouraged by her parents, she decided to study science at university."
         }
       ],
       "correctOrder": [
@@ -1357,28 +1357,28 @@
     },
     {
       "topicId": 19,
-      "title": "Topic: Text Cohesion 19",
+      "title": "Topic: Social Media",
       "instructions": "Put the sentences below in the right order. The first sentence is done for you.",
       "sentences": [
         {
-          "id": "s4",
-          "text": "Today’s platforms use complex algorithms to personalize and shape each user’s feed."
-        },
-        {
           "id": "s2",
           "text": "Early platforms offered only basic features like text posts and simple images."
+        },
+        {
+          "id": "s5",
+          "text": "Many influencers now earn income primarily through brand sponsorships and online ads."
         },
         {
           "id": "s1",
           "text": "In the past, slow internet speeds made streaming or uploading videos difficult."
         },
         {
-          "id": "s3",
-          "text": "Over time, social media platforms have greatly evolved in both design and functionality."
+          "id": "s4",
+          "text": "Today’s platforms use complex algorithms to personalize and shape each user’s feed."
         },
         {
-          "id": "s5",
-          "text": "Many influencers now earn income primarily through brand sponsorships and online ads."
+          "id": "s3",
+          "text": "Over time, social media platforms have greatly evolved in both design and functionality."
         }
       ],
       "correctOrder": [
@@ -1391,28 +1391,28 @@
     },
     {
       "topicId": 20,
-      "title": "Topic: Text Cohesion 20",
+      "title": "Topic: University open day",
       "instructions": "Put the sentences below in the right order. The first sentence is done for you.",
       "sentences": [
+        {
+          "id": "s1",
+          "text": "Before the open day, please contact us by phone or email so we can record your personal details."
+        },
         {
           "id": "s5",
           "text": "After the presentations, you’ll be able to explore different departments across the campus."
         },
         {
-          "id": "s4",
-          "text": "Every visitor will have the chance to join a Q&A session with current students."
-        },
-        {
-          "id": "s1",
-          "text": "Before the open day, please contact us by phone or email so we can record your personal details."
+          "id": "s3",
+          "text": "You’ll need to show this card to enter the introductory talk and morning lectures."
         },
         {
           "id": "s2",
           "text": "Using this information, we’ll prepare an identification card for you to collect upon arrival."
         },
         {
-          "id": "s3",
-          "text": "You’ll need to show this card to enter the introductory talk and morning lectures."
+          "id": "s4",
+          "text": "Every visitor will have the chance to join a Q&A session with current students."
         }
       ],
       "correctOrder": [
@@ -1425,28 +1425,28 @@
     },
     {
       "topicId": 21,
-      "title": "Topic: Text Cohesion 21",
+      "title": "Topic: AI - Artificial Intelligence",
       "instructions": "Put the sentences below in the right order. The first sentence is done for you.",
       "sentences": [
         {
-          "id": "s4",
-          "text": "Today, AI engineers design sophisticated models for applications such as language translation."
-        },
-        {
-          "id": "s1",
-          "text": "Over the past decade, artificial intelligence has reshaped industries around the world."
-        },
-        {
           "id": "s2",
           "text": "Early AI systems were capable of handling only simple pattern recognition tasks."
+        },
+        {
+          "id": "s3",
+          "text": "In the past, high computational costs slowed down the progress of AI development."
+        },
+        {
+          "id": "s4",
+          "text": "Today, AI engineers design sophisticated models for applications such as language translation."
         },
         {
           "id": "s5",
           "text": "Modern AI tools enable businesses to analyze vast amounts of data and make smarter decisions."
         },
         {
-          "id": "s3",
-          "text": "In the past, high computational costs slowed down the progress of AI development."
+          "id": "s1",
+          "text": "Over the past decade, artificial intelligence has reshaped industries around the world."
         }
       ],
       "correctOrder": [
@@ -1459,16 +1459,12 @@
     },
     {
       "topicId": 22,
-      "title": "Topic: Text Cohesion 22",
+      "title": "Topic: Healthy Eating",
       "instructions": "Put the sentences below in the right order. The first sentence is done for you.",
       "sentences": [
         {
-          "id": "s5",
-          "text": "Nowadays, mobile apps help users track calories and discover healthy recipes."
-        },
-        {
-          "id": "s4",
-          "text": "Nutritionists today teach people how to plan balanced and nutritious meals."
+          "id": "s2",
+          "text": "Years ago, limited access to fresh produce made healthy eating more difficult."
         },
         {
           "id": "s1",
@@ -1479,8 +1475,12 @@
           "text": "Modern diets now focus on fresh, whole foods instead of processed ones."
         },
         {
-          "id": "s2",
-          "text": "Years ago, limited access to fresh produce made healthy eating more difficult."
+          "id": "s5",
+          "text": "Nowadays, mobile apps help users track calories and discover healthy recipes."
+        },
+        {
+          "id": "s4",
+          "text": "Nutritionists today teach people how to plan balanced and nutritious meals."
         }
       ],
       "correctOrder": [
@@ -1493,7 +1493,7 @@
     },
     {
       "topicId": 23,
-      "title": "Topic: Text Cohesion 23",
+      "title": "Topic: Wellness Fair",
       "instructions": "Put the sentences below in the right order. The first sentence is done for you.",
       "sentences": [
         {
@@ -1501,20 +1501,20 @@
           "text": "Families enjoyed tasting healthy snacks and discovering practical tips for better overall wellness."
         },
         {
-          "id": "s3",
-          "text": "The fair also included activities like cooking demonstrations, mindfulness sessions, and a fun run."
+          "id": "s4",
+          "text": "After the workshops, prizes were awarded to participants who created the most creative health posters."
         },
         {
           "id": "s1",
           "text": "The wellness fair took place on Saturday afternoon, encouraging people to adopt healthier lifestyles."
         },
         {
-          "id": "s2",
-          "text": "More than 60 (con số bất kỳ) participants joined the event, with Dr. A (tên người) leading an engaging fitness workshop."
+          "id": "s3",
+          "text": "The fair also included activities like cooking demonstrations, mindfulness sessions, and a fun run."
         },
         {
-          "id": "s4",
-          "text": "After the workshops, prizes were awarded to participants who created the most creative health posters."
+          "id": "s2",
+          "text": "More than 60 (con số bất kỳ) participants joined the event, with Dr. A (tên người) leading an engaging fitness workshop."
         }
       ],
       "correctOrder": [
@@ -1527,12 +1527,12 @@
     },
     {
       "topicId": 24,
-      "title": "Topic: Text Cohesion 24",
+      "title": "Topic: The famous singer (phiên bản 2)",
       "instructions": "Put the sentences below in the right order. The first sentence is done for you.",
       "sentences": [
         {
-          "id": "s4",
-          "text": "This helped him receive many invitations for collaborations and performances."
+          "id": "s1",
+          "text": "He is a famous singer."
         },
         {
           "id": "s2",
@@ -1543,12 +1543,12 @@
           "text": "He eventually became famous among audiences around the world."
         },
         {
-          "id": "s3",
-          "text": "His unique way of dressing and performing made him stand out from others."
+          "id": "s4",
+          "text": "This helped him receive many invitations for collaborations and performances."
         },
         {
-          "id": "s1",
-          "text": "He is a famous singer."
+          "id": "s3",
+          "text": "His unique way of dressing and performing made him stand out from others."
         }
       ],
       "correctOrder": [
@@ -1561,28 +1561,28 @@
     },
     {
       "topicId": 25,
-      "title": "Topic: Text Cohesion 25",
+      "title": "Topic: The famous singer (phiên bản 3)",
       "instructions": "Put the sentences below in the right order. The first sentence is done for you.",
       "sentences": [
         {
-          "id": "s4",
-          "text": "His unique clothing style and stage presence made him stand out."
-        },
-        {
-          "id": "s5",
-          "text": "Because of this, more and more people began to recognize and admire him."
-        },
-        {
-          "id": "s3",
-          "text": "He spent years practicing and improving his performance skills."
+          "id": "s1",
+          "text": "He is a famous singer who is loved by many people."
         },
         {
           "id": "s2",
           "text": "Before becoming famous, he studied music at school when he was 15 years old."
         },
         {
-          "id": "s1",
-          "text": "He is a famous singer who is loved by many people."
+          "id": "s3",
+          "text": "He spent years practicing and improving his performance skills."
+        },
+        {
+          "id": "s5",
+          "text": "Because of this, more and more people began to recognize and admire him."
+        },
+        {
+          "id": "s4",
+          "text": "His unique clothing style and stage presence made him stand out."
         }
       ],
       "correctOrder": [
@@ -1595,28 +1595,28 @@
     },
     {
       "topicId": 26,
-      "title": "Topic: Text Cohesion 26",
+      "title": "Topic: Writing about a place (phiên bản 2)",
       "instructions": "Put the sentences below in the right order. The first sentence is done for you.",
       "sentences": [
         {
-          "id": "s2",
-          "text": "To prepare well, you should learn about the people and the history of the area."
+          "id": "s1",
+          "text": "Before writing, it is important to research the place thoroughly."
         },
         {
           "id": "s5",
           "text": "This comparison will help you gain a deeper understanding and write more effectively."
         },
         {
-          "id": "s4",
-          "text": "Comparing that place with your own country can be very helpful."
-        },
-        {
-          "id": "s1",
-          "text": "Before writing, it is important to research the place thoroughly."
+          "id": "s2",
+          "text": "To prepare well, you should learn about the people and the history of the area."
         },
         {
           "id": "s3",
           "text": "Sometimes you may not be able to visit the place, but you can still find similar information from other sources."
+        },
+        {
+          "id": "s4",
+          "text": "Comparing that place with your own country can be very helpful."
         }
       ],
       "correctOrder": [
@@ -1629,28 +1629,28 @@
     },
     {
       "topicId": 27,
-      "title": "Topic: Text Cohesion 27",
+      "title": "Topic: Busy coffee shop",
       "instructions": "Put the sentences below in the right order. The first sentence is done for you.",
       "sentences": [
         {
-          "id": "s4",
-          "text": "They decided to order the most expensive item — a sandwich."
+          "id": "s1",
+          "text": "The café was very crowded when the customer arrived."
         },
         {
           "id": "s2",
           "text": "The staff helped them find a table and handed them a menu."
         },
         {
-          "id": "s5",
-          "text": "The customer said the sandwich was delicious and that they would definitely come back again."
-        },
-        {
-          "id": "s1",
-          "text": "The café was very crowded when the customer arrived."
-        },
-        {
           "id": "s3",
           "text": "The customer was surprised because the menu was different from what they had expected."
+        },
+        {
+          "id": "s4",
+          "text": "They decided to order the most expensive item — a sandwich."
+        },
+        {
+          "id": "s5",
+          "text": "The customer said the sandwich was delicious and that they would definitely come back again."
         }
       ],
       "correctOrder": [
@@ -1663,28 +1663,28 @@
     },
     {
       "topicId": 28,
-      "title": "Topic: Text Cohesion 28",
+      "title": "Topic: My visit to a new coffee shop",
       "instructions": "Put the sentences below in the right order. The first sentence is done for you.",
       "sentences": [
         {
-          "id": "s4",
-          "text": "I chose one dish to try for myself."
-        },
-        {
           "id": "s3",
           "text": "I looked at the menu and saw many different kinds of food and drinks."
+        },
+        {
+          "id": "s4",
+          "text": "I chose one dish to try for myself."
         },
         {
           "id": "s5",
           "text": "When I tasted it, I found it really delicious and knew I would come back again."
         },
         {
-          "id": "s2",
-          "text": "At first, I didn’t think it would be good, but I decided to give it a try."
-        },
-        {
           "id": "s1",
           "text": "It was my first time visiting a new local coffee shop."
+        },
+        {
+          "id": "s2",
+          "text": "At first, I didn’t think it would be good, but I decided to give it a try."
         }
       ],
       "correctOrder": [
@@ -1697,7 +1697,7 @@
     },
     {
       "topicId": 29,
-      "title": "Topic: Text Cohesion 29",
+      "title": "Topic: Work",
       "instructions": "Put the sentences below in the right order. The first sentence is done for you.",
       "sentences": [
         {
@@ -1713,12 +1713,12 @@
           "text": "She uses a planner to organize her tasks throughout the shorter workweek."
         },
         {
-          "id": "s4",
-          "text": "At lunchtime, she enjoys a homemade sandwich prepared with fresh ingredients."
-        },
-        {
           "id": "s5",
           "text": "In the evenings, they unwind by reading books on productivity and well-being."
+        },
+        {
+          "id": "s4",
+          "text": "At lunchtime, she enjoys a homemade sandwich prepared with fresh ingredients."
         }
       ],
       "correctOrder": [
@@ -1731,13 +1731,9 @@
     },
     {
       "topicId": 30,
-      "title": "Topic: Text Cohesion 30",
+      "title": "Topic: Cultural festival",
       "instructions": "Put the sentences below in the right order. The first sentence is done for you.",
       "sentences": [
-        {
-          "id": "s5",
-          "text": "At the end of the event, prizes were given to participants with the best costumes."
-        },
         {
           "id": "s4",
           "text": "Families enjoyed taking photos and sharing delicious local dishes together."
@@ -1747,12 +1743,16 @@
           "text": "About 60 (con số bất kỳ) participants took part, with Ms.A (tên người) leading a traditional dance group."
         },
         {
+          "id": "s1",
+          "text": "The cultural fair was held on Sunday, celebrating and showcasing local traditions."
+        },
+        {
           "id": "s3",
           "text": "The event featured pottery workshops, folk music performances, and food tastings."
         },
         {
-          "id": "s1",
-          "text": "The cultural fair was held on Sunday, celebrating and showcasing local traditions."
+          "id": "s5",
+          "text": "At the end of the event, prizes were given to participants with the best costumes."
         }
       ],
       "correctOrder": [
@@ -1765,16 +1765,16 @@
     },
     {
       "topicId": 31,
-      "title": "Topic: Text Cohesion 31",
+      "title": "Topic: Public Transportations",
       "instructions": "Put the sentences below in the right order. The first sentence is done for you.",
       "sentences": [
         {
-          "id": "s4",
-          "text": "Drivers and staff now receive better training to provide improved passenger service."
-        },
-        {
           "id": "s3",
           "text": "City buses today are much more efficient than those from ten years ago."
+        },
+        {
+          "id": "s2",
+          "text": "Older buses often didn’t have air conditioning or comfortable seating."
         },
         {
           "id": "s1",
@@ -1785,8 +1785,8 @@
           "text": "Modern buses often use electric power, helping to reduce pollution in urban areas."
         },
         {
-          "id": "s2",
-          "text": "Older buses often didn’t have air conditioning or comfortable seating."
+          "id": "s4",
+          "text": "Drivers and staff now receive better training to provide improved passenger service."
         }
       ],
       "correctOrder": [
@@ -1799,16 +1799,16 @@
     },
     {
       "topicId": 32,
-      "title": "Topic: Text Cohesion 32",
+      "title": "Topic: Tourism",
       "instructions": "Put the sentences below in the right order. The first sentence is done for you.",
       "sentences": [
         {
-          "id": "s2",
-          "text": "In earlier times, travelers mostly depended on guidebooks and paper maps."
+          "id": "s3",
+          "text": "Back then, limited technology also meant that booking options were quite restricted."
         },
         {
-          "id": "s5",
-          "text": "Moreover, local guides now offer personalized tours that give visitors more authentic experiences."
+          "id": "s2",
+          "text": "In earlier times, travelers mostly depended on guidebooks and paper maps."
         },
         {
           "id": "s1",
@@ -1819,8 +1819,8 @@
           "text": "Today, online platforms allow people to plan thoroughly and book their trips with ease."
         },
         {
-          "id": "s3",
-          "text": "Back then, limited technology also meant that booking options were quite restricted."
+          "id": "s5",
+          "text": "Moreover, local guides now offer personalized tours that give visitors more authentic experiences."
         }
       ],
       "correctOrder": [
@@ -1833,21 +1833,9 @@
     },
     {
       "topicId": 33,
-      "title": "Topic: Text Cohesion 33",
+      "title": "Topic: New coffee shop (phiên bản 2)",
       "instructions": "Put the sentences below in the right order. The first sentence is done for you.",
       "sentences": [
-        {
-          "id": "s5",
-          "text": "It tasted really good with melted cheese on top, and I’ll definitely come back to this place again."
-        },
-        {
-          "id": "s3",
-          "text": "They handed me the menu, and when I looked through it, I saw quite a variety of dishes."
-        },
-        {
-          "id": "s2",
-          "text": "Even though it was crowded, the staff still managed to find a table for me."
-        },
         {
           "id": "s4",
           "text": "After checking them all, I decided to order the most expensive sandwich."
@@ -1855,6 +1843,18 @@
         {
           "id": "s1",
           "text": "When I arrived, the place was very crowded, and the staff were extremely busy on the first day."
+        },
+        {
+          "id": "s3",
+          "text": "They handed me the menu, and when I looked through it, I saw quite a variety of dishes."
+        },
+        {
+          "id": "s5",
+          "text": "It tasted really good with melted cheese on top, and I’ll definitely come back to this place again."
+        },
+        {
+          "id": "s2",
+          "text": "Even though it was crowded, the staff still managed to find a table for me."
         }
       ],
       "correctOrder": [
@@ -1867,28 +1867,28 @@
     },
     {
       "topicId": 34,
-      "title": "Topic: Text Cohesion 34",
+      "title": "Topic: Healthy eating",
       "instructions": "Put the sentences below in the right order. The first sentence is done for you.",
       "sentences": [
         {
+          "id": "s2",
+          "text": "Years ago, limited access to fresh produce made healthy eating much more challenging."
+        },
+        {
           "id": "s1",
           "text": "In the past, many meals were high in sugar and unhealthy fats."
+        },
+        {
+          "id": "s3",
+          "text": "Modern diets now emphasize fresh, whole foods instead of processed ones."
         },
         {
           "id": "s5",
           "text": "Nowadays, mobile apps help users track calories and discover healthy recipes to support better lifestyles."
         },
         {
-          "id": "s2",
-          "text": "Years ago, limited access to fresh produce made healthy eating much more challenging."
-        },
-        {
           "id": "s4",
           "text": "Nutritionists today teach people how to create balanced and nutritious meal plans."
-        },
-        {
-          "id": "s3",
-          "text": "Modern diets now emphasize fresh, whole foods instead of processed ones."
         }
       ],
       "correctOrder": [
@@ -1901,24 +1901,24 @@
     },
     {
       "topicId": 35,
-      "title": "Topic: Text Cohesion 35",
+      "title": "Topic: Tech fair",
       "instructions": "Put the sentences below in the right order. The first sentence is done for you.",
       "sentences": [
-        {
-          "id": "s1",
-          "text": "The tech fair took place on Saturday morning, showcasing a variety of exciting new gadgets."
-        },
-        {
-          "id": "s5",
-          "text": "Visitors enjoyed complimentary coffee and snacks while exploring the interactive exhibits."
-        },
         {
           "id": "s4",
           "text": "After the demonstrations, awards were given to the creators of the most innovative products."
         },
         {
+          "id": "s1",
+          "text": "The tech fair took place on Saturday morning, showcasing a variety of exciting new gadgets."
+        },
+        {
           "id": "s3",
           "text": "The event featured engaging activities such as VR gaming, coding workshops, and thrilling drone races."
+        },
+        {
+          "id": "s5",
+          "text": "Visitors enjoyed complimentary coffee and snacks while exploring the interactive exhibits."
         },
         {
           "id": "s2",
@@ -1935,7 +1935,7 @@
     },
     {
       "topicId": 36,
-      "title": "Topic: Text Cohesion 36",
+      "title": "Topic: End of term project",
       "instructions": "Put the sentences below in the right order. The first sentence is done for you.",
       "sentences": [
         {
@@ -1951,12 +1951,12 @@
           "text": "You will then use these pictures and your written work to create a class presentation."
         },
         {
-          "id": "s4",
-          "text": "During the presentation, you should summarize your main points, and it should last about five minutes."
-        },
-        {
           "id": "s2",
           "text": "It must include relevant pictures along with your own written text about the subject."
+        },
+        {
+          "id": "s4",
+          "text": "During the presentation, you should summarize your main points, and it should last about five minutes."
         }
       ],
       "correctOrder": [
@@ -1969,28 +1969,28 @@
     },
     {
       "topicId": 37,
-      "title": "Topic: Text Cohesion 37",
+      "title": "Topic: College Welcoming Day",
       "instructions": "Put the sentences below in the right order. The first sentence is done for you.",
       "sentences": [
-        {
-          "id": "s5",
-          "text": "This meal will be provided on the second floor of the engineering building."
-        },
         {
           "id": "s3",
           "text": "These staff members will take you on a tour of the school’s buildings and sports facilities in small groups."
         },
         {
-          "id": "s4",
-          "text": "During this tour, you will need to stay with these students until lunchtime."
+          "id": "s5",
+          "text": "This meal will be provided on the second floor of the engineering building."
+        },
+        {
+          "id": "s1",
+          "text": "Today will begin at 10 a.m. with a short presentation."
         },
         {
           "id": "s2",
           "text": "At the end of the presentation, you will meet the heads of departments and lecturers."
         },
         {
-          "id": "s1",
-          "text": "Today will begin at 10 a.m. with a short presentation."
+          "id": "s4",
+          "text": "During this tour, you will need to stay with these students until lunchtime."
         }
       ],
       "correctOrder": [
@@ -2003,16 +2003,20 @@
     },
     {
       "topicId": 38,
-      "title": "Topic: Text Cohesion 38",
+      "title": "Topic: The history of transportation (phiên bản 2)",
       "instructions": "Put the sentences below in the right order. The first sentence is done for you.",
       "sentences": [
+        {
+          "id": "s3",
+          "text": "Later on, airplanes also helped make traveling easier and more accessible."
+        },
         {
           "id": "s4",
           "text": "Because flying is very fast, it supports travel for both holidays and business purposes."
         },
         {
-          "id": "s3",
-          "text": "Later on, airplanes also helped make traveling easier and more accessible."
+          "id": "s2",
+          "text": "The development of trains and cars made travel more convenient and affordable for the general public."
         },
         {
           "id": "s1",
@@ -2021,10 +2025,6 @@
         {
           "id": "s5",
           "text": "Today, improvements in transportation make it easier to travel to many parts of the world."
-        },
-        {
-          "id": "s2",
-          "text": "The development of trains and cars made travel more convenient and affordable for the general public."
         }
       ],
       "correctOrder": [
@@ -2037,21 +2037,9 @@
     },
     {
       "topicId": 39,
-      "title": "Topic: Text Cohesion 39",
+      "title": "Topic: The famous singer (phiên bản 4 - new)",
       "instructions": "Put the sentences below in the right order. The first sentence is done for you.",
       "sentences": [
-        {
-          "id": "s3",
-          "text": "During his performances on stage, he liked wearing colorful clothes and painting his face."
-        },
-        {
-          "id": "s2",
-          "text": "During this time, he started performing on stage."
-        },
-        {
-          "id": "s5",
-          "text": "They then started following him on social media, and he is now very famous."
-        },
         {
           "id": "s1",
           "text": "Before becoming famous at a young age, he studied art and music in high school."
@@ -2059,6 +2047,18 @@
         {
           "id": "s4",
           "text": "This unusual way of dressing and his songs attracted people’s attention."
+        },
+        {
+          "id": "s5",
+          "text": "They then started following him on social media, and he is now very famous."
+        },
+        {
+          "id": "s2",
+          "text": "During this time, he started performing on stage."
+        },
+        {
+          "id": "s3",
+          "text": "During his performances on stage, he liked wearing colorful clothes and painting his face."
         }
       ],
       "correctOrder": [
@@ -2073,7 +2073,7 @@
   "part3": [
     {
       "topicId": 1,
-      "title": "Topic: Short Text Matching 1",
+      "title": "Topic: Games from childhood",
       "instructions": "Here is the perspective of four people on the above topic. Please read the content and answer the question.",
       "text": "A: In the past, I really liked playing board games. Now, to limit the children from using computers, I often spend time playing with them. However, I have struggled with them because the games nowadays have more characters and rules, making us think a lot every time we play. Despite this, my children and I still like it and have a good time together.\n\nB: When I was a child, I often played soccer with other children of the same age. We usually played in the schoolyard and sometimes in the open spaces of the neighborhood. We divided into small teams and chased the ball until we were all tired.\n\nC: When I was a child, I didn't like going out to play, so I chose reading books as a form of entertainment. The stories described in the pages of books helped me discover my own world. Later, when I grew up, I started liking modern games with eye-catching interfaces, which help me relax and increase my creativity.\n\nD: When I was a child, I really liked outdoor activities. I remember that on bad weather days, I was always by the window, glued to it, looking outside and praying for the rain to stop. At those times, my mother often gave me paper and a box of crayons. I really enjoyed that drawing activity and often drew at home when the weather was bad.",
       "questions": [
@@ -2158,7 +2158,7 @@
     },
     {
       "topicId": 2,
-      "title": "Topic: Short Text Matching 2",
+      "title": "Topic: Extreme sports",
       "instructions": "Here is the perspective of four people on the above topic. Please read the content and answer the question.",
       "text": "A: Before diving into any extreme sport, I truly believe it’s crucial to undergo proper training. While these activities can be thrilling, they also carry risks if you're not well-prepared. I've witnessed people injuring themselves simply because they didn't take the necessary precautions. That’s why I always make sure to complete a training program and familiarize myself with the safety guidelines before trying something new. With the right preparation, extreme sports can be an amazing experience.\n\nB: I've always had a fondness for more traditional sports such as swimming, running, and tennis. They're enjoyable and easy to incorporate into a routine. However, a few months ago, I had the chance to go bungee jumping during a vacation, and it turned out to be an unforgettable experience. I didn’t anticipate having so much fun! While I still prefer regular sports for daily exercise, I now feel much more open to trying extreme sports occasionally for the thrill.\n\nC: What I appreciate most about extreme sports is the unique way they allow me to connect with nature. Activities like rock climbing and mountain biking enable me to explore stunning landscapes while also pushing my physical and mental limits. It’s an escape from the everyday routine, and it makes me feel truly alive. If I had more time and resources, I would love to engage in these sports more frequently, particularly in wild, remote locations.\n\nD: I understand that some people find extreme sports exhilarating, but they’ve never been significant to me. In fact, I try to avoid them whenever I can. I’m not fond of the idea of placing myself in risky situations just for the sake of excitement. There are many safer alternatives to staying active and enjoying life. I’d much rather take a peaceful walk or do some yoga than jump out of an airplane or scale a mountain. It’s simply not my cup of tea.",
       "questions": [
@@ -2243,7 +2243,7 @@
     },
     {
       "topicId": 3,
-      "title": "Topic: Short Text Matching 3",
+      "title": "Topic: Music festival",
       "instructions": "Here is the perspective of four people on the above topic. Please read the content and answer the question.",
       "text": "A: I stayed until the very last moment of the festival and absolutely loved the grand finale. The stage lit up with dazzling lights and fireworks, creating an unforgettable atmosphere. Although getting there was a hassle due to heavy traffic and packed buses, once I arrived, all those inconveniences faded away. In the end, the final performance made every bit of the struggle worthwhile.\n\nB: Normally, I steer clear of festivals, but I decided to give this one a try. Unfortunately, I didn’t have a great time. The sound quality was poor, the event schedule seemed chaotic, and to top it off, it started raining heavily. The muddy ground made things even worse, and I spent most of the day feeling uncomfortable. Honestly, I didn’t think it was worth the trouble. The only highlight for me was the beautiful park where the festival took place.\n\nC: I really enjoyed the lively atmosphere created by the music. One of the bands on the opening night was so amazing that I couldn’t help but sing along. However, everything was quite expensive. The tickets were pricey, and the food and drinks were ridiculously overcharged. I ended up spending more than I had planned. Even though the performances were great, I do hope the organizers will bring the prices down next year.\n\nD: For me, the most memorable part of the festival was its location. The park by the river was vast and picturesque, with plenty of spots to sit and unwind between performances. I enjoyed a nice lunch there, though it was a bit pricey. Some of the shows were enjoyable, but I didn’t stay for the entire event. Overall, it was the venue that left the biggest impression on me.",
       "questions": [
@@ -2328,7 +2328,7 @@
     },
     {
       "topicId": 4,
-      "title": "Topic: Short Text Matching 4",
+      "title": "Topic: Technology in childhood",
       "instructions": "Here is the perspective of four people on the above topic. Please read the content and answer the question.",
       "text": "A: When I was young, I enjoyed playing simple computer games that my dad had programmed for me. Today, I teach my children to code using easy-to-use platforms like Scratch. These tools make learning programming enjoyable, though I spend time helping them grasp the logic behind it. Working together on coding fosters both creativity and teamwork.\n\nB: As a child, I loved spending time with my friends, building and controlling toy robots. I’ll never forget the thrill of making them move. Those experiences sparked my passion for technology, and I still look back fondly on those moments of discovery.\n\nC: When I was younger, I was fascinated by science magazines about robots and computers. The articles fueled my curiosity. Now, I develop mobile apps, creating tools for daily life. Thanks to modern software, the development process has become faster, but the excitement of innovation remains the same.\n\nD: As a kid, I spent rainy days with my siblings watching TV shows about gadgets and inventions. We eagerly awaited each new episode. Today, I prefer taking online courses to stay up-to-date with AI and blockchain. They offer flexibility and are a great way to keep pace with the rapidly changing tech world.",
       "questions": [
@@ -2413,7 +2413,7 @@
     },
     {
       "topicId": 5,
-      "title": "Topic: Short Text Matching 5",
+      "title": "Topic: Technology in childhood - Phiên bản 2",
       "instructions": "Here is the perspective of four people on the above topic. Please read the content and answer the question.",
       "text": "A: When I was a child, I enjoyed building simple circuits with my parents using basic kits. Today, I collaborate on tech projects with my cousins using drag-and-drop coding platforms. These tools make the development process easier, but I always take the time to thoroughly test our creations. It’s a wonderful way to foster creativity and work together.\n\nB: As a kid, I played with programmable toys like robotic pets alongside my friends. I can still recall the excitement of programming their movements. Those toys sparked my interest in logic and curiosity, and I continue to cherish those early experiences with technology.\n\nC: Growing up, I was fascinated by books about inventors and their innovative creations. Those stories inspired my imagination. Today, I design prototypes using 3D modeling software. The tools are much more precise now, but the joy of creating something new still feels just like the excitement of those childhood books.\n\nD: I spent many hours as a child exploring my family’s old computer, learning basic commands. Rainy days often meant staying indoors and experimenting with different software. Today, I keep up with the latest innovations by listening to tech podcasts. They’re not only entertaining but also help me stay connected to the ever-evolving tech world.",
       "questions": [
@@ -2498,7 +2498,7 @@
     },
     {
       "topicId": 6,
-      "title": "Topic: Short Text Matching 6",
+      "title": "Topic: Work and life balance",
       "instructions": "Here is the perspective of four people on the above topic. Please read the content and answer the question.",
       "text": "A: When I was a child, I enjoyed playing board games with my parents after their busy workdays. Now, I get to share that experience with my own kids, and having a four-day workweek gives us more time together. Flexible schedules are a big help, but I always make sure to plan ahead so I can balance both work and family life. These are the moments that create lasting memories.\n\nB: As a kid, I would set up pretend offices with my friends, using toy phones and notebooks. I loved taking on the role of 'boss' and organizing our tasks. Those imaginative games taught me valuable lessons in organization and leadership, and I still laugh thinking about the 'serious' meetings we held.\n\nC: When I was younger, I devoured books about different professions, dreaming about what my future career might be. Those books inspired my ambition. Today, I rely on productivity apps to keep track of my tasks in my four-day workweek. While the apps make my work more efficient, the excitement of organizing and planning is still the same.\n\nD: As a child, I spent countless evenings playing tag with my friends in the neighborhood. On rainy days, though, I often found myself feeling bored indoors. Now, after work, I practice mindfulness to help me relax and recharge. It’s especially helpful with a shorter workweek, as it keeps me focused and refreshed.",
       "questions": [
@@ -2583,7 +2583,7 @@
     },
     {
       "topicId": 7,
-      "title": "Topic: Short Text Matching 7",
+      "title": "Topic: Childhood memories",
       "instructions": "Here is the perspective of four people on the above topic. Please read the content and answer the question.",
       "text": "A: When I was a child, I loved sitting by the fireplace listening to my grandfather’s folktales. His voice brought every character to life, and those evenings always felt magical—they taught me the power of imagination. Nowadays, I share that same joy with my nieces by reading interactive storybooks on tablets. The animations and sounds make the stories more vivid and exciting for them. Still, I always take care to choose content that’s suitable for their age. To me, blending old traditions with modern technology is a beautiful way to keep storytelling alive across generations.\n\nB: When I was a young, I used to ride my bike around the village with my friends almost every afternoon. I can still recall the feeling of the wind brushing against my face, the excitement of racing each other, and the pure sense of freedom it brought. Those simple rides weren’t just fun—they taught me what independence and adventure felt like, lessons that stayed with me as I grew up. Nowadays, it’s a bit sad to see that many children spend more time indoors, glued to screens instead of exploring outside. Sometimes I find myself missing those carefree afternoons when happiness was as simple as pedaling down a dusty road. Thinking back, I realize those moments helped me develop a love for the outdoors and a lasting appreciation for friendship.\n\nC: As a kid, I could spend hours drawing animals, trees, and landscapes with my box of crayons and pencils. I loved playing with bright colors and shapes, and I always felt proud showing my drawings to my family. What started as a simple childhood hobby slowly turned into a lifelong passion. Now, I’m a graphic designer, creating digital art for various clients. Modern design tools help me bring my ideas to life with more precision, yet the creative joy I feel is just like it was back then. For me, drawing has always been a way to express myself—and it still fills my days with happiness.\n\nD: When I was growing up, I loved going on camping trips with my family in the countryside. We pitched our tents, cooked simple meals over a fire, and spent long nights gazing at the stars. Those moments made me feel deeply connected to nature and left me with unforgettable memories. Sometimes, though, rainy weather would ruin our plans, and I always felt a bit sad when we had to stay indoors. These days, my adventures have taken a different form — I enjoy visiting museums and exhibitions instead. Exploring history through artifacts and stories gives me a similar sense of curiosity and wonder, just in a quieter, more comfortable setting. To me, museums are a gentle way to travel through time and appreciate the beauty of the past.",
       "questions": [
@@ -2668,8 +2668,8 @@
     },
     {
       "topicId": 8,
-      "title": "Topic: Short Text Matching 8",
-      "instructions": "Here are four people's opinions about the same topic. Read carefully and answer the questions below.",
+      "title": "Topic: Music festival (phiên bản 2)",
+      "instructions": "Here is the perspective of four people on the above topic. Please read the content and answer the question.",
       "text": "A: I went to the festival, but on the first day, I didn’t enjoy it much. It felt a bit dull and not very exciting. Still, the stage was bright with lights and fireworks, and the overall atmosphere was unforgettable. The music lifted my mood and made me feel truly happy. Interestingly, by the final day, everything seemed different—I began to enjoy it a lot more. In the end, I was really glad I decided to go.\n\nB: I’ve been to this festival every year, and of course, I joined again this time. But honestly, I didn’t enjoy the music, and the weather made things worse. It kept raining, turning the ground muddy and uncomfortable for everyone. After this experience, I think I won’t go again next year.\n\nC: I absolutely loved the energy of the music and enjoyed every part of the program from start to finish. Although it rained a little, it didn’t bother me at all. The only thing I didn’t like was the expensive ticket — I spent more than I had planned. Despite that, I still had a great time and hope the organizers consider lowering the price in the future.\n\nD: I was one of the musicians performing on the first day of the festival, and I also met several familiar bands there. Even though I only played a few songs, I stayed until the event ended. The pay wasn’t great, but I really enjoyed myself because I got to reconnect with friends. However, I’m still thinking about the long travel distance since the venue was quite far from the city center.",
       "questions": [
         {
@@ -2753,8 +2753,8 @@
     },
     {
       "topicId": 9,
-      "title": "Topic: Short Text Matching 9",
-      "instructions": "Here are four people's opinions about extreme sports. Read carefully and answer the questions below.",
+      "title": "Topic: Extreme sports (phiên bản 2)",
+      "instructions": "Here is the perspective of four people on the above topic. Please read the content and answer the question.",
       "text": "A: For me, the most important thing about extreme sports is being well-prepared. Many people think it’s all about excitement and courage, but I don’t see it that way. Without proper training, it’s easy to get hurt or even put others at risk. I once took a rock-climbing course and spent weeks learning how to use the equipment correctly. After that, the actual climb was much more enjoyable because I felt confident. I believe training not only keeps you safe but also makes the experience more relaxed and rewarding.\n\nB: I’ve always preferred traditional sports like swimming and running because they help me stay healthy without being too risky. Still, I was curious about how extreme sports might feel, so I tried bungee jumping during a holiday last year. At first, I was really nervous, but once I jumped, the feeling was incredible. It was a kind of thrill I had never felt before. Even so, I still swim every week because it’s safer and more practical, though I admit extreme sports can be exciting to try at least once.\n\nC: Honestly, I don’t really understand why people enjoy extreme sports. They seem dangerous and unnecessary to me. I’ve never tried one, and I don’t intend to. Some friends have invited me to go snowboarding or paragliding, but I always refuse. It’s not that I dislike sports—I actually enjoy cycling and tennis—but I just don’t see any reason to risk my health for a few seconds of excitement. In my opinion, extreme sports aren’t essential for happiness, so I stay away from them whenever I can.\n\nD: What I love most about extreme sports is that they often take place in beautiful natural settings. Last summer, I went kayaking on a wild river, and the scenery was breathtaking. I also tried mountain biking through the forest and loved the feeling of fresh air and freedom. For me, it’s not just about the sport itself but also about being surrounded by mountains, trees, and rivers. I sometimes wish I had more time and money to do these activities more often. Extreme sports give me energy and make me feel close to nature.",
       "questions": [
         {
@@ -2838,8 +2838,8 @@
     },
     {
       "topicId": 10,
-      "title": "Topic: Short Text Matching 10",
-      "instructions": "Here are four people's views on the same topic. Read them carefully and answer the questions below.",
+      "title": "Topic: Free time activity",
+      "instructions": "Here is the perspective of four people on the above topic. Please read the content and answer the question.",
       "text": "A: When I was a teenager, I loved recording short stories on an old tape recorder with my cousins. We spent hours coming up with ideas and acting them out just for fun. These days, we make podcasts using modern apps that make editing and publishing much easier and more enjoyable. Even though technology has simplified the process, we still spend a lot of time planning each episode carefully. For me, podcasting is a creative way to express ideas and connect with people on a deeper level.\n\nB: As a child, I spent many sunny afternoons flying kites in the park with my brothers and sisters. Watching my kite rise high into the sky always filled me with happiness and excitement. Those simple yet meaningful moments taught me patience and coordination. Even now, whenever I see children flying kites, I feel warm memories returning. Those carefree days will always be some of my favorite childhood moments.\n\nC: When I was little, I was fascinated by doing jigsaw puzzles with my family. Carefully fitting each piece into place was both fun and satisfying. Now that I’m older, I often play strategy-based video games, which feel like a modern version of puzzles. They’re not only entertaining but also help me stay focused and think critically. For me, these games bring the same sense of challenge and accomplishment that puzzles once did — just in a more dynamic and interactive way.\n\nD: I grew up near a beautiful lake, and swimming there with my friends was one of my favorite things to do. It was such a great way to spend time outdoors, though rainy days sometimes left me feeling bored at home. Nowadays, I practice yoga to relax and recharge after long working hours. It has helped me stay calm, balanced, and focused. Yoga has become an important part of my routine and a great way to take care of both my body and mind.",
       "questions": [
         {
@@ -2923,8 +2923,8 @@
     },
     {
       "topicId": 11,
-      "title": "Topic: Short Text Matching 11",
-      "instructions": "Here are four people's experiences about choosing or starting their careers. Read carefully and answer the questions below.",
+      "title": "Topic: Job and trainning",
+      "instructions": "Here is the perspective of four people on the above topic. Please read the content and answer the question.",
       "text": "A: When I first graduated from school, I wasn’t sure what to do, so I joined several volunteer programs with different companies and organizations to gain experience. I really enjoyed volunteering because it helped me decide on a career path and gave me many valuable lessons. I also believe I was able to make a difference through my work.\n\nB: Back in school, I already knew I wanted to become a teacher, so I didn’t need to try other jobs. I decided to study education at university, which is free in my country. Last summer, I did some practical training in local schools, and it was extremely helpful for my future career.\n\nC: When I was young, I used to help my neighbor, a plumber, with simple jobs like measuring pipes, loosening screws, and handling tools. It felt very natural for me to learn that kind of work, so later I studied for two years at university to become an electrician. Now, I’ve learned that there are shorter courses available in this field, and I regret not choosing that option instead.\n\nD: After graduating, I found it really difficult to get a job. I applied to many companies, but none accepted me because I lacked experience. Eventually, I found work at a gaming company that allowed me to work from home. It didn’t affect my daily schedule — I worked at night while my colleagues worked during the day — and that arrangement suited me perfectly.",
       "questions": [
         {
@@ -3008,7 +3008,7 @@
     },
     {
       "topicId": 12,
-      "title": "Topic: Short Text Matching 12",
+      "title": "Topic: Music festival (phiên bản 3)",
       "instructions": "Here is the perspective of four people on the above topic. Please read the content and answer the question.",
       "text": "A: This was my first time attending the Music Festival, and to be honest, the weather really didn't cooperate. It rained heavily on the first two days, which made it difficult to enjoy the outdoor activities. I still got wet in the tent. But I didn't let that ruin the experience. On the final day, the skies cleared up and the performances were truly amazing - especially the final act in the evening. That last day made it all worthwhile, and I left with some great memories despite the poor weather.\n\nB: I've been to this festival a couple of times in the past, the quality was good the last times I came, but this time is completely different. The sound quality wasn't great, and the whole event just felt disorganised. There weren't enough facilities, and the staff didn't seem prepared to handle the crowd. I couldn't even interact with the band. I don't think I'll be coming back next year. It's simply not worth the money or the time anymore.\n\nC: The festival this year had one of the best line-ups I've seen so far. I absolutely loved the energy of the performances, and the music was spot on throughout the weekend. However, I have to say the ticket prices were far too high, especially for students. I paid almost double what I did two years ago, and although I enjoyed the music, I'm not sure it offered good value for money. If they don't lower the prices next year, a lot of people might skip it.\n\nD: We were playing in a band and we finished our performance in the morning. However, I stayed at the festival to meet up with some old band mates. We talked a lot. However, I didn't like the venue. It was too crowded and not well organised. The road to the tent village was also congested. I think they should choose a better location next year.",
       "questions": [
@@ -3093,7 +3093,7 @@
     },
     {
       "topicId": 13,
-      "title": "Topic: Short Text Matching 13",
+      "title": "Topic: Volunteering",
       "instructions": "Here is the perspective of four people on the above topic. Please read the content and answer the question.",
       "text": "A: I’m very busy and rarely have any free time to do anything, so even spending a few hours volunteering is quite difficult. I would have to take half a day off work. I see many people in need, and they genuinely require additional financial support. That’s something I can help with because I earn a good salary. Making monthly donations is not a problem for me—it’s how I show my support and contribution.\n\nB: Some people enjoy volunteering abroad, but honestly, I feel that most people are more interested in traveling. I believe we should use our time more meaningfully. Every town has many people in need. Their circumstances are difficult, and they lack the means to improve their quality of life. They are individuals who have contributed a great deal to the country. Sharing stories with them helps us understand the differences between generations. We can also broaden our knowledge of local history, traditions, and culture through their experiences.\n\nC: I believe there are many ways for us to show kindness through volunteering. I am currently retired and helping to build houses for people in need. I work with a volunteer organization that has well-prepared and clear plans. Through this work, I have had the opportunity to experience different foreign cultures. We are often sent to various countries to carry out projects, so it’s also a great way to travel while still doing something meaningful. This work involves physical labor, which helps improve our physical health—something some people only begin to realize after some time.\n\nD: My mother told me to do local volunteering because she is a member of that organization, but I’m not very interested. I prefer volunteering abroad because I can develop soft skills—something that will benefit my future career. In addition, meeting new people helps me expand my network and build valuable connections that I can use later in my professional life.",
       "questions": [
@@ -3178,7 +3178,7 @@
     },
     {
       "topicId": 14,
-      "title": "Topic: Short Text Matching 14",
+      "title": "Topic: Career",
       "instructions": "Here is the perspective of four people on the above topic. Please read the content and answer the question.",
       "text": "A: After graduating, I wanted to take some time to figure out what I truly wanted. I started looking for temporary jobs, but it was quite difficult because most companies don’t hire people without experience. Eventually, a game company contacted me, and I agreed to work for them. The job is hybrid, so sometimes I work in the evenings, but I’m fine with that.\n\nB: I went to university right after finishing high school. I had always wanted to become a teacher, so I didn’t need to explore other career options. Three months ago, I did an internship at a local school. It was an eye-opening experience, even though the workload was heavier than I expected. However, I believe it was very worthwhile.\n\nC: When I graduated, I didn’t really know what I wanted to do. Some people advised me to start working right away, but I wanted to gain some practical experience first. That’s why I applied for various volunteer positions. Although I didn’t earn any money, I had the chance to try out different types of work. Looking back, I feel happy with my decision because of the valuable knowledge I gained.\n\nD: When I was younger, I lived near a plumber and sometimes worked with her. She gave me simple tasks like checking for pipe leaks or tightening screws. So later on, it felt natural for me to go to university to become an electrician. Now, when I see short online electrical courses, I wish I had chosen them instead of going to university.",
       "questions": [
@@ -3265,7 +3265,7 @@
   "part4": [
     {
       "topicId": 1,
-      "title": "Topic: Long Text Comprehension 1",
+      "title": "Topic: Mountain (Mountain summits)",
       "instructions": "Match the headings to the correct paragraphs.",
       "paragraphs": [
         {
@@ -3303,16 +3303,8 @@
           "text": "Changing the definition of mountain"
         },
         {
-          "id": "h6",
-          "text": "Focus on stability"
-        },
-        {
           "id": "h2",
           "text": "The unique feeling of achievement"
-        },
-        {
-          "id": "h7",
-          "text": "Intimate relationships"
         },
         {
           "id": "h3",
@@ -3325,6 +3317,14 @@
         {
           "id": "h5",
           "text": "Worrying connections"
+        },
+        {
+          "id": "h6",
+          "text": "Focus on stability"
+        },
+        {
+          "id": "h7",
+          "text": "Intimate relationships"
         }
       ],
       "correctAnswers": {
@@ -3339,7 +3339,7 @@
     },
     {
       "topicId": 2,
-      "title": "Topic: Long Text Comprehension 2",
+      "title": "Topic: Four-Day Workweek",
       "instructions": "Match the headings to the correct paragraphs.",
       "paragraphs": [
         {
@@ -3373,16 +3373,16 @@
       ],
       "headings": [
         {
+          "id": "h1",
+          "text": "A way of life now out date"
+        },
+        {
           "id": "h2",
           "text": "Benefits for employees"
         },
         {
-          "id": "h6",
-          "text": "Unfair for some people"
-        },
-        {
-          "id": "h7",
-          "text": "Alternative solutions worth considering"
+          "id": "h3",
+          "text": "Undesirable finalcial consequences"
         },
         {
           "id": "h4",
@@ -3393,12 +3393,12 @@
           "text": "Difficult to change old habits"
         },
         {
-          "id": "h1",
-          "text": "A way of life now out date"
+          "id": "h6",
+          "text": "Unfair for some people"
         },
         {
-          "id": "h3",
-          "text": "Undesirable finalcial consequences"
+          "id": "h7",
+          "text": "Alternative solutions worth considering"
         }
       ],
       "correctAnswers": {
@@ -3413,7 +3413,7 @@
     },
     {
       "topicId": 3,
-      "title": "Topic: Long Text Comprehension 3",
+      "title": "Topic: Digital transformation (Tech Forward)",
       "instructions": "Match the headings to the correct paragraphs.",
       "paragraphs": [
         {
@@ -3447,32 +3447,32 @@
       ],
       "headings": [
         {
-          "id": "h4",
-          "text": "Over-reliance on automated systems"
+          "id": "h1",
+          "text": "Redefining business models with technology"
+        },
+        {
+          "id": "h2",
+          "text": "Enhancing productivity through automation"
         },
         {
           "id": "h3",
           "text": "Promoting digital skills training"
         },
         {
-          "id": "h6",
-          "text": "Building inclusive digital ecosystems"
-        },
-        {
-          "id": "h1",
-          "text": "Redefining business models with technology"
-        },
-        {
-          "id": "h7",
-          "text": "Focusing on ethical technology development"
+          "id": "h4",
+          "text": "Over-reliance on automated systems"
         },
         {
           "id": "h5",
           "text": "Concerns about cybersecurity risks"
         },
         {
-          "id": "h2",
-          "text": "Enhancing productivity through automation"
+          "id": "h6",
+          "text": "Building inclusive digital ecosystems"
+        },
+        {
+          "id": "h7",
+          "text": "Focusing on ethical technology development"
         }
       ],
       "correctAnswers": {
@@ -3487,7 +3487,7 @@
     },
     {
       "topicId": 4,
-      "title": "Topic: Long Text Comprehension 4",
+      "title": "Topic: Wellness trend",
       "instructions": "Match the headings to the correct paragraphs.",
       "paragraphs": [
         {
@@ -3533,20 +3533,20 @@
           "text": "Encouraging community fitness programs"
         },
         {
-          "id": "h6",
-          "text": "Building supportive health communities"
+          "id": "h4",
+          "text": "Overemphasis on trendy diets"
         },
         {
           "id": "h5",
           "text": "Concerns about wellness misinformation"
         },
         {
-          "id": "h7",
-          "text": "Focusing on sustainable lifestyle changes"
+          "id": "h6",
+          "text": "Building supportive health communities"
         },
         {
-          "id": "h4",
-          "text": "Overemphasis on trendy diets"
+          "id": "h7",
+          "text": "Focusing on sustainable lifestyle changes"
         }
       ],
       "correctAnswers": {
@@ -3561,7 +3561,7 @@
     },
     {
       "topicId": 5,
-      "title": "Topic: Long Text Comprehension 5",
+      "title": "Topic: Women mathematicians",
       "instructions": "Match the headings to the correct paragraphs.",
       "paragraphs": [
         {
@@ -3595,32 +3595,32 @@
       ],
       "headings": [
         {
-          "id": "h7",
-          "text": "Breaking Through Educational Barriers"
-        },
-        {
-          "id": "h5",
-          "text": "Connecting Symmetry to Physics"
-        },
-        {
-          "id": "h3",
-          "text": "Driving Space Exploration Forward"
+          "id": "h1",
+          "text": "Breaking New Ground in Ancient Mathematics"
         },
         {
           "id": "h2",
           "text": "Trailblazing Computer Science"
         },
         {
+          "id": "h3",
+          "text": "Driving Space Exploration Forward"
+        },
+        {
           "id": "h4",
           "text": "Transforming Geometry and Motion"
+        },
+        {
+          "id": "h5",
+          "text": "Connecting Symmetry to Physics"
         },
         {
           "id": "h6",
           "text": "Encouraging Diversity in STEM"
         },
         {
-          "id": "h1",
-          "text": "Breaking New Ground in Ancient Mathematics"
+          "id": "h7",
+          "text": "Breaking Through Educational Barriers"
         }
       ],
       "correctAnswers": {
@@ -3635,7 +3635,7 @@
     },
     {
       "topicId": 6,
-      "title": "Topic: Long Text Comprehension 6",
+      "title": "Topic: Technology advances",
       "instructions": "Match the headings to the correct paragraphs.",
       "paragraphs": [
         {
@@ -3669,32 +3669,32 @@
       ],
       "headings": [
         {
-          "id": "h7",
-          "text": "Focusing on Sustainable Digital Solutions"
+          "id": "h1",
+          "text": "Redefining Human-Technology Interaction"
+        },
+        {
+          "id": "h2",
+          "text": "Boosting Productivity Through Intelligent Automation"
         },
         {
           "id": "h3",
           "text": "Promoting Technology-Based Education Programs"
         },
         {
-          "id": "h6",
-          "text": "Building Innovative Tech Communities"
+          "id": "h4",
+          "text": "Overreliance on Digital Interfaces"
         },
         {
           "id": "h5",
           "text": "Concerns About Disparities in Access to Technology"
         },
         {
-          "id": "h1",
-          "text": "Redefining Human-Technology Interaction"
+          "id": "h6",
+          "text": "Building Innovative Tech Communities"
         },
         {
-          "id": "h4",
-          "text": "Overreliance on Digital Interfaces"
-        },
-        {
-          "id": "h2",
-          "text": "Boosting Productivity Through Intelligent Automation"
+          "id": "h7",
+          "text": "Focusing on Sustainable Digital Solutions"
         }
       ],
       "correctAnswers": {
@@ -3709,7 +3709,7 @@
     },
     {
       "topicId": 7,
-      "title": "Topic: Long Text Comprehension 7",
+      "title": "Topic: Cultural Exchange",
       "instructions": "Match the headings to the correct paragraphs.",
       "paragraphs": [
         {
@@ -3747,28 +3747,28 @@
           "text": "Redefining Global Cultural Understanding"
         },
         {
-          "id": "h5",
-          "text": "Concerns About Cultural Preservation"
-        },
-        {
-          "id": "h7",
-          "text": "Focusing on Authentic Cultural Experiences"
-        },
-        {
           "id": "h2",
           "text": "Encouraging Cross-Cultural Festivals"
         },
         {
-          "id": "h6",
-          "text": "Building Mutual Respect Among Communities"
+          "id": "h3",
+          "text": "Promoting Language Exchange Programs"
         },
         {
           "id": "h4",
           "text": "Overemphasis on Commercial Tourism"
         },
         {
-          "id": "h3",
-          "text": "Promoting Language Exchange Programs"
+          "id": "h5",
+          "text": "Concerns About Cultural Preservation"
+        },
+        {
+          "id": "h6",
+          "text": "Building Mutual Respect Among Communities"
+        },
+        {
+          "id": "h7",
+          "text": "Focusing on Authentic Cultural Experiences"
         }
       ],
       "correctAnswers": {
@@ -3783,7 +3783,7 @@
     },
     {
       "topicId": 8,
-      "title": "Topic: Long Text Comprehension 8",
+      "title": "Topic: Urban Development",
       "instructions": "Match the headings to the correct paragraphs.",
       "paragraphs": [
         {
@@ -3817,32 +3817,32 @@
       ],
       "headings": [
         {
-          "id": "h3",
-          "text": "Supporting Affordable Housing Projects"
+          "id": "h1",
+          "text": "Redefining Sustainable City Planning"
         },
         {
           "id": "h2",
           "text": "Encouraging Green Spaces in Urban Areas"
         },
         {
-          "id": "h7",
-          "text": "Focusing on Renewable Energy Source"
+          "id": "h3",
+          "text": "Supporting Affordable Housing Projects"
         },
         {
           "id": "h4",
           "text": "Overreliance on High-Rise Buildings"
         },
         {
-          "id": "h6",
-          "text": "Strengthening Community Engagement"
-        },
-        {
           "id": "h5",
           "text": "Concerns About Traffic Congestion"
         },
         {
-          "id": "h1",
-          "text": "Redefining Sustainable City Planning"
+          "id": "h6",
+          "text": "Strengthening Community Engagement"
+        },
+        {
+          "id": "h7",
+          "text": "Focusing on Renewable Energy Source"
         }
       ],
       "correctAnswers": {
@@ -3857,7 +3857,7 @@
     },
     {
       "topicId": 9,
-      "title": "Topic: Long Text Comprehension 9",
+      "title": "Topic: Digital innovation",
       "instructions": "Match the headings to the correct paragraphs.",
       "paragraphs": [
         {
@@ -3891,32 +3891,32 @@
       ],
       "headings": [
         {
-          "id": "h2",
-          "text": "Enhancing Connectivity with Mobile Apps"
-        },
-        {
           "id": "h1",
           "text": "Redefining Leisure in the Digital age"
         },
         {
-          "id": "h7",
-          "text": "Prioritize human-friendly designs"
+          "id": "h2",
+          "text": "Enhancing Connectivity with Mobile Apps"
         },
         {
-          "id": "h6",
-          "text": "Building Inclusive and Respectful Online Communities"
-        },
-        {
-          "id": "h5",
-          "text": "Concerns About Data Privacy"
+          "id": "h3",
+          "text": "Promoting Essential Digital Literacy"
         },
         {
           "id": "h4",
           "text": "Risks of Excessive Screen-Based Entertainment"
         },
         {
-          "id": "h3",
-          "text": "Promoting Essential Digital Literacy"
+          "id": "h5",
+          "text": "Concerns About Data Privacy"
+        },
+        {
+          "id": "h6",
+          "text": "Building Inclusive and Respectful Online Communities"
+        },
+        {
+          "id": "h7",
+          "text": "Prioritize human-friendly designs"
         }
       ],
       "correctAnswers": {
@@ -3931,7 +3931,7 @@
     },
     {
       "topicId": 10,
-      "title": "Topic: Long Text Comprehension 10",
+      "title": "Topic: Women mathematicians (phiên bản 2)",
       "instructions": "Match the headings to the correct paragraphs.",
       "paragraphs": [
         {
@@ -3969,24 +3969,24 @@
           "text": "Achievements obscured by gender"
         },
         {
-          "id": "h4",
-          "text": "A long career demonstrates exceptional ability"
-        },
-        {
           "id": "h2",
           "text": "Recognizing the accomplishments of pioneering women"
-        },
-        {
-          "id": "h6",
-          "text": "Striving to create gender balance"
         },
         {
           "id": "h3",
           "text": "Men are unfairly given credit"
         },
         {
+          "id": "h4",
+          "text": "A long career demonstrates exceptional ability"
+        },
+        {
           "id": "h5",
           "text": "The labels can change perceptions"
+        },
+        {
+          "id": "h6",
+          "text": "Striving to create gender balance"
         },
         {
           "id": "h7",
@@ -4005,7 +4005,7 @@
     },
     {
       "topicId": 11,
-      "title": "Topic: Long Text Comprehension 11",
+      "title": "Topic: Mountain (Mountain summits) (phiên bản 2)",
       "instructions": "Match the headings to the correct paragraphs.",
       "paragraphs": [
         {
@@ -4039,32 +4039,32 @@
       ],
       "headings": [
         {
-          "id": "h5",
-          "text": "A disturbing relevant"
-        },
-        {
-          "id": "h7",
-          "text": "A more intimate relationship"
-        },
-        {
           "id": "h1",
           "text": "Changing the definition of mountain"
         },
         {
-          "id": "h4",
-          "text": "The wrong priority"
+          "id": "h2",
+          "text": "The unique feeling of achievement"
         },
         {
           "id": "h3",
           "text": "Publicity of achievement"
         },
         {
+          "id": "h4",
+          "text": "The wrong priority"
+        },
+        {
+          "id": "h5",
+          "text": "A disturbing relevant"
+        },
+        {
           "id": "h6",
           "text": "Focus on sustainability"
         },
         {
-          "id": "h2",
-          "text": "The unique feeling of achievement"
+          "id": "h7",
+          "text": "A more intimate relationship"
         }
       ],
       "correctAnswers": {
