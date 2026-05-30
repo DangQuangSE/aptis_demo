@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { shuffleArray } from "../utils/helpers";
+import VocabDropdown from "../components/ui/VocabDropdown";
 
 export default function VocabPartCard({
   partNum,
@@ -30,72 +31,6 @@ export default function VocabPartCard({
   if (!partData || !partData.questions || partData.questions.length === 0) {
     return <div style={{ padding: "20px", color: "red" }}>No Vocabulary Data available.</div>;
   }
-
-  // Helper to render dropdown select box
-  const renderDropdown = (questionIndex, subId, correctValue) => {
-    const currentValue = selectedAnswers[subId] || "";
-    const isCorrect = currentValue === correctValue;
-
-    let selectBg = "white";
-    let selectBorder = "2px solid #efeded";
-    let selectColor = "#1b1c1c";
-
-    if (currentValue) {
-      selectBg = "#e3f2fd";
-      selectBorder = "2px solid #1877F2";
-      selectColor = "#0d47a1";
-    }
-
-    if (isChecked) {
-      if (isCorrect) {
-        selectBg = "#e8f5e9";
-        selectBorder = "2px solid #2e7d32";
-        selectColor = "#1b5e20";
-      } else {
-        selectBg = "#ffebee";
-        selectBorder = "2px solid #c62828";
-        selectColor = "#b71c1c";
-      }
-    }
-
-    return (
-      <div style={{ display: "flex", flexDirection: "column", gap: "4px", width: "180px", flexShrink: 0 }}>
-        <select
-          value={currentValue}
-          onChange={(e) => !isChecked && onSelectOption(subId, e.target.value)}
-          disabled={isChecked}
-          style={{
-            background: selectBg,
-            border: selectBorder,
-            color: selectColor,
-            borderRadius: "10px",
-            padding: "8px 12px",
-            fontFamily: "'Plus Jakarta Sans', sans-serif",
-            fontWeight: 700,
-            fontSize: "13px",
-            cursor: isChecked ? "not-allowed" : "pointer",
-            width: "100%",
-            boxShadow: "0 2px 4px rgba(0,0,0,0.03)",
-            outline: "none",
-            appearance: "auto",
-          }}
-        >
-          <option value="">-- Select --</option>
-          {shuffledOptions.map((opt, i) => (
-            <option key={i} value={opt}>
-              {opt}
-            </option>
-          ))}
-        </select>
-
-        {isChecked && !isCorrect && (
-          <span style={{ fontSize: "11px", color: "#2e7d32", fontWeight: 700 }}>
-            Correct: {correctValue}
-          </span>
-        )}
-      </div>
-    );
-  };
 
   const getEnglishTitle = (num, title) => {
     switch (num) {
@@ -178,7 +113,7 @@ export default function VocabPartCard({
                     {q.word}
                   </span>
                 </div>
-                {renderDropdown(idx, subId, q.synonym)}
+                <VocabDropdown subId={subId} options={shuffledOptions} currentValue={selectedAnswers[subId] || ""} isChecked={isChecked} correctValue={q.synonym} onChange={onSelectOption} />
               </div>
             );
           } else if (partNum === 2) {
@@ -203,7 +138,7 @@ export default function VocabPartCard({
                     "{q.definition}"
                   </span>
                 </div>
-                {renderDropdown(idx, subId, q.word)}
+                <VocabDropdown subId={subId} options={shuffledOptions} currentValue={selectedAnswers[subId] || ""} isChecked={isChecked} correctValue={q.word} onChange={onSelectOption} />
               </div>
             );
           } else if (partNum === 3) {
@@ -245,7 +180,7 @@ export default function VocabPartCard({
                 {/* Dropdown for Selection */}
                 <div style={{ display: "flex", justifyContent: "flex-end", alignItems: "center", gap: "12px" }}>
                   <span style={{ fontSize: "12px", color: "#718096", fontWeight: 600 }}>Fill in the blank:</span>
-                  {renderDropdown(idx, subId, q.word)}
+                  <VocabDropdown subId={subId} options={shuffledOptions} currentValue={selectedAnswers[subId] || ""} isChecked={isChecked} correctValue={q.word} onChange={onSelectOption} />
                 </div>
               </div>
             );
@@ -274,7 +209,7 @@ export default function VocabPartCard({
                 </div>
 
                 <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-                  {renderDropdown(idx, subId, q.collocation)}
+                  <VocabDropdown subId={subId} options={shuffledOptions} currentValue={selectedAnswers[subId] || ""} isChecked={isChecked} correctValue={q.collocation} onChange={onSelectOption} />
 
                   {/* Phrase Preview */}
                   <span
