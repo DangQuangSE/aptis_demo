@@ -12,6 +12,15 @@ import { shuffleArray, getAudioUrl, formatTime } from "../utils/helpers";
 import HomeDashboard from "../components_gv/HomeDashboard";
 import GrammarPractice from "../components_gv/GrammarPractice";
 
+const IconSettings = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+);
+
+const IconGrid = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+);
+
+
 export default function Page() {
   const [view, setView] = useState("home");
   const [dashboardTab, setDashboardTab] = useState("grammar-vocab");
@@ -41,6 +50,8 @@ export default function Page() {
 
   const [toast, setToast] = useState(null);
   const [confirmModal, setConfirmModal] = useState(null);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const toastTimerRef = useRef(null);
 
   const showToast = (message, type = "info", duration = 3500) => {
@@ -487,7 +498,6 @@ export default function Page() {
 
           return (
             <div
-              className="animate-fade-in"
               style={{
                 minHeight: "100vh",
                 display: "flex",
@@ -495,11 +505,251 @@ export default function Page() {
                 backgroundColor: "#fbf9f8",
               }}
             >
+              {/* Mobile Settings Modal Overlay */}
+              {isSettingsOpen && (
+                <div
+                  className="settings-overlay animate-fade-in"
+                  onClick={() => setIsSettingsOpen(false)}
+                >
+                  <div
+                    className="animate-modal-in"
+                    onClick={(e) => e.stopPropagation()}
+                    style={{
+                      background: "#fbf9f8",
+                      borderRadius: "20px",
+                      padding: "24px 20px",
+                      maxWidth: "340px",
+                      width: "100%",
+                      boxShadow: "0 10px 25px rgba(0,0,0,0.1)",
+                    }}
+                  >
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        borderBottom: "1.5px solid #efeded",
+                        paddingBottom: "12px",
+                        marginBottom: "16px",
+                      }}
+                    >
+                      <h3
+                        style={{
+                          fontFamily: "'Plus Jakarta Sans', sans-serif",
+                          fontWeight: 700,
+                          fontSize: "15px",
+                          color: "#006590",
+                          margin: 0,
+                        }}
+                      >
+                        Practice Settings
+                      </h3>
+                      <button
+                        onClick={() => setIsSettingsOpen(false)}
+                        aria-label="Close settings"
+                        style={{
+                          background: "none",
+                          border: "none",
+                          cursor: "pointer",
+                          fontSize: "16px",
+                          fontWeight: "bold",
+                          color: "#6e7881",
+                        }}
+                      >
+                        ✕
+                      </button>
+                    </div>
 
+                    <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
+                      <label
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "space-between",
+                          cursor: "pointer",
+                          fontSize: "13px",
+                          fontWeight: 600,
+                          color: "#3e4850",
+                          padding: "8px 4px",
+                        }}
+                      >
+                        <span>Auto Answer</span>
+                        <div
+                          style={{
+                            width: "36px",
+                            height: "20px",
+                            background: modes.autoShowAnswer ? "#006590" : "#d1d5db",
+                            borderRadius: "10px",
+                            position: "relative",
+                            transition: "background 0.2s",
+                          }}
+                        >
+                          <div
+                            style={{
+                              width: "16px",
+                              height: "16px",
+                              background: "white",
+                              borderRadius: "50%",
+                              position: "absolute",
+                              top: "2px",
+                              left: modes.autoShowAnswer ? "18px" : "2px",
+                              transition: "left 0.2s",
+                              boxShadow: "0 1px 2px rgba(0,0,0,0.2)",
+                            }}
+                          />
+                        </div>
+                        <input
+                          type="checkbox"
+                          style={{ display: "none" }}
+                          checked={modes.autoShowAnswer}
+                          onChange={(e) => {
+                            setModes((m) => ({
+                              ...m,
+                              autoShowAnswer: e.target.checked,
+                            }));
+                            if (e.target.checked) {
+                              const currentQ = questions[currentIdx];
+                              if (currentQ) {
+                                setVisitedIds((prev) => ({ ...prev, [currentQ.id]: true }));
+                              }
+                            }
+                          }}
+                        />
+                      </label>
+
+                      <label
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "space-between",
+                          cursor: "pointer",
+                          fontSize: "13px",
+                          fontWeight: 600,
+                          color: "#3e4850",
+                          padding: "8px 4px",
+                        }}
+                      >
+                        <span>Auto Transcript</span>
+                        <div
+                          style={{
+                            width: "36px",
+                            height: "20px",
+                            background: modes.autoShowTranscript ? "#006590" : "#d1d5db",
+                            borderRadius: "10px",
+                            position: "relative",
+                            transition: "background 0.2s",
+                          }}
+                        >
+                          <div
+                            style={{
+                              width: "16px",
+                              height: "16px",
+                              background: "white",
+                              borderRadius: "50%",
+                              position: "absolute",
+                              top: "2px",
+                              left: modes.autoShowTranscript ? "18px" : "2px",
+                              transition: "left 0.2s",
+                              boxShadow: "0 1px 2px rgba(0,0,0,0.2)",
+                            }}
+                          />
+                        </div>
+                        <input
+                          type="checkbox"
+                          style={{ display: "none" }}
+                          checked={modes.autoShowTranscript}
+                          onChange={(e) =>
+                            setModes((m) => ({
+                              ...m,
+                              autoShowTranscript: e.target.checked,
+                            }))
+                          }
+                        />
+                      </label>
+
+                      <label
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "space-between",
+                          cursor: "pointer",
+                          fontSize: "13px",
+                          fontWeight: 600,
+                          color: "#3e4850",
+                          padding: "8px 4px",
+                        }}
+                      >
+                        <span>Auto Play Audio</span>
+                        <div
+                          style={{
+                            width: "36px",
+                            height: "20px",
+                            background: modes.autoPlayAudio ? "#1E8E49" : "#d1d5db",
+                            borderRadius: "10px",
+                            position: "relative",
+                            transition: "background 0.2s",
+                          }}
+                        >
+                          <div
+                            style={{
+                              width: "16px",
+                              height: "16px",
+                              background: "white",
+                              borderRadius: "50%",
+                              position: "absolute",
+                              top: "2px",
+                              left: modes.autoPlayAudio ? "18px" : "2px",
+                              transition: "left 0.2s",
+                              boxShadow: "0 1px 2px rgba(0,0,0,0.2)",
+                            }}
+                          />
+                        </div>
+                        <input
+                          type="checkbox"
+                          style={{ display: "none" }}
+                          checked={modes.autoPlayAudio}
+                          onChange={(e) =>
+                            setModes((m) => ({
+                              ...m,
+                              autoPlayAudio: e.target.checked,
+                            }))
+                          }
+                        />
+                      </label>
+
+                      <button
+                        onClick={() => {
+                          handleShuffle();
+                          setIsSettingsOpen(false);
+                        }}
+                        style={{
+                          width: "100%",
+                          padding: "10px",
+                          background: "#f0f4f8",
+                          color: "#006590",
+                          border: "1.5px solid #006590",
+                          borderRadius: "10px",
+                          fontSize: "13px",
+                          fontWeight: 700,
+                          cursor: "pointer",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          gap: "6px",
+                          marginTop: "8px",
+                        }}
+                      >
+                        Randomize Questions
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
 
               {/* ── Sticky Header ──────────────────────────────────────────────── */}
               {!hideHeader && (
                 <header
+                  className="animate-fade-in"
                   style={{
                     backgroundColor: "white",
                     borderBottom: "2px solid #efeded",
@@ -511,13 +761,13 @@ export default function Page() {
                   }}
                 >
                   <div
+                    className="px-2 sm:px-4 lg:px-6 w-full"
                     style={{
                       display: "flex",
                       justifyContent: "space-between",
                       alignItems: "center",
                       maxWidth: "1200px",
                       margin: "0 auto",
-                      padding: "0 16px",
                       height: "52px",
                     }}
                   >
@@ -566,13 +816,9 @@ export default function Page() {
                       </span>
                     </button>
 
-                    {/* Center: Mode Toggles, Randomize & Hide Header Action */}
+                    {/* Desktop Center: Mode Toggles, Randomize & Hide Header Action */}
                     <div
-                      style={{
-                        display: "flex",
-                        gap: "14px",
-                        alignItems: "center",
-                      }}
+                      className="hidden lg:flex items-center gap-3.5"
                     >
                       <label
                         style={{
@@ -745,30 +991,76 @@ export default function Page() {
                       >
                         Randomize
                       </button>
+                    </div>
 
+                    {/* Right side: Timer & Mobile Quick Options */}
+                    <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                      {/* Mobile settings / map icons (visible on mobile/tablet) */}
+                      <div className="flex lg:hidden items-center gap-1.5">
+                        <button
+                          onClick={() => setIsSettingsOpen(true)}
+                          aria-label="Practice Settings"
+                          style={{
+                            padding: "6px 8px",
+                            borderRadius: "8px",
+                            background: "#f0f4f8",
+                            color: "#006590",
+                            border: "none",
+                            cursor: "pointer",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            transition: "background 0.15s ease",
+                          }}
+                          onMouseEnter={(e) => (e.currentTarget.style.background = "#e1e9f0")}
+                          onMouseLeave={(e) => (e.currentTarget.style.background = "#f0f4f8")}
+                        >
+                          <IconSettings />
+                        </button>
+                        <button
+                          onClick={() => setIsSidebarOpen(true)}
+                          aria-label="Question Map"
+                          style={{
+                            padding: "6px 8px",
+                            borderRadius: "8px",
+                            background: "#f0f4f8",
+                            color: "#006590",
+                            border: "none",
+                            cursor: "pointer",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            transition: "background 0.15s ease",
+                          }}
+                          onMouseEnter={(e) => (e.currentTarget.style.background = "#e1e9f0")}
+                          onMouseLeave={(e) => (e.currentTarget.style.background = "#f0f4f8")}
+                        >
+                          <IconGrid />
+                        </button>
                       </div>
 
-                    {/* Timer */}
-                    <div
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "4px",
-                        color: timeLeft < 120 ? "#ba1a1a" : "#3e4850",
-                        fontWeight: 700,
-                        fontSize: "13px",
-                        transition: "color 0.3s",
-                      }}
-                    >
-                      <IconTimer />
-                      <span
+                      {/* Timer */}
+                      <div
                         style={{
-                          fontFamily: "monospace",
-                          letterSpacing: "0.05em",
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "4px",
+                          color: timeLeft < 120 ? "#ba1a1a" : "#3e4850",
+                          fontWeight: 700,
+                          fontSize: "13px",
+                          transition: "color 0.3s",
                         }}
                       >
-                        {formatTime(timeLeft)}
-                      </span>
+                        <IconTimer />
+                        <span
+                          style={{
+                            fontFamily: "monospace",
+                            letterSpacing: "0.05em",
+                          }}
+                        >
+                          {formatTime(timeLeft)}
+                        </span>
+                      </div>
                     </div>
                   </div>
 
@@ -793,56 +1085,72 @@ export default function Page() {
                 </header>
               )}
 
+              {/* MOBILE/TABLET SIDEBAR: Question Map bottom drawer */}
+              <div
+                className={`drawer-backdrop ${isSidebarOpen ? "open" : ""}`}
+                onClick={() => setIsSidebarOpen(false)}
+              >
+                <div
+                  className={`drawer-content ${isSidebarOpen ? "open" : ""}`}
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {/* Mobile Handle indicator */}
+                  <div style={{ display: "flex", justifyContent: "center", padding: "8px 0 4px" }}>
+                    <div style={{ width: "40px", height: "5px", background: "#dbd9d9", borderRadius: "999px" }} />
+                  </div>
+                  
+                  <SidebarMatrix
+                    questions={questions}
+                    currentIdx={currentIdx}
+                    selectedAnswers={selectedAnswers}
+                    checkedResults={checkedResults}
+                    visitedIds={visitedIds}
+                    modes={modes}
+                    sidebarPage={sidebarPage}
+                    setSidebarPage={setSidebarPage}
+                    jumpToQuestion={(idx) => {
+                      jumpToQuestion(idx);
+                      setIsSidebarOpen(false);
+                    }}
+                    hideHeader={hideHeader}
+                    isMobileDrawer={true}
+                    onClose={() => setIsSidebarOpen(false)}
+                  />
+                </div>
+              </div>
+
               {/* ── Body: Sidebar + Main ─────────────────────────────────────── */}
               <div
-                style={{
-                  flex: 1,
-                  display: "flex",
-                  maxWidth: "1200px",
-                  margin: "0 auto",
-                  width: "100%",
-                  padding: hideHeader ? "12px 16px 20px" : "16px 16px 24px",
-                  gap: "16px",
-                  alignItems: "flex-start",
-                }}
+                className="flex-1 flex flex-col lg:flex-row w-full max-w-[1200px] mx-auto self-center items-stretch lg:items-start p-2 sm:p-4 lg:p-6 pb-28 lg:pb-6 gap-4 animate-fade-in"
               >
-                {/* LEFT SIDEBAR: Question Navigator */}
-                <SidebarMatrix
-                  questions={questions}
-                  currentIdx={currentIdx}
-                  selectedAnswers={selectedAnswers}
-                  checkedResults={checkedResults}
-                  visitedIds={visitedIds}
-                  modes={modes}
-                  sidebarPage={sidebarPage}
-                  setSidebarPage={setSidebarPage}
-                  jumpToQuestion={jumpToQuestion}
-                  hideHeader={hideHeader}
-                />
+                {/* LEFT SIDEBAR: Question Navigator (Desktop only) */}
+                <div className="hidden lg:block shrink-0 w-[240px]">
+                  <SidebarMatrix
+                    questions={questions}
+                    currentIdx={currentIdx}
+                    selectedAnswers={selectedAnswers}
+                    checkedResults={checkedResults}
+                    visitedIds={visitedIds}
+                    modes={modes}
+                    sidebarPage={sidebarPage}
+                    setSidebarPage={setSidebarPage}
+                    jumpToQuestion={jumpToQuestion}
+                    hideHeader={hideHeader}
+                  />
+                </div>
 
                 {/* MAIN CONTENT AREA */}
                 <div
-                  style={{
-                    flex: 1,
-                    minWidth: 0,
-                    display: "flex",
-                    flexDirection: "row",
-                    gap: "14px",
-                    alignItems: "flex-start",
-                  }}
+                  className="flex-1 min-w-0 flex flex-col lg:flex-row gap-4 items-stretch lg:items-start"
                 >
-                  {/* Question Card */}
+                  {/* Question Card (Double-Bezel Outer Shell) */}
                   <div
-                    style={{
-                      flex: 1,
-                      minWidth: 0,
-                      backgroundColor: "white",
-                      borderRadius: "16px",
-                      border: "2px solid #efeded",
-                      overflow: "hidden",
-                      boxShadow: "0 4px 20px rgba(0,0,0,0.04)",
-                    }}
+                    className="flex-1 min-w-0 bg-[#eae8e7] border border-[#eae8e7] p-[5px] rounded-[24px] shadow-[0_10px_30px_-10px_rgba(0,0,0,0.03)]"
                   >
+                    {/* Inner Core */}
+                    <div
+                      className="bg-white rounded-[19px] overflow-hidden shadow-[inset_0_1px_1px_rgba(255,255,255,0.6)] flex flex-col h-full"
+                    >
                     <audio ref={audioRef} src={q.audioUrl} />
 
                     {/* Compact Audio Player */}
@@ -868,18 +1176,14 @@ export default function Page() {
                       modes={modes}
                       selectOption={selectOption}
                     />
+                    </div>
                   </div>
 
-                  {/* Sticky Right Action Buttons */}
+                  {/* Sticky Right Action Buttons (Desktop only) */}
                   <div
+                    className="hidden lg:flex flex-col gap-2 shrink-0 w-[108px] sticky"
                     style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: "8px",
-                      position: "sticky",
                       top: hideHeader ? "16px" : "68px",
-                      flexShrink: 0,
-                      width: "108px",
                       transition: "top 0.2s ease",
                     }}
                   >
@@ -959,7 +1263,7 @@ export default function Page() {
                       }}
                     >
                       {currentIdx === questions.length - 1 ? (
-                        "Finish 🎉"
+                        "Finish Test"
                       ) : (
                         <>
                           Next <IconNext />
@@ -995,6 +1299,97 @@ export default function Page() {
                       }}
                     >
                       {hideHeader ? "Show Header" : "Hide Header"}
+                    </button>
+                  </div>
+
+                  {/* Floating Bottom Action Bar (Mobile/Tablet only) */}
+                  <div
+                    className="lg:hidden fixed bottom-4 left-4 right-4 z-40 bg-white/90 backdrop-blur-md border border-[#efeded] p-3 rounded-[20px] flex justify-between gap-3 shadow-[0_10px_30px_-5px_rgba(0,0,0,0.1)]"
+                  >
+                    {/* Back Button */}
+                    <button
+                      onClick={() => currentIdx > 0 && jumpToQuestion(currentIdx - 1)}
+                      disabled={currentIdx === 0}
+                      className={currentIdx > 0 ? "btn-3d" : ""}
+                      style={{
+                        flex: 1,
+                        padding: "12px 8px",
+                        borderRadius: "12px",
+                        border: "none",
+                        fontFamily: "'Plus Jakarta Sans', sans-serif",
+                        fontWeight: 700,
+                        fontSize: "13px",
+                        cursor: currentIdx === 0 ? "not-allowed" : "pointer",
+                        background: currentIdx === 0 ? "#e4e2e2" : "#efeded",
+                        color: currentIdx === 0 ? "#a0a0a0" : "#1b1c1c",
+                        boxShadow: currentIdx === 0 ? "none" : "0 3px 0 #bdc8d2",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        gap: "4px",
+                      }}
+                    >
+                      ← Back
+                    </button>
+
+                    {/* Check Button */}
+                    <button
+                      onClick={checkCurrentAnswer}
+                      disabled={isCheckDisabled}
+                      className={!isCheckDisabled ? "btn-3d" : ""}
+                      style={{
+                        flex: 1,
+                        padding: "12px 8px",
+                        borderRadius: "12px",
+                        border: "none",
+                        fontFamily: "'Plus Jakarta Sans', sans-serif",
+                        fontWeight: 700,
+                        fontSize: "13px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        gap: "6px",
+                        cursor: isCheckDisabled ? "not-allowed" : "pointer",
+                        background: isCheckDisabled ? "#e4e2e2" : "#FFC107",
+                        color: isCheckDisabled ? "#a0a0a0" : "#5A4300",
+                        boxShadow: isCheckDisabled ? "none" : "0 3px 0 #B38600",
+                      }}
+                    >
+                      <span style={{ display: "flex", scale: "0.9" }}>
+                        <IconCheck />
+                      </span>
+                      Check
+                    </button>
+
+                    {/* Next/Finish Button */}
+                    <button
+                      className="btn-3d"
+                      onClick={handleNextOrFinish}
+                      style={{
+                        flex: 1.2,
+                        padding: "12px 8px",
+                        borderRadius: "12px",
+                        border: "none",
+                        fontFamily: "'Plus Jakarta Sans', sans-serif",
+                        fontWeight: 700,
+                        fontSize: "13px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        gap: "4px",
+                        cursor: "pointer",
+                        background: "#1cb0f6",
+                        color: "white",
+                        boxShadow: "0 3px 0 #008EAF",
+                      }}
+                    >
+                      {currentIdx === questions.length - 1 ? (
+                        "Finish Test"
+                      ) : (
+                        <>
+                          Next <IconNext />
+                        </>
+                      )}
                     </button>
                   </div>
                 </div>

@@ -14,8 +14,8 @@ export default function QuestionContent({
 
   return (
     <div
+      className="p-3 sm:p-5 animate-gentle-reveal"
       style={{
-        padding: "16px 20px",
         display: "flex",
         flexDirection: "column",
         gap: "14px",
@@ -109,12 +109,8 @@ export default function QuestionContent({
                 return (
                   <div
                     key={subQ.id}
+                    className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-2 md:gap-3 p-3 md:py-2 md:px-3"
                     style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                      gap: "12px",
-                      padding: "8px 12px",
                       borderRadius: "10px",
                       border: "1.5px solid #efeded",
                       background: "#fbf9f8",
@@ -125,28 +121,22 @@ export default function QuestionContent({
                         fontSize: "13px",
                         fontWeight: 600,
                         color: "#1b1c1c",
-                        flexShrink: 0,
                       }}
                     >
                       {subQ.questionText}
                     </span>
 
                     <div
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "8px",
-                        flex: 1,
-                        justifyContent: "flex-end",
-                      }}
+                      className="flex items-center gap-2 w-full md:w-auto justify-between md:justify-end flex-shrink-0"
                     >
                       <select
                         disabled={subChecked}
                         value={subUserAns || ""}
                         onChange={(e) => selectOption(e.target.value, subQ.id)}
+                        className="w-full md:w-[350px] spring-transition-fast hover:border-[#006590] active:scale-[0.995]"
                         style={{
-                          padding: "5px 10px",
-                          borderRadius: "8px",
+                          padding: "6px 12px",
+                          borderRadius: "10px",
                           border: `2px solid ${bdr}`,
                           background: bg,
                           color: color,
@@ -155,9 +145,8 @@ export default function QuestionContent({
                           fontSize: "12px",
                           cursor: subChecked ? "default" : "pointer",
                           outline: "none",
-                          boxShadow: "0 1px 3px rgba(0,0,0,0.02)",
+                          boxShadow: "0 1.5px 4px rgba(0,0,0,0.02), inset 0 1px 1px rgba(255,255,255,0.6)",
                           maxWidth: "100%",
-                          width: "350px",
                         }}
                       >
                         <option value="">-- Select an answer --</option>
@@ -170,13 +159,13 @@ export default function QuestionContent({
 
                       {subChecked &&
                         (isCorrect ? (
-                          <span style={{ color: "#58CC02", fontSize: "14px", fontWeight: "bold", display: "flex" }}>
-                            ✓
+                          <span style={{ display: "flex", alignItems: "center" }}>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#58CC02" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                           </span>
                         ) : (
                           <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
-                            <span style={{ color: "#ba1a1a", fontSize: "14px", fontWeight: "bold" }}>
-                              ✗
+                            <span style={{ display: "flex", alignItems: "center" }}>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#ba1a1a" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                             </span>
                             <span
                               style={{
@@ -233,12 +222,8 @@ export default function QuestionContent({
                 return (
                   <div 
                     key={subQ.id}
+                    className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-2 md:gap-3 p-3 md:py-2 md:px-3"
                     style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                      gap: "12px",
-                      padding: "8px 12px",
                       borderRadius: "10px",
                       border: "1.5px solid #efeded",
                       background: "#fbf9f8",
@@ -248,14 +233,15 @@ export default function QuestionContent({
                       {subQ.questionText}
                     </span>
 
-                    <div style={{ display: "flex", alignItems: "center", gap: "8px", flexShrink: 0 }}>
+                    <div className="flex items-center gap-2 w-full md:w-auto justify-between md:justify-end flex-shrink-0">
                       <select
                         disabled={subChecked}
                         value={subUserAns || ""}
                         onChange={(e) => selectOption(e.target.value, subQ.id)}
+                        className="w-full md:w-auto min-w-[120px] spring-transition-fast hover:border-[#006590] active:scale-[0.995]"
                         style={{
-                          padding: "5px 10px",
-                          borderRadius: "8px",
+                          padding: "6px 12px",
+                          borderRadius: "10px",
                           border: `2px solid ${bdr}`,
                           background: bg,
                           color: color,
@@ -264,7 +250,7 @@ export default function QuestionContent({
                           fontSize: "12px",
                           cursor: subChecked ? "default" : "pointer",
                           outline: "none",
-                          boxShadow: "0 1px 3px rgba(0,0,0,0.02)",
+                          boxShadow: "0 1.5px 4px rgba(0,0,0,0.02), inset 0 1px 1px rgba(255,255,255,0.6)",
                         }}
                       >
                         <option value="">-- Select an answer --</option>
@@ -275,10 +261,14 @@ export default function QuestionContent({
 
                       {subChecked && (
                         isCorrect ? (
-                          <span style={{ color: "#58CC02", fontSize: "14px", fontWeight: "bold" }}>✓</span>
+                          <span style={{ display: "flex", alignItems: "center" }}>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#58CC02" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                          </span>
                         ) : (
                           <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
-                            <span style={{ color: "#ba1a1a", fontSize: "14px", fontWeight: "bold" }}>✗</span>
+                            <span style={{ display: "flex", alignItems: "center" }}>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#ba1a1a" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                            </span>
                             <span 
                               style={{ 
                                 color: "#2a6000", 
@@ -364,14 +354,19 @@ export default function QuestionContent({
                       const showCheck = (isSel && !subChecked) || (subChecked && isCorr);
                       const showX = subChecked && isSel && !isCorr;
 
+                      let tactileClass = "option-card spring-transition-fast hover:scale-[1.01] hover:shadow-[0_4px_16px_rgba(0,0,0,0.03)] active:scale-[0.99]";
+                      if (isSel && !subChecked) tactileClass += " tactile-glow-blue";
+                      if (subChecked && isCorr) tactileClass += " tactile-glow-green";
+                      if (subChecked && isSel && !isCorr) tactileClass += " tactile-glow-red";
+
                       return (
                         <div
                           key={opt.key}
                           onClick={() => !subChecked && selectOption(opt.key, subQ.id)}
-                          className="option-card"
+                          className={tactileClass}
                           style={{
-                            padding: "10px 14px",
-                            borderRadius: "12px",
+                            padding: "12px 16px",
+                            borderRadius: "16px",
                             border: `2px solid ${bdr}`,
                             background: bg,
                             display: "flex",
@@ -379,7 +374,6 @@ export default function QuestionContent({
                             justifyContent: "space-between",
                             cursor: subChecked ? "default" : "pointer",
                             opacity: subChecked && !isCorr && !isSel ? 0.5 : 1,
-                            transition: "all 0.15s ease",
                           }}
                         >
                           <span
@@ -416,25 +410,13 @@ export default function QuestionContent({
                             }}
                           >
                             {showCheck && (
-                              <span
-                                style={{
-                                  color: "white",
-                                  fontSize: "9px",
-                                  fontWeight: 800,
-                                }}
-                              >
-                                ✓
+                              <span style={{ display: "flex", alignItems: "center" }}>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                               </span>
                             )}
                             {showX && (
-                              <span
-                                style={{
-                                  color: "white",
-                                  fontSize: "9px",
-                                  fontWeight: 800,
-                                }}
-                              >
-                                ✗
+                              <span style={{ display: "flex", alignItems: "center" }}>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                               </span>
                             )}
                           </div>
@@ -482,14 +464,19 @@ export default function QuestionContent({
             const showCheck = (isSel && !isChecked) || (isChecked && isCorr);
             const showX = isChecked && isSel && !isCorr;
 
+            let tactileClass = "option-card spring-transition-fast hover:scale-[1.01] hover:shadow-[0_4px_16px_rgba(0,0,0,0.03)] active:scale-[0.99]";
+            if (isSel && !isChecked) tactileClass += " tactile-glow-blue";
+            if (isChecked && isCorr) tactileClass += " tactile-glow-green";
+            if (isChecked && isSel && !isCorr) tactileClass += " tactile-glow-red";
+
             return (
               <div
                 key={opt.key}
                 onClick={() => !isChecked && selectOption(opt.key)}
-                className="option-card"
+                className={tactileClass}
                 style={{
-                  padding: "10px 14px",
-                  borderRadius: "12px",
+                  padding: "12px 16px",
+                  borderRadius: "16px",
                   border: `2px solid ${bdr}`,
                   background: bg,
                   display: "flex",
@@ -497,7 +484,6 @@ export default function QuestionContent({
                   justifyContent: "space-between",
                   cursor: isChecked ? "default" : "pointer",
                   opacity: isChecked && !isCorr && !isSel ? 0.5 : 1,
-                  transition: "all 0.15s ease",
                 }}
               >
                 <span
@@ -534,25 +520,14 @@ export default function QuestionContent({
                   }}
                 >
                   {showCheck && (
-                    <span
-                      style={{
-                        color: "white",
-                        fontSize: "9px",
-                        fontWeight: 800,
-                      }}
-                    >
-                      ✓
+                    <span style={{ display: "flex", alignItems: "center" }}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline>
+</svg>
                     </span>
                   )}
                   {showX && (
-                    <span
-                      style={{
-                        color: "white",
-                        fontSize: "9px",
-                        fontWeight: 800,
-                      }}
-                    >
-                      ✗
+                    <span style={{ display: "flex", alignItems: "center" }}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                     </span>
                   )}
                 </div>

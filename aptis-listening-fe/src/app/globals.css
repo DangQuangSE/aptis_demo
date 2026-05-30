@@ -69,34 +69,36 @@
 }
 
 /* --------------------------------------------------------------------------
-   Global Reset
+   Global Reset (Layered in base for Tailwind v4 compatibility)
    -------------------------------------------------------------------------- */
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 
-html {
-  scroll-behavior: smooth;
-}
+  html {
+    scroll-behavior: smooth;
+  }
 
-body {
-  background-color: var(--surface);
-  color: var(--on-surface);
-  font-family: var(--font-body);
-  min-height: 100vh;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
-}
+  body {
+    background-color: var(--surface);
+    color: var(--on-surface);
+    font-family: var(--font-body);
+    min-height: 100vh;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
 
-/* Fix heading colors (overrides any dark-mode global conflicts) */
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-headline);
-  color: var(--on-surface);
-  font-weight: 700;
+  /* Fix heading colors (overrides any dark-mode global conflicts) */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-headline);
+    color: var(--on-surface);
+    font-weight: 700;
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -218,13 +220,13 @@ input[type="range"]::-webkit-slider-thumb:hover {
 }
 
 input[type="range"].audio-scrubber {
-  background: rgba(255, 255, 255, 0.28);
-  accent-color: white;
+  background: #e2e8f0;
+  accent-color: var(--primary);
 }
 
 input[type="range"].volume-slider {
-  background: rgba(255, 255, 255, 0.28);
-  accent-color: white;
+  background: #e2e8f0;
+  accent-color: var(--primary);
   width: 68px;
 }
 
@@ -335,3 +337,112 @@ input[type="range"].volume-slider {
 .animate-modal-in {
   animation: modalScaleIn 0.28s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
+
+/* --------------------------------------------------------------------------
+   Responsive Bottom Sheet (Drawer) for Mobile/Tablet Question Map
+   -------------------------------------------------------------------------- */
+.drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(27, 28, 28, 0.45);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.drawer-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.drawer-content {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-height: 85vh;
+  background: white;
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+  z-index: 1001;
+  transform: translateY(100%);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.drawer-content.open {
+  transform: translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Settings Menu Overlay
+   -------------------------------------------------------------------------- */
+.settings-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(27, 28, 28, 0.45);
+  backdrop-filter: blur(4px);
+  z-index: 1010;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* --------------------------------------------------------------------------
+   Spring Transition Curves (Vanguard UI Architect)
+   -------------------------------------------------------------------------- */
+.spring-transition {
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.spring-transition-fast {
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.spring-transition-heavy {
+  transition: all 0.8s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+/* Tactile Doppelrand & Glass Components */
+.doppelrand-outer {
+  background: rgba(0, 0, 0, 0.035);
+  border: 1.5px solid rgba(0, 0, 0, 0.035);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.005);
+}
+
+/* Tactile ambient glow for selected options */
+.tactile-glow-blue {
+  box-shadow: 0 0 0 1.5px rgba(0, 101, 144, 0.15), 0 4px 20px rgba(0, 101, 144, 0.06);
+}
+
+.tactile-glow-green {
+  box-shadow: 0 0 0 1.5px rgba(88, 204, 2, 0.18), 0 4px 20px rgba(88, 204, 2, 0.06);
+}
+
+.tactile-glow-red {
+  box-shadow: 0 0 0 1.5px rgba(186, 26, 26, 0.15), 0 4px 20px rgba(186, 26, 26, 0.06);
+}
+
+/* Gentle entry reveal animation */
+@keyframes gentleFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-gentle-reveal {
+  animation: gentleFadeUp 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) both;
+}
+
+
