@@ -875,6 +875,7 @@ export default function GrammarPractice({ boDe, mode, onExit }) {
                 onClick={() => setModes((m) => ({ ...m, hideHeader: true }))}
                 aria-label="Hide header"
                 title="Hide header"
+                className="flex lg:hidden"
                 style={{
                   padding: "5px 7px",
                   borderRadius: "8px",
@@ -882,7 +883,6 @@ export default function GrammarPractice({ boDe, mode, onExit }) {
                   color: "#6e7881",
                   border: "none",
                   cursor: "pointer",
-                  display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
                   transition: "background 0.15s ease",

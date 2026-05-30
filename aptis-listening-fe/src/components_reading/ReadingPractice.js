@@ -403,9 +403,9 @@ export default function ReadingPractice({ partNum, onExit }) {
                 <IconTimer />
                 <span style={{ fontFamily: "monospace", letterSpacing: "0.05em" }}>{formatTime(timeLeft)}</span>
               </div>
-              {/* Hide header (desktop only) */}
+              {/* Hide header (mobile only) */}
               <button onClick={() => setHideHeader(true)} aria-label="Hide header" title="Hide header"
-                className="hidden lg:flex"
+                className="lg:hidden flex"
                 style={{ padding: "5px 7px", borderRadius: "8px", background: "#f0f4f8", color: "#6e7881", border: "none", cursor: "pointer", alignItems: "center", justifyContent: "center", transition: "background 0.15s" }}
                 onMouseEnter={(e) => (e.currentTarget.style.background = "#e1e9f0")}
                 onMouseLeave={(e) => (e.currentTarget.style.background = "#f0f4f8")}
@@ -832,6 +832,31 @@ export default function ReadingPractice({ partNum, onExit }) {
           style={{ width: "44px", height: "44px", borderRadius: "50%", background: "#006590", border: "none", color: "white", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+        </button>
+      )}
+
+      {/* Floating Restore Header Button (Mobile/Tablet only) */}
+      {hideHeader && (
+        <button
+          onClick={() => setHideHeader(false)}
+          className="lg:hidden fixed top-2 right-2 z-40 animate-modal-in spring-transition hover:scale-[1.05] active:scale-[0.95]"
+          aria-label="Show header"
+          title="Show header"
+          style={{
+            width: "34px",
+            height: "34px",
+            borderRadius: "50%",
+            backgroundColor: "white",
+            border: "1.5px solid #efeded",
+            boxShadow: "0 4px 14px rgba(0,0,0,0.1)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            color: "#006590",
+            cursor: "pointer",
+          }}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
       )}
     </div>
