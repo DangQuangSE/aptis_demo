@@ -1382,8 +1382,8 @@
         "id": "16.1",
         "question": "How can productivity be maximized?",
         "options": [
-          "By working longer hours each day",
           "By managing time effectively",
+          "By working longer hours each day",
           "By avoiding all distractions completely"
         ]
       },
@@ -1391,9 +1391,9 @@
         "id": "16.2",
         "question": "What is the problem with productivity strategies?",
         "options": [
+          "Using them effectively requires effort",
           "They are too expensive to implement",
-          "They only work for certain types of people",
-          "Using them effectively requires effort"
+          "They only work for certain types of people"
         ]
       }
     ],
@@ -1407,17 +1407,17 @@
         "id": "17.1",
         "question": "What is the main strength of the book?",
         "options": [
+          "The book describes a particular historical period very effectively",
           "The author is very well known in the field",
-          "It is shorter than most other biographies",
-          "The book describes a particular historical period very effectively"
+          "It is shorter than most other biographies"
         ]
       },
       {
         "id": "17.2",
         "question": "What is the critic’s overall opinion of the book?",
         "options": [
-          "It is too long and difficult to read",
           "It is an unconventional biography",
+          "It is too long and difficult to read",
           "It follows the typical style of most biographies"
         ]
       }
@@ -1432,8 +1432,8 @@
         "id": "16.1",
         "question": "How does the speaker explain why new podcasts fail?",
         "options": [
-          "The audio quality is too poor to attract listeners",
           "Content creators do not promote their shows",
+          "The audio quality is too poor to attract listeners",
           "Episodes are too long and boring"
         ]
       },
