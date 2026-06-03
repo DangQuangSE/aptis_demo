@@ -15,7 +15,6 @@ const IconGrid = () => (
 export default function ReadingPractice({ partNum, onExit }) {
   const [partData, setPartData] = useState([]);
   const [topicIndex, setTopicIndex] = useState(0);
-  const [answers, setAnswers] = useState({});
   const [allAnswers, setAllAnswers] = useState({});
   const [allResults, setAllResults] = useState({});
   const [visitedTopics, setVisitedTopics] = useState({ 0: true });
@@ -26,22 +25,25 @@ export default function ReadingPractice({ partNum, onExit }) {
   const [confirmModal, setConfirmModal] = useState(null);
   const [toast, setToast] = useState(null);
   const [isGrading, setIsGrading] = useState(false);
-  const [aiResult, setAiResult] = useState(null);
   const [hideHeader, setHideHeader] = useState(false);
   const [autoShowAnswer, setAutoShowAnswer] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isBottomBarVisible, setIsBottomBarVisible] = useState(true);
 
+  const answers = allAnswers[topicIndex] || {};
+  const aiResult = allResults[topicIndex] || null;
+
+  const handleTopicChange = (idx) => {
+    setTopicIndex(idx);
+    setVisitedTopics((prev) => ({ ...prev, [idx]: true }));
+    const targetPage = Math.floor(idx / 25);
+    if (targetPage !== sidebarPage) {
+      setSidebarPage(targetPage);
+    }
+  };
+
   useEffect(() => {
-    setLoading(true);
-    setAllAnswers({});
-    setAllResults({});
-    setTopicIndex(0);
-    setAnswers({});
-    setAiResult(null);
-    setVisitedTopics({ 0: true });
-    setSidebarPage(0);
     fetch(`/scraped_data_reading/reading_part${partNum}.json`)
       .then((res) => res.json())
       .then((data) => {
@@ -53,21 +55,6 @@ export default function ReadingPractice({ partNum, onExit }) {
         setLoading(false);
       });
   }, [partNum]);
-
-  useEffect(() => {
-    setVisitedTopics((prev) => ({ ...prev, [topicIndex]: true }));
-    const targetPage = Math.floor(topicIndex / 25);
-    if (targetPage !== sidebarPage) {
-      setSidebarPage(targetPage);
-    }
-  }, [topicIndex, sidebarPage]);
-
-  useEffect(() => {
-    if (partData && partData[topicIndex]) {
-      setAnswers(allAnswers[topicIndex] || {});
-      setAiResult(allResults[topicIndex] || null);
-    }
-  }, [topicIndex, partData, partNum]);
 
   useEffect(() => {
     let timer;
@@ -108,7 +95,6 @@ export default function ReadingPractice({ partNum, onExit }) {
       }
       const data = await res.json();
       if (data.error) throw new Error(data.error);
-      setAiResult(data);
       setAllResults((all) => ({ ...all, [topicIndex]: data }));
     } catch (err) {
       console.error(err);
@@ -135,16 +121,17 @@ export default function ReadingPractice({ partNum, onExit }) {
   };
 
   const handleAnswerChange = (key, value) => {
-    setAnswers((prev) => {
-      const next = { ...prev, [key]: value };
-      setAllAnswers((all) => ({ ...all, [topicIndex]: next }));
-      return next;
+    setAllAnswers((all) => {
+      const currentAnswers = all[topicIndex] || {};
+      const nextAnswers = { ...currentAnswers, [key]: value };
+      return { ...all, [topicIndex]: nextAnswers };
     });
   };
 
   const moveSentence = (sentenceId, direction) => {
-    setAnswers((prev) => {
-      let currentOrder = prev.part2Order ? { ...prev.part2Order } : null;
+    setAllAnswers((all) => {
+      const prevAnswers = all[topicIndex] || {};
+      let currentOrder = prevAnswers.part2Order ? { ...prevAnswers.part2Order } : null;
       if (!currentOrder) {
         currentOrder = {};
         partData[topicIndex].sentences.forEach((s, idx) => {
@@ -154,16 +141,15 @@ export default function ReadingPractice({ partNum, onExit }) {
       const currentPos = currentOrder[sentenceId];
       const newPos = currentPos + direction;
 
-      if (newPos < 0 || newPos >= partData[topicIndex].sentences.length) return prev;
+      if (newPos < 0 || newPos >= partData[topicIndex].sentences.length) return all;
 
       const otherId = Object.keys(currentOrder).find(k => currentOrder[k] === newPos);
       if (otherId) {
         currentOrder[otherId] = currentPos;
         currentOrder[sentenceId] = newPos;
       }
-      const next = { ...prev, part2Order: currentOrder };
-      setAllAnswers((all) => ({ ...all, [topicIndex]: next }));
-      return next;
+      const nextAnswers = { ...prevAnswers, part2Order: currentOrder };
+      return { ...all, [topicIndex]: nextAnswers };
     });
   };
 
@@ -234,7 +220,7 @@ export default function ReadingPractice({ partNum, onExit }) {
             return (
               <button
                 key={idx}
-                onClick={() => { setTopicIndex(idx); if (isMobileDrawer) setIsSidebarOpen(false); }}
+                onClick={() => { handleTopicChange(idx); if (isMobileDrawer) setIsSidebarOpen(false); }}
                 className={`q-matrix-btn ${isActive ? "active" : ""}`}
                 title={`Topic ${idx + 1}`}
                 style={{
@@ -313,7 +299,6 @@ export default function ReadingPractice({ partNum, onExit }) {
                       setVisitedTopics((prev) => ({ ...prev, [topicIndex]: true }));
                       if (!aiResult) submitForGrading();
                     } else {
-                      setAiResult(null);
                       setAllResults((all) => { const next = { ...all }; delete next[topicIndex]; return next; });
                     }
                     setIsSettingsOpen(false);
@@ -462,8 +447,6 @@ export default function ReadingPractice({ partNum, onExit }) {
                 </div>
                 <button 
                   onClick={() => {
-                    setAiResult(null); 
-                    setAnswers({});
                     setAllAnswers((all) => {
                       const next = { ...all };
                       delete next[topicIndex];
@@ -740,7 +723,7 @@ export default function ReadingPractice({ partNum, onExit }) {
             style={{ top: hideHeader ? "16px" : "68px", transition: "top 0.2s ease" }}
           >
             <button
-              onClick={() => topicIndex > 0 && setTopicIndex(topicIndex - 1)}
+              onClick={() => topicIndex > 0 && handleTopicChange(topicIndex - 1)}
               disabled={topicIndex === 0}
               className={topicIndex > 0 ? "btn-3d" : ""}
               style={{ width: "100%", padding: "10px 8px", borderRadius: "12px", border: "none", fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, fontSize: "12px", cursor: topicIndex === 0 ? "not-allowed" : "pointer", background: topicIndex === 0 ? "#e4e2e2" : "#efeded", color: topicIndex === 0 ? "#a0a0a0" : "#1b1c1c", boxShadow: topicIndex === 0 ? "none" : "0 3px 0 #bdc8d2", display: "flex", alignItems: "center", justifyContent: "center", gap: "4px" }}
@@ -760,7 +743,7 @@ export default function ReadingPractice({ partNum, onExit }) {
 
             <button
               className="btn-3d"
-              onClick={() => { if (topicIndex < partData.length - 1) setTopicIndex(topicIndex + 1); else handleExit(); }}
+              onClick={() => { if (topicIndex < partData.length - 1) handleTopicChange(topicIndex + 1); else handleExit(); }}
               style={{ width: "100%", padding: "10px 8px", borderRadius: "12px", border: "none", fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, fontSize: "12px", display: "flex", alignItems: "center", justifyContent: "center", gap: "4px", cursor: "pointer", background: "#1cb0f6", color: "white", boxShadow: "0 3px 0 #008EAF" }}
             >
               {topicIndex === partData.length - 1 ? "Finish 🎉" : <> Next <IconNext /></>}
@@ -795,7 +778,7 @@ export default function ReadingPractice({ partNum, onExit }) {
 
         {/* Back */}
         <button
-          onClick={() => topicIndex > 0 && setTopicIndex(topicIndex - 1)}
+          onClick={() => topicIndex > 0 && handleTopicChange(topicIndex - 1)}
           disabled={topicIndex === 0}
           className={topicIndex > 0 ? "btn-3d" : ""}
           style={{ flex: 1, padding: "12px 8px", borderRadius: "12px", border: "none", fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, fontSize: "13px", cursor: topicIndex === 0 ? "not-allowed" : "pointer", background: topicIndex === 0 ? "#e4e2e2" : "#efeded", color: topicIndex === 0 ? "#a0a0a0" : "#1b1c1c", boxShadow: topicIndex === 0 ? "none" : "0 3px 0 #bdc8d2", display: "flex", alignItems: "center", justifyContent: "center", gap: "4px" }}
@@ -817,7 +800,7 @@ export default function ReadingPractice({ partNum, onExit }) {
         {/* Next */}
         <button
           className="btn-3d"
-          onClick={() => { if (topicIndex < partData.length - 1) setTopicIndex(topicIndex + 1); else handleExit(); }}
+          onClick={() => { if (topicIndex < partData.length - 1) handleTopicChange(topicIndex + 1); else handleExit(); }}
           style={{ flex: 1, padding: "12px 8px", borderRadius: "12px", border: "none", fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, fontSize: "13px", display: "flex", alignItems: "center", justifyContent: "center", gap: "4px", cursor: "pointer", background: "#1cb0f6", color: "white", boxShadow: "0 3px 0 #008EAF" }}
         >
           {topicIndex === partData.length - 1 ? "Finish 🎉" : <> Next <IconNext /></>}

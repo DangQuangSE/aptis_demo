@@ -34,9 +34,6 @@ export default function HomeDashboard({ onSelectMode, onSelectListeningPart, ini
   const [activeTab, setActiveTab] = useState(initialTab);
   const [selectedBoDe, setSelectedBoDe] = useState(null);
 
-  useEffect(() => {
-    setActiveTab(initialTab);
-  }, [initialTab]);
 
   const handleSelectBoDe = (bodeNum) => {
     setSelectedBoDe(bodeNum);

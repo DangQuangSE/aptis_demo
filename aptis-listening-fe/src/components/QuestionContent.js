@@ -170,7 +170,7 @@ export default function QuestionContent({
         ) : q.isStatementMatching ? (
           <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
             <p style={{ fontSize: "12px", color: "#3e4850", margin: "0 0 8px 0", lineHeight: 1.5, fontStyle: "italic" }}>
-              Listen to two people discussing potential modifications to the topic above. Read the statements and decide whose opinion matches best: the man's, the woman's, or both. Who expresses which opinion?
+              {"Listen to two people discussing potential modifications to the topic above. Read the statements and decide whose opinion matches best: the man's, the woman's, or both. Who expresses which opinion?"}
             </p>
             
             <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>

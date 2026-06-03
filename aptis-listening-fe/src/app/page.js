@@ -25,12 +25,38 @@ const IconGrid = () => (
 
 
 export default function Page() {
-  const [view, setView] = useState("home");
-  const [dashboardTab, setDashboardTab] = useState("grammar-vocab");
-  const [selectedBoDe, setSelectedBoDe] = useState(1);
-  const [selectedMode, setSelectedMode] = useState("grammar");
-  const [selectedReadingPart, setSelectedReadingPart] = useState(null);
-  const [selectedSpeakingPart, setSelectedSpeakingPart] = useState(null);
+  const [view, setView] = useState(() => {
+    if (typeof window === "undefined") return "home";
+    const params = new URLSearchParams(window.location.search);
+    return params.get("view") || "home";
+  });
+  const [dashboardTab, setDashboardTab] = useState(() => {
+    if (typeof window === "undefined") return "grammar-vocab";
+    const params = new URLSearchParams(window.location.search);
+    return params.get("tab") || "grammar-vocab";
+  });
+  const [selectedBoDe, setSelectedBoDe] = useState(() => {
+    if (typeof window === "undefined") return 1;
+    const params = new URLSearchParams(window.location.search);
+    return Number(params.get("bode") || 1);
+  });
+  const [selectedMode, setSelectedMode] = useState(() => {
+    if (typeof window === "undefined") return "grammar";
+    const params = new URLSearchParams(window.location.search);
+    return params.get("mode") || "grammar";
+  });
+  const [selectedReadingPart, setSelectedReadingPart] = useState(() => {
+    if (typeof window === "undefined") return null;
+    const params = new URLSearchParams(window.location.search);
+    const rp = params.get("reading_part");
+    return rp ? Number(rp) : null;
+  });
+  const [selectedSpeakingPart, setSelectedSpeakingPart] = useState(() => {
+    if (typeof window === "undefined") return null;
+    const params = new URLSearchParams(window.location.search);
+    const sp = params.get("speaking_part");
+    return sp ? Number(sp) : null;
+  });
   const [loading, setLoading] = useState(false);
   const [hideHeader, setHideHeader] = useState(false);
 
@@ -41,7 +67,12 @@ export default function Page() {
     randomizeQuestions: false,
   });
 
-  const [selectedPart, setSelectedPart] = useState(null);
+  const [selectedPart, setSelectedPart] = useState(() => {
+    if (typeof window === "undefined") return null;
+    const params = new URLSearchParams(window.location.search);
+    const lp = params.get("listening_part");
+    return lp ? Number(lp) : null;
+  });
   const [questions, setQuestions] = useState([]);
   const [currentIdx, setCurrentIdx] = useState(0);
   const [sidebarPage, setSidebarPage] = useState(0);
@@ -289,6 +320,85 @@ export default function Page() {
       setLoading(false);
     }
   };
+ 
+  // ── URL Routing / State Sync ──────────────────────────────────────────────
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    // 1. Initial load: Fetch practice questions on mount if bookmarked in URL
+    const params = new URLSearchParams(window.location.search);
+    const urlView = params.get("view");
+    const urlListeningPart = params.get("listening_part");
+
+    if (urlView === "practice" && urlListeningPart !== null) {
+      setTimeout(() => {
+        startPartPractice(Number(urlListeningPart));
+      }, 0);
+    }
+
+    // 2. Listen for back/forward buttons (popstate)
+    const handlePopState = () => {
+      const currentParams = new URLSearchParams(window.location.search);
+      const nextView = currentParams.get("view") || "home";
+      const nextTab = currentParams.get("tab") || "grammar-vocab";
+      const nextBoDe = Number(currentParams.get("bode") || 1);
+      const nextMode = currentParams.get("mode") || "grammar";
+      
+      const rp = currentParams.get("reading_part");
+      const nextReadingPart = rp ? Number(rp) : null;
+      
+      const sp = currentParams.get("speaking_part");
+      const nextSpeakingPart = sp ? Number(sp) : null;
+      
+      const lp = currentParams.get("listening_part");
+      const nextListeningPart = lp ? Number(lp) : null;
+
+      setView(nextView);
+      setDashboardTab(nextTab);
+      setSelectedBoDe(nextBoDe);
+      setSelectedMode(nextMode);
+      setSelectedReadingPart(nextReadingPart);
+      setSelectedSpeakingPart(nextSpeakingPart);
+      setSelectedPart(nextListeningPart);
+
+      // If going back to practice, load questions if they aren't loaded
+      if (nextView === "practice" && nextListeningPart !== null) {
+        startPartPractice(nextListeningPart);
+      }
+    };
+
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Update URL search parameters when state changes
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const params = new URLSearchParams();
+    if (view && view !== "home") params.set("view", view);
+    if (dashboardTab && dashboardTab !== "grammar-vocab") params.set("tab", dashboardTab);
+    if (selectedBoDe && selectedBoDe !== 1) params.set("bode", selectedBoDe.toString());
+    if (selectedMode && selectedMode !== "grammar") params.set("mode", selectedMode);
+    if (selectedReadingPart !== null) params.set("reading_part", selectedReadingPart.toString());
+    if (selectedSpeakingPart !== null) params.set("speaking_part", selectedSpeakingPart.toString());
+    if (selectedPart !== null) params.set("listening_part", selectedPart.toString());
+
+    const newSearch = params.toString() ? `?${params.toString()}` : "";
+    const newUrl = window.location.pathname + newSearch;
+
+    if (window.location.search !== newSearch) {
+      const oldParams = new URLSearchParams(window.location.search);
+      const oldView = oldParams.get("view") || "home";
+      // Push state for high-level view changes to enable back button navigation
+      if (oldView !== view) {
+        window.history.pushState(null, "", newUrl);
+      } else {
+        window.history.replaceState(null, "", newUrl);
+      }
+    }
+  }, [view, dashboardTab, selectedBoDe, selectedMode, selectedReadingPart, selectedSpeakingPart, selectedPart]);
 
   // ── Navigation ────────────────────────────────────────────────────────────
 
@@ -459,6 +569,7 @@ export default function Page() {
     >
       {view === "home" && (
         <HomeDashboard
+          key={dashboardTab}
           initialTab={dashboardTab}
           onSelectMode={(boDe, mode, partNum) => {
             if (boDe !== null) setSelectedBoDe(boDe);
@@ -492,6 +603,7 @@ export default function Page() {
 
       {view === "reading-practice" && (
         <ReadingPractice
+          key={selectedReadingPart}
           testId={selectedBoDe}
           partNum={selectedReadingPart}
           onExit={() => setView("home")}
@@ -500,6 +612,7 @@ export default function Page() {
 
       {view === "speaking-practice" && (
         <SpeakingPractice
+          key={selectedSpeakingPart}
           partNum={selectedSpeakingPart}
           onExit={() => {
             setDashboardTab("speaking");
