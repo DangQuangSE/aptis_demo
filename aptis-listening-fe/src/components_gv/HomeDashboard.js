@@ -23,6 +23,13 @@ const READING_PARTS = [
   { num: 4, label: "Long Text Comprehension",  tag: "Reading Question 5", icon: "💡", bg: "#1E8E49", shadow: "#12592D" },
 ];
 
+const SPEAKING_PARTS = [
+  { num: 1, label: "Personal Information",      tag: "Speaking Part 1", icon: "💬", bg: "#1877F2", shadow: "#0D52AB" },
+  { num: 2, label: "Describe & Express Opinion",tag: "Speaking Part 2", icon: "🖼️", bg: "#00C8F8", shadow: "#008EAF" },
+  { num: 3, label: "Describe & Compare Pictures",tag: "Speaking Part 3", icon: "📊", bg: "#FFC107", shadow: "#B38600", isDark: true },
+  { num: 4, label: "Discuss & Personal Exp",     tag: "Speaking Part 4", icon: "🗣️", bg: "#1E8E49", shadow: "#12592D" },
+];
+
 export default function HomeDashboard({ onSelectMode, onSelectListeningPart, initialTab = "grammar-vocab" }) {
   const [activeTab, setActiveTab] = useState(initialTab);
   const [selectedBoDe, setSelectedBoDe] = useState(null);
@@ -157,6 +164,27 @@ export default function HomeDashboard({ onSelectMode, onSelectListeningPart, ini
             }}
           >
             📖 Reading
+          </button>
+          <button
+            onClick={() => {
+              setActiveTab("speaking");
+              setSelectedBoDe(null);
+            }}
+            style={{
+              padding: "10px 24px",
+              borderRadius: "12px",
+              border: "none",
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
+              fontWeight: 700,
+              fontSize: "14px",
+              cursor: "pointer",
+              transition: "all 0.2s ease",
+              background: activeTab === "speaking" ? "white" : "transparent",
+              color: activeTab === "speaking" ? "#006590" : "#718096",
+              boxShadow: activeTab === "speaking" ? "0 4px 10px rgba(0,0,0,0.08)" : "none",
+            }}
+          >
+            🗣️ Speaking
           </button>
         </div>
       </div>
@@ -341,6 +369,24 @@ export default function HomeDashboard({ onSelectMode, onSelectListeningPart, ini
           >
             {READING_PARTS.map((part) => (
               <SubjectCard key={part.num} item={part} onClick={() => onSelectMode(null, "reading", part.num)} />
+            ))}
+          </div>
+        </div>
+      )}
+
+      {activeTab === "speaking" && (
+        <div className="animate-fade-in" style={{ width: "100%" }}>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+              gap: "20px",
+              width: "100%",
+              marginBottom: "40px",
+            }}
+          >
+            {SPEAKING_PARTS.map((part) => (
+              <SubjectCard key={part.num} item={part} onClick={() => onSelectMode(null, "speaking", part.num)} />
             ))}
           </div>
         </div>
