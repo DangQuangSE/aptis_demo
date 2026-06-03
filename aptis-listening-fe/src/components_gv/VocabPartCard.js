@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useMemo } from "react";
 import { shuffleArray } from "../utils/helpers";
 import VocabDropdown from "../components/ui/VocabDropdown";
 
@@ -9,10 +9,8 @@ export default function VocabPartCard({
   isChecked,
   onSelectOption,
 }) {
-  const [shuffledOptions, setShuffledOptions] = useState([]);
-
-  useEffect(() => {
-    if (!partData || !partData.questions) return;
+  const shuffledOptions = useMemo(() => {
+    if (!partData || !partData.questions) return [];
 
     // Extract the list of answer words to form the option pool
     let pool = [];
@@ -25,7 +23,7 @@ export default function VocabPartCard({
     }
 
     // Shuffle the options so they aren't in the same order as questions
-    setShuffledOptions(shuffleArray(pool));
+    return shuffleArray(pool);
   }, [partData, partNum]);
 
   if (!partData || !partData.questions || partData.questions.length === 0) {
@@ -135,7 +133,7 @@ export default function VocabPartCard({
                 <div style={{ display: "flex", alignItems: "center", gap: "10px", flex: 1 }}>
                   <span style={{ fontWeight: 800, color: "#a0aec0", fontSize: "14px" }}>{idx + 1}.</span>
                   <span style={{ fontStyle: "italic", fontSize: "14px", color: "#2d3748", lineHeight: 1.4 }}>
-                    "{q.definition}"
+                    {`"${q.definition}"`}
                   </span>
                 </div>
                 <VocabDropdown subId={subId} options={shuffledOptions} currentValue={selectedAnswers[subId] || ""} isChecked={isChecked} correctValue={q.word} onChange={onSelectOption} />
